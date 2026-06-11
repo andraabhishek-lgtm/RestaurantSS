@@ -1,0 +1,670 @@
+/* ═══════════════════════════════════════════════════════════
+   ÉCLAT Fine Dining — Dark Luxury Theme (Beyond Hero)
+   eclat-beyond-hero.css
+   Applies black & gold aesthetic to all sections below the
+   hero. Hero section is intentionally untouched.
+═══════════════════════════════════════════════════════════ */
+
+/* ── 1. Design Tokens ──────────────────────────────────── */
+:root {
+  --gold:           #C9A84C;
+  --gold-light:     #E8C97A;
+  --gold-dim:       rgba(201,168,76,0.15);
+  --black:          #0A0A0A;
+  --surface:        #111111;
+  --surface-2:      #1A1A1A;
+  --white:          #F5F0E8;
+
+  /* Override existing light-theme CSS variables */
+  --dark-bg:        #0A0A0A;
+  --dark-900:       #0F0F0F;
+  --dark-800:       #1A1A1A;
+  --dark-700:       #222222;
+  --dark-600:       #2D2D2D;
+  --dark-500:       #3A3A3A;
+  --cream:          #F5F0E8;
+  --text-primary:   #F5F0E8;
+  --text-secondary: rgba(245,240,232,0.70);
+  --text-muted:     rgba(245,240,232,0.40);
+  --glass-bg:       rgba(17,17,17,0.85);
+  --glass-border:   rgba(201,168,76,0.18);
+  --shadow-dark:    0 8px 40px rgba(0,0,0,0.60);
+  --grad-dark:      linear-gradient(135deg,#0A0A0A 0%,#1A1A1A 100%);
+  --bh-ease:        cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+/* ── 2. Base ────────────────────────────────────────────── */
+body {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* ── 3. Scrolled Navbar — dark glass ───────────────────── */
+#navbar.scrolled {
+  background: rgba(10,10,10,0.95) !important;
+  border-bottom: 1px solid rgba(201,168,76,0.16);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.70);
+  height: 64px !important;
+}
+#navbar.scrolled .nav-link,
+.has-hero #navbar.scrolled .nav-link {
+  color: rgba(245,240,232,0.78);
+}
+#navbar.scrolled .nav-link:hover,
+#navbar.scrolled .nav-link.active,
+.has-hero #navbar.scrolled .nav-link:hover,
+.has-hero #navbar.scrolled .nav-link.active {
+  color: var(--gold);
+}
+#navbar.scrolled .nav-icon-btn,
+.has-hero #navbar.scrolled .nav-icon-btn {
+  color: rgba(245,240,232,0.70);
+  border-color: rgba(201,168,76,0.25);
+}
+#navbar.scrolled .nav-icon-btn:hover,
+.has-hero #navbar.scrolled .nav-icon-btn:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: var(--gold-dim);
+}
+
+/* ── 4. Glass Card ─────────────────────────────────────── */
+.glass-card {
+  background: rgba(26,26,26,0.90);
+  border: 1px solid rgba(201,168,76,0.16);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+}
+.glass-card:hover {
+  border-color: rgba(201,168,76,0.45);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.55),
+              0 0 24px rgba(201,168,76,0.12);
+}
+
+/* ── 5. Section & Page Banners ─────────────────────────── */
+.section-hero,
+.page-banner {
+  background: #0A0A0A !important;
+}
+
+/* Dark overlay — replaces old light glassmorphism gradient */
+.page-banner-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(8,8,8,0.82) 0%,
+    rgba(8,8,8,0.60) 50%,
+    rgba(8,8,8,0.75) 100%
+  ) !important;
+}
+/* Top strip so banner text always reads on dark */
+.page-banner-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 40%);
+  pointer-events: none;
+}
+.page-banner-title  { color: #F5F0E8; }
+.page-banner-eyebrow{ color: var(--gold); }
+.breadcrumb a,
+.breadcrumb span    { color: rgba(245,240,232,0.60); }
+.breadcrumb a:hover { color: var(--gold); }
+
+/* ── Page Banner Background Swiper ─────────────────────── */
+.page-banner-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 1 !important;   /* override the 0.18 from style.css */
+}
+.page-banner-swiper,
+.page-banner-swiper .swiper-wrapper,
+.page-banner-swiper .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+.page-banner-swiper .swiper-slide {
+  overflow: hidden;
+}
+.page-banner-swiper .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+  transition: transform 7s cubic-bezier(0.25,0.46,0.45,0.94);
+  will-change: transform;
+}
+.page-banner-swiper .swiper-slide-active img {
+  transform: scale(1.00);
+}
+.section-title   { color: var(--white); }
+.section-subtitle{ color: var(--text-secondary); }
+.section-eyebrow { color: var(--gold); }
+.section-eyebrow::before,
+.ornament-line   { background: var(--gold); }
+.ornament-icon   { color: var(--gold); }
+
+/* ── 6. Buttons ────────────────────────────────────────── */
+.btn-gold {
+  background: linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);
+  color: #0A0A0A;
+  font-weight: 700;
+}
+.btn-gold:hover {
+  box-shadow: 0 8px 32px rgba(201,168,76,0.40);
+  transform: translateY(-2px);
+}
+.btn-outline-gold {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: transparent;
+}
+.btn-outline-gold:hover {
+  background: var(--gold-dim);
+  box-shadow: 0 8px 24px rgba(201,168,76,0.25);
+}
+.btn-dark {
+  background: var(--surface-2);
+  border-color: rgba(201,168,76,0.25);
+  color: var(--white);
+}
+.btn-ghost {
+  border-color: rgba(245,240,232,0.18);
+  color: var(--text-secondary);
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ── 7. Form Controls ──────────────────────────────────── */
+.form-control {
+  background: rgba(17,17,17,0.90);
+  border: 1px solid rgba(201,168,76,0.18);
+  color: var(--white);
+}
+.form-control:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-dim);
+}
+.form-control::placeholder { color: rgba(245,240,232,0.35); }
+.form-label                 { color: var(--text-secondary); }
+.input-icon                 { color: rgba(201,168,76,0.55); }
+
+/* ── 8. Badges ─────────────────────────────────────────── */
+.badge-gold {
+  background: var(--gold-dim);
+  color: var(--gold-light);
+  border: 1px solid rgba(201,168,76,0.32);
+}
+.badge-dark {
+  background: rgba(255,255,255,0.07);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 1 — MENU CATEGORIES
+   Targets: glass-card p-6 group blocks
+══════════════════════════════════════════════════════════ */
+.glass-card {
+  transition: transform 0.4s var(--bh-ease),
+              border-color 0.4s var(--bh-ease),
+              box-shadow 0.4s var(--bh-ease);
+}
+.group .glass-card:hover,
+a.group:hover .glass-card,
+a.group:hover > .glass-card {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.55),
+              0 0 28px rgba(201,168,76,0.20);
+}
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 2 — FEATURED DISH CARDS
+══════════════════════════════════════════════════════════ */
+.food-card {
+  background: var(--surface);
+  border: 1px solid rgba(201,168,76,0.10);
+  transition: transform 0.4s var(--bh-ease),
+              box-shadow 0.4s var(--bh-ease),
+              border-color 0.4s var(--bh-ease);
+  overflow: hidden;
+}
+.food-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(201,168,76,0.55);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.60),
+              0 0 32px rgba(201,168,76,0.18);
+}
+.food-card-img img {
+  transition: transform 0.55s var(--bh-ease);
+  will-change: transform;
+}
+.food-card:hover .food-card-img img { transform: scale(1.08); }
+.food-card-body  { background: var(--surface); }
+.food-card-title { color: var(--white); }
+.food-card-desc  { color: var(--text-secondary); }
+.food-card-price { color: var(--gold); font-weight: 700; }
+.food-card-rating .fa-star { color: var(--gold); }
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 3 — ABOUT / STORY
+══════════════════════════════════════════════════════════ */
+.stat-number {
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  text-shadow: 0 0 32px rgba(201,168,76,0.25);
+}
+.stat-label { color: var(--text-muted); }
+
+.neo-card {
+  background: var(--surface-2);
+  border: 1px solid rgba(201,168,76,0.14);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.45);
+}
+
+/* Left accent line on story content */
+.text-secondary.mb-10 {
+  border-left: 3px solid rgba(201,168,76,0.40);
+  padding-left: 20px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 4 — CHEF CARDS
+══════════════════════════════════════════════════════════ */
+.chef-card {
+  background: var(--surface);
+  border: 1px solid rgba(201,168,76,0.10);
+  overflow: hidden;
+  transition: transform 0.4s var(--bh-ease),
+              box-shadow 0.4s var(--bh-ease),
+              border-color 0.4s var(--bh-ease);
+}
+.chef-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(201,168,76,0.50);
+  box-shadow: 0 28px 60px rgba(0,0,0,0.60),
+              0 0 32px rgba(201,168,76,0.16);
+}
+.chef-img img {
+  transition: transform 0.55s var(--bh-ease);
+  will-change: transform;
+}
+.chef-card:hover .chef-img img { transform: scale(1.06); }
+
+.chef-overlay {
+  background: linear-gradient(to top,
+    rgba(10,10,10,0.96) 0%,
+    rgba(10,10,10,0.40) 55%,
+    transparent 100%);
+}
+.chef-name  { color: var(--white); }
+.chef-title { color: var(--gold);  font-size: 0.82rem; letter-spacing: 0.08em; }
+
+/* Social icons fade-in on hover */
+.chef-social a {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s var(--bh-ease),
+              transform 0.35s var(--bh-ease),
+              color 0.25s;
+  color: rgba(245,240,232,0.55);
+}
+.chef-card:hover .chef-social a          { opacity: 1; transform: translateY(0); }
+.chef-social a:nth-child(1)              { transition-delay: 0.00s; }
+.chef-social a:nth-child(2)              { transition-delay: 0.08s; }
+.chef-social a:nth-child(3)              { transition-delay: 0.16s; }
+.chef-social a:hover                     { color: var(--gold); }
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 5 — GALLERY
+══════════════════════════════════════════════════════════ */
+.group.rounded-2xl,
+.rounded-2xl.overflow-hidden.cursor-pointer {
+  position: relative;
+  transition: box-shadow 0.4s var(--bh-ease);
+}
+.group.rounded-2xl:hover,
+.rounded-2xl.overflow-hidden.cursor-pointer:hover {
+  box-shadow: 0 0 0 2.5px var(--gold),
+              0 20px 56px rgba(0,0,0,0.65),
+              0 0 40px rgba(201,168,76,0.22);
+}
+.group.rounded-2xl img,
+.rounded-2xl.overflow-hidden img {
+  transition: transform 0.55s var(--bh-ease);
+  will-change: transform;
+}
+.group.rounded-2xl:hover img,
+.rounded-2xl.overflow-hidden.cursor-pointer:hover img { transform: scale(1.06); }
+.masonry-overlay {
+  background: linear-gradient(to top,rgba(10,10,10,0.82) 0%,transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s var(--bh-ease);
+}
+.group.rounded-2xl:hover .masonry-overlay { opacity: 1; }
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 6 — TESTIMONIALS
+══════════════════════════════════════════════════════════ */
+.testi-card {
+  background: var(--surface-2);
+  border: 1px solid rgba(201,168,76,0.14);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s var(--bh-ease),
+              box-shadow 0.4s var(--bh-ease),
+              border-color 0.4s var(--bh-ease);
+}
+.testi-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201,168,76,0.45);
+  box-shadow: 0 24px 56px rgba(0,0,0,0.55),
+              0 0 28px rgba(201,168,76,0.14);
+}
+/* Large gold quote mark */
+.testi-card::before {
+  content: '\201C';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 7rem;
+  line-height: 0.8;
+  color: var(--gold);
+  opacity: 0.22;
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  pointer-events: none;
+  user-select: none;
+}
+.testi-quote { display: none; }       /* replaced by ::before */
+.testi-text  { color: var(--text-secondary); font-style: italic; line-height: 1.80; }
+.testi-name  { color: var(--white); }
+.testi-title { color: var(--text-muted); }
+/* Gold ring on avatar */
+.testi-avatar {
+  border: 2.5px solid var(--gold) !important;
+  box-shadow: 0 0 0 4px var(--gold-dim);
+}
+.stars .fa-star { color: var(--gold); }
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 7 — RESERVATION CTA
+══════════════════════════════════════════════════════════ */
+/* Target by the inline background style that wraps the CTA */
+.section:has(.btn-gold.btn-xl),
+section:has(.btn-gold.btn-xl) {
+  background: var(--surface) !important;
+  position: relative;
+  overflow: hidden;
+}
+.section:has(.btn-gold.btn-xl)::after,
+section:has(.btn-gold.btn-xl)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 75% 65% at 50% 50%,
+    rgba(201,168,76,0.14) 0%,
+    rgba(201,168,76,0.04) 50%,
+    transparent 75%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+.section:has(.btn-gold.btn-xl) > .container,
+section:has(.btn-gold.btn-xl) > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 8 — EVENTS
+══════════════════════════════════════════════════════════ */
+.event-card {
+  background: var(--surface);
+  border: 1px solid rgba(201,168,76,0.10);
+  overflow: hidden;
+  transition: transform 0.4s var(--bh-ease),
+              box-shadow 0.4s var(--bh-ease),
+              border-color 0.4s var(--bh-ease);
+}
+.event-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(201,168,76,0.50);
+  box-shadow: 0 28px 60px rgba(0,0,0,0.60),
+              0 0 32px rgba(201,168,76,0.14);
+}
+.event-img img {
+  transition: transform 0.55s var(--bh-ease);
+  will-change: transform;
+}
+.event-card:hover .event-img img { transform: scale(1.06); }
+.event-body       { background: var(--surface); }
+.event-title      { color: var(--white); }
+.event-meta       { color: var(--text-muted); }
+.event-date-badge {
+  background: var(--gold-dim);
+  border: 1px solid rgba(201,168,76,0.32);
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-align: center;
+  min-width: 56px;
+}
+.event-date-day {
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+  display: block;
+}
+.event-date-month {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: block;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 9 — NEWSLETTER
+══════════════════════════════════════════════════════════ */
+.newsletter-wrap {
+  background: var(--surface-2) !important;
+  border: 1px solid rgba(201,168,76,0.18) !important;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.55),
+              0 0 80px rgba(201,168,76,0.06) !important;
+}
+.newsletter-form .form-control {
+  background: rgba(10,10,10,0.85);
+  border: 1px solid rgba(201,168,76,0.22);
+  color: var(--white);
+}
+.newsletter-form .form-control:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-dim);
+}
+.newsletter-form .form-control::placeholder { color: rgba(245,240,232,0.36); }
+.newsletter-form .btn-gold:hover {
+  box-shadow: 0 0 40px rgba(201,168,76,0.50), 0 8px 24px rgba(0,0,0,0.40);
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 10 — FOOTER
+══════════════════════════════════════════════════════════ */
+.footer {
+  background: var(--surface) !important;
+  border-top: 1px solid rgba(201,168,76,0.16);
+}
+.footer-desc    { color: var(--text-secondary); }
+.footer-heading {
+  color: var(--white);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.footer-link {
+  color: var(--text-secondary);
+  transition: color 0.3s, padding-left 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-link:hover {
+  color: var(--gold);
+  padding-left: 4px;
+}
+/* Circular social buttons */
+.social-btn {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201,168,76,0.08);
+  border: 1.5px solid rgba(201,168,76,0.28);
+  color: var(--gold);
+  transition: background 0.4s var(--bh-ease),
+              box-shadow 0.4s var(--bh-ease),
+              transform 0.4s var(--bh-ease);
+}
+.social-btn:hover {
+  background: rgba(201,168,76,0.20);
+  box-shadow: 0 0 20px rgba(201,168,76,0.35);
+  transform: translateY(-3px);
+  color: var(--gold-light);
+}
+.footer-bottom {
+  background: var(--black) !important;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-copy { color: var(--text-muted); }
+
+/* ══════════════════════════════════════════════════════════
+   MISC — Tabs, Filters, Scrollbar, Neo Cards
+══════════════════════════════════════════════════════════ */
+.tab-nav {
+  background: var(--surface-2);
+  border: 1px solid rgba(201,168,76,0.12);
+}
+.tab-btn              { color: var(--text-secondary); }
+.tab-btn:hover        { color: var(--gold); background: var(--gold-dim); }
+.tab-btn.active       { color: var(--gold); background: var(--gold-dim); border-color: var(--gold); }
+.filter-btn           { color: var(--text-secondary); border-color: rgba(245,240,232,0.12); }
+.filter-btn.active,
+.filter-btn:hover     { color: var(--gold); border-color: var(--gold); background: var(--gold-dim); }
+.kpi-card             { background: var(--surface-2); border: 1px solid rgba(201,168,76,0.12); }
+.sidebar              { background: var(--surface); border-right: 1px solid rgba(201,168,76,0.12); }
+.sidebar-link         { color: var(--text-secondary); }
+.sidebar-link:hover,
+.sidebar-link.active  { color: var(--gold); background: var(--gold-dim); }
+.sidebar-section-title{ color: var(--text-muted); }
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: var(--black); }
+::-webkit-scrollbar-thumb  { background: rgba(201,168,76,0.40); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ══════════════════════════════════════════════════════════
+   BLOG CARDS
+══════════════════════════════════════════════════════════ */
+.blog-card {
+  background: var(--surface);
+  border: 1px solid rgba(201,168,76,0.12);
+  transition: transform 0.4s var(--bh-ease),
+              box-shadow 0.4s var(--bh-ease),
+              border-color 0.4s var(--bh-ease);
+}
+.blog-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201,168,76,0.45);
+  box-shadow: 0 24px 56px rgba(0,0,0,0.55),
+              0 0 28px rgba(201,168,76,0.12);
+}
+.blog-body        { background: var(--surface); }
+.blog-title       { color: var(--white); }
+.blog-title a     { color: var(--white); }
+.blog-title a:hover { color: var(--gold); }
+.blog-meta        { color: var(--gold); opacity: 0.75; }
+.blog-excerpt     { color: var(--text-secondary); }
+.blog-footer .text-muted { color: var(--text-muted); }
+
+/* Featured blog card (two-column layout) */
+.blog-card .blog-body h2,
+.blog-card .blog-body h3 { color: var(--white); }
+.blog-card .blog-body p  { color: var(--text-secondary); }
+
+/* Blog page sidebar widgets */
+.sticky.top-24 > div {
+  background: var(--surface) !important;
+  border: 1px solid rgba(201,168,76,0.14) !important;
+}
+.sticky.top-24 h3,
+.sticky.top-24 h4 { color: var(--white); }
+.sticky.top-24 p,
+.sticky.top-24 span:not(.badge):not(.text-gold) { color: var(--text-secondary); }
+
+/* ══════════════════════════════════════════════════════════
+   ACCORDION / FAQ
+══════════════════════════════════════════════════════════ */
+.accordion-item {
+  background: var(--surface) !important;
+  border: 1px solid rgba(201,168,76,0.14) !important;
+}
+.accordion-item.open {
+  border-color: rgba(201,168,76,0.38) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.40);
+}
+.accordion-title { color: var(--white); }
+.accordion-icon  {
+  background: var(--surface-2);
+  border-color: rgba(201,168,76,0.25);
+  color: var(--text-muted);
+}
+.accordion-item.open .accordion-icon {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.accordion-body p { color: var(--text-secondary); }
+
+/* ══════════════════════════════════════════════════════════
+   CLAY CARDS (about stats, misc usage)
+══════════════════════════════════════════════════════════ */
+.clay-card {
+  background: var(--surface-2) !important;
+  border: 1px solid rgba(201,168,76,0.12) !important;
+  color: var(--text-secondary);
+}
+.clay-card h3,
+.clay-card h4,
+.clay-card .text-primary { color: var(--white); }
+.clay-card p              { color: var(--text-secondary); }
+
+/* ══════════════════════════════════════════════════════════
+   TAILWIND UTILITY OVERRIDES (dark theme)
+══════════════════════════════════════════════════════════ */
+/* Pagination & misc buttons with border-dark-500 */
+.border-dark-500 { border-color: rgba(201,168,76,0.20) !important; }
+/* Text utility classes */
+.text-primary   { color: var(--white) !important; }
+.text-secondary { color: var(--text-secondary) !important; }
+.text-muted     { color: var(--text-muted) !important; }
+.text-cream     { color: var(--white) !important; }
+/* Pagination hover state */
+.hover\:text-gold:hover { color: var(--gold) !important; }
+.hover\:border-gold:hover { border-color: var(--gold) !important; }
+
+/* ══════════════════════════════════════════════════════════
+   SCROLL REVEAL — base state (JS adds .bh-revealed)
+══════════════════════════════════════════════════════════ */
+.bh-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s var(--bh-ease),
+              transform 0.65s var(--bh-ease);
+}
+.bh-reveal.bh-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}

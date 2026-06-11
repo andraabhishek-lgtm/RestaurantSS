@@ -7,7 +7,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
-<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#EEF2FF',cream:'#0F172A'}}}}</script>
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#0A0A0A',cream:'#F5F0E8'}}}}</script>
 <style>
 body { overflow: hidden; }
 .page-404 { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:var(--dark-bg); overflow:hidden; }
@@ -63,6 +63,7 @@ body { overflow: hidden; }
   to{transform:rotate(360deg) translateX(var(--radius)) rotate(-360deg)}
 }
 </style>
+<link rel="stylesheet" href="css/eclat-beyond-hero.css">
 </head>
 <body>
 
@@ -174,5 +175,6 @@ body { overflow: hidden; }
     gsap.from('h1,p,.flex', { y:30, opacity:0, stagger:0.15, duration:0.8, delay:0.6, ease:'power3.out' });
   }
 </script>
+<script src="js/eclat-beyond-hero.js"></script>
 </body>
 </html>

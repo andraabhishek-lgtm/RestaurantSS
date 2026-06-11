@@ -9,7 +9,8 @@
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
-<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#EEF2FF',cream:'#0F172A',wine:'#6B1D3A'}}}}</script>
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#0A0A0A',cream:'#F5F0E8',wine:'#6B1D3A'}}}}</script>
+<link rel="stylesheet" href="css/eclat-beyond-hero.css">
 </head>
 <body>
 <div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
@@ -41,7 +42,15 @@
 </div>
 
 <div class="page-banner">
-  <div class="page-banner-bg"><img src="images/photo-1555396273-367ea4eb4db5-1920.webp" alt="Menu"></div>
+  <div class="page-banner-bg">
+  <div class="swiper page-banner-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/photo-1555396273-367ea4eb4db5-1920.webp" alt="Menu" loading="eager"></div>
+      <div class="swiper-slide"><img src="images/photo-1544025162-d76694265947-1920.webp" alt="Signature Dishes" loading="lazy"></div>
+      <div class="swiper-slide"><img src="images/photo-1559339352-11d035aa65de-1920.webp" alt="Fine Dining" loading="lazy"></div>
+    </div>
+  </div>
+</div>
   <div class="page-banner-overlay"></div>
   <div class="page-banner-content">
     <div class="page-banner-eyebrow"><i class="fa-solid fa-utensils text-gold"></i>Culinary Experience</div>
@@ -265,5 +274,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
 <script src="js/main.js"></script>
+<script src="js/eclat-beyond-hero.js"></script>
 </body>
 </html>

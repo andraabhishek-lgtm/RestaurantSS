@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
-<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#EEF2FF',cream:'#0F172A'}}}}</script>
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#0A0A0A',cream:'#F5F0E8'}}}}</script>
 <style>
 .gallery-filter-btn { padding:10px 20px; border-radius:999px; font-size:0.82rem; font-weight:600; cursor:pointer; border:1px solid var(--dark-500); color:var(--text-secondary); background:transparent; transition:var(--transition-fast); }
 .gallery-filter-btn.active,.gallery-filter-btn:hover { background:var(--grad-gold); color:var(--dark-bg); border-color:transparent; }
@@ -19,6 +19,7 @@
 .gallery-item-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(8,8,8,0.75),transparent 55%); opacity:0; transition:opacity 0.35s ease; display:flex; align-items:center; justify-content:center; }
 .gallery-item:hover .gallery-item-overlay { opacity:1; }
 </style>
+<link rel="stylesheet" href="css/eclat-beyond-hero.css">
 </head>
 <body>
 <div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
@@ -49,7 +50,15 @@
 </div>
 
 <div class="page-banner">
-  <div class="page-banner-bg"><img src="images/photo-1414235077428-338989a2e8c0-1920.webp" alt="Gallery"></div>
+  <div class="page-banner-bg">
+  <div class="swiper page-banner-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/photo-1414235077428-338989a2e8c0-1920.webp" alt="Gallery" loading="eager"></div>
+      <div class="swiper-slide"><img src="images/photo-1517248135467-4c7edcad34c4-1920.webp" alt="Our Space" loading="lazy"></div>
+      <div class="swiper-slide"><img src="images/photo-1555396273-367ea4eb4db5-1920.webp" alt="Ambiance" loading="lazy"></div>
+    </div>
+  </div>
+</div>
   <div class="page-banner-overlay"></div>
   <div class="page-banner-content">
     <div class="page-banner-eyebrow"><i class="fa-solid fa-images text-gold"></i>Visual Story</div>
@@ -176,5 +185,6 @@
     });
   });
 </script>
+<script src="js/eclat-beyond-hero.js"></script>
 </body>
 </html>
