@@ -656,6 +656,101 @@ section:has(.btn-gold.btn-xl) > .container {
 .hover\:border-gold:hover { border-color: var(--gold) !important; }
 
 /* ══════════════════════════════════════════════════════════
+   NAV SERVICES DROPDOWN
+══════════════════════════════════════════════════════════ */
+.nav-dropdown-item {
+  position: relative;
+  list-style: none;
+}
+.nav-dropdown-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.nav-dropdown-arrow {
+  font-size: 0.60rem;
+  transition: transform 0.3s ease;
+  margin-top: 1px;
+}
+.nav-dropdown-item.is-open .nav-dropdown-arrow {
+  transform: rotate(180deg);
+}
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: rgba(17,17,17,0.98);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 8px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.72), 0 0 1px rgba(201,168,76,0.15);
+  min-width: 175px;
+  padding: 0.5rem 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid rgba(201,168,76,0.25);
+}
+.nav-dropdown-item.is-open .nav-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown-link {
+  display: block;
+  color: rgba(245,240,232,0.78);
+  padding: 0.65rem 1.35rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.22s ease, padding-left 0.22s ease, background 0.22s ease;
+  white-space: nowrap;
+  border-left: 2px solid transparent;
+}
+.nav-dropdown-link:hover,
+.nav-dropdown-link.active {
+  color: #C9A84C;
+  padding-left: 1.7rem;
+  background: rgba(201,168,76,0.06);
+  border-left-color: rgba(201,168,76,0.5);
+}
+/* Trigger inherits nav-link color context */
+.has-hero #navbar .nav-dropdown-trigger {
+  color: rgba(255,255,255,0.85);
+}
+#navbar.scrolled .nav-dropdown-trigger,
+.has-hero #navbar.scrolled .nav-dropdown-trigger {
+  color: rgba(245,240,232,0.78);
+}
+#navbar.scrolled .nav-dropdown-trigger:hover,
+.has-hero #navbar.scrolled .nav-dropdown-trigger:hover {
+  color: var(--gold);
+}
+.nav-dropdown-trigger.services-active {
+  color: var(--gold) !important;
+}
+
+/* ══════════════════════════════════════════════════════════
    SCROLL REVEAL — base state (JS adds .bh-revealed)
 ══════════════════════════════════════════════════════════ */
 .bh-reveal {

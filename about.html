@@ -1,19 +1,298 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="The story behind ÉCLAT Fine Dining — our philosophy, heritage, and commitment to culinary excellence.">
-<title>About Us — ÉCLAT Fine Dining</title>
+<title>About — ÉCLAT Fine Dining</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
 <script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#0A0A0A',cream:'#F5F0E8',wine:'#6B1D3A'}}}}</script>
 <link rel="stylesheet" href="css/eclat-beyond-hero.css">
+<style>
+/* ── CSS Variables ─────────────────────────────────── */
+:root {
+  --gold:    #C9A84C;
+  --black:   #0A0A0A;
+  --surface: #111111;
+  --white:   #F5F0E8;
+}
+
+/* ── SECTION 1: HERO ───────────────────────────────── */
+.ab-hero {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+.ab-hero-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+.ab-hero-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+.ab-hero-content {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 10px;
+}
+.ab-hero-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+.ab-hero-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.78rem; color: rgba(245,240,232,0.55);
+  letter-spacing: 0.06em;
+}
+.ab-hero-breadcrumb a { color: rgba(245,240,232,0.55); text-decoration: none; transition: color .2s; }
+.ab-hero-breadcrumb a:hover { color: var(--gold); }
+.ab-hero-breadcrumb span { color: rgba(245,240,232,0.3); }
+
+/* ── SECTION 2: OUR STORY ──────────────────────────── */
+.ab-story {
+  background: var(--black);
+  padding: 80px 0;
+}
+.ab-story-grid {
+  display: grid;
+  grid-template-columns: 45% 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.ab-story-img-wrap img {
+  width: 100%; height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+.ab-eyebrow {
+  font-style: italic;
+  color: var(--gold);
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 14px;
+}
+.ab-story-h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 20px;
+  line-height: 1.15;
+}
+.ab-story-p {
+  color: rgba(245,240,232,0.62);
+  font-size: 0.94rem;
+  line-height: 1.85;
+  margin-bottom: 32px;
+}
+.ab-btn-view {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 11px 30px;
+  border: 1px solid rgba(245,240,232,0.55);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+.ab-btn-view:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0A0A0A;
+}
+
+/* ── SECTION 3: CINEMATIC ──────────────────────────── */
+.ab-cinematic {
+  position: relative;
+  height: 460px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.ab-cinematic-img {
+  width: 100%; height: 130%;
+  object-fit: cover;
+  object-position: center;
+  transform: translateY(0);
+  will-change: transform;
+  display: block;
+}
+.ab-cinematic-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.32);
+}
+.ab-cinematic-center {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.ab-play-btn {
+  width: 76px; height: 76px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-size: 1.25rem;
+  padding-left: 5px;
+  transition: all 0.35s ease;
+}
+.ab-cinematic:hover .ab-play-btn {
+  background: rgba(201,168,76,0.25);
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: scale(1.12);
+}
+
+/* ── SECTION 4: CUSTOM FOOTER ──────────────────────── */
+.ab-footer {
+  background: #080808;
+  border-top: 1px solid rgba(201,168,76,0.15);
+  padding: 64px 0 28px;
+}
+.ab-footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.ab-footer-logo {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+.ab-footer-tagline {
+  color: rgba(245,240,232,0.50);
+  font-size: 0.82rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  max-width: 200px;
+}
+.ab-footer-info-row {
+  display: flex; align-items: center; gap: 9px;
+  color: rgba(245,240,232,0.52);
+  font-size: 0.79rem;
+  margin-bottom: 8px;
+}
+.ab-footer-info-row i { color: var(--gold); font-size: 0.72rem; flex-shrink: 0; }
+.ab-col-heading {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.38);
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+}
+.ab-footer-link {
+  display: block;
+  color: rgba(245,240,232,0.55);
+  font-size: 0.85rem;
+  text-decoration: none;
+  margin-bottom: 11px;
+  transition: color 0.2s, padding-left 0.2s;
+}
+.ab-footer-link:hover { color: var(--gold); padding-left: 4px; }
+.ab-hours-label {
+  color: rgba(245,240,232,0.36);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 3px;
+  margin-top: 8px;
+}
+.ab-hours-time {
+  color: rgba(245,240,232,0.60);
+  font-size: 0.83rem;
+  margin-bottom: 4px;
+}
+.ig-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+.ig-thumb {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.ig-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.80) saturate(0.9);
+  transition: filter 0.3s, transform 0.35s;
+  display: block;
+}
+.ig-thumb:hover img {
+  filter: brightness(1) saturate(1.1);
+  transform: scale(1.08);
+}
+.ab-footer-bottom {
+  border-top: 1px solid rgba(245,240,232,0.06);
+  padding-top: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.ab-footer-copy { color: rgba(245,240,232,0.30); font-size: 0.76rem; }
+.ab-footer-bottom-links { display: flex; gap: 20px; }
+.ab-footer-bottom-links a {
+  color: rgba(245,240,232,0.35); font-size: 0.76rem;
+  text-decoration: none; transition: color .2s;
+}
+.ab-footer-bottom-links a:hover { color: var(--gold); }
+
+/* ── SCROLL REVEAL ──────────────────────────────────── */
+.sr-item {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.72s cubic-bezier(0.25,0.46,0.45,0.94),
+              transform 0.72s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.sr-item.sr-in { opacity: 1; transform: translateY(0); }
+.sr-item[data-delay="1"] { transition-delay: 0.10s; }
+.sr-item[data-delay="2"] { transition-delay: 0.20s; }
+.sr-item[data-delay="3"] { transition-delay: 0.30s; }
+.sr-item[data-delay="4"] { transition-delay: 0.40s; }
+
+/* ── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .ab-story-grid { grid-template-columns: 1fr; gap: 36px; }
+  .ab-footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+@media (max-width: 560px) {
+  .ab-hero { height: 220px; }
+  .ab-cinematic { height: 300px; }
+  .ab-footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .ab-story { padding: 52px 0; }
+}
+</style>
 </head>
 <body>
-<div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
+
+<div id="loader">
+  <div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div>
 <div class="scroll-progress"></div>
 <div class="cursor-dot"></div><div class="cursor-ring"></div>
 
@@ -25,6 +304,14 @@
     <li><a href="about.html" class="nav-link active">About</a></li>
     <li><a href="menu.html" class="nav-link">Menu</a></li>
     <li><a href="events.html" class="nav-link">Events</a></li>
+    <li class="nav-dropdown-item">
+      <button class="nav-link nav-dropdown-trigger" type="button">Services <i class="fa-solid fa-chevron-down nav-dropdown-arrow"></i></button>
+      <div class="nav-dropdown">
+        <a href="bar.html" class="nav-dropdown-link">Bar</a>
+        <a href="rooms.html" class="nav-dropdown-link">Rooms</a>
+        <a href="valet.html" class="nav-dropdown-link">Valet Parking</a>
+      </div>
+    </li>
     <li><a href="gallery.html" class="nav-link">Gallery</a></li>
     <li><a href="blog.html" class="nav-link">Blog</a></li>
     <li><a href="contact.html" class="nav-link">Contact</a></li>
@@ -36,210 +323,223 @@
   </div>
 </nav>
 <div class="mobile-menu">
-  <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a>
-  <a href="menu.html" class="nav-link">Menu</a><a href="events.html" class="nav-link">Events</a>
-  <a href="gallery.html" class="nav-link">Gallery</a><a href="contact.html" class="nav-link">Contact</a>
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="about.html" class="nav-link active">About</a>
+  <a href="menu.html" class="nav-link">Menu</a>
+  <a href="events.html" class="nav-link">Events</a>
+  <a href="gallery.html" class="nav-link">Gallery</a>
+  <a href="contact.html" class="nav-link">Contact</a>
   <a href="reservation.html" class="btn btn-gold mt-4">Reserve</a>
 </div>
 
-<!-- Page Banner -->
-<div class="page-banner">
-  <div class="page-banner-bg">
-  <div class="swiper page-banner-swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="images/photo-1517248135467-4c7edcad34c4-1920.webp" alt="About" loading="eager"></div>
-      <div class="swiper-slide"><img src="images/photo-1414235077428-338989a2e8c0-1920.webp" alt="ÉCLAT Interior" loading="lazy"></div>
-      <div class="swiper-slide"><img src="images/photo-1555396273-367ea4eb4db5-1920.webp" alt="Fine Dining" loading="lazy"></div>
+<!-- ═══════════════════════════════════════════════════
+     SECTION 1 — HERO BANNER
+════════════════════════════════════════════════════ -->
+<section class="ab-hero">
+  <img src="images/photo-1517248135467-4c7edcad34c4-1920.webp"
+       alt="ÉCLAT Fine Dining" class="ab-hero-img" loading="eager">
+  <div class="ab-hero-overlay"></div>
+  <div class="ab-hero-content">
+    <h1 class="ab-hero-title">About</h1>
+    <div class="ab-hero-breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span style="color:rgba(245,240,232,0.75)">About</span>
     </div>
   </div>
-</div>
-  <div class="page-banner-overlay"></div>
-  <div class="page-banner-content">
-    <div class="page-banner-eyebrow"><i class="fa-solid fa-star text-gold"></i>Our Story</div>
-    <h1 class="page-banner-title">About <span class="text-gradient">ÉCLAT</span></h1>
-    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span><span>About</span></div>
-  </div>
-</div>
+</section>
 
-<!-- Story Section -->
-<section class="section">
+<!-- ═══════════════════════════════════════════════════
+     SECTION 2 — OUR STORY
+════════════════════════════════════════════════════ -->
+<section class="ab-story">
   <div class="container">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-      <div data-aos="fade-right">
-        <div class="section-eyebrow" style="justify-content:flex-start">The Beginning</div>
-        <h2 class="section-title text-left">A Vision Born from <span class="text-gradient">Passion</span></h2>
-        <p class="text-secondary mb-6 leading-relaxed">ÉCLAT was born in 2018 from Chef Laurent Dubois's lifelong dream to create a space where French haute cuisine techniques met the bold, layered flavors of Asia. Having trained in Paris, Tokyo, and Hong Kong, Laurent returned to New York with an unprecedented vision.</p>
-        <p class="text-secondary mb-6 leading-relaxed">The name ÉCLAT — French for "brilliance" and "splendor" — captures the essence of what we strive to create with every dish: a moment of pure, blinding excellence.</p>
-        <p class="text-secondary mb-10 leading-relaxed">Within our first year, we earned a Michelin Star. By 2023, we received our second, cementing ÉCLAT as one of New York's most celebrated dining destinations.</p>
-        <div class="flex gap-4 flex-wrap">
-          <a href="reservation.html" class="btn btn-gold">Reserve a Table</a>
-          <a href="chefs.html" class="btn btn-outline-gold">Meet Our Team</a>
+    <div class="ab-story-grid">
+
+      <!-- Left: image -->
+      <div class="ab-story-img-wrap sr-item" data-delay="0">
+        <img src="images/photo-1414235077428-338989a2e8c0-600.webp"
+             alt="ÉCLAT restaurant interior" loading="lazy">
+      </div>
+
+      <!-- Right: text -->
+      <div class="sr-item" data-delay="2">
+        <span class="ab-eyebrow">Behind the scene</span>
+        <h2 class="ab-story-h2">Our story</h2>
+        <p class="ab-story-p">
+          ÉCLAT was born from a single obsession: that a meal should feel like a moment stolen from ordinary life.
+          Founded in 2018 by Chef Laurent Dubois in the heart of New York, we set out to create a place where
+          French technique meets the precision of Japanese craft — where every ingredient has a reason to be on
+          your plate, and every detail in the room has a reason to be in your memory.
+        </p>
+        <p class="ab-story-p" style="margin-bottom:32px;">
+          Six years on, two Michelin Stars later, our philosophy hasn't changed. We believe the finest dining
+          is not a performance — it is a quiet conversation between the kitchen and the guest, conducted in
+          the language of flavour, texture, and care.
+        </p>
+        <a href="chefs.html" class="ab-btn-view">
+          View More <i class="fa-solid fa-arrow-right-long" style="font-size:0.8rem;"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 3 — CINEMATIC IMAGE + PLAY BUTTON
+════════════════════════════════════════════════════ -->
+<section class="ab-cinematic" id="ab-cinematic">
+  <img src="images/photo-1504674900247-0877df9cc836-500.webp"
+       alt="ÉCLAT atmosphere" class="ab-cinematic-img" id="ab-para-img" loading="lazy">
+  <div class="ab-cinematic-overlay"></div>
+  <div class="ab-cinematic-center">
+    <div class="ab-play-btn">
+      <i class="fa-solid fa-play"></i>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 4 — CUSTOM FOOTER
+════════════════════════════════════════════════════ -->
+<footer class="ab-footer">
+  <div class="container">
+    <div class="ab-footer-grid">
+
+      <!-- Col 1: Brand -->
+      <div class="sr-item" data-delay="0">
+        <div class="ab-footer-logo">ÉCLAT</div>
+        <p class="ab-footer-tagline">Award-winning French-Asian fine dining in the heart of New York City.</p>
+        <div class="ab-footer-info-row">
+          <i class="fa-regular fa-clock"></i>
+          <span>Mon–Sat: 12PM – 11PM</span>
+        </div>
+        <div class="ab-footer-info-row">
+          <i class="fa-regular fa-clock"></i>
+          <span>Sunday: 11AM – 10:30PM</span>
+        </div>
+        <div class="ab-footer-info-row" style="margin-top:8px;">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>42 Lumière Blvd, New York</span>
         </div>
       </div>
-      <div data-aos="fade-left">
-        <div class="relative">
-          <img src="images/photo-1414235077428-338989a2e8c0-700.webp" alt="Restaurant" class="rounded-3xl w-full" style="height:500px;object-fit:cover" loading="lazy">
-          <div class="absolute top-6 right-6 glass-card p-5">
-            <div class="flex items-center gap-3">
-              <div class="text-gold text-3xl">★★</div>
-              <div>
-                <p class="text-cream font-semibold">Michelin Stars</p>
-                <p class="text-muted text-xs">2023 & 2024</p>
-              </div>
-            </div>
+
+      <!-- Col 2: Pages -->
+      <div class="sr-item" data-delay="1">
+        <h4 class="ab-col-heading">Pages</h4>
+        <a href="index.html"       class="ab-footer-link">Home</a>
+        <a href="reservation.html" class="ab-footer-link">Reservations</a>
+        <a href="menu.html"        class="ab-footer-link">Menu</a>
+        <a href="bar.html"         class="ab-footer-link">The Bar</a>
+        <a href="rooms.html"       class="ab-footer-link">Guest Rooms</a>
+        <a href="contact.html"     class="ab-footer-link">Contact</a>
+      </div>
+
+      <!-- Col 3: Opening Hours -->
+      <div class="sr-item" data-delay="2">
+        <h4 class="ab-col-heading">Opening Hours</h4>
+        <p class="ab-hours-label">Monday – Friday</p>
+        <p class="ab-hours-time">10:00am – 05:00am</p>
+        <p class="ab-hours-label">Saturday – Sunday</p>
+        <p class="ab-hours-time">10:00am – 05:00am</p>
+        <p class="ab-hours-label" style="margin-top:14px;">Bar & Lounge</p>
+        <p class="ab-hours-time">Nightly until Midnight</p>
+        <div style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;
+                    background:rgba(201,168,76,0.10);border:1px solid rgba(201,168,76,0.25);
+                    border-radius:20px;padding:5px 14px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#4CAF50;display:inline-block;"></span>
+          <span style="color:rgba(245,240,232,0.65);font-size:0.75rem;">Open Now</span>
+        </div>
+      </div>
+
+      <!-- Col 4: Instagram -->
+      <div class="sr-item" data-delay="3">
+        <h4 class="ab-col-heading">Instagram</h4>
+        <div class="ig-grid">
+          <div class="ig-thumb">
+            <img src="images/photo-1544025162-d76694265947-80x80.webp" alt="ÉCLAT on Instagram" loading="lazy">
+          </div>
+          <div class="ig-thumb">
+            <img src="images/photo-1555396273-367ea4eb4db5-60x60.webp" alt="ÉCLAT on Instagram" loading="lazy">
+          </div>
+          <div class="ig-thumb">
+            <img src="images/photo-1540189549336-e6e99c3679fe-100x100.webp" alt="ÉCLAT on Instagram" loading="lazy">
+          </div>
+          <div class="ig-thumb">
+            <img src="images/photo-1551538827-9c037cb4f32a-80x80.webp" alt="ÉCLAT on Instagram" loading="lazy">
+          </div>
+          <div class="ig-thumb">
+            <img src="images/photo-1488477304112-4944851de03d-80x80.webp" alt="ÉCLAT on Instagram" loading="lazy">
+          </div>
+          <div class="ig-thumb">
+            <img src="images/photo-1547592180-85f173990554-100x100.webp" alt="ÉCLAT on Instagram" loading="lazy">
           </div>
         </div>
+        <a href="#" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;
+                           color:rgba(245,240,232,0.45);font-size:0.76rem;text-decoration:none;
+                           transition:color 0.2s;"
+           onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(245,240,232,0.45)'">
+          <i class="fab fa-instagram"></i> @eclatfinedining
+        </a>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- Values -->
-<section class="section" style="background:var(--dark-900)">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">Our Philosophy</div>
-      <h2 class="section-title">Guided by <span class="text-gradient">Core Values</span></h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="glass-card p-8 text-center" data-aos="fade-up" data-aos-delay="0">
-        <div class="w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center text-2xl" style="background:rgba(201,168,76,0.1);color:var(--gold)"><i class="fa-solid fa-seedling"></i></div>
-        <h3 class="font-cormorant text-xl text-cream font-semibold mb-3">Farm to Table</h3>
-        <p class="text-secondary text-sm leading-relaxed">Every ingredient is sourced from trusted local farms and sustainable fisheries. We believe great food starts with great produce.</p>
-      </div>
-      <div class="glass-card p-8 text-center" data-aos="fade-up" data-aos-delay="100">
-        <div class="w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center text-2xl" style="background:rgba(201,168,76,0.1);color:var(--gold)"><i class="fa-solid fa-fire"></i></div>
-        <h3 class="font-cormorant text-xl text-cream font-semibold mb-3">Artisan Craft</h3>
-        <p class="text-secondary text-sm leading-relaxed">Our kitchen is a studio. Every technique, every plating decision, every flavor combination is the result of meticulous craftsmanship.</p>
-      </div>
-      <div class="glass-card p-8 text-center" data-aos="fade-up" data-aos-delay="200">
-        <div class="w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center text-2xl" style="background:rgba(201,168,76,0.1);color:var(--gold)"><i class="fa-solid fa-earth-americas"></i></div>
-        <h3 class="font-cormorant text-xl text-cream font-semibold mb-3">Sustainability</h3>
-        <p class="text-secondary text-sm leading-relaxed">Zero food waste is our goal. We compost, repurpose, and minimize our environmental footprint at every step of the culinary process.</p>
-      </div>
-      <div class="glass-card p-8 text-center" data-aos="fade-up" data-aos-delay="300">
-        <div class="w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center text-2xl" style="background:rgba(201,168,76,0.1);color:var(--gold)"><i class="fa-solid fa-heart"></i></div>
-        <h3 class="font-cormorant text-xl text-cream font-semibold mb-3">Hospitality</h3>
-        <p class="text-secondary text-sm leading-relaxed">We believe dining is an act of love. From the moment you enter to the final goodbye, you are our most honored guest.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Timeline -->
-<section class="section">
-  <div class="container container-sm">
-    <div class="section-header">
-      <div class="section-eyebrow">Our Journey</div>
-      <h2 class="section-title">A Legacy of <span class="text-gradient">Excellence</span></h2>
-    </div>
-    <div class="timeline">
-      <div class="timeline-item" data-aos="fade-left">
-        <div class="timeline-dot"></div>
-        <div class="glass-card p-6">
-          <span class="badge badge-gold mb-3">2018</span>
-          <h3 class="font-cormorant text-xl text-cream font-semibold mb-2">Grand Opening</h3>
-          <p class="text-secondary text-sm leading-relaxed">ÉCLAT opens its doors on Lumière Boulevard with a 12-dish tasting menu that immediately captures the attention of New York's culinary world.</p>
-        </div>
-      </div>
-      <div class="timeline-item" data-aos="fade-left" data-aos-delay="100">
-        <div class="timeline-dot"></div>
-        <div class="glass-card p-6">
-          <span class="badge badge-gold mb-3">2019</span>
-          <h3 class="font-cormorant text-xl text-cream font-semibold mb-2">First Michelin Star</h3>
-          <p class="text-secondary text-sm leading-relaxed">Just one year after opening, ÉCLAT is awarded its first Michelin Star — the fastest in NYC history at the time.</p>
-        </div>
-      </div>
-      <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
-        <div class="timeline-dot"></div>
-        <div class="glass-card p-6">
-          <span class="badge badge-gold mb-3">2021</span>
-          <h3 class="font-cormorant text-xl text-cream font-semibold mb-2">Private Dining Suite Launch</h3>
-          <p class="text-secondary text-sm leading-relaxed">We open our exclusive 12-seat private dining suite — Le Salon Privé — for corporate and intimate celebrations.</p>
-        </div>
-      </div>
-      <div class="timeline-item" data-aos="fade-left" data-aos-delay="300">
-        <div class="timeline-dot"></div>
-        <div class="glass-card p-6">
-          <span class="badge badge-gold mb-3">2023</span>
-          <h3 class="font-cormorant text-xl text-cream font-semibold mb-2">Second Michelin Star</h3>
-          <p class="text-secondary text-sm leading-relaxed">ÉCLAT achieves two Michelin Stars, joining the elite tier of New York's finest restaurants and becoming a global culinary destination.</p>
-        </div>
-      </div>
-      <div class="timeline-item" data-aos="fade-left" data-aos-delay="400">
-        <div class="timeline-dot"></div>
-        <div class="glass-card p-6">
-          <span class="badge badge-gold mb-3">2024</span>
-          <h3 class="font-cormorant text-xl text-cream font-semibold mb-2">Expansion & Innovation</h3>
-          <p class="text-secondary text-sm leading-relaxed">Launch of our culinary studio for masterclasses, and an expanded beverage program curated by our award-winning sommelier.</p>
-        </div>
+    <!-- Footer bottom bar -->
+    <div class="ab-footer-bottom">
+      <p class="ab-footer-copy">© 2024 ÉCLAT Fine Dining. All rights reserved.</p>
+      <div class="ab-footer-bottom-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Awards -->
-<section class="section" style="background:var(--dark-900)">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">Recognition</div>
-      <h2 class="section-title">Awards & <span class="text-gradient">Accolades</span></h2>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="text-center glass-card p-8" data-aos="zoom-in" data-aos-delay="0">
-        <div class="text-gold text-4xl mb-3">★★</div>
-        <h4 class="text-cream font-semibold mb-1">Michelin Stars</h4>
-        <p class="text-muted text-xs">2023 & 2024</p>
-      </div>
-      <div class="text-center glass-card p-8" data-aos="zoom-in" data-aos-delay="100">
-        <div class="text-gold text-4xl mb-3"><i class="fa-solid fa-trophy"></i></div>
-        <h4 class="text-cream font-semibold mb-1">James Beard Nominee</h4>
-        <p class="text-muted text-xs">Best Restaurant NYC 2024</p>
-      </div>
-      <div class="text-center glass-card p-8" data-aos="zoom-in" data-aos-delay="200">
-        <div class="text-gold text-4xl mb-3"><i class="fa-solid fa-medal"></i></div>
-        <h4 class="text-cream font-semibold mb-1">Wine Spectator Award</h4>
-        <p class="text-muted text-xs">Best Wine List 2023</p>
-      </div>
-      <div class="text-center glass-card p-8" data-aos="zoom-in" data-aos-delay="300">
-        <div class="text-gold text-4xl mb-3"><i class="fa-solid fa-star"></i></div>
-        <h4 class="text-cream font-semibold mb-1">Forbes Five Star</h4>
-        <p class="text-muted text-xs">Luxury Dining 2024</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="section">
-  <div class="container container-sm text-center">
-    <div class="section-eyebrow justify-center">Ready to Experience ÉCLAT?</div>
-    <h2 class="section-title"><span class="text-gradient">Reserve</span> Your Table</h2>
-    <p class="text-secondary mb-10">Join us for an evening that will exceed every expectation. Let our team craft an unforgettable experience just for you.</p>
-    <a href="reservation.html" class="btn btn-gold btn-xl">Make a Reservation</a>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-      <div><div class="footer-logo">ÉCLAT</div><p class="footer-desc">Award-winning French-Asian fusion fine dining in the heart of New York City.</p><div class="footer-social"><a href="#" class="social-btn"><i class="fab fa-instagram"></i></a><a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-btn"><i class="fab fa-twitter"></i></a></div></div>
-      <div><h4 class="footer-heading">Explore</h4><ul class="footer-links"><li><a href="about.html" class="footer-link">About ÉCLAT</a></li><li><a href="menu.html" class="footer-link">Our Menu</a></li><li><a href="chefs.html" class="footer-link">Our Chefs</a></li><li><a href="gallery.html" class="footer-link">Gallery</a></li><li><a href="events.html" class="footer-link">Events</a></li></ul></div>
-      <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="reservation.html" class="footer-link">Reservations</a></li><li><a href="events.html" class="footer-link">Private Dining</a></li><li><a href="faq.html" class="footer-link">FAQ</a></li><li><a href="contact.html" class="footer-link">Contact Us</a></li></ul></div>
-      <div><h4 class="footer-heading">Contact</h4><ul class="footer-links"><li class="footer-link"><i class="fa-solid fa-location-dot text-gold"></i>42 Lumière Blvd, NYC</li><li><a href="tel:+12125550174" class="footer-link"><i class="fa-solid fa-phone text-gold"></i>+1 (212) 555-0174</a></li><li><a href="mailto:hello@eclatdining.com" class="footer-link"><i class="fa-solid fa-envelope text-gold"></i>hello@eclatdining.com</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><p class="footer-copy">© 2024 ÉCLAT Fine Dining. All rights reserved.</p><div class="flex gap-4"><a href="privacy.html" class="footer-link text-xs">Privacy</a><a href="terms.html" class="footer-link text-xs">Terms</a></div></div>
   </div>
 </footer>
 
-<button id="backToTop"><i class="fa-solid fa-chevron-up"></i></button>
+<!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/countup.js@2.8.0/dist/countUp.umd.js"></script>
 <script src="js/main.js"></script>
 <script src="js/eclat-beyond-hero.js"></script>
+<script>
+(function () {
+
+  /* ── Scroll Reveal (IntersectionObserver) ── */
+  const srItems = document.querySelectorAll('.sr-item');
+  const srObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('sr-in');
+        srObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  srItems.forEach(function (el) { srObs.observe(el); });
+
+  /* ── Parallax on cinematic section ── */
+  var section = document.getElementById('ab-cinematic');
+  var img     = document.getElementById('ab-para-img');
+  var rafId   = null;
+
+  function applyParallax() {
+    rafId = null;
+    if (!section || !img) return;
+    var rect     = section.getBoundingClientRect();
+    var progress = rect.top / window.innerHeight; // -1 to 1
+    var shift    = progress * 55;                 // ±55px
+    img.style.transform = 'translateY(' + shift + 'px)';
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!rafId) rafId = requestAnimationFrame(applyParallax);
+  }, { passive: true });
+
+  applyParallax();
+
+})();
+</script>
 </body>
 </html>

@@ -24,6 +24,14 @@
     <li><a href="about.html" class="nav-link">About</a></li>
     <li><a href="menu.html" class="nav-link active">Menu</a></li>
     <li><a href="events.html" class="nav-link">Events</a></li>
+    <li class="nav-dropdown-item">
+      <button class="nav-link nav-dropdown-trigger" type="button">Services <i class="fa-solid fa-chevron-down nav-dropdown-arrow"></i></button>
+      <div class="nav-dropdown">
+        <a href="bar.html" class="nav-dropdown-link">Bar</a>
+        <a href="rooms.html" class="nav-dropdown-link">Rooms</a>
+        <a href="valet.html" class="nav-dropdown-link">Valet Parking</a>
+      </div>
+    </li>
     <li><a href="gallery.html" class="nav-link">Gallery</a></li>
     <li><a href="blog.html" class="nav-link">Blog</a></li>
     <li><a href="contact.html" class="nav-link">Contact</a></li>
@@ -87,6 +95,7 @@
         <button class="tab-btn" data-tab="vegetarian">Vegetarian</button>
         <button class="tab-btn" data-tab="desserts">Desserts</button>
         <button class="tab-btn" data-tab="beverages">Beverages</button>
+        <button class="tab-btn" data-tab="bar">The Bar</button>
         <button class="tab-btn" data-tab="specials">Chef Specials</button>
       </div>
 
@@ -223,6 +232,124 @@
       </div>
 
       <!-- Other tab contents (Salads, Grills, Vegetarian, Specials) - abbreviated for the remaining categories -->
+      <!-- THE BAR -->
+      <div class="tab-content" data-tab-content="bar" id="bar">
+        <div class="mb-8 p-6 glass-card flex items-center gap-4" style="border-color:rgba(201,168,76,0.35);">
+          <i class="fa-solid fa-martini-glass-citrus text-gold text-2xl flex-shrink-0"></i>
+          <div>
+            <p class="text-cream font-semibold">Crafted at The Bar at ÉCLAT</p>
+            <p class="text-secondary text-sm">Each cocktail is conceived as a dish — built with intention, finished with precision. Available nightly 5PM–12AM. <a href="bar.html" class="text-gold hover:underline">Visit The Bar →</a></p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div class="food-card" data-menu-item>
+            <div class="food-card-img">
+              <img src="images/bar-lumiere-500.webp" alt="Le Lumière Cocktail" loading="lazy">
+              <div class="food-card-overlay"></div>
+              <span class="food-card-badge"><span class="badge badge-gold">Signature</span></span>
+              <a href="bar.html" class="food-card-quick btn btn-gold btn-sm">View Bar</a>
+            </div>
+            <div class="food-card-body">
+              <h3 class="food-card-title">Le Lumière</h3>
+              <p class="food-card-desc">Grey Goose, Elderflower, Yuzu, Champagne foam. Citrus brightness lifted by floral elegance, crowned with the finest bubbles.</p>
+              <div class="food-card-footer">
+                <span class="food-card-price">$26</span>
+                <div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">4.9</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="food-card" data-menu-item>
+            <div class="food-card-img">
+              <img src="images/bar-noir-500.webp" alt="Noir Velvet Cocktail" loading="lazy">
+              <div class="food-card-overlay"></div>
+              <span class="food-card-badge"><span class="badge badge-dark">Barrel-Aged</span></span>
+              <a href="bar.html" class="food-card-quick btn btn-gold btn-sm">View Bar</a>
+            </div>
+            <div class="food-card-body">
+              <h3 class="food-card-title">Noir Velvet</h3>
+              <p class="food-card-desc">12-year Yamazaki, Black Cherry, Dark Chocolate Bitters, smoked rosemary. A cocktail for those who drink slowly and savour deeply.</p>
+              <div class="food-card-footer">
+                <span class="food-card-price">$32</span>
+                <div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">5.0</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="food-card" data-menu-item>
+            <div class="food-card-img">
+              <img src="images/bar-garden-500.webp" alt="Garden Hour Cocktail" loading="lazy">
+              <div class="food-card-overlay"></div>
+              <span class="food-card-badge"><span class="badge badge-green">Seasonal</span></span>
+              <a href="bar.html" class="food-card-quick btn btn-gold btn-sm">View Bar</a>
+            </div>
+            <div class="food-card-body">
+              <h3 class="food-card-title">Garden Hour</h3>
+              <p class="food-card-desc">Hendrick's Gin, Cucumber, Basil, White Pepper, Tonic. Born in our kitchen garden — an aperitif of extraordinary freshness.</p>
+              <div class="food-card-footer">
+                <span class="food-card-price">$24</span>
+                <div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span class="ml-1">4.7</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="food-card" data-menu-item>
+            <div class="food-card-img">
+              <img src="images/bar-encens-500.webp" alt="Encens Mezcal Cocktail" loading="lazy">
+              <div class="food-card-overlay"></div>
+              <a href="bar.html" class="food-card-quick btn btn-gold btn-sm">View Bar</a>
+            </div>
+            <div class="food-card-body">
+              <h3 class="food-card-title">Encens</h3>
+              <p class="food-card-desc">Casamigos Mezcal, Oolong tea reduction, Agave, Burnt orange peel. Smoke meets ceremony in a glass built for contemplation.</p>
+              <div class="food-card-footer">
+                <span class="food-card-price">$28</span>
+                <div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">4.8</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="food-card" data-menu-item>
+            <div class="food-card-img">
+              <img src="images/bar-blanc-500.webp" alt="Blanc de Blanc Non-Alcoholic" loading="lazy">
+              <div class="food-card-overlay"></div>
+              <span class="food-card-badge"><span class="badge badge-green">Non-Alcoholic</span></span>
+              <a href="bar.html" class="food-card-quick btn btn-gold btn-sm">View Bar</a>
+            </div>
+            <div class="food-card-body">
+              <h3 class="food-card-title">Blanc de Blanc</h3>
+              <p class="food-card-desc">Verjuice, White Peach, Verbena, sparkling water. Our house zero-proof offering — as considered and complex as anything on the spirits shelf.</p>
+              <div class="food-card-footer">
+                <span class="food-card-price">$18</span>
+                <div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">4.9</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="food-card" data-menu-item>
+            <div class="food-card-img">
+              <img src="images/bar-grandsoir-500.webp" alt="Le Grand Soir Chef Special" loading="lazy">
+              <div class="food-card-overlay"></div>
+              <span class="food-card-badge"><span class="badge badge-gold">Chef's Special</span></span>
+              <a href="bar.html" class="food-card-quick btn btn-gold btn-sm">View Bar</a>
+            </div>
+            <div class="food-card-body">
+              <h3 class="food-card-title">Le Grand Soir</h3>
+              <p class="food-card-desc">A rotating creation by our Head Mixologist — changes with the seasons, never repeated. Ask your bartender what tonight's story is.</p>
+              <div class="food-card-footer">
+                <span class="food-card-price">$38</span>
+                <div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">5.0</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="mt-8 text-center">
+          <a href="bar.html" class="btn btn-outline-gold btn-lg"><i class="fa-solid fa-martini-glass-citrus mr-2"></i>Explore The Full Bar Menu</a>
+        </div>
+      </div>
+
       <div class="tab-content" data-tab-content="salads" id="salads">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="food-card"><div class="food-card-img"><img src="images/photo-1540189549336-e6e99c3679fe-500.webp" alt="Salad" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div><div class="food-card-body"><h3 class="food-card-title">Heritage Greens Salad</h3><p class="food-card-desc">Wild arugula, roasted beets, goat cheese, candied walnuts, truffle vinaigrette.</p><div class="food-card-footer"><span class="food-card-price">$26</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span class="ml-1">4.7</span></div></div></div></div>

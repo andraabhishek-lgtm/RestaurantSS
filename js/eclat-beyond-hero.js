@@ -203,6 +203,95 @@
     });
   }
 
+  /* ──────────────────────────────────────────────────────
+     9. SERVICES DROPDOWN — desktop hover + mobile inject
+  ────────────────────────────────────────────────────── */
+  function initServicesDropdown() {
+    const SERVICE_PAGES = ['bar.html', 'rooms.html', 'valet.html'];
+    const curPage = window.location.pathname.split('/').pop() || 'index.html';
+    const isServicePage = SERVICE_PAGES.includes(curPage);
+
+    // ── Desktop hover ──────────────────────────────────
+    document.querySelectorAll('.nav-dropdown-item').forEach(item => {
+      let closeTimer = null;
+      item.addEventListener('mouseenter', () => { clearTimeout(closeTimer); item.classList.add('is-open'); });
+      item.addEventListener('mouseleave', () => { closeTimer = setTimeout(() => item.classList.remove('is-open'), 200); });
+      const trigger = item.querySelector('.nav-dropdown-trigger');
+      if (trigger) {
+        trigger.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); item.classList.toggle('is-open'); });
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.nav-dropdown-item'))
+        document.querySelectorAll('.nav-dropdown-item.is-open').forEach(el => el.classList.remove('is-open'));
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape')
+        document.querySelectorAll('.nav-dropdown-item.is-open').forEach(el => el.classList.remove('is-open'));
+    });
+
+    // ── Active state ───────────────────────────────────
+    if (isServicePage) {
+      document.querySelectorAll('.nav-dropdown-trigger').forEach(t => t.classList.add('services-active'));
+      document.querySelectorAll('.nav-dropdown-link').forEach(link => {
+        if (link.getAttribute('href') === curPage) link.classList.add('active');
+      });
+    }
+
+    // ── Mobile inject ──────────────────────────────────
+    const mobileRoot = document.querySelector('.mobile-menu .mobile-nav-links, .mobile-menu');
+    if (!mobileRoot || mobileRoot.querySelector('[data-srv]')) return;
+
+    const wrap = document.createElement('div');
+    wrap.setAttribute('data-srv', '1');
+    wrap.style.cssText = 'display:flex;flex-direction:column;';
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'nav-link mobile-nav-link';
+    btn.style.cssText = 'display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;cursor:pointer;font-family:inherit;';
+    if (isServicePage) btn.style.color = '#C9A84C';
+    btn.innerHTML = 'Services <i class="fa-solid fa-chevron-down" style="font-size:0.65rem;transition:transform 0.28s;opacity:0.7;"></i>';
+
+    const children = document.createElement('div');
+    children.style.cssText = 'display:none;padding:4px 0 6px 14px;border-left:2px solid rgba(201,168,76,0.30);margin:2px 0 4px;';
+
+    [['bar.html','Bar'],['rooms.html','Rooms'],['valet.html','Valet Parking']].forEach(([href, label]) => {
+      const a = document.createElement('a');
+      a.href = href;
+      a.className = 'nav-link mobile-nav-link';
+      a.style.cssText = 'font-size:0.85rem;padding:4px 0 4px 8px;display:block;';
+      a.textContent = label;
+      if (curPage === href) { a.style.color = '#C9A84C'; a.style.borderLeft = '2px solid #C9A84C'; a.style.marginLeft = '-2px'; a.style.paddingLeft = '10px'; }
+      children.appendChild(a);
+    });
+
+    const arrow = btn.querySelector('i');
+    btn.addEventListener('click', () => {
+      const open = children.style.display !== 'none' && children.style.display !== '';
+      children.style.display = open ? 'none' : 'block';
+      if (arrow) arrow.style.transform = open ? '' : 'rotate(180deg)';
+    });
+
+    if (isServicePage) {
+      children.style.display = 'block';
+      if (arrow) arrow.style.transform = 'rotate(180deg)';
+    }
+
+    wrap.appendChild(btn);
+    wrap.appendChild(children);
+
+    const anchor = mobileRoot.querySelector('a[href="events.html"]') || mobileRoot.querySelector('a.btn, a[href="reservation.html"].btn');
+    if (anchor && anchor.href && anchor.href.includes('events.html')) {
+      anchor.insertAdjacentElement('afterend', wrap);
+    } else if (anchor) {
+      anchor.insertAdjacentElement('beforebegin', wrap);
+    } else {
+      mobileRoot.appendChild(wrap);
+    }
+  }
+
   function boot() {
     injectStyles();
     initNavbar();
@@ -212,6 +301,7 @@
     initCtaGlow();
     initFooterLinks();
     initInputEffects();
+    initServicesDropdown();
   }
 
   if (document.readyState === 'loading') {

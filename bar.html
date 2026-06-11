@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="ÉCLAT Bar — rare spirits, house-crafted cocktails, and an atmosphere that lingers long after the last sip.">
+<title>The Bar — ÉCLAT Fine Dining</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#0A0A0A',cream:'#F5F0E8'}}}}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link rel="stylesheet" href="css/eclat-beyond-hero.css">
+</head>
+<body>
+<div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
+<div class="scroll-progress"></div>
+<div class="cursor-dot"></div><div class="cursor-ring"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img"></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">Home</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="menu.html" class="nav-link">Menu</a></li>
+    <li><a href="events.html" class="nav-link">Events</a></li>
+    <li class="nav-dropdown-item">
+      <button class="nav-link nav-dropdown-trigger" type="button">Services <i class="fa-solid fa-chevron-down nav-dropdown-arrow"></i></button>
+      <div class="nav-dropdown">
+        <a href="bar.html" class="nav-dropdown-link">Bar</a>
+        <a href="rooms.html" class="nav-dropdown-link">Rooms</a>
+        <a href="valet.html" class="nav-dropdown-link">Valet Parking</a>
+      </div>
+    </li>
+    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+    <li><a href="blog.html" class="nav-link">Blog</a></li>
+    <li><a href="contact.html" class="nav-link">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline-gold btn-sm">Login</a>
+    <a href="reservation.html" class="btn btn-gold btn-sm">Reserve a Table</a>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="menu.html" class="nav-link">Menu</a>
+  <a href="bar.html" class="nav-link active">The Bar</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+  <a href="reservation.html" class="btn btn-gold mt-4">Reserve</a>
+</div>
+
+<!-- Page Banner -->
+<div class="page-banner">
+  <div class="page-banner-bg">
+    <div class="swiper page-banner-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/photo-1555396273-367ea4eb4db5-1920.webp" alt="The Bar" loading="eager"></div>
+        <div class="swiper-slide"><img src="images/bar-dark-1920.webp" alt="The Bar" loading="lazy"></div>
+        <div class="swiper-slide"><img src="images/photo-1414235077428-338989a2e8c0-1920.webp" alt="Atmosphere" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+  <div class="page-banner-overlay"></div>
+  <div class="page-banner-content">
+    <div class="page-banner-eyebrow"><i class="fa-solid fa-martini-glass text-gold"></i>The Bar at ÉCLAT</div>
+    <h1 class="page-banner-title">Where the Night<br><span class="text-gradient">Finds Its Rhythm</span></h1>
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span><span>The Bar</span></div>
+  </div>
+</div>
+
+<!-- Intro -->
+<section class="section">
+  <div class="container">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div data-aos="fade-right">
+        <div class="section-eyebrow">An Intimate Sanctuary</div>
+        <h2 class="section-title">Where Every Sip Tells <span class="text-gradient">a Story</span></h2>
+        <p class="text-secondary mb-6 leading-relaxed text-lg">Step into ÉCLAT's intimate bar — a sanctuary of rare spirits, house-crafted cocktails, and a cellar-deep wine list curated by our in-house sommelier. Low candlelight, velvet seating, and the soft clink of crystal set the tone for an evening that lingers long after the last sip.</p>
+        <p class="text-secondary mb-8 leading-relaxed">Whether you arrive before dinner or stay well after, the bar is where ÉCLAT's magic begins. Each cocktail is conceived as a dish — built with intention, finished with precision, and served with the quiet confidence of a kitchen at the top of its craft.</p>
+        <a href="reservation.html" class="btn btn-gold btn-lg">Reserve a Seat at the Bar</a>
+      </div>
+      <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
+        <div class="glass-card p-8 text-center">
+          <div class="text-gold text-4xl font-cormorant font-bold mb-2">200+</div>
+          <p class="text-cream text-sm font-semibold">Rare Spirits</p>
+          <p class="text-muted text-xs mt-1">Sourced from 38 countries</p>
+        </div>
+        <div class="glass-card p-8 text-center">
+          <div class="text-gold text-4xl font-cormorant font-bold mb-2">40+</div>
+          <p class="text-cream text-sm font-semibold">House Cocktails</p>
+          <p class="text-muted text-xs mt-1">Crafted seasonally</p>
+        </div>
+        <div class="glass-card p-8 text-center">
+          <div class="text-gold text-4xl font-cormorant font-bold mb-2">500+</div>
+          <p class="text-cream text-sm font-semibold">Wine Labels</p>
+          <p class="text-muted text-xs mt-1">From premier cellars</p>
+        </div>
+        <div class="glass-card p-8 text-center">
+          <div class="text-gold text-4xl font-cormorant font-bold mb-2">3</div>
+          <p class="text-cream text-sm font-semibold">Award-Winning</p>
+          <p class="text-muted text-xs mt-1">Sommeliers on staff</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Signature Cocktails -->
+<section class="section" style="background:var(--dark-900)">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-eyebrow">Craft Cocktails</div>
+      <h2 class="section-title">Signature <span class="text-gradient">Creations</span></h2>
+      <p class="section-subtitle">Each cocktail is a composition — conceived by our mixologists with the same rigor as our kitchen.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="glass-card p-7" data-aos="fade-up" data-aos-delay="0">
+        <div class="flex items-center gap-3 mb-4">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.1rem;flex-shrink:0;"><i class="fa-solid fa-martini-glass-citrus"></i></div>
+          <div><h3 class="text-cream font-cormorant text-xl font-semibold">Le Lumière</h3><span class="text-gold text-xs font-semibold">Signature · $26</span></div>
+        </div>
+        <p class="text-secondary text-sm leading-relaxed mb-3">Grey Goose, Elderflower, Yuzu, Champagne foam. A study in balance — citrus brightness lifted by floral elegance, crowned with the finest bubbles.</p>
+        <div class="flex gap-2 flex-wrap"><span class="badge badge-dark text-xs">Floral</span><span class="badge badge-dark text-xs">Citrus</span><span class="badge badge-dark text-xs">Effervescent</span></div>
+      </div>
+      <div class="glass-card p-7" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex items-center gap-3 mb-4">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.1rem;flex-shrink:0;"><i class="fa-solid fa-wine-glass"></i></div>
+          <div><h3 class="text-cream font-cormorant text-xl font-semibold">Noir Velvet</h3><span class="text-gold text-xs font-semibold">Barrel-Aged · $32</span></div>
+        </div>
+        <p class="text-secondary text-sm leading-relaxed mb-3">12-year Yamazaki, Black Cherry, Dark Chocolate Bitters, smoked rosemary. A cocktail for those who drink slowly and savour deeply.</p>
+        <div class="flex gap-2 flex-wrap"><span class="badge badge-dark text-xs">Smoky</span><span class="badge badge-dark text-xs">Rich</span><span class="badge badge-dark text-xs">Complex</span></div>
+      </div>
+      <div class="glass-card p-7" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-center gap-3 mb-4">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.1rem;flex-shrink:0;"><i class="fa-solid fa-leaf"></i></div>
+          <div><h3 class="text-cream font-cormorant text-xl font-semibold">Garden Hour</h3><span class="text-gold text-xs font-semibold">Seasonal · $24</span></div>
+        </div>
+        <p class="text-secondary text-sm leading-relaxed mb-3">Hendrick's Gin, Cucumber, Basil, White Pepper, Tonic. Born in our kitchen garden — served as an aperitif of extraordinary freshness.</p>
+        <div class="flex gap-2 flex-wrap"><span class="badge badge-dark text-xs">Fresh</span><span class="badge badge-dark text-xs">Herbal</span><span class="badge badge-dark text-xs">Light</span></div>
+      </div>
+      <div class="glass-card p-7" data-aos="fade-up" data-aos-delay="0">
+        <div class="flex items-center gap-3 mb-4">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.1rem;flex-shrink:0;"><i class="fa-solid fa-fire"></i></div>
+          <div><h3 class="text-cream font-cormorant text-xl font-semibold">Encens</h3><span class="text-gold text-xs font-semibold">Mezcal Forward · $28</span></div>
+        </div>
+        <p class="text-secondary text-sm leading-relaxed mb-3">Casamigos Mezcal, Oolong tea reduction, Agave, Burnt orange peel. Smoke meets ceremony in a glass built for contemplation.</p>
+        <div class="flex gap-2 flex-wrap"><span class="badge badge-dark text-xs">Smoky</span><span class="badge badge-dark text-xs">Earthy</span><span class="badge badge-dark text-xs">Meditative</span></div>
+      </div>
+      <div class="glass-card p-7" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex items-center gap-3 mb-4">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.1rem;flex-shrink:0;"><i class="fa-solid fa-snowflake"></i></div>
+          <div><h3 class="text-cream font-cormorant text-xl font-semibold">Blanc de Blanc</h3><span class="text-gold text-xs font-semibold">Non-Alcoholic · $18</span></div>
+        </div>
+        <p class="text-secondary text-sm leading-relaxed mb-3">Verjuice, White Peach, Verbena, sparkling water. Our house zero-proof offering — as considered and complex as anything on the spirits shelf.</p>
+        <div class="flex gap-2 flex-wrap"><span class="badge badge-dark text-xs">Zero-Proof</span><span class="badge badge-dark text-xs">Delicate</span><span class="badge badge-dark text-xs">Elegant</span></div>
+      </div>
+      <div class="glass-card p-7" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-center gap-3 mb-4">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.1rem;flex-shrink:0;"><i class="fa-solid fa-star"></i></div>
+          <div><h3 class="text-cream font-cormorant text-xl font-semibold">Le Grand Soir</h3><span class="text-gold text-xs font-semibold">Chef's Special · $38</span></div>
+        </div>
+        <p class="text-secondary text-sm leading-relaxed mb-3">A rotating creation by our Head Mixologist — changes with the seasons, never repeated. Ask your bartender what tonight's story is.</p>
+        <div class="flex gap-2 flex-wrap"><span class="badge badge-gold text-xs">Exclusive</span><span class="badge badge-dark text-xs">Seasonal</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Atmosphere -->
+<section class="section">
+  <div class="container">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="grid grid-cols-2 gap-4" data-aos="fade-right" style="max-height:560px;">
+        <div class="flex flex-col gap-4">
+          <img src="images/bar-spirits-700.webp" alt="Rare Spirits" class="rounded-2xl object-cover w-full" style="height:210px;object-position:center;">
+          <img src="images/bar-whiskey-700.webp" alt="Whiskey Pour" class="rounded-2xl object-cover w-full" style="height:210px;object-position:center;">
+        </div>
+        <div class="flex flex-col gap-4 mt-8">
+          <img src="images/bar-cocktail-atm-700.webp" alt="Cocktail Hour" class="rounded-2xl object-cover w-full" style="height:210px;object-position:center;">
+          <img src="images/bar-bartender-700.webp" alt="Craft Cocktails" class="rounded-2xl object-cover w-full" style="height:210px;object-position:center;">
+        </div>
+      </div>
+      <div data-aos="fade-left">
+        <div class="section-eyebrow">The Space</div>
+        <h2 class="section-title">Designed for <span class="text-gradient">After Dark</span></h2>
+        <div class="space-y-5">
+          <div class="flex gap-4 items-start">
+            <div style="width:40px;height:40px;border-radius:10px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:0.95rem;flex-shrink:0;"><i class="fa-solid fa-couch"></i></div>
+            <div><h4 class="text-cream font-semibold mb-1">Velvet Lounge Seating</h4><p class="text-secondary text-sm">Deep-set club chairs and curved banquettes designed for long evenings and close conversations.</p></div>
+          </div>
+          <div class="flex gap-4 items-start">
+            <div style="width:40px;height:40px;border-radius:10px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:0.95rem;flex-shrink:0;"><i class="fa-solid fa-music"></i></div>
+            <div><h4 class="text-cream font-semibold mb-1">Live Jazz, Four Nights a Week</h4><p class="text-secondary text-sm">Thursday through Sunday, resident musicians set the tone — understated, unmistakeable.</p></div>
+          </div>
+          <div class="flex gap-4 items-start">
+            <div style="width:40px;height:40px;border-radius:10px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:0.95rem;flex-shrink:0;"><i class="fa-solid fa-utensils"></i></div>
+            <div><h4 class="text-cream font-semibold mb-1">Bar Bites by Chef Laurent</h4><p class="text-secondary text-sm">A curated bar menu of small plates — each one a miniature expression of the ÉCLAT kitchen at its most playful.</p></div>
+          </div>
+          <div class="flex gap-4 items-start">
+            <div style="width:40px;height:40px;border-radius:10px;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:0.95rem;flex-shrink:0;"><i class="fa-solid fa-clock"></i></div>
+            <div><h4 class="text-cream font-semibold mb-1">Open Until Midnight</h4><p class="text-secondary text-sm">The bar serves nightly until 12AM, giving you every reason to let the evening unfold at its own perfect pace.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Bar Photo Gallery -->
+<section style="background:#080808;padding:80px 0;overflow:hidden;">
+
+  <div class="container">
+    <div class="section-header text-center mb-12" data-aos="fade-up">
+      <div class="section-eyebrow">The Atmosphere</div>
+      <h2 class="section-title">Where Every <span class="text-gradient">Corner Invites</span></h2>
+      <p class="section-subtitle" style="max-width:520px;margin:0 auto;">Ten frames. One mood. ÉCLAT Bar after dark.</p>
+    </div>
+  </div>
+
+  <style>
+    /* Bar gallery swiper */
+    .bar-gal-swiper { overflow:visible; padding:0 0 52px; }
+    .bar-gal-swiper .swiper-slide {
+      border-radius:16px; overflow:hidden; cursor:pointer;
+      position:relative; height:420px;
+      border:1px solid rgba(201,168,76,0.08);
+      transition:border-color 0.35s, box-shadow 0.35s, transform 0.35s;
+    }
+    .bar-gal-swiper .swiper-slide-active,
+    .bar-gal-swiper .swiper-slide:hover {
+      border-color:rgba(201,168,76,0.42);
+      box-shadow:0 16px 48px rgba(0,0,0,0.60), 0 0 28px rgba(201,168,76,0.10);
+      transform:translateY(-4px);
+    }
+    .bar-gal-swiper .swiper-slide img {
+      width:100%; height:100%; object-fit:cover; display:block;
+      transition:transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .bar-gal-swiper .swiper-slide:hover img { transform:scale(1.06); }
+    /* Name caption */
+    .bar-gal-caption {
+      position:absolute; bottom:0; left:0; right:0;
+      padding:48px 20px 20px;
+      background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 100%);
+      display:flex; align-items:flex-end; justify-content:space-between;
+    }
+    .bar-gal-name {
+      font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:600;
+      color:#F5F0E8; letter-spacing:0.04em; line-height:1.2;
+    }
+    .bar-gal-tag {
+      font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase;
+      color:#C9A84C; background:rgba(201,168,76,0.12);
+      border:1px solid rgba(201,168,76,0.30); border-radius:20px;
+      padding:3px 10px; white-space:nowrap; flex-shrink:0; margin-left:12px;
+    }
+    /* Navigation arrows */
+    .bar-gal-prev, .bar-gal-next {
+      width:44px; height:44px; border-radius:50%;
+      background:rgba(17,17,17,0.90); border:1px solid rgba(201,168,76,0.30);
+      color:#C9A84C; display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:all 0.28s ease; position:static;
+      font-size:0.9rem; flex-shrink:0;
+    }
+    .bar-gal-prev:hover, .bar-gal-next:hover {
+      background:#C9A84C; color:#0A0A0A;
+      border-color:#C9A84C; box-shadow:0 0 20px rgba(201,168,76,0.30);
+    }
+    .bar-gal-nav {
+      display:flex; align-items:center; justify-content:center;
+      gap:16px; margin-top:32px;
+    }
+    /* Custom pagination */
+    .bar-gal-pagination { display:flex; align-items:center; gap:6px; }
+    .bar-gal-pagination .swiper-pagination-bullet {
+      width:6px; height:6px; border-radius:50%;
+      background:rgba(201,168,76,0.25); opacity:1; transition:all 0.3s;
+    }
+    .bar-gal-pagination .swiper-pagination-bullet-active {
+      width:24px; border-radius:3px; background:#C9A84C;
+    }
+    /* Slide counter */
+    .bar-gal-counter {
+      font-size:0.78rem; letter-spacing:0.12em; color:rgba(245,240,232,0.40);
+      min-width:52px; text-align:center;
+    }
+    .bar-gal-counter span { color:#C9A84C; }
+  </style>
+
+  <!-- Full-bleed swiper wrapper -->
+  <div style="padding:0 max(24px, calc((100vw - 1200px)/2))">
+    <div class="swiper bar-gal-swiper" id="barGalSwiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <img src="images/bar/bar-interior.webp" alt="Bar Interior">
+          <div class="bar-gal-caption">
+            <span class="bar-gal-name">Bar Interior</span>
+            <span class="bar-gal-tag">The Space</span>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/bar/whiskey-glass.webp" alt="Whiskey Glass">
+          <div class="bar-gal-caption">
+            <span class="bar-gal-name">Whiskey Glass</span>
+            <span class="bar-gal-tag">Spirits</span>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/bar/wine-pouring.webp" alt="Wine Pouring">
+          <div class="bar-gal-caption">
+            <span class="bar-gal-name">Wine Pouring</span>
+            <span class="bar-gal-tag">Wine</span>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/bar/bartender-shake.webp" alt="Bartender">
+          <div class="bar-gal-caption">
+            <span class="bar-gal-name">Craft in Motion</span>
+            <span class="bar-gal-tag">Bartender</span>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/bar/champagne-bottles.webp" alt="Champagne">
+          <div class="bar-gal-caption">
+            <span class="bar-gal-name">Champagne Selection</span>
+            <span class="bar-gal-tag">Bubbles</span>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/bar/red-wine.webp" alt="Red Wine">
+          <div class="bar-gal-caption">
+            <span class="bar-gal-name">Red Wine</span>
+            <span class="bar-gal-tag">Wine</span>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/bar/craft-beer.webp" alt="Craft Beer">
+          <div class="bar-gal-caption">
+            <span class="bar-gal-name">Craft Beer</span>
+            <span class="bar-gal-tag">Draught</span>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/bar/gin-tonic.webp" alt="Gin &amp; Tonic">
+          <div class="bar-gal-caption">
+            <span class="bar-gal-name">Gin &amp; Tonic</span>
+            <span class="bar-gal-tag">Cocktail</span>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/bar/bar-shelf.webp" alt="Bar Shelf" style="object-position:center 60%;">
+          <div class="bar-gal-caption">
+            <span class="bar-gal-name">200+ Rare Spirits</span>
+            <span class="bar-gal-tag">Collection</span>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/bar/martini-glass.webp" alt="Martini Glass">
+          <div class="bar-gal-caption">
+            <span class="bar-gal-name">The Martini</span>
+            <span class="bar-gal-tag">Classic</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+  (function(){
+    function initBarGallery(){
+      if(typeof Swiper === 'undefined'){ window.addEventListener('load', initBarGallery); return; }
+      var sw = new Swiper('#barGalSwiper', {
+        slidesPerView: 3,
+        spaceBetween: 14,
+        loop: true,
+        speed: 1200,
+        autoplay: { delay: 1500, disableOnInteraction: false, pauseOnMouseEnter: true },
+        
+        
+        breakpoints: {
+          0:   { slidesPerView:1.15, spaceBetween:10 },
+          600: { slidesPerView:2,    spaceBetween:12 },
+          900: { slidesPerView:3,    spaceBetween:14 },
+        },
+        
+        }
+      });
+    }
+    document.readyState === 'loading'
+      ? document.addEventListener('DOMContentLoaded', initBarGallery)
+      : initBarGallery();
+  })();
+  </script>
+
+</section>
+
+<!-- Hours & Info -->
+<section class="section" style="background:var(--dark-900)">
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+      <div class="glass-card p-8" data-aos="fade-up" data-aos-delay="0">
+        <i class="fa-solid fa-clock text-gold text-2xl mb-4"></i>
+        <h4 class="text-cream font-cormorant text-2xl font-semibold mb-3">Bar Hours</h4>
+        <p class="text-secondary text-sm leading-loose">Mon – Wed: 5PM – 11PM<br>Thu – Sat: 4PM – 12AM<br>Sunday: 4PM – 10:30PM</p>
+      </div>
+      <div class="glass-card p-8" data-aos="fade-up" data-aos-delay="100">
+        <i class="fa-solid fa-location-dot text-gold text-2xl mb-4"></i>
+        <h4 class="text-cream font-cormorant text-2xl font-semibold mb-3">Find the Bar</h4>
+        <p class="text-secondary text-sm leading-loose">Located on the ground floor<br>of ÉCLAT Fine Dining<br>42 Lumière Blvd, NYC</p>
+      </div>
+      <div class="glass-card p-8" data-aos="fade-up" data-aos-delay="200">
+        <i class="fa-solid fa-phone text-gold text-2xl mb-4"></i>
+        <h4 class="text-cream font-cormorant text-2xl font-semibold mb-3">Reservations</h4>
+        <p class="text-secondary text-sm leading-loose">Walk-ins welcome<br>Bar seating available nightly<br>Private bookings: (212) 555-0175</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background:linear-gradient(135deg,#0A0A0A 0%,#111 50%,#0A0A0A 100%);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,168,76,0.07) 0%,transparent 70%);pointer-events:none;"></div>
+  <div class="container container-sm text-center" style="position:relative;z-index:1;">
+    <div class="section-eyebrow justify-center">An Invitation</div>
+    <h2 class="section-title">Reserve a Seat at <span class="text-gradient">The Bar</span></h2>
+    <p class="text-secondary mb-10 text-lg">Whether it's a quiet aperitif before dinner or a long, luminous evening with friends — the bar is always ready for you.</p>
+    <div class="flex gap-4 justify-center flex-wrap">
+      <a href="reservation.html" class="btn btn-gold btn-xl">Reserve a Seat</a>
+      <a href="menu.html" class="btn btn-outline-gold btn-xl">View Full Menu</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div><div class="footer-logo">ÉCLAT</div><p class="footer-desc">Award-winning French-Asian fusion fine dining in the heart of New York City.</p><div class="footer-social"><a href="#" class="social-btn"><i class="fab fa-instagram"></i></a><a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-btn"><i class="fab fa-twitter"></i></a></div></div>
+      <div><h4 class="footer-heading">Explore</h4><ul class="footer-links"><li><a href="about.html" class="footer-link">About ÉCLAT</a></li><li><a href="menu.html" class="footer-link">Our Menu</a></li><li><a href="bar.html" class="footer-link">The Bar</a></li><li><a href="rooms.html" class="footer-link">Guest Rooms</a></li></ul></div>
+      <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="reservation.html" class="footer-link">Reservations</a></li><li><a href="events.html" class="footer-link">Private Dining</a></li><li><a href="valet.html" class="footer-link">Valet Parking</a></li><li><a href="faq.html" class="footer-link">FAQ</a></li></ul></div>
+      <div><h4 class="footer-heading">Contact</h4><ul class="footer-links"><li class="footer-link"><i class="fa-solid fa-location-dot text-gold"></i>42 Lumière Blvd, NYC</li><li><a href="tel:+12125550174" class="footer-link"><i class="fa-solid fa-phone text-gold"></i>+1 (212) 555-0174</a></li><li><a href="mailto:hello@eclatdining.com" class="footer-link"><i class="fa-solid fa-envelope text-gold"></i>hello@eclatdining.com</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2024 ÉCLAT Fine Dining. All rights reserved.</p><div class="flex gap-4"><a href="privacy.html" class="footer-link text-xs">Privacy</a><a href="terms.html" class="footer-link text-xs">Terms</a></div></div>
+  </div>
+</footer>
+
+<button id="backToTop"><i class="fa-solid fa-chevron-up"></i></button>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/eclat-beyond-hero.js"></script>
+</body>
+</html>
