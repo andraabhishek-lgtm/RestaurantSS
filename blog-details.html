@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="The Art of A5 Wagyu — Chef Laurent Dubois shares the story behind ÉCLAT's most celebrated dish.">
+<title>The Art of A5 Wagyu — ÉCLAT Blog</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#EEF2FF',cream:'#0F172A'}}}}</script>
+<style>
+.blog-content h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--cream);margin:2rem 0 1rem}
+.blog-content p{color:var(--text-secondary);line-height:1.9;margin-bottom:1.5rem}
+.blog-content blockquote{border-left:3px solid var(--gold);padding:1rem 1.5rem;margin:2rem 0;background:rgba(201,168,76,0.05);border-radius:0 var(--radius-md) var(--radius-md) 0}
+.blog-content blockquote p{color:var(--cream);font-style:italic;font-family:'Playfair Display',serif;font-size:1.1rem;margin:0}
+.blog-content img{border-radius:var(--radius-lg);margin:2rem 0;width:100%}
+.blog-content ul{padding-left:1.5rem;margin-bottom:1.5rem}
+.blog-content ul li{color:var(--text-secondary);margin-bottom:0.5rem;line-height:1.8}
+.blog-content ul li::marker{color:var(--gold)}
+</style>
+</head>
+<body>
+<div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
+<div class="scroll-progress"></div>
+<div class="cursor-dot"></div><div class="cursor-ring"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img"></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">Home</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="menu.html" class="nav-link">Menu</a></li>
+    <li><a href="events.html" class="nav-link">Events</a></li>
+    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+    <li><a href="blog.html" class="nav-link active">Blog</a></li>
+    <li><a href="contact.html" class="nav-link">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline-gold btn-sm">Login</a>
+    <a href="reservation.html" class="btn btn-gold btn-sm">Reserve</a>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html" class="nav-link">Home</a><a href="blog.html" class="nav-link">Blog</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+  <a href="reservation.html" class="btn btn-gold mt-4">Reserve</a>
+</div>
+
+<!-- Hero -->
+<div style="position:relative;height:60vh;overflow:hidden">
+  <img src="images/photo-1544025162-d76694265947-1920.webp" alt="Wagyu" style="width:100%;height:100%;object-fit:cover;opacity:0.5" loading="eager">
+  <div style="position:absolute;inset:0;background:var(--grad-dark)"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;padding:60px 5%">
+    <div class="breadcrumb mb-4"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span><a href="blog.html">Blog</a><span class="breadcrumb-sep">/</span><span>Article</span></div>
+    <span class="badge badge-gold mb-4">Chef Stories</span>
+    <h1 class="font-cormorant text-5xl text-cream font-semibold mb-4 max-w-3xl">The Art of A5 Wagyu: Why Japan's Finest Beef Changed My Life as a Chef</h1>
+    <div class="flex items-center gap-4 flex-wrap">
+      <div class="flex items-center gap-3">
+        <img src="images/photo-1577219491135-ce391730fb2c-60x60.webp" class="w-10 h-10 rounded-full object-cover border-2 border-gold" alt="Laurent">
+        <div><p class="text-cream text-sm font-semibold">Chef Laurent Dubois</p><p class="text-muted text-xs">Executive Chef</p></div>
+      </div>
+      <span class="text-muted">·</span>
+      <span class="text-muted text-sm"><i class="fa-regular fa-calendar mr-1"></i>June 15, 2024</span>
+      <span class="text-muted">·</span>
+      <span class="text-muted text-sm"><i class="fa-regular fa-clock mr-1"></i>8 min read</span>
+      <span class="text-muted">·</span>
+      <span class="text-muted text-sm"><i class="fa-solid fa-eye mr-1"></i>4,248 views</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+      <!-- Article -->
+      <div class="lg:col-span-3">
+        <div class="blog-content">
+          <p>When I first tasted A5 Wagyu in a small, unremarkable restaurant in Kagoshima, Japan in 2009, I cried. I'm not ashamed to admit it. I was 28 years old, had trained at three Michelin-starred establishments in Lyon and Paris, had spent six months in Tokyo learning kaiseki fundamentals — and nothing had ever made me cry at a table before.</p>
+
+          <p>But this was different. This wasn't just beef. It wasn't even really food in the way I understood food. It was a philosophical statement, a quiet declaration that patience, precision, and reverence for nature could produce something so profoundly perfect that it transcended the act of eating entirely.</p>
+
+          <blockquote><p>"Great cooking is not about technique alone. It is about understanding that every ingredient is a story, and your job as a chef is to tell that story as clearly and as beautifully as you can."</p></blockquote>
+
+          <h2>Understanding A5: More Than Just Marbling</h2>
+          <p>The "A5" designation is the highest grade given to Japanese Wagyu by the Japanese Meat Grading Association. It represents a perfect score in both yield grade (A) and meat quality grade (5). But explaining it in those terms completely misses the point — like describing the Mona Lisa by its canvas dimensions.</p>
+
+          <p>True A5 Wagyu, specifically from Kagoshima, Kobe, or Miyazaki Prefecture, has a Beef Marbling Score (BMS) of 8 or higher. The intramuscular fat — called "sashi" — doesn't just marble the meat; it creates a completely different structural composition. The fat melts at body temperature. This means the moment it touches your tongue, it begins to dissolve.</p>
+
+          <img src="images/photo-1565299624946-b28f40a0ae38-1200.webp" alt="Wagyu preparation" loading="lazy">
+
+          <h2>The Preparation: Restraint as Artistry</h2>
+          <p>One of the hardest lessons I've learned as a chef is knowing when to step back. With A5 Wagyu, the greatest gift you can give the ingredient is to get out of its way. My preparation philosophy for our signature tenderloin is built on restraint:</p>
+          <ul>
+            <li>Season only with Maldon sea salt and freshly ground white pepper — nothing else</li>
+            <li>Bring to room temperature for exactly 45 minutes before cooking</li>
+            <li>Sear on a cast-iron skillet preheated to 700°F for 90 seconds per side</li>
+            <li>Rest for 10 full minutes, tented loosely — this is non-negotiable</li>
+            <li>Serve at exactly 52°C internal temperature (125°F, rare-plus)</li>
+          </ul>
+
+          <p>The accompaniments exist to provide contrast and context, not to compete. Our truffle reduction is subtle — a whisper, not a shout. The roasted bone marrow adds a secondary layer of richness. The micro herbs provide freshness that cuts through the fat. It's a composition, not a collection.</p>
+
+          <h2>Why This Dish Defines ÉCLAT</h2>
+          <p>When we opened ÉCLAT in 2018, I knew the A5 Wagyu Tenderloin would be our centerpiece. Not because wagyu is fashionable — though it certainly is — but because it represents everything I believe fine dining should be: an experience that makes you stop, be present, and feel something.</p>
+
+          <p>In the years since we opened, I have watched hundreds of guests take their first bite. The reaction is almost always the same — a pause, a slight widening of the eyes, sometimes a sound of involuntary pleasure. Sometimes, yes, a tear. I understand now. That moment in Kagoshima wasn't about weakness. It was about being fully, viscerally present in the face of something extraordinary.</p>
+
+          <p>That is what I hope ÉCLAT gives you, every single time.</p>
+        </div>
+
+        <!-- Share -->
+        <div class="divider"></div>
+        <div class="flex items-center justify-between flex-wrap gap-4">
+          <div class="flex flex-wrap gap-2">
+            <span class="badge badge-dark">#Wagyu</span>
+            <span class="badge badge-dark">#FineDining</span>
+            <span class="badge badge-dark">#ChefStories</span>
+            <span class="badge badge-dark">#Japan</span>
+          </div>
+          <div class="flex gap-3">
+            <button class="btn btn-ghost btn-sm" onclick="showToast('Article link copied!','success')"><i class="fa-solid fa-link mr-1"></i>Copy Link</button>
+            <a href="#" class="btn btn-ghost btn-sm"><i class="fab fa-twitter mr-1"></i>Share</a>
+            <a href="#" class="btn btn-ghost btn-sm"><i class="fab fa-facebook-f mr-1"></i>Share</a>
+          </div>
+        </div>
+
+        <!-- Author Box -->
+        <div class="glass-card p-6 mt-10 flex items-start gap-6 flex-wrap">
+          <img src="images/photo-1577219491135-ce391730fb2c-120x120.webp" class="w-20 h-20 rounded-full object-cover border-2 border-gold flex-shrink-0" alt="Laurent">
+          <div>
+            <h4 class="text-cream font-semibold text-lg mb-1">Chef Laurent Dubois</h4>
+            <p class="text-gold text-sm mb-3">Executive Chef & Founder, ÉCLAT</p>
+            <p class="text-secondary text-sm leading-relaxed">Two Michelin stars, 22 years in fine dining, and a lifelong obsession with the perfect bite. Laurent trained in Lyon, Paris, and Tokyo before founding ÉCLAT in 2018.</p>
+          </div>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="mt-12">
+          <h3 class="font-cormorant text-2xl text-cream font-semibold mb-6">Comments (12)</h3>
+          <div class="space-y-6 mb-10">
+            <div class="flex gap-4">
+              <img src="images/photo-1494790108377-be9c29b29330-60x60.webp" class="w-10 h-10 rounded-full object-cover border border-dark-500 flex-shrink-0" alt="Sarah">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-1"><span class="text-cream font-semibold text-sm">Sarah K.</span><span class="text-muted text-xs">June 16, 2024</span></div>
+                <p class="text-secondary text-sm leading-relaxed">I had the wagyu last Saturday and yes — I completely understand the tears now. It's not hyperbole when people say it's life-changing. Thank you for this beautiful article, Chef.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <img src="images/photo-1507003211169-0a1dd7228f2d-60x60.webp" class="w-10 h-10 rounded-full object-cover border border-dark-500 flex-shrink-0" alt="Michael">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-1"><span class="text-cream font-semibold text-sm">Michael T.</span><span class="text-muted text-xs">June 17, 2024</span></div>
+                <p class="text-secondary text-sm leading-relaxed">The section on restraint resonated deeply with me as a home cook. Sometimes the best thing we can do is trust the ingredient.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Comment Form -->
+          <div class="glass-card p-6">
+            <h4 class="text-cream font-semibold mb-4">Leave a Comment</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <input type="text" class="form-control" placeholder="Your Name">
+              <input type="email" class="form-control" placeholder="Email Address">
+            </div>
+            <textarea class="form-control mb-4" rows="4" placeholder="Share your thoughts..."></textarea>
+            <button class="btn btn-gold" onclick="showToast('Comment submitted for review. Thank you!','success')">Post Comment</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-1 space-y-6">
+        <div class="glass-card p-6">
+          <h4 class="text-cream font-semibold mb-4">More by Chef Laurent</h4>
+          <ul class="space-y-4">
+            <li class="flex gap-3"><img src="images/photo-1555396273-367ea4eb4db5-60x60.webp" class="w-12 h-12 rounded-lg object-cover flex-shrink-0" alt="Post"><a href="blog-details.html" class="text-secondary text-sm hover:text-gold transition-colors">Duck Confit: 48 Hours of Patience</a></li>
+            <li class="flex gap-3"><img src="images/photo-1579584425555-c3ce17fd4351-60x60.webp" class="w-12 h-12 rounded-lg object-cover flex-shrink-0" alt="Post"><a href="blog-details.html" class="text-secondary text-sm hover:text-gold transition-colors">Why I Spent 3 Months in Tokyo</a></li>
+          </ul>
+        </div>
+        <div class="glass-card p-6">
+          <h4 class="text-cream font-semibold mb-4">Book a Table</h4>
+          <p class="text-muted text-xs mb-4">Experience the dishes from this article in person.</p>
+          <a href="reservation.html" class="btn btn-gold btn-sm w-full justify-center">Reserve Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div><div class="footer-logo">ÉCLAT</div><p class="footer-desc">Award-winning fine dining in New York City.</p></div>
+      <div><h4 class="footer-heading">Explore</h4><ul class="footer-links"><li><a href="menu.html" class="footer-link">Our Menu</a></li><li><a href="blog.html" class="footer-link">Blog</a></li></ul></div>
+      <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="reservation.html" class="footer-link">Reservations</a></li></ul></div>
+      <div><h4 class="footer-heading">Contact</h4><ul class="footer-links"><li class="footer-link"><i class="fa-solid fa-phone text-gold"></i>+1 (212) 555-0174</li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2024 ÉCLAT Fine Dining.</p></div>
+  </div>
+</footer>
+<button id="backToTop"><i class="fa-solid fa-chevron-up"></i></button>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>404 — Page Not Found | ÉCLAT Fine Dining</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#EEF2FF',cream:'#0F172A'}}}}</script>
+<style>
+body { overflow: hidden; }
+.page-404 { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:var(--dark-bg); overflow:hidden; }
+.giant-404 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(120px,25vw,280px);
+  font-weight:700;
+  line-height:0.9;
+  background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.25),rgba(201,168,76,0.06));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  user-select:none;
+  position:relative;
+  z-index:1;
+  letter-spacing:-0.02em;
+  transition:transform 0.1s ease-out;
+}
+.floating-food {
+  position:absolute;
+  border-radius:50%;
+  overflow:hidden;
+  animation:foodFloat linear infinite;
+  pointer-events:none;
+  border:2px solid rgba(201,168,76,0.2);
+  box-shadow:0 4px 20px rgba(0,0,0,0.5);
+}
+@keyframes foodFloat {
+  0%   { transform:translateY(110vh) rotate(0deg); opacity:0; }
+  10%  { opacity:1; }
+  90%  { opacity:0.7; }
+  100% { transform:translateY(-20vh) rotate(360deg); opacity:0; }
+}
+.chef-hat-anim { animation: chefBounce 1.5s ease-in-out infinite; }
+@keyframes chefBounce { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-12px) rotate(5deg)} }
+.cursor-ripple {
+  position:fixed;
+  width:0; height:0;
+  border-radius:50%;
+  border:2px solid rgba(201,168,76,0.5);
+  pointer-events:none;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  animation:rippleOut 1s ease forwards;
+}
+@keyframes rippleOut { 0%{width:0;height:0;opacity:1} 100%{width:100px;height:100px;opacity:0} }
+.orbit-item {
+  position:absolute;
+  animation:orbit linear infinite;
+}
+@keyframes orbit {
+  from{transform:rotate(0deg) translateX(var(--radius)) rotate(0deg)}
+  to{transform:rotate(360deg) translateX(var(--radius)) rotate(-360deg)}
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<div class="page-404" id="page404">
+  <!-- Background particles -->
+  <div class="particles-bg" style="opacity:0.4"></div>
+
+  <!-- Floating food items -->
+  <div class="floating-food" style="width:80px;height:80px;left:5%;animation-duration:12s;animation-delay:0s">
+    <img src="images/photo-1544025162-d76694265947-120x120.webp" alt="Food" style="width:100%;height:100%;object-fit:cover">
+  </div>
+  <div class="floating-food" style="width:60px;height:60px;left:15%;animation-duration:15s;animation-delay:2s">
+    <img src="images/photo-1488477304112-4944851de03d-80x80.webp" alt="Food" style="width:100%;height:100%;object-fit:cover">
+  </div>
+  <div class="floating-food" style="width:90px;height:90px;left:80%;animation-duration:10s;animation-delay:1s">
+    <img src="images/photo-1579584425555-c3ce17fd4351-120x120.webp" alt="Food" style="width:100%;height:100%;object-fit:cover">
+  </div>
+  <div class="floating-food" style="width:70px;height:70px;left:90%;animation-duration:13s;animation-delay:4s">
+    <img src="images/photo-1540189549336-e6e99c3679fe-100x100.webp" alt="Food" style="width:100%;height:100%;object-fit:cover">
+  </div>
+  <div class="floating-food" style="width:55px;height:55px;left:50%;animation-duration:11s;animation-delay:6s">
+    <img src="images/photo-1625944230945-1b7dd3b949ab-80x80.webp" alt="Food" style="width:100%;height:100%;object-fit:cover">
+  </div>
+  <div class="floating-food" style="width:75px;height:75px;left:35%;animation-duration:16s;animation-delay:3s">
+    <img src="images/photo-1547592180-85f173990554-100x100.webp" alt="Food" style="width:100%;height:100%;object-fit:cover">
+  </div>
+  <div class="floating-food" style="width:65px;height:65px;left:70%;animation-duration:14s;animation-delay:7s">
+    <img src="images/photo-1551538827-9c037cb4f32a-90x90.webp" alt="Drink" style="width:100%;height:100%;object-fit:cover">
+  </div>
+
+  <!-- Main Content -->
+  <div style="position:relative;z-index:10;text-align:center;padding:0 24px;max-width:700px">
+
+    <!-- Animated Chef Hat -->
+    <div class="chef-hat-anim text-5xl mb-4" style="display:inline-block">👨‍🍳</div>
+
+    <!-- Giant 404 -->
+    <div class="giant-404" id="giant404">404</div>
+
+    <!-- Message -->
+    <div style="position:relative;z-index:2;margin-top:-20px">
+      <h1 class="font-cormorant text-3xl md:text-4xl text-cream font-semibold mb-4">
+        Oops! This Dish Is Not on <span class="text-gradient">Today's Menu</span>
+      </h1>
+      <p class="text-secondary text-lg mb-3 max-w-md mx-auto">
+        Even our finest chefs occasionally lose a recipe. The page you're looking for has wandered off the menu.
+      </p>
+      <p class="text-muted text-sm mb-10">
+        Don't worry — our <span class="text-gold">maître d'</span> will escort you back to where the magic happens.
+      </p>
+
+      <!-- Actions -->
+      <div class="flex items-center justify-center gap-4 flex-wrap mb-8">
+        <a href="index.html" class="btn btn-gold btn-lg" id="homeBtn">
+          <i class="fa-solid fa-house"></i>
+          Return to Home
+        </a>
+        <a href="menu.html" class="btn btn-outline-gold btn-lg">
+          <i class="fa-solid fa-utensils"></i>
+          View Our Menu
+        </a>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="reservation.html" class="badge badge-dark hover:badge-gold transition-all cursor-pointer">Reserve a Table</a>
+        <a href="gallery.html" class="badge badge-dark hover:badge-gold transition-all cursor-pointer">Gallery</a>
+        <a href="contact.html" class="badge badge-dark hover:badge-gold transition-all cursor-pointer">Contact</a>
+        <a href="blog.html" class="badge badge-dark hover:badge-gold transition-all cursor-pointer">Blog</a>
+        <a href="events.html" class="badge badge-dark hover:badge-gold transition-all cursor-pointer">Events</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative orbit elements -->
+  <div class="orbit-item" style="--radius:180px;width:20px;height:20px;border-radius:50%;background:rgba(201,168,76,0.4);animation-duration:8s;left:50%;top:50%"></div>
+  <div class="orbit-item" style="--radius:240px;width:12px;height:12px;border-radius:50%;background:rgba(107,29,58,0.6);animation-duration:12s;animation-delay:2s;left:50%;top:50%"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // Mouse parallax on 404 text
+  const g404 = document.getElementById('giant404');
+  document.addEventListener('mousemove', e => {
+    const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+    const dx = (e.clientX - cx) / cx, dy = (e.clientY - cy) / cy;
+    if (g404) g404.style.transform = `perspective(800px) rotateY(${dx * 8}deg) rotateX(${-dy * 8}deg)`;
+  });
+
+  // Click ripple
+  document.addEventListener('click', e => {
+    const ripple = document.createElement('div');
+    ripple.className = 'cursor-ripple';
+    ripple.style.left = e.clientX + 'px';
+    ripple.style.top = e.clientY + 'px';
+    document.body.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 1000);
+  });
+
+  // GSAP entrance animation
+  if (typeof gsap !== 'undefined') {
+    gsap.from('#giant404', { scale:0.5, opacity:0, duration:1.2, ease:'elastic.out(1,0.5)' });
+    gsap.from('.chef-hat-anim', { y:-40, opacity:0, duration:0.8, delay:0.3 });
+    gsap.from('h1,p,.flex', { y:30, opacity:0, stagger:0.15, duration:0.8, delay:0.6, ease:'power3.out' });
+  }
+</script>
+</body>
+</html>

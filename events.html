@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="ÉCLAT Events — Wine dinners, chef's tables, masterclasses, and exclusive private dining experiences.">
+<title>Events — ÉCLAT Fine Dining</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#EEF2FF',cream:'#0F172A'}}}}</script>
+</head>
+<body>
+<div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
+<div class="scroll-progress"></div>
+<div class="cursor-dot"></div><div class="cursor-ring"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img"></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">Home</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="menu.html" class="nav-link">Menu</a></li>
+    <li><a href="events.html" class="nav-link active">Events</a></li>
+    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+    <li><a href="blog.html" class="nav-link">Blog</a></li>
+    <li><a href="contact.html" class="nav-link">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline-gold btn-sm">Login</a>
+    <a href="reservation.html" class="btn btn-gold btn-sm">Reserve</a>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html" class="nav-link">Home</a><a href="menu.html" class="nav-link">Menu</a>
+  <a href="events.html" class="nav-link">Events</a><a href="contact.html" class="nav-link">Contact</a>
+  <a href="reservation.html" class="btn btn-gold mt-4">Reserve</a>
+</div>
+
+<div class="page-banner">
+  <div class="page-banner-bg"><img src="images/photo-1530103862676-de8c9debad1d-1920.webp" alt="Events"></div>
+  <div class="page-banner-overlay"></div>
+  <div class="page-banner-content">
+    <div class="page-banner-eyebrow"><i class="fa-solid fa-champagne-glasses text-gold"></i>Experiences</div>
+    <h1 class="page-banner-title">Upcoming <span class="text-gradient">Events</span></h1>
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span><span>Events</span></div>
+  </div>
+</div>
+
+<!-- Featured Event -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Featured Event</div>
+      <h2 class="section-title">This Month's <span class="text-gradient">Highlight</span></h2>
+    </div>
+    <div class="glass-card overflow-hidden" data-aos="fade-up">
+      <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div style="aspect-ratio:16/9" class="lg:aspect-auto lg:h-auto">
+          <img src="images/photo-1414235077428-338989a2e8c0-800.webp" alt="Grand Dinner" class="w-full h-full object-cover" loading="lazy" style="height:100%;min-height:360px">
+        </div>
+        <div class="p-10 flex flex-col justify-center">
+          <div class="badge badge-gold mb-4">Featured · Limited Seats</div>
+          <div class="event-date-badge inline-flex mb-4"><span class="event-date-day">28</span><span class="event-date-month">Jun</span></div>
+          <h2 class="font-cormorant text-4xl text-cream font-semibold mb-4">Grand Cru Wine Pairing Dinner</h2>
+          <p class="text-secondary mb-6 leading-relaxed">An extraordinary evening curated by Chef Laurent and Sommelier Isabelle Blanc. Six meticulously crafted courses, each paired with a legendary Grand Cru from Bordeaux and Burgundy. Limited to 24 guests for an intimate experience.</p>
+          <div class="flex flex-wrap gap-4 text-sm text-muted mb-8">
+            <span><i class="fa-solid fa-clock text-gold mr-1"></i>7:00 PM – 11:00 PM</span>
+            <span><i class="fa-solid fa-location-dot text-gold mr-1"></i>Main Dining Room</span>
+            <span><i class="fa-solid fa-users text-gold mr-1"></i>24 Seats Only</span>
+            <span><i class="fa-solid fa-ticket text-gold mr-1"></i>$195 per person</span>
+          </div>
+          <div class="flex gap-4">
+            <a href="reservation.html" class="btn btn-gold">Book Now · $195/pp</a>
+            <button class="btn btn-outline-gold" onclick="showToast('Event details sent to your email!','info')">Get Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- All Events -->
+<section class="section" style="background:var(--dark-900)">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">July – September 2024</div>
+      <h2 class="section-title">All <span class="text-gradient">Events</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="event-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="event-img"><img src="images/photo-1530103862676-de8c9debad1d-600.webp" alt="Wine Pairing" loading="lazy"></div>
+        <div class="event-body">
+          <div class="event-date-badge"><span class="event-date-day">28</span><span class="event-date-month">Jun</span></div>
+          <h3 class="event-title">Grand Cru Wine Pairing Dinner</h3>
+          <div class="event-meta"><span><i class="fa-solid fa-clock"></i>7:00 PM</span><span><i class="fa-solid fa-users"></i>24 Seats</span><span><i class="fa-solid fa-ticket"></i>$195</span></div>
+          <p class="text-secondary text-sm mb-4">Six courses paired with legendary Bordeaux Grand Crus, curated by Sommelier Isabelle Blanc.</p>
+          <a href="reservation.html" class="btn btn-gold btn-sm w-full justify-center">Book Now</a>
+        </div>
+      </div>
+      <div class="event-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="event-img"><img src="images/photo-1414235077428-338989a2e8c0-600.webp" alt="Chef Table" loading="lazy"></div>
+        <div class="event-body">
+          <div class="event-date-badge"><span class="event-date-day">05</span><span class="event-date-month">Jul</span></div>
+          <h3 class="event-title">Chef's Table Experience</h3>
+          <div class="event-meta"><span><i class="fa-solid fa-clock"></i>6:30 PM</span><span><i class="fa-solid fa-users"></i>8 Seats</span><span><i class="fa-solid fa-ticket"></i>$285</span></div>
+          <p class="text-secondary text-sm mb-4">Sit at the chef's counter and watch Chef Laurent craft an exclusive 8-course menu from start to finish.</p>
+          <a href="reservation.html" class="btn btn-gold btn-sm w-full justify-center">Book Now</a>
+        </div>
+      </div>
+      <div class="event-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="event-img"><img src="images/photo-1551218808-94e220e084d2-600.webp" alt="Masterclass" loading="lazy"></div>
+        <div class="event-body">
+          <div class="event-date-badge"><span class="event-date-day">12</span><span class="event-date-month">Jul</span></div>
+          <h3 class="event-title">Masterclass: French Pastry Arts</h3>
+          <div class="event-meta"><span><i class="fa-solid fa-clock"></i>10:00 AM</span><span><i class="fa-solid fa-users"></i>12 Spots</span><span><i class="fa-solid fa-ticket"></i>$145</span></div>
+          <p class="text-secondary text-sm mb-4">Learn the secrets of classic French pastry with Chef Mei Lin — croissants, éclairs, and macarons.</p>
+          <a href="reservation.html" class="btn btn-gold btn-sm w-full justify-center">Book Now</a>
+        </div>
+      </div>
+      <div class="event-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="event-img"><img src="images/photo-1517248135467-4c7edcad34c4-600.webp" alt="Jazz Dinner" loading="lazy"></div>
+        <div class="event-body">
+          <div class="event-date-badge"><span class="event-date-day">19</span><span class="event-date-month">Jul</span></div>
+          <h3 class="event-title">Jazz & Fine Dining Evening</h3>
+          <div class="event-meta"><span><i class="fa-solid fa-clock"></i>7:30 PM</span><span><i class="fa-solid fa-users"></i>40 Seats</span><span><i class="fa-solid fa-ticket"></i>$165</span></div>
+          <p class="text-secondary text-sm mb-4">Five courses accompanied by live jazz from the Hudson Street Quartet. A night of music and gastronomy.</p>
+          <a href="reservation.html" class="btn btn-outline-gold btn-sm w-full justify-center">Book Now</a>
+        </div>
+      </div>
+      <div class="event-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="event-img"><img src="images/photo-1579584425555-c3ce17fd4351-600.webp" alt="Omakase" loading="lazy"></div>
+        <div class="event-body">
+          <div class="event-date-badge"><span class="event-date-day">26</span><span class="event-date-month">Jul</span></div>
+          <h3 class="event-title">Omakase Special Night</h3>
+          <div class="event-meta"><span><i class="fa-solid fa-clock"></i>6:00 PM</span><span><i class="fa-solid fa-users"></i>10 Seats</span><span><i class="fa-solid fa-ticket"></i>$320</span></div>
+          <p class="text-secondary text-sm mb-4">Master Sushi Chef Hiro Nakamura presents an exclusive 14-piece seasonal omakase experience.</p>
+          <a href="reservation.html" class="btn btn-outline-gold btn-sm w-full justify-center">Book Now</a>
+        </div>
+      </div>
+      <div class="event-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="event-img"><img src="images/photo-1488477304112-4944851de03d-600.webp" alt="Dessert" loading="lazy"></div>
+        <div class="event-body">
+          <div class="event-date-badge"><span class="event-date-day">02</span><span class="event-date-month">Aug</span></div>
+          <h3 class="event-title">Chocolate & Dessert Tasting</h3>
+          <div class="event-meta"><span><i class="fa-solid fa-clock"></i>3:00 PM</span><span><i class="fa-solid fa-users"></i>16 Spots</span><span><i class="fa-solid fa-ticket"></i>$85</span></div>
+          <p class="text-secondary text-sm mb-4">A decadent afternoon exploring single-origin chocolates, petit fours, and dessert wines.</p>
+          <a href="reservation.html" class="btn btn-outline-gold btn-sm w-full justify-center">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Private Events -->
+<section class="section">
+  <div class="container">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div data-aos="fade-right">
+        <div class="section-eyebrow" style="justify-content:flex-start">Le Salon Privé</div>
+        <h2 class="section-title text-left">Private <span class="text-gradient">Dining</span></h2>
+        <p class="text-secondary mb-6 leading-relaxed">Our exclusive private dining suite seats 8–18 guests in the utmost luxury. With a dedicated sommelier, private kitchen team, and full customization of menu and décor, Le Salon Privé is the ultimate venue for corporate events, celebrations, and intimate occasions.</p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex gap-3 text-sm"><i class="fa-solid fa-check text-gold mt-0.5"></i><span class="text-secondary">Fully customizable multi-course menus</span></li>
+          <li class="flex gap-3 text-sm"><i class="fa-solid fa-check text-gold mt-0.5"></i><span class="text-secondary">Dedicated sommelier and service team</span></li>
+          <li class="flex gap-3 text-sm"><i class="fa-solid fa-check text-gold mt-0.5"></i><span class="text-secondary">AV equipment and ambient music control</span></li>
+          <li class="flex gap-3 text-sm"><i class="fa-solid fa-check text-gold mt-0.5"></i><span class="text-secondary">Custom florals and table settings</span></li>
+          <li class="flex gap-3 text-sm"><i class="fa-solid fa-check text-gold mt-0.5"></i><span class="text-secondary">Available for lunch, dinner, and cocktail receptions</span></li>
+        </ul>
+        <a href="contact.html" class="btn btn-gold">Enquire Now</a>
+      </div>
+      <div data-aos="fade-left">
+        <img src="images/photo-1572116469696-31de0f17cc34-700.webp" alt="Private Dining" class="rounded-3xl w-full" style="height:420px;object-fit:cover" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div><div class="footer-logo">ÉCLAT</div><p class="footer-desc">Award-winning fine dining in New York City.</p><div class="footer-social"><a href="#" class="social-btn"><i class="fab fa-instagram"></i></a><a href="#" class="social-btn"><i class="fab fa-twitter"></i></a></div></div>
+      <div><h4 class="footer-heading">Explore</h4><ul class="footer-links"><li><a href="menu.html" class="footer-link">Our Menu</a></li><li><a href="chefs.html" class="footer-link">Our Chefs</a></li><li><a href="gallery.html" class="footer-link">Gallery</a></li></ul></div>
+      <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="reservation.html" class="footer-link">Reservations</a></li><li><a href="events.html" class="footer-link">Private Dining</a></li></ul></div>
+      <div><h4 class="footer-heading">Contact</h4><ul class="footer-links"><li class="footer-link"><i class="fa-solid fa-phone text-gold"></i>+1 (212) 555-0174</li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2024 ÉCLAT Fine Dining.</p><div class="flex gap-4"><a href="privacy.html" class="footer-link text-xs">Privacy</a><a href="terms.html" class="footer-link text-xs">Terms</a></div></div>
+  </div>
+</footer>
+<button id="backToTop"><i class="fa-solid fa-chevron-up"></i></button>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="ÉCLAT Blog — Culinary stories, chef insights, recipe inspiration, and behind-the-scenes glimpses.">
+<title>Blog — ÉCLAT Fine Dining</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#EEF2FF',cream:'#0F172A'}}}}</script>
+</head>
+<body>
+<div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
+<div class="scroll-progress"></div>
+<div class="cursor-dot"></div><div class="cursor-ring"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img"></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">Home</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="menu.html" class="nav-link">Menu</a></li>
+    <li><a href="events.html" class="nav-link">Events</a></li>
+    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+    <li><a href="blog.html" class="nav-link active">Blog</a></li>
+    <li><a href="contact.html" class="nav-link">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline-gold btn-sm">Login</a>
+    <a href="reservation.html" class="btn btn-gold btn-sm">Reserve</a>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html" class="nav-link">Home</a><a href="menu.html" class="nav-link">Menu</a>
+  <a href="blog.html" class="nav-link">Blog</a><a href="contact.html" class="nav-link">Contact</a>
+  <a href="reservation.html" class="btn btn-gold mt-4">Reserve</a>
+</div>
+
+<div class="page-banner">
+  <div class="page-banner-bg"><img src="images/photo-1551218808-94e220e084d2-1920.webp" alt="Blog"></div>
+  <div class="page-banner-overlay"></div>
+  <div class="page-banner-content">
+    <div class="page-banner-eyebrow"><i class="fa-solid fa-pen-nib text-gold"></i>Stories & Insights</div>
+    <h1 class="page-banner-title">The ÉCLAT <span class="text-gradient">Journal</span></h1>
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span><span>Blog</span></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+      <!-- Main Content -->
+      <div class="lg:col-span-3">
+        <!-- Featured Article -->
+        <div class="blog-card mb-8" data-aos="fade-up" style="display:grid;grid-template-columns:1fr 1fr;overflow:hidden">
+          <div class="blog-img" style="aspect-ratio:auto;height:100%;min-height:280px">
+            <img src="images/photo-1544025162-d76694265947-600.webp" alt="Wagyu" loading="lazy">
+            <span class="blog-category"><span class="badge badge-gold">Featured</span></span>
+          </div>
+          <div class="blog-body flex flex-col justify-center">
+            <div class="blog-meta"><span><i class="fa-regular fa-calendar mr-1"></i>June 15, 2024</span><span><i class="fa-regular fa-user mr-1"></i>Chef Laurent</span><span><i class="fa-solid fa-eye mr-1"></i>4.2k reads</span></div>
+            <h2 class="blog-title text-2xl"><a href="blog-details.html">The Art of A5 Wagyu: Why Japan's Finest Beef Changed My Life as a Chef</a></h2>
+            <p class="blog-excerpt">When I first tasted A5 Wagyu in a small Kagoshima restaurant in 2009, I cried. I'm not ashamed to admit it. It wasn't just food — it was a revelation about what beef could be, what flavor could mean...</p>
+            <a href="blog-details.html" class="btn btn-gold btn-sm self-start mt-2">Read Article <i class="fa-solid fa-arrow-right ml-1"></i></a>
+          </div>
+        </div>
+
+        <!-- Blog Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="blog-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="blog-img"><img src="images/photo-1579584425555-c3ce17fd4351-600.webp" alt="Sushi" loading="lazy"><span class="blog-category"><span class="badge badge-dark">Technique</span></span></div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-regular fa-calendar mr-1"></i>Jun 10, 2024</span><span><i class="fa-regular fa-clock mr-1"></i>5 min read</span></div>
+              <h3 class="blog-title"><a href="blog-details.html">The Philosophy of Omakase: Trust and Surrender in Japanese Cuisine</a></h3>
+              <p class="blog-excerpt">Omakase means "I leave it to you." There is profound trust in those four words — and profound responsibility...</p>
+              <div class="blog-footer"><a href="blog-details.html" class="text-gold text-sm font-semibold">Read More →</a><span class="text-muted text-xs">2.8k reads</span></div>
+            </div>
+          </div>
+          <div class="blog-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="blog-img"><img src="images/photo-1488477304112-4944851de03d-600.webp" alt="Dessert" loading="lazy"><span class="blog-category"><span class="badge badge-wine">Pastry</span></span></div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-regular fa-calendar mr-1"></i>Jun 5, 2024</span><span><i class="fa-regular fa-clock mr-1"></i>7 min read</span></div>
+              <h3 class="blog-title"><a href="blog-details.html">Chocolate at Its Peak: Inside the Creation of Our Valrhona Soufflé</a></h3>
+              <p class="blog-excerpt">A perfect soufflé lives for exactly 3 minutes and 40 seconds. Creating one requires obsessive precision...</p>
+              <div class="blog-footer"><a href="blog-details.html" class="text-gold text-sm font-semibold">Read More →</a><span class="text-muted text-xs">1.9k reads</span></div>
+            </div>
+          </div>
+          <div class="blog-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="blog-img"><img src="images/photo-1517248135467-4c7edcad34c4-600.webp" alt="Restaurant" loading="lazy"><span class="blog-category"><span class="badge badge-dark">Behind the Scenes</span></span></div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-regular fa-calendar mr-1"></i>May 28, 2024</span><span><i class="fa-regular fa-clock mr-1"></i>4 min read</span></div>
+              <h3 class="blog-title"><a href="blog-details.html">A Day in the Life: What Happens in ÉCLAT's Kitchen Before You Arrive</a></h3>
+              <p class="blog-excerpt">At 6AM, when most of New York is still sleeping, our kitchen is alive. Here's what that looks like...</p>
+              <div class="blog-footer"><a href="blog-details.html" class="text-gold text-sm font-semibold">Read More →</a><span class="text-muted text-xs">3.1k reads</span></div>
+            </div>
+          </div>
+          <div class="blog-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="blog-img"><img src="images/photo-1540189549336-e6e99c3679fe-600.webp" alt="Ingredients" loading="lazy"><span class="blog-category"><span class="badge badge-green">Sustainability</span></span></div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-regular fa-calendar mr-1"></i>May 20, 2024</span><span><i class="fa-regular fa-clock mr-1"></i>6 min read</span></div>
+              <h3 class="blog-title"><a href="blog-details.html">Zero Waste in a Fine Dining Kitchen: Our Journey Toward Sustainability</a></h3>
+              <p class="blog-excerpt">Luxury and sustainability are often seen as opposing forces. At ÉCLAT, we're proving that's a false choice...</p>
+              <div class="blog-footer"><a href="blog-details.html" class="text-gold text-sm font-semibold">Read More →</a><span class="text-muted text-xs">2.4k reads</span></div>
+            </div>
+          </div>
+          <div class="blog-card" data-aos="fade-up">
+            <div class="blog-img"><img src="images/photo-1625944230945-1b7dd3b949ab-600.webp" alt="Lobster" loading="lazy"><span class="blog-category"><span class="badge badge-dark">Seafood</span></span></div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-regular fa-calendar mr-1"></i>May 12, 2024</span><span><i class="fa-regular fa-clock mr-1"></i>5 min read</span></div>
+              <h3 class="blog-title"><a href="blog-details.html">Sourcing the Perfect Lobster: Our Journey to the Maine Coast</a></h3>
+              <p class="blog-excerpt">Twice a week, a boat leaves Pemaquid Point at 4AM. By 2PM, those lobsters are in our kitchen...</p>
+              <div class="blog-footer"><a href="blog-details.html" class="text-gold text-sm font-semibold">Read More →</a><span class="text-muted text-xs">1.6k reads</span></div>
+            </div>
+          </div>
+          <div class="blog-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="blog-img"><img src="images/photo-1551538827-9c037cb4f32a-600.webp" alt="Wine" loading="lazy"><span class="blog-category"><span class="badge badge-wine">Wine</span></span></div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-regular fa-calendar mr-1"></i>May 5, 2024</span><span><i class="fa-regular fa-clock mr-1"></i>8 min read</span></div>
+              <h3 class="blog-title"><a href="blog-details.html">Building ÉCLAT's 800-Bottle Wine Cellar: A Sommelier's Journey</a></h3>
+              <p class="blog-excerpt">Isabelle Blanc spent 3 years curating our cellar. She explains why every bottle tells a story of place and time...</p>
+              <div class="blog-footer"><a href="blog-details.html" class="text-gold text-sm font-semibold">Read More →</a><span class="text-muted text-xs">2.2k reads</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex items-center justify-center gap-2 mt-12">
+          <button class="w-10 h-10 rounded-full border border-dark-500 flex items-center justify-center text-muted hover:border-gold hover:text-gold transition-all"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+          <button class="w-10 h-10 rounded-full text-sm font-semibold" style="background:var(--grad-gold);color:var(--dark-bg)">1</button>
+          <button class="w-10 h-10 rounded-full border border-dark-500 text-secondary text-sm hover:border-gold hover:text-gold transition-all">2</button>
+          <button class="w-10 h-10 rounded-full border border-dark-500 text-secondary text-sm hover:border-gold hover:text-gold transition-all">3</button>
+          <span class="text-muted">...</span>
+          <button class="w-10 h-10 rounded-full border border-dark-500 text-secondary text-sm hover:border-gold hover:text-gold transition-all">8</button>
+          <button class="w-10 h-10 rounded-full border border-dark-500 flex items-center justify-center text-muted hover:border-gold hover:text-gold transition-all"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-1 space-y-6">
+        <!-- Search -->
+        <div class="glass-card p-6">
+          <h4 class="text-cream font-semibold mb-4">Search</h4>
+          <div class="input-icon-wrap">
+            <i class="input-icon fa-solid fa-search"></i>
+            <input type="text" class="form-control" placeholder="Search articles...">
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="glass-card p-6">
+          <h4 class="text-cream font-semibold mb-4">Categories</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="flex justify-between text-secondary hover:text-gold transition-colors text-sm py-1"><span>Chef Stories</span><span class="badge badge-dark text-xs">8</span></a></li>
+            <li><a href="#" class="flex justify-between text-secondary hover:text-gold transition-colors text-sm py-1"><span>Technique & Craft</span><span class="badge badge-dark text-xs">12</span></a></li>
+            <li><a href="#" class="flex justify-between text-secondary hover:text-gold transition-colors text-sm py-1"><span>Ingredients</span><span class="badge badge-dark text-xs">6</span></a></li>
+            <li><a href="#" class="flex justify-between text-secondary hover:text-gold transition-colors text-sm py-1"><span>Sustainability</span><span class="badge badge-dark text-xs">4</span></a></li>
+            <li><a href="#" class="flex justify-between text-secondary hover:text-gold transition-colors text-sm py-1"><span>Wine & Beverages</span><span class="badge badge-dark text-xs">9</span></a></li>
+            <li><a href="#" class="flex justify-between text-secondary hover:text-gold transition-colors text-sm py-1"><span>Events</span><span class="badge badge-dark text-xs">5</span></a></li>
+          </ul>
+        </div>
+
+        <!-- Recent Posts -->
+        <div class="glass-card p-6">
+          <h4 class="text-cream font-semibold mb-4">Recent Posts</h4>
+          <ul class="space-y-4">
+            <li class="flex gap-3">
+              <img src="images/photo-1544025162-d76694265947-60x60.webp" class="w-14 h-14 rounded-xl object-cover flex-shrink-0" alt="Post">
+              <div><a href="blog-details.html" class="text-secondary text-sm hover:text-gold transition-colors line-clamp-2">The Art of A5 Wagyu: Why Japan's Finest Beef Changed My Life</a><p class="text-muted text-xs mt-1">June 15, 2024</p></div>
+            </li>
+            <li class="flex gap-3">
+              <img src="images/photo-1579584425555-c3ce17fd4351-60x60.webp" class="w-14 h-14 rounded-xl object-cover flex-shrink-0" alt="Post">
+              <div><a href="blog-details.html" class="text-secondary text-sm hover:text-gold transition-colors line-clamp-2">The Philosophy of Omakase</a><p class="text-muted text-xs mt-1">June 10, 2024</p></div>
+            </li>
+            <li class="flex gap-3">
+              <img src="images/photo-1488477304112-4944851de03d-60x60.webp" class="w-14 h-14 rounded-xl object-cover flex-shrink-0" alt="Post">
+              <div><a href="blog-details.html" class="text-secondary text-sm hover:text-gold transition-colors line-clamp-2">Chocolate at Its Peak: The Valrhona Soufflé</a><p class="text-muted text-xs mt-1">June 5, 2024</p></div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tags -->
+        <div class="glass-card p-6">
+          <h4 class="text-cream font-semibold mb-4">Tags</h4>
+          <div class="flex flex-wrap gap-2">
+            <a href="#" class="badge badge-dark hover:badge-gold transition-all">#Wagyu</a>
+            <a href="#" class="badge badge-dark">#Michelin</a>
+            <a href="#" class="badge badge-dark">#Sushi</a>
+            <a href="#" class="badge badge-dark">#FrenchCuisine</a>
+            <a href="#" class="badge badge-dark">#Sustainability</a>
+            <a href="#" class="badge badge-dark">#Wine</a>
+            <a href="#" class="badge badge-dark">#Truffle</a>
+            <a href="#" class="badge badge-dark">#FineDining</a>
+          </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="glass-card p-6">
+          <h4 class="text-cream font-semibold mb-2">Newsletter</h4>
+          <p class="text-muted text-xs mb-4">Get new articles delivered to your inbox.</p>
+          <form class="newsletter-form space-y-3">
+            <input type="email" class="form-control" placeholder="Your email">
+            <button type="submit" class="btn btn-gold btn-sm w-full justify-center">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div><div class="footer-logo">ÉCLAT</div><p class="footer-desc">Award-winning fine dining in New York City.</p><div class="footer-social"><a href="#" class="social-btn"><i class="fab fa-instagram"></i></a><a href="#" class="social-btn"><i class="fab fa-twitter"></i></a></div></div>
+      <div><h4 class="footer-heading">Explore</h4><ul class="footer-links"><li><a href="menu.html" class="footer-link">Our Menu</a></li><li><a href="chefs.html" class="footer-link">Our Chefs</a></li></ul></div>
+      <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="reservation.html" class="footer-link">Reservations</a></li><li><a href="events.html" class="footer-link">Events</a></li></ul></div>
+      <div><h4 class="footer-heading">Contact</h4><ul class="footer-links"><li class="footer-link"><i class="fa-solid fa-phone text-gold"></i>+1 (212) 555-0174</li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2024 ÉCLAT Fine Dining.</p><div class="flex gap-4"><a href="privacy.html" class="footer-link text-xs">Privacy</a><a href="terms.html" class="footer-link text-xs">Terms</a></div></div>
+  </div>
+</footer>
+<button id="backToTop"><i class="fa-solid fa-chevron-up"></i></button>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

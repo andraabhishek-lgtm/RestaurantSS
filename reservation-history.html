@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reservation History — ÉCLAT Fine Dining</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#EEF2FF',cream:'#0F172A'}}}}</script>
+</head>
+<body>
+<div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
+<div class="cursor-dot"></div><div class="cursor-ring"></div>
+<div class="dashboard-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><a href="index.html" class="nav-logo"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img" style="height:30px"></a></div>
+    <nav class="sidebar-nav">
+      <p class="sidebar-section-title">Overview</p>
+      <a href="dashboard.html" class="sidebar-link"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
+      <a href="notifications.html" class="sidebar-link"><i class="fa-solid fa-bell"></i>Notifications<span class="sidebar-badge">3</span></a>
+      <p class="sidebar-section-title mt-4">Dining</p>
+      <a href="reservation.html" class="sidebar-link"><i class="fa-regular fa-calendar-plus"></i>New Reservation</a>
+      <a href="reservation-history.html" class="sidebar-link active"><i class="fa-regular fa-calendar-check"></i>My Reservations</a>
+      <a href="order-history.html" class="sidebar-link"><i class="fa-solid fa-receipt"></i>Order History</a>
+      <a href="wishlist.html" class="sidebar-link"><i class="fa-regular fa-heart"></i>My Wishlist</a>
+      <p class="sidebar-section-title mt-4">Account</p>
+      <a href="profile.html" class="sidebar-link"><i class="fa-regular fa-user"></i>Profile</a>
+      <a href="settings.html" class="sidebar-link"><i class="fa-solid fa-gear"></i>Settings</a>
+      <a href="login.html" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i>Sign Out</a>
+    </nav>
+    <div class="p-4 border-t" style="border-color:var(--dark-600)"><div class="flex items-center gap-3"><img src="images/photo-1494790108377-be9c29b29330-60x60.webp" class="w-10 h-10 rounded-full object-cover border-2 border-gold" alt="Avatar"><div><p class="text-cream text-sm font-semibold">Sarah Johnson</p><p class="text-gold text-xs">Gold Member</p></div></div></div>
+  </aside>
+  <main class="dashboard-main">
+    <div class="dashboard-header">
+      <div>
+        <h1 class="dashboard-title">My Reservations</h1>
+        <p class="text-secondary text-sm mt-1">8 total · 2 upcoming</p>
+      </div>
+      <div class="flex gap-3">
+        <button id="sidebar-toggle" class="nav-icon-btn lg:hidden"><i class="fa-solid fa-bars"></i></button>
+        <a href="reservation.html" class="btn btn-gold btn-sm"><i class="fa-regular fa-calendar-plus mr-1"></i>New Reservation</a>
+      </div>
+    </div>
+
+    <!-- Upcoming -->
+    <h3 class="text-cream font-semibold mb-3">Upcoming Reservations</h3>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
+      <div class="glass-card p-6" style="border-color:rgba(201,168,76,0.25)">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <span class="status-badge confirmed mb-2 inline-flex"><i class="fa-solid fa-circle text-xs"></i>Confirmed</span>
+            <h4 class="text-cream font-semibold text-lg">Sat, Jun 28, 2024</h4>
+            <p class="text-gold text-sm">7:30 PM · Dinner</p>
+          </div>
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl" style="background:rgba(201,168,76,0.1);color:var(--gold)"><i class="fa-regular fa-calendar-check"></i></div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-sm mb-5">
+          <div><p class="text-muted text-xs mb-1">Guests</p><p class="text-cream">2 guests</p></div>
+          <div><p class="text-muted text-xs mb-1">Table</p><p class="text-cream">Window Table</p></div>
+          <div><p class="text-muted text-xs mb-1">Occasion</p><p class="text-cream"><span class="badge badge-wine">Anniversary</span></p></div>
+          <div><p class="text-muted text-xs mb-1">Ref</p><p class="text-cream font-mono text-xs">#RES-2024-028</p></div>
+        </div>
+        <div class="flex gap-3">
+          <button class="btn btn-dark btn-sm flex-1 justify-center" onclick="showToast('Modification request received. We will contact you within 2 hours.','info')"><i class="fa-solid fa-pen-to-square mr-1"></i>Modify</button>
+          <button class="btn btn-sm flex-1 justify-center" style="background:rgba(239,68,68,0.1);color:#EF4444;border:1px solid rgba(239,68,68,0.25)" onclick="showToast('Please note: cancellations within 24 hours forfeit the deposit.','warning')"><i class="fa-solid fa-xmark mr-1"></i>Cancel</button>
+        </div>
+      </div>
+      <div class="glass-card p-6" style="border-color:rgba(201,168,76,0.25)">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <span class="status-badge confirmed mb-2 inline-flex"><i class="fa-solid fa-circle text-xs"></i>Confirmed</span>
+            <h4 class="text-cream font-semibold text-lg">Fri, Jul 5, 2024</h4>
+            <p class="text-gold text-sm">8:00 PM · Dinner</p>
+          </div>
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl" style="background:rgba(201,168,76,0.1);color:var(--gold)"><i class="fa-regular fa-calendar-check"></i></div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-sm mb-5">
+          <div><p class="text-muted text-xs mb-1">Guests</p><p class="text-cream">4 guests</p></div>
+          <div><p class="text-muted text-xs mb-1">Table</p><p class="text-cream">Private Dining</p></div>
+          <div><p class="text-muted text-xs mb-1">Occasion</p><p class="text-cream"><span class="badge badge-dark">Birthday</span></p></div>
+          <div><p class="text-muted text-xs mb-1">Ref</p><p class="text-cream font-mono text-xs">#RES-2024-031</p></div>
+        </div>
+        <div class="flex gap-3">
+          <button class="btn btn-dark btn-sm flex-1 justify-center" onclick="showToast('Modification request received. We will contact you within 2 hours.','info')"><i class="fa-solid fa-pen-to-square mr-1"></i>Modify</button>
+          <button class="btn btn-sm flex-1 justify-center" style="background:rgba(239,68,68,0.1);color:#EF4444;border:1px solid rgba(239,68,68,0.25)" onclick="showToast('Please note: cancellations within 24 hours forfeit the deposit.','warning')"><i class="fa-solid fa-xmark mr-1"></i>Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Past Reservations Table -->
+    <h3 class="text-cream font-semibold mb-3">Past Reservations</h3>
+    <div class="glass-card">
+      <div class="table-wrap" style="border:none;border-radius:0">
+        <table class="data-table">
+          <thead><tr><th>Ref</th><th>Date & Time</th><th>Guests</th><th>Occasion</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><p class="text-cream font-mono text-xs">#RES-2024-021</p></td>
+              <td><div class="text-cream text-sm">Jun 14, 2024</div><div class="text-muted text-xs">8:00 PM · Dinner</div></td>
+              <td>4 guests</td>
+              <td><span class="badge badge-dark">Business</span></td>
+              <td><span class="status-badge confirmed">Completed</span></td>
+              <td><button class="btn btn-ghost btn-sm text-xs" onclick="showToast('Review submitted — thank you!','success')"><i class="fa-solid fa-star mr-1"></i>Review</button></td>
+            </tr>
+            <tr>
+              <td><p class="text-cream font-mono text-xs">#RES-2024-014</p></td>
+              <td><div class="text-cream text-sm">May 30, 2024</div><div class="text-muted text-xs">7:00 PM · Dinner</div></td>
+              <td>2 guests</td>
+              <td><span class="badge badge-wine">Date Night</span></td>
+              <td><span class="status-badge confirmed">Completed</span></td>
+              <td><button class="btn btn-ghost btn-sm text-xs" onclick="showToast('Review submitted — thank you!','success')"><i class="fa-solid fa-star mr-1"></i>Review</button></td>
+            </tr>
+            <tr>
+              <td><p class="text-cream font-mono text-xs">#RES-2024-008</p></td>
+              <td><div class="text-cream text-sm">Apr 21, 2024</div><div class="text-muted text-xs">12:30 PM · Brunch</div></td>
+              <td>3 guests</td>
+              <td><span class="badge badge-dark">Casual</span></td>
+              <td><span class="status-badge confirmed">Completed</span></td>
+              <td><button class="btn btn-ghost btn-sm text-xs" onclick="showToast('Review submitted — thank you!','success')"><i class="fa-solid fa-star mr-1"></i>Review</button></td>
+            </tr>
+            <tr>
+              <td><p class="text-cream font-mono text-xs">#RES-2024-002</p></td>
+              <td><div class="text-cream text-sm">Feb 14, 2024</div><div class="text-muted text-xs">8:00 PM · Dinner</div></td>
+              <td>2 guests</td>
+              <td><span class="badge badge-wine">Valentine's</span></td>
+              <td><span class="status-badge confirmed">Completed</span></td>
+              <td><button class="btn btn-ghost btn-sm text-xs" onclick="showToast('Review submitted — thank you!','success')"><i class="fa-solid fa-star mr-1"></i>Review</button></td>
+            </tr>
+            <tr>
+              <td><p class="text-cream font-mono text-xs">#RES-2023-089</p></td>
+              <td><div class="text-cream text-sm">Dec 31, 2023</div><div class="text-muted text-xs">9:00 PM · NYE Gala</div></td>
+              <td>2 guests</td>
+              <td><span class="badge badge-gold">Special Event</span></td>
+              <td><span class="status-badge confirmed">Completed</span></td>
+              <td><button class="btn btn-ghost btn-sm text-xs" onclick="showToast('Review submitted — thank you!','success')"><i class="fa-solid fa-star mr-1"></i>Review</button></td>
+            </tr>
+            <tr>
+              <td><p class="text-cream font-mono text-xs">#RES-2023-061</p></td>
+              <td><div class="text-cream text-sm">Sep 18, 2023</div><div class="text-muted text-xs">7:30 PM · Dinner</div></td>
+              <td>6 guests</td>
+              <td><span class="badge badge-dark">Birthday</span></td>
+              <td><span class="status-badge pending">No-Show</span></td>
+              <td><button class="btn btn-ghost btn-sm text-xs" onclick="showToast('Contact us to discuss no-show fees.','warning')">Contact</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Sign in to your ÉCLAT account.">
+<title>Login — ÉCLAT Fine Dining</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#EEF2FF',cream:'#0F172A'}}}}</script>
+</head>
+<body>
+<div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
+<div class="cursor-dot"></div><div class="cursor-ring"></div>
+
+<div class="auth-wrap">
+  <!-- Left: Form -->
+  <div class="auth-left">
+    <div class="auth-card">
+      <!-- Logo -->
+      <a href="index.html" class="nav-logo mb-8 block"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img" style="height:42px"></a>
+
+      <div class="auth-header">
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Sign in to your ÉCLAT account to manage reservations and rewards.</p>
+      </div>
+
+      <!-- Social Login -->
+      <div class="space-y-3 mb-6">
+        <button class="social-login-btn" onclick="showToast('Social login coming soon!','info')">
+          <i class="fab fa-google text-red-400"></i>Continue with Google
+        </button>
+        <button class="social-login-btn" onclick="showToast('Social login coming soon!','info')">
+          <i class="fab fa-apple" style="color:#1C1C1C"></i>Continue with Apple
+        </button>
+      </div>
+
+      <div class="ornament mb-6"><div class="ornament-icon">✦</div></div>
+
+      <!-- Login Form -->
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <div class="input-icon-wrap">
+            <i class="input-icon fa-regular fa-envelope"></i>
+            <input type="email" id="email" class="form-control form-control-lg" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="flex justify-between items-center mb-2">
+            <label class="form-label mb-0">Password</label>
+            <a href="forgot-password.html" class="text-gold text-xs hover:underline">Forgot password?</a>
+          </div>
+          <div class="input-icon-wrap" style="position:relative">
+            <i class="input-icon fa-solid fa-lock"></i>
+            <input type="password" id="login-password" class="form-control form-control-lg" placeholder="••••••••" required style="padding-right:50px">
+            <button type="button" class="pwd-toggle" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--text-muted)"><i class="fa-regular fa-eye"></i></button>
+          </div>
+        </div>
+        <label class="flex items-center gap-3 cursor-pointer mb-6">
+          <input type="checkbox" class="accent-gold">
+          <span class="text-secondary text-sm">Remember me for 30 days</span>
+        </label>
+        <button type="submit" class="btn btn-gold w-full justify-center btn-lg mb-4">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>Sign In
+        </button>
+      </form>
+
+      <p class="text-center text-secondary text-sm">
+        Don't have an account? <a href="signup.html" class="text-gold font-semibold hover:underline">Create one free</a>
+      </p>
+
+      <div class="mt-8 pt-6" style="border-top:1px solid var(--dark-600)">
+        <p class="text-muted text-xs text-center mb-3">Or continue as</p>
+        <a href="admin.html" class="btn btn-dark btn-sm w-full justify-center">
+          <i class="fa-solid fa-gauge-high text-gold"></i>Admin Dashboard
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Image -->
+  <div class="auth-right hidden lg:block">
+    <img src="images/photo-1414235077428-338989a2e8c0-1000.webp" alt="Restaurant" loading="lazy">
+    <div class="auth-right-overlay">
+      <img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img" style="height:56px;margin:0 auto 16px;display:block;mix-blend-mode:screen">
+      <h2 class="font-cormorant text-5xl font-semibold mb-4" style="color:#F5F0E8">ÉCLAT</h2>
+      <p class="text-lg mb-8 max-w-sm" style="color:rgba(245,240,232,0.78)">"Where Every Meal Becomes a Memory"</p>
+      <div class="glass-card p-5 max-w-xs text-left" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.22)">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <span class="text-sm" style="color:#F5F0E8">4.9/5 rating</span>
+        </div>
+        <p class="text-sm italic" style="color:rgba(245,240,232,0.80)">"The most extraordinary dining experience of my life."</p>
+        <p class="text-gold text-xs mt-2">— Sarah Johnson, NY Times</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

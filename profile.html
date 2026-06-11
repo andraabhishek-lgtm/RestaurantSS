@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>My Profile — ÉCLAT Fine Dining</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#EEF2FF',cream:'#0F172A'}}}}</script>
+</head>
+<body>
+<div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
+<div class="cursor-dot"></div><div class="cursor-ring"></div>
+<div class="dashboard-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><a href="index.html" class="nav-logo"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img" style="height:30px"></a></div>
+    <nav class="sidebar-nav">
+      <p class="sidebar-section-title">Overview</p>
+      <a href="dashboard.html" class="sidebar-link"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
+      <a href="notifications.html" class="sidebar-link"><i class="fa-solid fa-bell"></i>Notifications<span class="sidebar-badge">3</span></a>
+      <p class="sidebar-section-title mt-4">Dining</p>
+      <a href="reservation.html" class="sidebar-link"><i class="fa-regular fa-calendar-plus"></i>New Reservation</a>
+      <a href="reservation-history.html" class="sidebar-link"><i class="fa-regular fa-calendar-check"></i>My Reservations</a>
+      <a href="order-history.html" class="sidebar-link"><i class="fa-solid fa-receipt"></i>Order History</a>
+      <a href="wishlist.html" class="sidebar-link"><i class="fa-regular fa-heart"></i>My Wishlist</a>
+      <p class="sidebar-section-title mt-4">Account</p>
+      <a href="profile.html" class="sidebar-link active"><i class="fa-regular fa-user"></i>Profile</a>
+      <a href="settings.html" class="sidebar-link"><i class="fa-solid fa-gear"></i>Settings</a>
+      <a href="login.html" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i>Sign Out</a>
+    </nav>
+    <div class="p-4 border-t" style="border-color:var(--dark-600)"><div class="flex items-center gap-3"><img src="images/photo-1494790108377-be9c29b29330-60x60.webp" class="w-10 h-10 rounded-full object-cover border-2 border-gold" alt="Avatar"><div><p class="text-cream text-sm font-semibold">Sarah Johnson</p><p class="text-gold text-xs">Gold Member</p></div></div></div>
+  </aside>
+  <main class="dashboard-main">
+    <div class="dashboard-header">
+      <h1 class="dashboard-title">My Profile</h1>
+      <div class="flex gap-3">
+        <button id="sidebar-toggle" class="nav-icon-btn lg:hidden"><i class="fa-solid fa-bars"></i></button>
+        <a href="dashboard.html" class="btn btn-dark btn-sm"><i class="fa-solid fa-arrow-left mr-1"></i>Dashboard</a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Profile Card -->
+      <div class="lg:col-span-1">
+        <div class="glass-card p-8 text-center mb-6">
+          <div class="relative inline-block mb-4">
+            <img src="images/photo-1494790108377-be9c29b29330-200x200.webp" class="w-28 h-28 rounded-full object-cover border-4 border-gold mx-auto" alt="Avatar">
+            <button class="absolute bottom-0 right-0 w-9 h-9 rounded-full flex items-center justify-center text-sm" style="background:var(--grad-gold);color:var(--dark-bg)" onclick="showToast('Upload photo feature available soon','info')"><i class="fa-solid fa-camera"></i></button>
+          </div>
+          <h2 class="font-cormorant text-2xl text-cream font-semibold mb-1">Sarah Johnson</h2>
+          <p class="text-secondary text-sm mb-3">@sarahjohnson · Member since 2022</p>
+          <div class="flex justify-center gap-2 mb-4">
+            <span class="badge badge-gold"><i class="fa-solid fa-crown text-xs"></i>Gold Member</span>
+          </div>
+          <div class="grid grid-cols-3 gap-3 mt-4">
+            <div class="text-center"><p class="text-gold font-bold text-xl font-cormorant">2,480</p><p class="text-muted text-xs">Points</p></div>
+            <div class="text-center"><p class="text-gold font-bold text-xl font-cormorant">14</p><p class="text-muted text-xs">Orders</p></div>
+            <div class="text-center"><p class="text-gold font-bold text-xl font-cormorant">8</p><p class="text-muted text-xs">Visits</p></div>
+          </div>
+        </div>
+        <div class="glass-card p-6">
+          <h4 class="text-cream font-semibold mb-4">Dining Preferences</h4>
+          <div class="space-y-3">
+            <div><p class="text-muted text-xs mb-1">Favorite Category</p><span class="badge badge-gold">Main Course</span></div>
+            <div><p class="text-muted text-xs mb-1">Dietary</p><span class="badge badge-green">No Restrictions</span></div>
+            <div><p class="text-muted text-xs mb-1">Preferred Seating</p><span class="badge badge-dark">Window Table</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit Form -->
+      <div class="lg:col-span-2">
+        <div class="glass-card p-8">
+          <h3 class="text-cream font-semibold text-lg mb-6">Personal Information</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+            <div class="form-group"><label class="form-label">First Name</label><div class="input-icon-wrap"><i class="input-icon fa-regular fa-user"></i><input type="text" class="form-control" value="Sarah"></div></div>
+            <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-control" value="Johnson"></div>
+          </div>
+          <div class="form-group mb-5">
+            <label class="form-label">Username</label>
+            <div class="input-icon-wrap"><i class="input-icon fa-solid fa-at"></i><input type="text" class="form-control" value="@sarahjohnson"></div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+            <div class="form-group"><label class="form-label">Email Address</label><div class="input-icon-wrap"><i class="input-icon fa-regular fa-envelope"></i><input type="email" class="form-control" value="sarah@nytimes.com"></div></div>
+            <div class="form-group"><label class="form-label">Phone Number</label><div class="input-icon-wrap"><i class="input-icon fa-solid fa-phone"></i><input type="tel" class="form-control" value="+1 (212) 555-1234"></div></div>
+          </div>
+          <div class="form-group mb-5">
+            <label class="form-label">Birthday (for special dining benefits)</label>
+            <div class="input-icon-wrap"><i class="input-icon fa-regular fa-cake-candles"></i><input type="date" class="form-control" value="1990-04-15"></div>
+          </div>
+          <div class="form-group mb-5">
+            <label class="form-label">Bio</label>
+            <textarea class="form-control" rows="3">Food critic at The New York Times. Passionate about fine dining, wine, and the stories behind exceptional meals.</textarea>
+          </div>
+          <div class="divider divider-sm"></div>
+          <h3 class="text-cream font-semibold text-lg mb-5">Dining Preferences</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+            <div class="form-group">
+              <label class="form-label">Preferred Seating</label>
+              <select class="form-control form-select"><option selected>Window Table</option><option>Booth</option><option>Bar</option><option>Chef's Counter</option></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Dietary Restrictions</label>
+              <select class="form-control form-select"><option selected>None</option><option>Vegetarian</option><option>Vegan</option><option>Gluten Free</option></select>
+            </div>
+          </div>
+          <div class="flex gap-4 flex-wrap">
+            <button class="btn btn-gold" onclick="showToast('Profile updated successfully!','success')"><i class="fa-solid fa-check mr-1"></i>Save Changes</button>
+            <button class="btn btn-dark" onclick="showToast('Changes discarded.','info')">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

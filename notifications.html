@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Notifications — ÉCLAT Fine Dining</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#EEF2FF',cream:'#0F172A'}}}}</script>
+</head>
+<body>
+<div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
+<div class="cursor-dot"></div><div class="cursor-ring"></div>
+<div class="dashboard-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><a href="index.html" class="nav-logo"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img" style="height:30px"></a></div>
+    <nav class="sidebar-nav">
+      <p class="sidebar-section-title">Overview</p>
+      <a href="dashboard.html" class="sidebar-link"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
+      <a href="notifications.html" class="sidebar-link active"><i class="fa-solid fa-bell"></i>Notifications<span class="sidebar-badge">3</span></a>
+      <p class="sidebar-section-title mt-4">Dining</p>
+      <a href="reservation.html" class="sidebar-link"><i class="fa-regular fa-calendar-plus"></i>New Reservation</a>
+      <a href="reservation-history.html" class="sidebar-link"><i class="fa-regular fa-calendar-check"></i>My Reservations</a>
+      <a href="order-history.html" class="sidebar-link"><i class="fa-solid fa-receipt"></i>Order History</a>
+      <a href="wishlist.html" class="sidebar-link"><i class="fa-regular fa-heart"></i>My Wishlist</a>
+      <p class="sidebar-section-title mt-4">Account</p>
+      <a href="profile.html" class="sidebar-link"><i class="fa-regular fa-user"></i>Profile</a>
+      <a href="settings.html" class="sidebar-link"><i class="fa-solid fa-gear"></i>Settings</a>
+      <a href="login.html" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i>Sign Out</a>
+    </nav>
+    <div class="p-4 border-t" style="border-color:var(--dark-600)"><div class="flex items-center gap-3"><img src="images/photo-1494790108377-be9c29b29330-60x60.webp" class="w-10 h-10 rounded-full object-cover border-2 border-gold" alt="Avatar"><div><p class="text-cream text-sm font-semibold">Sarah Johnson</p><p class="text-gold text-xs">Gold Member</p></div></div></div>
+  </aside>
+  <main class="dashboard-main">
+    <div class="dashboard-header">
+      <h1 class="dashboard-title">Notifications</h1>
+      <div class="flex gap-3">
+        <button id="sidebar-toggle" class="nav-icon-btn lg:hidden"><i class="fa-solid fa-bars"></i></button>
+        <button class="btn btn-dark btn-sm" id="mark-all-read"><i class="fa-solid fa-check-double mr-1"></i>Mark All Read</button>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="flex gap-2 flex-wrap mb-6">
+      <button class="btn btn-gold btn-sm notif-filter-btn" data-filter="all">All <span class="ml-1 text-xs opacity-70">12</span></button>
+      <button class="btn btn-dark btn-sm notif-filter-btn" data-filter="unread">Unread <span class="ml-1 text-xs opacity-70">3</span></button>
+      <button class="btn btn-dark btn-sm notif-filter-btn" data-filter="reservation">Reservations</button>
+      <button class="btn btn-dark btn-sm notif-filter-btn" data-filter="dining">Dining</button>
+      <button class="btn btn-dark btn-sm notif-filter-btn" data-filter="promo">Promotions</button>
+    </div>
+
+    <div class="glass-card" id="notifications-list">
+      <!-- Unread -->
+      <div class="notif-item unread" data-category="reservation">
+        <div class="notif-icon-wrap" style="background:rgba(201,168,76,0.12)"><i class="fa-regular fa-calendar-check text-gold"></i></div>
+        <div class="notif-body">
+          <p class="notif-title">Reservation Confirmed — Jun 28</p>
+          <p class="notif-text">Your dinner reservation for 2 guests on Saturday, June 28 at 7:30 PM has been confirmed. We look forward to welcoming you.</p>
+          <p class="notif-time">2 hours ago</p>
+        </div>
+        <div class="notif-actions">
+          <span class="notif-dot"></span>
+          <button class="notif-dismiss" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+      <div class="notif-item unread" data-category="promo">
+        <div class="notif-icon-wrap" style="background:rgba(107,29,58,0.15)"><i class="fa-solid fa-crown text-wine"></i></div>
+        <div class="notif-body">
+          <p class="notif-title">Gold Member Exclusive — Summer Tasting Menu</p>
+          <p class="notif-text">As a Gold member, you have early access to reserve Chef Dubois' new 8-course Summer Sonata tasting menu before it opens to the public on June 20th.</p>
+          <p class="notif-time">1 day ago</p>
+        </div>
+        <div class="notif-actions">
+          <span class="notif-dot"></span>
+          <button class="notif-dismiss" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+      <div class="notif-item unread" data-category="dining">
+        <div class="notif-icon-wrap" style="background:rgba(139,92,246,0.12)"><i class="fa-solid fa-gift" style="color:#A78BFA"></i></div>
+        <div class="notif-body">
+          <p class="notif-title">You earned 89 reward points!</p>
+          <p class="notif-text">Your order from June 14 earned 89 ÉCLAT points. Your balance is now 2,480 pts — just 1,020 away from Platinum status.</p>
+          <p class="notif-time">3 days ago</p>
+        </div>
+        <div class="notif-actions">
+          <span class="notif-dot"></span>
+          <button class="notif-dismiss" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <!-- Read -->
+      <div class="notif-item" data-category="reservation">
+        <div class="notif-icon-wrap" style="background:rgba(52,211,153,0.1)"><i class="fa-regular fa-calendar" style="color:#34D399"></i></div>
+        <div class="notif-body">
+          <p class="notif-title">Reminder — Tomorrow's Dinner</p>
+          <p class="notif-text">This is a reminder that your reservation is tomorrow, Friday, June 14 at 8:00 PM for 4 guests. Please note our 15-minute grace period policy.</p>
+          <p class="notif-time">Jun 13 · 10:00 AM</p>
+        </div>
+        <div class="notif-actions"><button class="notif-dismiss" title="Dismiss"><i class="fa-solid fa-xmark"></i></button></div>
+      </div>
+      <div class="notif-item" data-category="dining">
+        <div class="notif-icon-wrap" style="background:rgba(201,168,76,0.08)"><i class="fa-solid fa-star text-gold"></i></div>
+        <div class="notif-body">
+          <p class="notif-title">How was your last visit?</p>
+          <p class="notif-text">We hope you enjoyed your dinner on June 14. We'd love to hear your thoughts — your feedback helps Chef Dubois and the team continue to excel.</p>
+          <p class="notif-time">Jun 14 · 11:30 PM</p>
+        </div>
+        <div class="notif-actions"><button class="notif-dismiss" title="Dismiss"><i class="fa-solid fa-xmark"></i></button></div>
+      </div>
+      <div class="notif-item" data-category="promo">
+        <div class="notif-icon-wrap" style="background:rgba(248,113,113,0.1)"><i class="fa-solid fa-tag" style="color:#F87171"></i></div>
+        <div class="notif-body">
+          <p class="notif-title">Father's Day Wine Pairing Dinner — Seats Available</p>
+          <p class="notif-text">Limited seats remain for our sold-out Father's Day celebration on June 16. A guest cancellation has opened 2 spots — reserve now before they're gone.</p>
+          <p class="notif-time">Jun 10 · 9:00 AM</p>
+        </div>
+        <div class="notif-actions"><button class="notif-dismiss" title="Dismiss"><i class="fa-solid fa-xmark"></i></button></div>
+      </div>
+      <div class="notif-item" data-category="reservation">
+        <div class="notif-icon-wrap" style="background:rgba(201,168,76,0.08)"><i class="fa-solid fa-pen-to-square text-gold"></i></div>
+        <div class="notif-body">
+          <p class="notif-title">Reservation Modified — Jul 5</p>
+          <p class="notif-text">Your reservation on July 5 has been updated from 7:30 PM to 8:00 PM as requested. A confirmation email has been sent to sarah@nytimes.com.</p>
+          <p class="notif-time">Jun 8 · 3:12 PM</p>
+        </div>
+        <div class="notif-actions"><button class="notif-dismiss" title="Dismiss"><i class="fa-solid fa-xmark"></i></button></div>
+      </div>
+      <div class="notif-item" data-category="dining">
+        <div class="notif-icon-wrap" style="background:rgba(201,168,76,0.08)"><i class="fa-solid fa-utensils text-gold"></i></div>
+        <div class="notif-body">
+          <p class="notif-title">New Summer Menu Available</p>
+          <p class="notif-text">Chef Dubois has unveiled the Summer 2024 à la carte menu featuring 12 new seasonal dishes. Explore highlights including Yuzu-Miso Black Cod and White Truffle Risotto.</p>
+          <p class="notif-time">Jun 1 · 12:00 PM</p>
+        </div>
+        <div class="notif-actions"><button class="notif-dismiss" title="Dismiss"><i class="fa-solid fa-xmark"></i></button></div>
+      </div>
+
+      <!-- Empty State (hidden by default) -->
+      <div id="notif-empty" style="display:none" class="p-16 text-center">
+        <div class="text-5xl mb-4">🔔</div>
+        <p class="text-cream font-semibold mb-1">All caught up!</p>
+        <p class="text-secondary text-sm">No notifications in this category.</p>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="js/main.js"></script>
+<style>
+.notif-item{display:flex;align-items:flex-start;gap:16px;padding:18px 24px;border-bottom:1px solid var(--dark-600);transition:background .2s}
+.notif-item:last-child{border-bottom:none}
+.notif-item.unread{background:rgba(201,168,76,0.04)}
+.notif-icon-wrap{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.notif-body{flex:1;min-width:0}
+.notif-title{color:var(--text-cream);font-size:.875rem;font-weight:600;margin-bottom:4px}
+.notif-item:not(.unread) .notif-title{color:var(--text-secondary);font-weight:500}
+.notif-text{color:var(--text-secondary);font-size:.8rem;line-height:1.5;margin-bottom:6px}
+.notif-time{color:var(--text-muted);font-size:.75rem}
+.notif-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.notif-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);display:block}
+.notif-dismiss{width:28px;height:28px;border-radius:8px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.notif-dismiss:hover{background:var(--dark-600);color:var(--text-cream)}
+</style>
+<script>
+document.getElementById('mark-all-read').addEventListener('click',function(){
+  document.querySelectorAll('.notif-item.unread').forEach(el=>{
+    el.classList.remove('unread');
+    const dot=el.querySelector('.notif-dot');
+    if(dot) dot.remove();
+  });
+  document.querySelector('[data-filter="unread"] span').textContent='0';
+  showToast('All notifications marked as read.','success');
+});
+
+document.querySelectorAll('.notif-dismiss').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    this.closest('.notif-item').remove();
+  });
+});
+
+document.querySelectorAll('.notif-filter-btn').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    const f=this.dataset.filter;
+    document.querySelectorAll('.notif-filter-btn').forEach(b=>{b.className='btn btn-dark btn-sm notif-filter-btn';});
+    this.className='btn btn-gold btn-sm notif-filter-btn';
+    let shown=0;
+    document.querySelectorAll('.notif-item').forEach(item=>{
+      const cat=item.dataset.category||'';
+      const unread=item.classList.contains('unread');
+      if(f==='all'||(f==='unread'&&unread)||f===cat){ item.style.display='flex'; shown++; }
+      else{ item.style.display='none'; }
+    });
+    document.getElementById('notif-empty').style.display=shown===0?'block':'none';
+  });
+});
+</script>
+</body>
+</html>

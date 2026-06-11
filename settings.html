@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Settings — ÉCLAT Fine Dining</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#EEF2FF',cream:'#0F172A'}}}}</script>
+</head>
+<body>
+<div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
+<div class="cursor-dot"></div><div class="cursor-ring"></div>
+<div class="dashboard-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><a href="index.html" class="nav-logo"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img" style="height:30px"></a></div>
+    <nav class="sidebar-nav">
+      <p class="sidebar-section-title">Overview</p>
+      <a href="dashboard.html" class="sidebar-link"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
+      <a href="notifications.html" class="sidebar-link"><i class="fa-solid fa-bell"></i>Notifications<span class="sidebar-badge">3</span></a>
+      <p class="sidebar-section-title mt-4">Dining</p>
+      <a href="reservation.html" class="sidebar-link"><i class="fa-regular fa-calendar-plus"></i>New Reservation</a>
+      <a href="reservation-history.html" class="sidebar-link"><i class="fa-regular fa-calendar-check"></i>My Reservations</a>
+      <a href="order-history.html" class="sidebar-link"><i class="fa-solid fa-receipt"></i>Order History</a>
+      <a href="wishlist.html" class="sidebar-link"><i class="fa-regular fa-heart"></i>My Wishlist</a>
+      <p class="sidebar-section-title mt-4">Account</p>
+      <a href="profile.html" class="sidebar-link"><i class="fa-regular fa-user"></i>Profile</a>
+      <a href="settings.html" class="sidebar-link active"><i class="fa-solid fa-gear"></i>Settings</a>
+      <a href="login.html" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i>Sign Out</a>
+    </nav>
+    <div class="p-4 border-t" style="border-color:var(--dark-600)"><div class="flex items-center gap-3"><img src="images/photo-1494790108377-be9c29b29330-60x60.webp" class="w-10 h-10 rounded-full object-cover border-2 border-gold" alt="Avatar"><div><p class="text-cream text-sm font-semibold">Sarah Johnson</p><p class="text-gold text-xs">Gold Member</p></div></div></div>
+  </aside>
+  <main class="dashboard-main">
+    <div class="dashboard-header">
+      <h1 class="dashboard-title">Settings</h1>
+      <button id="sidebar-toggle" class="nav-icon-btn lg:hidden"><i class="fa-solid fa-bars"></i></button>
+    </div>
+
+    <!-- Settings Tabs -->
+    <div data-tabs class="mb-6">
+      <div class="flex gap-2 flex-wrap mb-6">
+        <button class="btn btn-gold btn-sm" data-tab="security">Security</button>
+        <button class="btn btn-dark btn-sm" data-tab="notifications-tab">Notifications</button>
+        <button class="btn btn-dark btn-sm" data-tab="privacy-tab">Privacy</button>
+        <button class="btn btn-dark btn-sm" data-tab="linked">Linked Accounts</button>
+        <button class="btn btn-dark btn-sm" data-tab="danger">Danger Zone</button>
+      </div>
+
+      <!-- Security Tab -->
+      <div data-tab-content="security">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="glass-card p-8">
+            <h3 class="text-cream font-semibold text-lg mb-6">Change Password</h3>
+            <div class="form-group mb-4">
+              <label class="form-label">Current Password</label>
+              <div class="input-icon-wrap"><i class="input-icon fa-solid fa-lock"></i><input type="password" class="form-control" placeholder="Current password"></div>
+            </div>
+            <div class="form-group mb-4">
+              <label class="form-label">New Password</label>
+              <div class="input-icon-wrap" style="position:relative">
+                <i class="input-icon fa-solid fa-lock"></i>
+                <input type="password" id="new-password" class="form-control" placeholder="Min 8 characters" style="padding-right:50px">
+                <button type="button" class="pwd-toggle" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--text-muted)"><i class="fa-regular fa-eye"></i></button>
+              </div>
+              <div class="pwd-strength mt-2"><div class="pwd-strength-bar"></div><div class="pwd-strength-bar"></div><div class="pwd-strength-bar"></div><div class="pwd-strength-bar"></div></div>
+              <span id="pwd-strength-label" class="text-xs font-medium text-muted mt-1 block"></span>
+            </div>
+            <div class="form-group mb-6">
+              <label class="form-label">Confirm New Password</label>
+              <div class="input-icon-wrap"><i class="input-icon fa-solid fa-lock"></i><input type="password" class="form-control" placeholder="Repeat new password"></div>
+            </div>
+            <button class="btn btn-gold" onclick="showToast('Password changed successfully!','success')"><i class="fa-solid fa-check mr-1"></i>Update Password</button>
+          </div>
+          <div class="glass-card p-8">
+            <h3 class="text-cream font-semibold text-lg mb-6">Two-Factor Authentication</h3>
+            <div class="neo-card p-4 mb-6 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl" style="background:rgba(52,211,153,0.12);color:#34D399"><i class="fa-solid fa-shield-halved"></i></div>
+              <div><p class="text-cream text-sm font-semibold">2FA Disabled</p><p class="text-muted text-xs">Add an extra layer of security to your account</p></div>
+            </div>
+            <p class="text-secondary text-sm mb-4">Protect your account with an authenticator app like Google Authenticator or Authy.</p>
+            <button class="btn btn-gold" onclick="showToast('Scan the QR code in your authenticator app.','info')"><i class="fa-solid fa-qrcode mr-1"></i>Enable 2FA</button>
+            <div class="divider divider-sm"></div>
+            <h4 class="text-cream font-semibold mb-4">Active Sessions</h4>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:var(--dark-600)"><i class="fa-brands fa-chrome text-gold text-sm"></i></div>
+                <div class="flex-1"><p class="text-cream text-sm">Chrome on macOS</p><p class="text-muted text-xs">New York, NY · Active now</p></div>
+                <span class="status-badge confirmed">Current</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:var(--dark-600)"><i class="fa-brands fa-safari text-secondary text-sm"></i></div>
+                <div class="flex-1"><p class="text-cream text-sm">Safari on iPhone</p><p class="text-muted text-xs">New York, NY · 2 days ago</p></div>
+                <button class="text-wine text-xs" onclick="showToast('Session terminated.','warning')">Revoke</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications Tab -->
+      <div data-tab-content="notifications-tab" style="display:none">
+        <div class="glass-card p-8">
+          <h3 class="text-cream font-semibold text-lg mb-6">Notification Preferences</h3>
+          <div class="space-y-5">
+            <div class="flex items-center justify-between py-3 border-b" style="border-color:var(--dark-600)">
+              <div><p class="text-cream text-sm font-semibold">Reservation Confirmations</p><p class="text-muted text-xs">Email when a reservation is confirmed or modified</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div class="flex items-center justify-between py-3 border-b" style="border-color:var(--dark-600)">
+              <div><p class="text-cream text-sm font-semibold">Reservation Reminders</p><p class="text-muted text-xs">SMS/email reminder 24 hours before your table</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div class="flex items-center justify-between py-3 border-b" style="border-color:var(--dark-600)">
+              <div><p class="text-cream text-sm font-semibold">New Events & Experiences</p><p class="text-muted text-xs">Be the first to know about special dinners</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div class="flex items-center justify-between py-3 border-b" style="border-color:var(--dark-600)">
+              <div><p class="text-cream text-sm font-semibold">Promotional Offers</p><p class="text-muted text-xs">Discounts, seasonal menus, and member-only deals</p></div>
+              <label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label>
+            </div>
+            <div class="flex items-center justify-between py-3">
+              <div><p class="text-cream text-sm font-semibold">Marketing & Newsletter</p><p class="text-muted text-xs">Monthly culinary journal and chef insights</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+          </div>
+          <button class="btn btn-gold mt-6" onclick="showToast('Notification preferences saved!','success')"><i class="fa-solid fa-check mr-1"></i>Save Preferences</button>
+        </div>
+      </div>
+
+      <!-- Privacy Tab -->
+      <div data-tab-content="privacy-tab" style="display:none">
+        <div class="glass-card p-8">
+          <h3 class="text-cream font-semibold text-lg mb-6">Privacy Settings</h3>
+          <div class="space-y-5">
+            <div class="flex items-center justify-between py-3 border-b" style="border-color:var(--dark-600)">
+              <div><p class="text-cream text-sm font-semibold">Profile Visibility</p><p class="text-muted text-xs">Allow staff to see your dining preferences for personalization</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div class="flex items-center justify-between py-3 border-b" style="border-color:var(--dark-600)">
+              <div><p class="text-cream text-sm font-semibold">Analytics Cookies</p><p class="text-muted text-xs">Help us improve our website experience</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div class="flex items-center justify-between py-3">
+              <div><p class="text-cream text-sm font-semibold">Personalized Recommendations</p><p class="text-muted text-xs">AI-driven dish and wine suggestions based on history</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+          </div>
+          <div class="neo-card p-4 mt-6">
+            <p class="text-cream text-sm font-semibold mb-2">Data & Privacy</p>
+            <div class="flex gap-3 flex-wrap">
+              <button class="btn btn-dark btn-sm" onclick="showToast('Your data export is being prepared. You will receive an email within 24 hours.','info')"><i class="fa-solid fa-download mr-1"></i>Export My Data</button>
+              <a href="privacy.html" class="btn btn-dark btn-sm"><i class="fa-solid fa-file-shield mr-1"></i>Privacy Policy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Linked Accounts Tab -->
+      <div data-tab-content="linked" style="display:none">
+        <div class="glass-card p-8">
+          <h3 class="text-cream font-semibold text-lg mb-6">Linked Accounts</h3>
+          <div class="space-y-4">
+            <div class="neo-card p-4 flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:#fff"><i class="fa-brands fa-google text-lg" style="color:#4285f4"></i></div>
+              <div class="flex-1"><p class="text-cream text-sm font-semibold">Google</p><p class="text-muted text-xs">sarah@gmail.com</p></div>
+              <span class="status-badge confirmed">Connected</span>
+            </div>
+            <div class="neo-card p-4 flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:#000"><i class="fa-brands fa-apple text-lg text-white"></i></div>
+              <div class="flex-1"><p class="text-cream text-sm font-semibold">Apple</p><p class="text-muted text-xs">Not connected</p></div>
+              <button class="btn btn-dark btn-sm" onclick="showToast('Apple Sign-In coming soon.','info')">Connect</button>
+            </div>
+            <div class="neo-card p-4 flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:#1877f2"><i class="fa-brands fa-facebook text-lg text-white"></i></div>
+              <div class="flex-1"><p class="text-cream text-sm font-semibold">Facebook</p><p class="text-muted text-xs">Not connected</p></div>
+              <button class="btn btn-dark btn-sm" onclick="showToast('Facebook Sign-In coming soon.','info')">Connect</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Danger Zone Tab -->
+      <div data-tab-content="danger" style="display:none">
+        <div class="glass-card p-8" style="border-color:rgba(239,68,68,0.3)">
+          <h3 class="text-cream font-semibold text-lg mb-2">Danger Zone</h3>
+          <p class="text-secondary text-sm mb-6">These actions are irreversible. Please proceed with caution.</p>
+          <div class="space-y-4">
+            <div class="neo-card p-4 flex items-center justify-between gap-4">
+              <div><p class="text-cream text-sm font-semibold">Deactivate Account</p><p class="text-muted text-xs">Temporarily hide your profile and pause reservations</p></div>
+              <button class="btn btn-sm" style="background:rgba(251,191,36,0.1);color:#FBBF24;border:1px solid rgba(251,191,36,0.3)" onclick="showToast('Please contact support to deactivate your account.','warning')">Deactivate</button>
+            </div>
+            <div class="neo-card p-4 flex items-center justify-between gap-4" style="border-color:rgba(239,68,68,0.3)">
+              <div><p class="text-cream text-sm font-semibold">Delete Account</p><p class="text-muted text-xs">Permanently delete all your data. This cannot be undone.</p></div>
+              <button class="btn btn-sm" style="background:rgba(239,68,68,0.1);color:#EF4444;border:1px solid rgba(239,68,68,0.3)" onclick="showToast('Please contact support at privacy@eclat.restaurant to delete your account.','error')">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="js/main.js"></script>
+<style>
+.toggle-switch{position:relative;display:inline-block;width:48px;height:26px;flex-shrink:0}
+.toggle-switch input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;cursor:pointer;inset:0;background:var(--dark-600);border-radius:26px;transition:.3s}
+.toggle-slider:before{content:"";position:absolute;height:20px;width:20px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s}
+.toggle-switch input:checked + .toggle-slider{background:var(--gold)}
+.toggle-switch input:checked + .toggle-slider:before{transform:translateX(22px)}
+</style>
+<script>
+// Manual tab switching since main.js handles data-tabs containers
+document.querySelectorAll('[data-tab]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const t = btn.dataset.tab;
+    document.querySelectorAll('[data-tab]').forEach(b=>{ b.className='btn btn-dark btn-sm'; });
+    btn.className='btn btn-gold btn-sm';
+    document.querySelectorAll('[data-tab-content]').forEach(c=>{ c.style.display='none'; });
+    const panel=document.querySelector('[data-tab-content="'+t+'"]');
+    if(panel) panel.style.display='block';
+  });
+});
+</script>
+</body>
+</html>

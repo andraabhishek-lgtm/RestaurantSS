@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Explore ÉCLAT's full menu — from delicate starters to indulgent desserts and crafted cocktails.">
+<title>Menu — ÉCLAT Fine Dining</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#EEF2FF',cream:'#0F172A',wine:'#6B1D3A'}}}}</script>
+</head>
+<body>
+<div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
+<div class="scroll-progress"></div>
+<div class="cursor-dot"></div><div class="cursor-ring"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img"></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">Home</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="menu.html" class="nav-link active">Menu</a></li>
+    <li><a href="events.html" class="nav-link">Events</a></li>
+    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+    <li><a href="blog.html" class="nav-link">Blog</a></li>
+    <li><a href="contact.html" class="nav-link">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline-gold btn-sm">Login</a>
+    <a href="reservation.html" class="btn btn-gold btn-sm">Reserve</a>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a>
+  <a href="menu.html" class="nav-link">Menu</a><a href="events.html" class="nav-link">Events</a>
+  <a href="gallery.html" class="nav-link">Gallery</a><a href="contact.html" class="nav-link">Contact</a>
+  <a href="reservation.html" class="btn btn-gold mt-4">Reserve</a>
+</div>
+
+<div class="page-banner">
+  <div class="page-banner-bg"><img src="images/photo-1555396273-367ea4eb4db5-1920.webp" alt="Menu"></div>
+  <div class="page-banner-overlay"></div>
+  <div class="page-banner-content">
+    <div class="page-banner-eyebrow"><i class="fa-solid fa-utensils text-gold"></i>Culinary Experience</div>
+    <h1 class="page-banner-title">Our <span class="text-gradient">Menu</span></h1>
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span><span>Menu</span></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <!-- Search + Filter -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-12">
+      <div class="input-icon-wrap flex-1" style="max-width:360px">
+        <i class="input-icon fa-solid fa-search"></i>
+        <input type="text" id="menu-search" class="form-control" placeholder="Search dishes...">
+      </div>
+      <div class="flex gap-2 flex-wrap">
+        <button class="badge badge-gold cursor-pointer">All</button>
+        <button class="badge badge-dark cursor-pointer">Vegetarian</button>
+        <button class="badge badge-dark cursor-pointer">Gluten Free</button>
+        <button class="badge badge-dark cursor-pointer">Chef Special</button>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div data-tabs class="mb-12">
+      <div class="tab-nav mb-8 overflow-x-auto">
+        <button class="tab-btn active" data-tab="starters">Starters</button>
+        <button class="tab-btn" data-tab="soups">Soups</button>
+        <button class="tab-btn" data-tab="salads">Salads</button>
+        <button class="tab-btn" data-tab="mains">Main Course</button>
+        <button class="tab-btn" data-tab="seafood">Seafood</button>
+        <button class="tab-btn" data-tab="grills">Grills</button>
+        <button class="tab-btn" data-tab="vegetarian">Vegetarian</button>
+        <button class="tab-btn" data-tab="desserts">Desserts</button>
+        <button class="tab-btn" data-tab="beverages">Beverages</button>
+        <button class="tab-btn" data-tab="specials">Chef Specials</button>
+      </div>
+
+      <!-- STARTERS -->
+      <div class="tab-content active" data-tab-content="starters" id="starters">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="food-card" data-menu-item>
+            <div class="food-card-img"><img src="images/photo-1555939594-58d7cb561ad1-500.webp" alt="Oysters" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Oysters Rockefeller</h3><p class="food-card-desc">Half-dozen Kumamoto oysters with spinach, pernod cream, and crispy breadcrumbs.</p><div class="food-card-footer"><span class="food-card-price">$34</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">4.9</span></div></div></div>
+          </div>
+          <div class="food-card" data-menu-item>
+            <div class="food-card-img"><img src="images/photo-1572441713132-c542fc4fe282-500.webp" alt="Foie Gras" loading="lazy"><div class="food-card-overlay"></div><span class="food-card-badge"><span class="badge badge-gold">Signature</span></span><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Seared Foie Gras</h3><p class="food-card-desc">Pan-seared duck foie gras, brioche, fig jam, and aged balsamic reduction.</p><div class="food-card-footer"><span class="food-card-price">$52</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">5.0</span></div></div></div>
+          </div>
+          <div class="food-card" data-menu-item>
+            <div class="food-card-img"><img src="images/photo-1598515214211-89d3c73ae83b-500.webp" alt="Tuna Tartare" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Bluefin Tuna Tartare</h3><p class="food-card-desc">Premium bluefin with avocado, yuzu emulsion, sesame crisp, and wasabi.</p><div class="food-card-footer"><span class="food-card-price">$42</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span class="ml-1">4.7</span></div></div></div>
+          </div>
+          <div class="food-card" data-menu-item>
+            <div class="food-card-img"><img src="images/photo-1544025162-d76694265947-500.webp" alt="Scallops" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Diver Scallops</h3><p class="food-card-desc">Seared diver scallops, cauliflower purée, crispy capers, and lemon beurre blanc.</p><div class="food-card-footer"><span class="food-card-price">$48</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">4.8</span></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOUPS -->
+      <div class="tab-content" data-tab-content="soups" id="soups">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1547592180-85f173990554-500.webp" alt="Lobster Bisque" loading="lazy"><div class="food-card-overlay"></div><span class="food-card-badge"><span class="badge badge-gold">Popular</span></span><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Maine Lobster Bisque</h3><p class="food-card-desc">Silky bisque, cognac cream, tarragon oil, Ossetra caviar.</p><div class="food-card-footer"><span class="food-card-price">$48</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">4.9</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1571167530149-c1105da4b50f-500.webp" alt="Miso" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">White Miso Velouté</h3><p class="food-card-desc">Aged white miso with enoki mushrooms, tofu silk, and truffle oil.</p><div class="food-card-footer"><span class="food-card-price">$28</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span class="ml-1">4.6</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1601000938259-5c0a0c7d14f6-500.webp" alt="French Onion" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Classic French Onion</h3><p class="food-card-desc">Slow-caramelized onions, Gruyère crouton, rich beef consommé.</p><div class="food-card-footer"><span class="food-card-price">$24</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">4.8</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1504674900247-0877df9cc836-500.webp" alt="Tom Yum" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Signature Tom Kha</h3><p class="food-card-desc">Premium coconut broth with tiger prawns, galangal, and kaffir lime.</p><div class="food-card-footer"><span class="food-card-price">$32</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span class="ml-1">4.7</span></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAINS -->
+      <div class="tab-content" data-tab-content="mains" id="mains">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1544025162-d76694265947-500.webp" alt="Wagyu" loading="lazy"><div class="food-card-overlay"></div><span class="food-card-badge"><span class="badge badge-gold">Best Seller</span></span><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">A5 Wagyu Tenderloin</h3><p class="food-card-desc">Japanese A5 wagyu, truffle jus, micro herbs, roasted bone marrow.</p><div class="food-card-footer"><span class="food-card-price">$89</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">5.0</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1555396273-367ea4eb4db5-500.webp" alt="Duck Confit" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Duck Confit</h3><p class="food-card-desc">48-hour duck leg confit, Puy lentil cassoulet, orange gastrique.</p><div class="food-card-footer"><span class="food-card-price">$58</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">4.9</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1504674900247-0877df9cc836-500.webp" alt="Rack of Lamb" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Rack of Lamb</h3><p class="food-card-desc">Herb-crusted New Zealand rack, ratatouille, rosemary jus.</p><div class="food-card-footer"><span class="food-card-price">$72</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span class="ml-1">4.8</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1484980972926-edee96e0960d-500.webp" alt="Truffle Pasta" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Black Truffle Tagliatelle</h3><p class="food-card-desc">Fresh hand-rolled pasta, black truffle, aged Parmesan, white wine cream.</p><div class="food-card-footer"><span class="food-card-price">$64</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">4.9</span></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEAFOOD -->
+      <div class="tab-content" data-tab-content="seafood" id="seafood">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1625944230945-1b7dd3b949ab-500.webp" alt="Lobster" loading="lazy"><div class="food-card-overlay"></div><span class="food-card-badge"><span class="badge badge-gold">Signature</span></span><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Whole Grilled Lobster</h3><p class="food-card-desc">1.5lb Maine lobster, drawn butter, lemon-herb gremolata, roasted vegetables.</p><div class="food-card-footer"><span class="food-card-price">$115</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">5.0</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1579584425555-c3ce17fd4351-500.webp" alt="Sushi" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Omakase Sushi Flight</h3><p class="food-card-desc">9-piece premium nigiri — bluefin, uni, king crab, and seasonal selections.</p><div class="food-card-footer"><span class="food-card-price">$76</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">5.0</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1519708227418-c8fd9a32b7a2-500.webp" alt="Sea Bass" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Chilean Sea Bass</h3><p class="food-card-desc">Miso-glazed sea bass, forbidden rice, bok choy, yuzu beurre blanc.</p><div class="food-card-footer"><span class="food-card-price">$68</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span class="ml-1">4.8</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1534422298391-e4f8c172dddb-500.webp" alt="Prawns" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Tiger Prawn Royale</h3><p class="food-card-desc">XL tiger prawns, tom yum butter, crispy polenta, microgreens.</p><div class="food-card-footer"><span class="food-card-price">$54</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">4.9</span></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESSERTS -->
+      <div class="tab-content" data-tab-content="desserts" id="desserts">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1488477304112-4944851de03d-500.webp" alt="Chocolate Souffle" loading="lazy"><div class="food-card-overlay"></div><span class="food-card-badge"><span class="badge badge-green">Fan Fav</span></span><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Valrhona Chocolate Soufflé</h3><p class="food-card-desc">Warm 72% dark chocolate soufflé, salted caramel ice cream, gold leaf.</p><div class="food-card-footer"><span class="food-card-price">$28</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">5.0</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1464305795204-6f5bbfc7fb81-500.webp" alt="Crème Brûlée" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Matcha Crème Brûlée</h3><p class="food-card-desc">Japanese matcha custard, caramelized sugar crown, yuzu curd.</p><div class="food-card-footer"><span class="food-card-price">$22</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">4.9</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1579954115545-a95591f28bfc-500.webp" alt="Tarte Tatin" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Caramelized Apple Tatin</h3><p class="food-card-desc">Classic tarte tatin, Granny Smith apples, puff pastry, crème fraîche.</p><div class="food-card-footer"><span class="food-card-price">$24</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span class="ml-1">4.7</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1551024601-bec78aea704b-500.webp" alt="Profiteroles" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Champagne Profiteroles</html><p class="food-card-desc">Choux pastry, Champagne pastry cream, warm Valrhona ganache sauce.</p><div class="food-card-footer"><span class="food-card-price">$26</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">4.8</span></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BEVERAGES -->
+      <div class="tab-content" data-tab-content="beverages" id="beverages">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1551538827-9c037cb4f32a-500.webp" alt="Cocktail" loading="lazy"><div class="food-card-overlay"></div><span class="food-card-badge"><span class="badge badge-gold">Signature</span></span><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">ÉCLAT Old Fashioned</h3><p class="food-card-desc">Single barrel bourbon, black walnut bitters, orange twist, smoked cherry.</p><div class="food-card-footer"><span class="food-card-price">$22</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">4.9</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1556679343-c7306c1976bc-500.webp" alt="Wine" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Château Margaux 2018</h3><p class="food-card-desc">Premier Grand Cru Classé, Margaux AOC. Notes of dark fruit, cedar, and violets.</p><div class="food-card-footer"><span class="food-card-price">$185/glass</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">5.0</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1558618666-fcd25c85cd64-500.webp" alt="Mocktail" loading="lazy"><div class="food-card-overlay"></div><span class="food-card-badge"><span class="badge badge-green">Non-Alcoholic</span></span><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Yuzu Blossom Fizz</h3><p class="food-card-desc">Yuzu, elderflower, shiso, sparkling water, candied ginger rim.</p><div class="food-card-footer"><span class="food-card-price">$14</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span class="ml-1">4.8</span></div></div></div>
+          </div>
+          <div class="food-card">
+            <div class="food-card-img"><img src="images/photo-1544145945-f90425340c7e-500.webp" alt="Whisky" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div>
+            <div class="food-card-body"><h3 class="food-card-title">Japanese Whisky Flight</h3><p class="food-card-desc">Yamazaki 12yr, Hakushu 18yr, Nikka Yoichi — a trinity of Japanese mastery.</p><div class="food-card-footer"><span class="food-card-price">$95/flight</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">5.0</span></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other tab contents (Salads, Grills, Vegetarian, Specials) - abbreviated for the remaining categories -->
+      <div class="tab-content" data-tab-content="salads" id="salads">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="food-card"><div class="food-card-img"><img src="images/photo-1540189549336-e6e99c3679fe-500.webp" alt="Salad" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div><div class="food-card-body"><h3 class="food-card-title">Heritage Greens Salad</h3><p class="food-card-desc">Wild arugula, roasted beets, goat cheese, candied walnuts, truffle vinaigrette.</p><div class="food-card-footer"><span class="food-card-price">$26</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span class="ml-1">4.7</span></div></div></div></div>
+          <div class="food-card"><div class="food-card-img"><img src="images/photo-1512621776951-a57141f2eefd-500.webp" alt="Caesar" loading="lazy"><div class="food-card-overlay"></div><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div><div class="food-card-body"><h3 class="food-card-title">ÉCLAT Caesar</h3><p class="food-card-desc">Romaine hearts, house Caesar dressing, shaved aged Parmesan, anchovy croutons.</p><div class="food-card-footer"><span class="food-card-price">$22</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">4.9</span></div></div></div></div>
+        </div>
+      </div>
+      <div class="tab-content" data-tab-content="grills" id="grills">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="food-card"><div class="food-card-img"><img src="images/photo-1565299624946-b28f40a0ae38-500.webp" alt="Tomahawk" loading="lazy"><div class="food-card-overlay"></div><span class="food-card-badge"><span class="badge badge-gold">Premium</span></span><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div><div class="food-card-body"><h3 class="food-card-title">Tomahawk Ribeye</h3><p class="food-card-desc">45-day dry-aged 40oz tomahawk, compound butter, roasted garlic, bone marrow.</p><div class="food-card-footer"><span class="food-card-price">$145</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">5.0</span></div></div></div></div>
+        </div>
+      </div>
+      <div class="tab-content" data-tab-content="vegetarian" id="vegetarian">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="food-card"><div class="food-card-img"><img src="images/photo-1476718406336-bb5a9690ee2a-500.webp" alt="Risotto" loading="lazy"><div class="food-card-overlay"></div><span class="food-card-badge"><span class="badge badge-green">Vegan</span></span><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a></div><div class="food-card-body"><h3 class="food-card-title">Truffle Mushroom Risotto</h3><p class="food-card-desc">Arborio rice, wild porcini, black truffle oil, aged Parmigiano Reggiano.</p><div class="food-card-footer"><span class="food-card-price">$44</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span class="ml-1">4.8</span></div></div></div></div>
+        </div>
+      </div>
+      <div class="tab-content" data-tab-content="specials" id="specials">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="food-card"><div class="food-card-img"><img src="images/photo-1414235077428-338989a2e8c0-500.webp" alt="Tasting Menu" loading="lazy"><div class="food-card-overlay"></div><span class="food-card-badge"><span class="badge badge-gold">Signature</span></span><a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">View Details</a></div><div class="food-card-body"><h3 class="food-card-title">10-Course Tasting Menu</h3><p class="food-card-desc">Chef Laurent's signature culinary journey — 10 courses of pure artistry with optional wine pairing.</p><div class="food-card-footer"><span class="food-card-price">$295</span><div class="food-card-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="ml-1">5.0</span></div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tasting Menu CTA -->
+    <div class="mt-16 p-10 text-center glass-card" data-aos="zoom-in">
+      <div class="section-eyebrow justify-center">The Ultimate Experience</div>
+      <h2 class="section-title"><span class="text-gradient">Tasting Menu</span> Available</h2>
+      <p class="text-secondary mb-8 max-w-lg mx-auto">10 courses of pure culinary artistry by Chef Laurent Dubois. Optional wine pairing by our sommelier. 3-hour immersive experience. Advance booking required.</p>
+      <a href="reservation.html" class="btn btn-gold btn-lg">Reserve Tasting Experience · $295/pp</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div><div class="footer-logo">ÉCLAT</div><p class="footer-desc">Award-winning French-Asian fusion fine dining in New York City.</p><div class="footer-social"><a href="#" class="social-btn"><i class="fab fa-instagram"></i></a><a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-btn"><i class="fab fa-twitter"></i></a></div></div>
+      <div><h4 class="footer-heading">Explore</h4><ul class="footer-links"><li><a href="about.html" class="footer-link">About ÉCLAT</a></li><li><a href="menu.html" class="footer-link">Our Menu</a></li><li><a href="chefs.html" class="footer-link">Our Chefs</a></li><li><a href="gallery.html" class="footer-link">Gallery</a></li></ul></div>
+      <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="reservation.html" class="footer-link">Reservations</a></li><li><a href="events.html" class="footer-link">Private Dining</a></li><li><a href="contact.html" class="footer-link">Contact Us</a></li></ul></div>
+      <div><h4 class="footer-heading">Contact</h4><ul class="footer-links"><li class="footer-link"><i class="fa-solid fa-location-dot text-gold"></i>42 Lumière Blvd, NYC</li><li><a href="tel:+12125550174" class="footer-link"><i class="fa-solid fa-phone text-gold"></i>+1 (212) 555-0174</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2024 ÉCLAT Fine Dining.</p><div class="flex gap-4"><a href="privacy.html" class="footer-link text-xs">Privacy</a><a href="terms.html" class="footer-link text-xs">Terms</a></div></div>
+  </div>
+</footer>
+<button id="backToTop"><i class="fa-solid fa-chevron-up"></i></button>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

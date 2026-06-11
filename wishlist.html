@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>My Wishlist — ÉCLAT Fine Dining</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#EEF2FF',cream:'#0F172A'}}}}</script>
+</head>
+<body>
+<div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
+<div class="cursor-dot"></div><div class="cursor-ring"></div>
+<div class="dashboard-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><a href="index.html" class="nav-logo"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img" style="height:30px"></a></div>
+    <nav class="sidebar-nav">
+      <p class="sidebar-section-title">Overview</p>
+      <a href="dashboard.html" class="sidebar-link"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
+      <a href="notifications.html" class="sidebar-link"><i class="fa-solid fa-bell"></i>Notifications<span class="sidebar-badge">3</span></a>
+      <p class="sidebar-section-title mt-4">Dining</p>
+      <a href="reservation.html" class="sidebar-link"><i class="fa-regular fa-calendar-plus"></i>New Reservation</a>
+      <a href="reservation-history.html" class="sidebar-link"><i class="fa-regular fa-calendar-check"></i>My Reservations</a>
+      <a href="order-history.html" class="sidebar-link"><i class="fa-solid fa-receipt"></i>Order History</a>
+      <a href="wishlist.html" class="sidebar-link active"><i class="fa-regular fa-heart"></i>My Wishlist</a>
+      <p class="sidebar-section-title mt-4">Account</p>
+      <a href="profile.html" class="sidebar-link"><i class="fa-regular fa-user"></i>Profile</a>
+      <a href="settings.html" class="sidebar-link"><i class="fa-solid fa-gear"></i>Settings</a>
+      <a href="login.html" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i>Sign Out</a>
+    </nav>
+    <div class="p-4 border-t" style="border-color:var(--dark-600)"><div class="flex items-center gap-3"><img src="images/photo-1494790108377-be9c29b29330-60x60.webp" class="w-10 h-10 rounded-full object-cover border-2 border-gold" alt="Avatar"><div><p class="text-cream text-sm font-semibold">Sarah Johnson</p><p class="text-gold text-xs">Gold Member</p></div></div></div>
+  </aside>
+  <main class="dashboard-main">
+    <div class="dashboard-header">
+      <div>
+        <h1 class="dashboard-title">My Wishlist</h1>
+        <p class="text-secondary text-sm mt-1">23 dishes saved</p>
+      </div>
+      <div class="flex gap-3">
+        <button id="sidebar-toggle" class="nav-icon-btn lg:hidden"><i class="fa-solid fa-bars"></i></button>
+        <a href="menu.html" class="btn btn-dark btn-sm"><i class="fa-solid fa-plus mr-1"></i>Browse Menu</a>
+        <a href="reservation.html" class="btn btn-gold btn-sm"><i class="fa-regular fa-calendar-plus mr-1"></i>Reserve a Table</a>
+      </div>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="flex gap-2 flex-wrap mb-6">
+      <button class="btn btn-gold btn-sm wish-filter" data-cat="all">All (23)</button>
+      <button class="btn btn-dark btn-sm wish-filter" data-cat="starter">Starters</button>
+      <button class="btn btn-dark btn-sm wish-filter" data-cat="main">Mains</button>
+      <button class="btn btn-dark btn-sm wish-filter" data-cat="seafood">Seafood</button>
+      <button class="btn btn-dark btn-sm wish-filter" data-cat="dessert">Desserts</button>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" id="wishlist-grid">
+      <!-- Dish 1 -->
+      <div class="food-card" data-cat="main">
+        <div class="food-card-img-wrap" style="position:relative">
+          <img src="images/photo-1544025162-d76694265947-600x400.webp" class="food-card-img" alt="Wagyu">
+          <button class="wish-remove-btn" title="Remove from wishlist" onclick="removeWish(this)"><i class="fa-solid fa-heart-crack"></i></button>
+          <span class="food-card-badge">Main</span>
+        </div>
+        <div class="food-card-body">
+          <p class="food-card-category">Grills</p>
+          <h3 class="food-card-title">A5 Wagyu Tenderloin</h3>
+          <div class="food-card-meta"><span class="stars text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span><span class="text-muted text-xs ml-1">5.0</span></div>
+          <div class="food-card-footer"><span class="food-price">$89</span><a href="reservation.html" class="btn btn-gold btn-sm">Reserve</a></div>
+        </div>
+      </div>
+      <!-- Dish 2 -->
+      <div class="food-card" data-cat="seafood">
+        <div class="food-card-img-wrap" style="position:relative">
+          <img src="images/photo-1625944230945-1b7dd3b949ab-600x400.webp" class="food-card-img" alt="Bisque">
+          <button class="wish-remove-btn" title="Remove from wishlist" onclick="removeWish(this)"><i class="fa-solid fa-heart-crack"></i></button>
+          <span class="food-card-badge">Seafood</span>
+        </div>
+        <div class="food-card-body">
+          <p class="food-card-category">Soups</p>
+          <h3 class="food-card-title">Maine Lobster Bisque</h3>
+          <div class="food-card-meta"><span class="stars text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span><span class="text-muted text-xs ml-1">4.9</span></div>
+          <div class="food-card-footer"><span class="food-price">$48</span><a href="reservation.html" class="btn btn-gold btn-sm">Reserve</a></div>
+        </div>
+      </div>
+      <!-- Dish 3 -->
+      <div class="food-card" data-cat="main">
+        <div class="food-card-img-wrap" style="position:relative">
+          <img src="images/photo-1565299624946-b28f40a0ae38-600x400.webp" class="food-card-img" alt="Ribeye">
+          <button class="wish-remove-btn" title="Remove from wishlist" onclick="removeWish(this)"><i class="fa-solid fa-heart-crack"></i></button>
+          <span class="food-card-badge">Main</span>
+        </div>
+        <div class="food-card-body">
+          <p class="food-card-category">Grills</p>
+          <h3 class="food-card-title">Tomahawk Ribeye</h3>
+          <div class="food-card-meta"><span class="stars text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span><span class="text-muted text-xs ml-1">4.8</span></div>
+          <div class="food-card-footer"><span class="food-price">$145</span><a href="reservation.html" class="btn btn-gold btn-sm">Reserve</a></div>
+        </div>
+      </div>
+      <!-- Dish 4 -->
+      <div class="food-card" data-cat="dessert">
+        <div class="food-card-img-wrap" style="position:relative">
+          <img src="images/photo-1488477304112-4944851de03d-600x400.webp" class="food-card-img" alt="Souffle">
+          <button class="wish-remove-btn" title="Remove from wishlist" onclick="removeWish(this)"><i class="fa-solid fa-heart-crack"></i></button>
+          <span class="food-card-badge">Dessert</span>
+        </div>
+        <div class="food-card-body">
+          <p class="food-card-category">Desserts</p>
+          <h3 class="food-card-title">Valrhona Dark Soufflé</h3>
+          <div class="food-card-meta"><span class="stars text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span><span class="text-muted text-xs ml-1">5.0</span></div>
+          <div class="food-card-footer"><span class="food-price">$28</span><a href="reservation.html" class="btn btn-gold btn-sm">Reserve</a></div>
+        </div>
+      </div>
+      <!-- Dish 5 -->
+      <div class="food-card" data-cat="seafood">
+        <div class="food-card-img-wrap" style="position:relative">
+          <img src="images/photo-1579584425555-c3ce17fd4351-600x400.webp" class="food-card-img" alt="Sushi">
+          <button class="wish-remove-btn" title="Remove from wishlist" onclick="removeWish(this)"><i class="fa-solid fa-heart-crack"></i></button>
+          <span class="food-card-badge">Seafood</span>
+        </div>
+        <div class="food-card-body">
+          <p class="food-card-category">Seafood</p>
+          <h3 class="food-card-title">Omakase Sushi Flight</h3>
+          <div class="food-card-meta"><span class="stars text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span><span class="text-muted text-xs ml-1">4.9</span></div>
+          <div class="food-card-footer"><span class="food-price">$76</span><a href="reservation.html" class="btn btn-gold btn-sm">Reserve</a></div>
+        </div>
+      </div>
+      <!-- Dish 6 -->
+      <div class="food-card" data-cat="starter">
+        <div class="food-card-img-wrap" style="position:relative">
+          <img src="images/photo-1476124369491-e7addf5db371-600x400.webp" class="food-card-img" alt="Caviar">
+          <button class="wish-remove-btn" title="Remove from wishlist" onclick="removeWish(this)"><i class="fa-solid fa-heart-crack"></i></button>
+          <span class="food-card-badge">Starter</span>
+        </div>
+        <div class="food-card-body">
+          <p class="food-card-category">Starters</p>
+          <h3 class="food-card-title">Caviar & Crème Fraîche</h3>
+          <div class="food-card-meta"><span class="stars text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span><span class="text-muted text-xs ml-1">5.0</span></div>
+          <div class="food-card-footer"><span class="food-price">$95</span><a href="reservation.html" class="btn btn-gold btn-sm">Reserve</a></div>
+        </div>
+      </div>
+      <!-- Dish 7 -->
+      <div class="food-card" data-cat="main">
+        <div class="food-card-img-wrap" style="position:relative">
+          <img src="images/photo-1562802378-063ec186a863-600x400.webp" class="food-card-img" alt="Risotto">
+          <button class="wish-remove-btn" title="Remove from wishlist" onclick="removeWish(this)"><i class="fa-solid fa-heart-crack"></i></button>
+          <span class="food-card-badge">Main</span>
+        </div>
+        <div class="food-card-body">
+          <p class="food-card-category">Vegetarian</p>
+          <h3 class="food-card-title">White Truffle Risotto</h3>
+          <div class="food-card-meta"><span class="stars text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span><span class="text-muted text-xs ml-1">4.8</span></div>
+          <div class="food-card-footer"><span class="food-price">$52</span><a href="reservation.html" class="btn btn-gold btn-sm">Reserve</a></div>
+        </div>
+      </div>
+      <!-- Dish 8 -->
+      <div class="food-card" data-cat="dessert">
+        <div class="food-card-img-wrap" style="position:relative">
+          <img src="images/photo-1563805042-7684c019e1cb-600x400.webp" class="food-card-img" alt="Mochi">
+          <button class="wish-remove-btn" title="Remove from wishlist" onclick="removeWish(this)"><i class="fa-solid fa-heart-crack"></i></button>
+          <span class="food-card-badge">Dessert</span>
+        </div>
+        <div class="food-card-body">
+          <p class="food-card-category">Desserts</p>
+          <h3 class="food-card-title">Matcha Mochi Ice Cream</h3>
+          <div class="food-card-meta"><span class="stars text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span><span class="text-muted text-xs ml-1">4.5</span></div>
+          <div class="food-card-footer"><span class="food-price">$22</span><a href="reservation.html" class="btn btn-gold btn-sm">Reserve</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div id="wishlist-empty" class="glass-card p-16 text-center mt-6" style="display:none">
+      <div class="text-6xl mb-4">💔</div>
+      <h3 class="font-cormorant text-2xl text-cream font-semibold mb-2">Your wishlist is empty</h3>
+      <p class="text-secondary mb-6">Browse our menu and tap the heart icon to save dishes you'd like to try.</p>
+      <a href="menu.html" class="btn btn-gold">Browse Menu</a>
+    </div>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="js/main.js"></script>
+<style>
+.wish-remove-btn{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;border:none;background:rgba(239,68,68,0.85);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;opacity:0;transition:opacity .2s}
+.food-card:hover .wish-remove-btn{opacity:1}
+</style>
+<script>
+function removeWish(btn){
+  const card=btn.closest('.food-card');
+  card.style.transition='opacity .3s,transform .3s';
+  card.style.opacity='0';
+  card.style.transform='scale(0.9)';
+  setTimeout(()=>{
+    card.remove();
+    const remaining=document.querySelectorAll('#wishlist-grid .food-card').length;
+    if(remaining===0) document.getElementById('wishlist-empty').style.display='block';
+    showToast('Removed from wishlist','info');
+  },300);
+}
+document.querySelectorAll('.wish-filter').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    const cat=this.dataset.cat;
+    document.querySelectorAll('.wish-filter').forEach(b=>{b.className='btn btn-dark btn-sm wish-filter';});
+    this.className='btn btn-gold btn-sm wish-filter';
+    document.querySelectorAll('#wishlist-grid .food-card').forEach(card=>{
+      card.style.display=(cat==='all'||card.dataset.cat===cat)?'':'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
