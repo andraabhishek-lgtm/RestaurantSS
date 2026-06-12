@@ -1,0 +1,547 @@
+/* ============================================================
+   ÉCLAT Fine Dining — Responsive Stylesheet
+   Breakpoints:
+     xs  : < 480px   (small phones)
+     sm  : < 640px   (phones)
+     md  : < 768px   (large phones / small tablets)
+     lg  : < 1024px  (tablets / small laptops)
+     xl  : < 1280px  (laptops)
+     2xl : ≥ 1280px  (desktops)
+   All rules preserve existing design — NO visual changes.
+   ============================================================ */
+
+/* ── 0. Base Helpers ─────────────────────────────────────── */
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+img, video, canvas, svg, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none !important; }
+}
+
+/* ── 1. Navbar ───────────────────────────────────────────── */
+@media (max-width: 1280px) {
+  #navbar { padding: 0 4%; }
+}
+
+@media (max-width: 1024px) {
+  .nav-links { display: none !important; }
+  .hamburger { display: flex !important; }
+  #navbar { padding: 0 5%; }
+  /* Shrink action buttons on tablet */
+  .nav-actions .btn-gold.btn-sm,
+  .nav-actions .btn-outline-gold.btn-sm {
+    padding: 9px 16px;
+    font-size: 0.76rem;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Hide "Reserve a Table" on smallest screens — hamburger is the CTA */
+  .nav-actions .btn-gold.btn-sm { display: none; }
+  .nav-actions .btn-outline-gold.btn-sm { padding: 8px 14px; font-size: 0.75rem; }
+}
+
+/* ── 2. Hero (index.html) ────────────────────────────────── */
+
+/* Hide floating cards on tablet/mobile — they overlap content */
+@media (max-width: 1024px) {
+  .gsap-float { display: none !important; }
+}
+
+@media (max-width: 767px) {
+  .hero { min-height: 100svh; }
+  .hero-content {
+    padding: 0 6% !important;
+    max-width: 100% !important;
+    text-align: center;
+  }
+  .hero-eyebrow { justify-content: center; }
+  .hero-actions {
+    justify-content: center;
+    gap: 12px;
+  }
+  .hero-actions .btn { padding: 14px 24px; font-size: 0.82rem; }
+  /* Stats row */
+  .hero-content .flex.items-center.gap-8 {
+    gap: 20px !important;
+    justify-content: center;
+  }
+  /* Vertical dividers between stats */
+  .hero-content .w-px.h-10 { display: none; }
+}
+
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-content .flex.items-center.gap-8 { gap: 16px !important; }
+}
+
+/* ── 3. Section / Container ──────────────────────────────── */
+@media (max-width: 1024px) {
+  .section    { padding: 80px 5%; }
+  .section-lg { padding: 100px 5%; }
+  .section-sm { padding: 50px 5%; }
+  .container  { padding: 0 24px; }
+}
+
+@media (max-width: 767px) {
+  .section    { padding: 60px 5%; }
+  .section-lg { padding: 80px 5%; }
+  .section-sm { padding: 40px 5%; }
+  .section-header { margin-bottom: 40px; }
+  .container  { padding: 0 16px; }
+}
+
+@media (max-width: 480px) {
+  .section    { padding: 48px 4%; }
+  .section-lg { padding: 64px 4%; }
+}
+
+/* ── 4. Page Banner ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .page-banner { padding: 140px 5% 70px; }
+}
+
+@media (max-width: 767px) {
+  .page-banner { padding: 110px 5% 52px; }
+  .page-banner-title { font-size: clamp(1.8rem, 8vw, 3rem); }
+}
+
+@media (max-width: 480px) {
+  .page-banner { padding: 100px 4% 44px; }
+}
+
+/* ── 5. Food Cards Grid ──────────────────────────────────── */
+@media (max-width: 1024px) {
+  /* index.html featured dishes — 2 cols on tablet */
+  .grid.lg\:grid-cols-4 { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 640px) {
+  .grid.lg\:grid-cols-4 { grid-template-columns: 1fr !important; }
+  .grid.md\:grid-cols-2 { grid-template-columns: 1fr !important; }
+}
+
+/* ── 6. Category Grid (index.html) ──────────────────────── */
+@media (max-width: 640px) {
+  .grid.md\:grid-cols-3.lg\:grid-cols-5 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ── 7. Newsletter ───────────────────────────────────────── */
+@media (max-width: 767px) {
+  .newsletter-wrap { padding: 36px 24px; }
+  .newsletter-form {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .newsletter-form .form-control { min-width: 0 !important; width: 100% !important; }
+  .newsletter-form .btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .newsletter-wrap { padding: 28px 18px; }
+}
+
+/* ── 8. Stats Strip ──────────────────────────────────────── */
+@media (max-width: 767px) {
+  .grid.grid-cols-4.md\:grid-cols-4,
+  .grid.grid-cols-2.md\:grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid.grid-cols-3 { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ── 9. Footer (injected via eclat-footer.js) ────────────── */
+/* Already handled in eclat-footer.js styles, but reinforce: */
+@media (max-width: 900px) {
+  .ef-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 36px !important; }
+}
+
+@media (max-width: 540px) {
+  .ef-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .ef-bottom-inner { flex-direction: column !important; text-align: center !important; }
+  .ef-bottom-links { justify-content: center !important; gap: 16px !important; }
+}
+
+/* ── 10. Dashboard ───────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+    z-index: 200;
+    box-shadow: 4px 0 32px rgba(0,0,0,0.5);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .dashboard-main { margin-left: 0 !important; padding: 24px 20px; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .dashboard-main { padding: 16px 14px; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .kpi-value { font-size: 1.6rem; }
+  .dashboard-title { font-size: 1.6rem; }
+  .dashboard-header { margin-bottom: 24px; }
+  /* Sidebar overlay backdrop */
+  .sidebar-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 199;
+    display: none;
+  }
+  .sidebar-backdrop.visible { display: block; }
+}
+
+@media (max-width: 480px) {
+  .kpi-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── 11. Auth Pages (login / signup) ─────────────────────── */
+@media (max-width: 1024px) {
+  .auth-right { display: none !important; }
+  .auth-left { padding: 40px 6%; }
+}
+
+@media (max-width: 640px) {
+  .auth-left { padding: 32px 5%; align-items: flex-start; }
+  .auth-card { max-width: 100%; }
+  .auth-title { font-size: 1.9rem; }
+  /* Signup first/last name side-by-side → stack */
+  .auth-left .grid.grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  .btn-lg { padding: 16px 28px; }
+}
+
+/* ── 12. Bar Hero ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .bar-hero-content { padding: 0 5% !important; }
+  .bar-hero-content .bh-title { font-size: clamp(2.2rem, 6vw, 4rem) !important; }
+}
+
+@media (max-width: 767px) {
+  .bar-hero { min-height: 100svh !important; }
+  .bar-hero-content {
+    padding: 0 5% !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .bar-hero-content .bh-eyebrow { justify-content: center !important; }
+  .bar-hero-content .bh-title { font-size: clamp(2rem, 8vw, 3.5rem) !important; }
+  .bar-hero-content .bh-sub { font-size: 0.92rem !important; }
+  .bar-hero-actions { justify-content: center !important; }
+  /* Stats strip in bar hero */
+  .bar-stats { flex-wrap: wrap; gap: 24px !important; justify-content: center !important; }
+  .bar-stat-divider { display: none !important; }
+}
+
+@media (max-width: 480px) {
+  .bar-hero-content .bh-title { font-size: clamp(1.8rem, 9vw, 3rem) !important; }
+  .bar-hero-actions { flex-direction: column !important; align-items: stretch !important; }
+  .bar-hero-actions .btn { width: 100% !important; justify-content: center !important; }
+}
+
+/* ── 13. Chefs Hero ──────────────────────────────────────── */
+@media (max-width: 767px) {
+  .chef-hero { min-height: 100svh !important; }
+  .chef-slide-content { padding: 0 6% !important; text-align: center !important; }
+  .chef-slide-content h1 { font-size: clamp(2.2rem, 9vw, 4rem) !important; }
+  .chef-hero .swiper-pagination { bottom: 20px !important; }
+  /* Hide vertical progress bar on mobile */
+  .chef-progress-wrap { display: none !important; }
+  .chef-counter { bottom: 20px !important; right: 5% !important; }
+}
+
+@media (max-width: 480px) {
+  .chef-slide-content h1 { font-size: clamp(1.8rem, 10vw, 3rem) !important; }
+  .chef-slide-content .chef-slide-role { font-size: 0.8rem !important; }
+}
+
+/* ── 14. Rooms Hero ──────────────────────────────────────── */
+@media (max-width: 767px) {
+  .rooms-hero { min-height: 100svh !important; }
+  .rooms-slide-content { padding: 0 6% !important; text-align: center !important; }
+  .rooms-slide-content h1 { font-size: clamp(2.2rem, 9vw, 4rem) !important; }
+  .rooms-hero .swiper-pagination { bottom: 20px !important; }
+  .rooms-progress-wrap { display: none !important; }
+  .rooms-counter { bottom: 20px !important; right: 5% !important; }
+}
+
+/* ── 15. About Page ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  /* About story 2-col → stack */
+  .about-story-grid,
+  .grid.lg\:grid-cols-2 { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 767px) {
+  /* Philosophy pillars 3-col → 1-col */
+  .grid.md\:grid-cols-3 { grid-template-columns: 1fr !important; }
+  .grid.md\:grid-cols-2 { grid-template-columns: 1fr !important; }
+  /* Timeline left offset */
+  .timeline::before { left: 12px; }
+  .timeline-item { padding-left: 40px; }
+  .timeline-dot { left: 4px; }
+}
+
+/* ── 16. Menu Page ───────────────────────────────────────── */
+@media (max-width: 1024px) {
+  /* Menu sidebar filter + grid */
+  .menu-layout { flex-direction: column !important; }
+  .menu-sidebar { width: 100% !important; position: static !important; }
+}
+
+@media (max-width: 767px) {
+  .tab-nav { overflow-x: auto; flex-wrap: nowrap !important; -webkit-overflow-scrolling: touch; }
+  .tab-btn { white-space: nowrap; flex-shrink: 0; }
+}
+
+/* ── 17. Testimonials / Reviews ──────────────────────────── */
+@media (max-width: 767px) {
+  .testi-card { padding: 24px; }
+  .testi-text { font-size: 0.9rem; }
+}
+
+/* ── 18. Gallery / Masonry ───────────────────────────────── */
+@media (max-width: 1024px) {
+  .masonry-grid { columns: 2 !important; }
+}
+
+@media (max-width: 640px) {
+  .masonry-grid { columns: 1 !important; }
+}
+
+/* ── 19. Event Cards ─────────────────────────────────────── */
+@media (max-width: 767px) {
+  .grid.md\:grid-cols-2.lg\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── 20. Blog ────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  /* Blog sidebar collapses below content */
+  .blog-layout .lg\:col-span-3 { grid-column: span 4 !important; }
+  .blog-layout .lg\:col-span-1 { display: none !important; }
+}
+
+/* ── 21. FAQ / Accordion ─────────────────────────────────── */
+@media (max-width: 640px) {
+  .accordion-header { padding: 16px 18px; }
+  .accordion-title { font-size: 0.92rem; }
+}
+
+/* ── 22. Contact Page ────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .contact-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 767px) {
+  .map-placeholder { aspect-ratio: 4/3; }
+}
+
+/* ── 23. Reservation Form ────────────────────────────────── */
+@media (max-width: 640px) {
+  .reservation-form .grid.grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── 24. Modal ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .modal, .modal-box {
+    padding: 24px 18px;
+    border-radius: 16px;
+    max-height: 95vh;
+  }
+  .modal-overlay { padding: 12px; }
+}
+
+/* ── 25. Toast ───────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .toast-container { right: 12px; left: 12px; bottom: 12px; }
+  .toast { min-width: 0; width: 100%; }
+}
+
+/* ── 26. Settings / Profile ──────────────────────────────── */
+@media (max-width: 767px) {
+  .settings-grid, .profile-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── 27. Data Table ──────────────────────────────────────── */
+@media (max-width: 767px) {
+  .table-wrap { -webkit-overflow-scrolling: touch; }
+  .data-table th, .data-table td { padding: 11px 12px; font-size: 0.82rem; }
+}
+
+/* ── 28. Back to Top ─────────────────────────────────────── */
+@media (max-width: 640px) {
+  #backToTop, .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; }
+}
+
+/* ── 29. Scroll progress bar ─────────────────────────────── */
+/* Already fixed positioned — no change needed */
+
+/* ── 30. Breadcrumb ──────────────────────────────────────── */
+@media (max-width: 480px) {
+  .breadcrumb { font-size: 0.75rem; flex-wrap: wrap; gap: 4px; }
+}
+
+/* ── 31. Lightbox ────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .lightbox img { max-width: 96vw; max-height: 80vh; }
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+  .lightbox-prev, .lightbox-next { width: 40px; height: 40px; }
+}
+
+/* ── 32. Chefs Grid (chefs.html below hero) ──────────────── */
+@media (max-width: 1024px) {
+  .grid.lg\:grid-cols-3 { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 640px) {
+  .grid.lg\:grid-cols-3 { grid-template-columns: 1fr !important; }
+}
+
+/* ── 33. Rooms Below Hero ────────────────────────────────── */
+@media (max-width: 1024px) {
+  .grid.lg\:grid-cols-3.rooms-cards { grid-template-columns: 1fr !important; }
+}
+
+/* ── 34. Blog Details / Menu Details ─────────────────────── */
+@media (max-width: 1024px) {
+  .article-sidebar { display: none !important; }
+  .article-content { max-width: 100% !important; }
+}
+
+/* ── 35. Valet Page ──────────────────────────────────────── */
+@media (max-width: 767px) {
+  .valet-steps { grid-template-columns: 1fr !important; }
+}
+
+/* ── 36. Notifications ───────────────────────────────────── */
+@media (max-width: 640px) {
+  .notif-item { padding: 14px 16px; gap: 10px; }
+  .notif-title { font-size: 0.82rem; }
+  .notif-text { font-size: 0.75rem; }
+  .notif-icon-wrap { width: 36px; height: 36px; flex-shrink: 0; }
+}
+
+/* ── 37. Sidebar Mobile Toggle Backdrop ───────────────────── */
+@media (max-width: 1024px) {
+  body.sidebar-open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 199;
+  }
+}
+
+/* ── 38. KPI Grid (dashboard) ────────────────────────────── */
+@media (max-width: 767px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 480px) {
+  .kpi-grid { grid-template-columns: 1fr !important; }
+  .kpi-card { padding: 18px; }
+}
+
+/* ── 39. Admin Page ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .admin-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── 40. Stat Numbers (hero area) ───────────────────────── */
+@media (max-width: 480px) {
+  .stat-number { font-size: 2.5rem; }
+}
+
+/* ── 41. Section Eyebrow ─────────────────────────────────── */
+@media (max-width: 480px) {
+  .section-eyebrow { font-size: 0.7rem; letter-spacing: 0.18em; }
+  .section-eyebrow::before, .section-eyebrow::after { max-width: 36px; }
+}
+
+/* ── 42. Button Sizing on Mobile ─────────────────────────── */
+@media (max-width: 480px) {
+  .btn-xl { padding: 16px 32px; font-size: 0.88rem; }
+  .btn-lg { padding: 15px 28px; font-size: 0.85rem; }
+}
+
+/* ── 43. Horizontal Scroll Prevention ────────────────────── */
+body { overflow-x: hidden; }
+
+@media (max-width: 767px) {
+  .section, .container, .container-sm, .container-xl {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+/* ── 44. CTA Section (reservation) ──────────────────────── */
+@media (max-width: 767px) {
+  .section:has(.btn-gold.btn-xl) .flex.gap-6,
+  .cta-actions { flex-direction: column; align-items: center; gap: 12px; }
+  .section:has(.btn-gold.btn-xl) .btn-xl { width: 100%; max-width: 320px; }
+}
+
+/* ── 45. Nav Dropdown (mobile) ───────────────────────────── */
+/* Dropdown already hidden on mobile since nav-links is hidden */
+
+/* ── 46. PWD Strength Bar ────────────────────────────────── */
+@media (max-width: 480px) {
+  .pwd-strength-bar { height: 4px; }
+}
+
+/* ── 47. Large Screen (> 1800px) ────────────────────────── */
+@media (min-width: 1800px) {
+  .container    { max-width: 1600px; }
+  .container-xl { max-width: 1900px; }
+  .ef-container { max-width: 1560px; }
+  .section      { padding: 120px 5%; }
+}
+
+/* ── 48. Ultra-wide (> 2200px) ──────────────────────────── */
+@media (min-width: 2200px) {
+  .container    { max-width: 1900px; }
+  .container-xl { max-width: 2200px; }
+  body          { font-size: 18px; }
+}
+
+/* ── 49. Safe Area (notch / home bar on iOS) ─────────────── */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .mobile-menu {
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+  }
+  #backToTop, .back-to-top {
+    bottom: calc(28px + env(safe-area-inset-bottom));
+  }
+  .toast-container {
+    bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+}
+
+/* ── 50. Smooth touch scrolling ──────────────────────────── */
+@media (max-width: 1024px) {
+  .tab-nav,
+  .flex.overflow-x-auto,
+  .swiper-wrapper,
+  .table-wrap {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}
