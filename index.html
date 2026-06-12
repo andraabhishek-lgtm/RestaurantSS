@@ -93,6 +93,12 @@
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
+  <div class="hero-video-wrap" style="position:absolute;inset:0;z-index:0;overflow:hidden;">
+    <video class="hero-video" autoplay muted loop playsinline poster="images/food-poster.webp" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
+      <source src="videos/food-hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay" style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,8,0.60) 0%,rgba(8,8,8,0.35) 100%);"></div>
+  </div>
   <div class="hero-bg">
     <div class="swiper hero-bg-swiper">
       <div class="swiper-wrapper">
@@ -310,7 +316,7 @@
 
       <div class="food-card" data-aos="fade-up" data-aos-delay="200" data-tilt>
         <div class="food-card-img">
-          <img src="images/photo-1625944230945-1b7dd3b949ab-500.webp" alt="Lobster" loading="lazy">
+          <img src="images/lobster-bisque-600.webp" alt="Maine Lobster Bisque" loading="lazy">
           <div class="food-card-overlay"></div>
           <span class="food-card-badge"><span class="badge badge-gold">Signature</span></span>
           <a href="menu-details.html" class="food-card-quick btn btn-gold btn-sm">Quick View</a>

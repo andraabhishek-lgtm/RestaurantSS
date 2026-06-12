@@ -9,281 +9,159 @@
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#0A0A0A',cream:'#F5F0E8',wine:'#6B1D3A'}}}}</script>
 <link rel="stylesheet" href="css/eclat-beyond-hero.css">
 <style>
-/* ── CSS Variables ─────────────────────────────────── */
-:root {
-  --gold:    #C9A84C;
-  --black:   #0A0A0A;
-  --surface: #111111;
-  --white:   #F5F0E8;
-}
+:root { --gold:#C9A84C; --black:#0A0A0A; --surface:#111111; --white:#F5F0E8; }
 
-/* ── SECTION 1: HERO ───────────────────────────────── */
-.ab-hero {
-  position: relative;
-  height: 300px;
-  overflow: hidden;
+/* ── STORY ── */
+.ab-story { background:var(--black); padding:100px 0; }
+.ab-story-grid { display:grid; grid-template-columns:45% 1fr; gap:72px; align-items:center; }
+.ab-img-stack { position:relative; }
+.ab-img-main { width:100%; border-radius:10px; object-fit:cover; display:block; aspect-ratio:4/5; }
+.ab-img-badge {
+  position:absolute; bottom:-28px; right:-28px;
+  width:130px; height:130px; border-radius:50%;
+  background:var(--surface); border:2px solid rgba(201,168,76,0.35);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:10px;
 }
-.ab-hero-img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center 40%;
+.ab-img-badge-num { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:700; color:var(--gold); line-height:1; }
+.ab-img-badge-txt { font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(245,240,232,0.55); margin-top:3px; }
+.ab-eyebrow { font-style:italic; color:var(--gold); font-size:0.88rem; letter-spacing:0.04em; display:block; margin-bottom:14px; }
+.ab-h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,4vw,3.2rem); font-weight:600; color:var(--white); margin-bottom:22px; line-height:1.15; }
+.ab-p { color:rgba(245,240,232,0.62); font-size:0.94rem; line-height:1.88; margin-bottom:22px; }
+.ab-quote { border-left:3px solid var(--gold); padding:12px 20px; margin:28px 0; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.25rem; color:rgba(245,240,232,0.85); line-height:1.6; }
+.ab-btn {
+  display:inline-flex; align-items:center; gap:10px; padding:11px 30px;
+  border:1px solid rgba(245,240,232,0.55); color:var(--white); font-size:0.8rem;
+  font-weight:600; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none;
+  border-radius:4px; transition:background 0.3s, border-color 0.3s, color 0.3s;
 }
-.ab-hero-overlay {
-  position: absolute; inset: 0;
-  background: rgba(0,0,0,0.55);
-}
-.ab-hero-content {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: 10px;
-}
-.ab-hero-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2.8rem, 6vw, 4.5rem);
-  font-weight: 600;
-  color: var(--white);
-  letter-spacing: 0.08em;
-  line-height: 1;
-}
-.ab-hero-breadcrumb {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 0.78rem; color: rgba(245,240,232,0.55);
-  letter-spacing: 0.06em;
-}
-.ab-hero-breadcrumb a { color: rgba(245,240,232,0.55); text-decoration: none; transition: color .2s; }
-.ab-hero-breadcrumb a:hover { color: var(--gold); }
-.ab-hero-breadcrumb span { color: rgba(245,240,232,0.3); }
+.ab-btn:hover { background:var(--gold); border-color:var(--gold); color:#0A0A0A; }
 
-/* ── SECTION 2: OUR STORY ──────────────────────────── */
-.ab-story {
-  background: var(--black);
-  padding: 80px 0;
+/* ── PILLARS ── */
+.ab-pillars { background:var(--surface); padding:90px 0; }
+.ab-pillars-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:56px; }
+.ab-pillar-card {
+  background:rgba(255,255,255,0.03); border:1px solid rgba(201,168,76,0.18);
+  border-radius:12px; padding:42px 32px; text-align:center;
+  transition:border-color 0.3s, transform 0.3s, background 0.3s;
 }
-.ab-story-grid {
-  display: grid;
-  grid-template-columns: 45% 1fr;
-  gap: 64px;
-  align-items: center;
-}
-.ab-story-img-wrap img {
-  width: 100%; height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-  display: block;
-}
-.ab-eyebrow {
-  font-style: italic;
-  color: var(--gold);
-  font-size: 0.88rem;
-  letter-spacing: 0.04em;
-  display: block;
-  margin-bottom: 14px;
-}
-.ab-story-h2 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 20px;
-  line-height: 1.15;
-}
-.ab-story-p {
-  color: rgba(245,240,232,0.62);
-  font-size: 0.94rem;
-  line-height: 1.85;
-  margin-bottom: 32px;
-}
-.ab-btn-view {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 11px 30px;
-  border: 1px solid rgba(245,240,232,0.55);
-  color: var(--white);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background 0.3s, border-color 0.3s, color 0.3s;
-}
-.ab-btn-view:hover {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: #0A0A0A;
-}
+.ab-pillar-card:hover { border-color:rgba(201,168,76,0.5); transform:translateY(-6px); background:rgba(201,168,76,0.04); }
+.ab-pillar-icon { font-size:1.8rem; color:var(--gold); margin-bottom:22px; display:block; }
+.ab-pillar-title { font-family:'Cormorant Garamond',serif; font-size:1.55rem; color:var(--white); margin-bottom:14px; }
+.ab-pillar-p { color:rgba(245,240,232,0.55); font-size:0.87rem; line-height:1.8; }
 
-/* ── SECTION 3: CINEMATIC ──────────────────────────── */
-.ab-cinematic {
-  position: relative;
-  height: 460px;
-  overflow: hidden;
-  cursor: pointer;
-}
-.ab-cinematic-img {
-  width: 100%; height: 130%;
-  object-fit: cover;
-  object-position: center;
-  transform: translateY(0);
-  will-change: transform;
-  display: block;
-}
-.ab-cinematic-overlay {
-  position: absolute; inset: 0;
-  background: rgba(0,0,0,0.32);
-}
-.ab-cinematic-center {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-}
+/* ── STATS STRIP ── */
+.ab-stats { background:var(--black); border-top:1px solid rgba(201,168,76,0.12); border-bottom:1px solid rgba(201,168,76,0.12); }
+.ab-stats-inner { display:flex; }
+.ab-stat-cell { flex:1; padding:52px 20px; text-align:center; border-right:1px solid rgba(201,168,76,0.10); }
+.ab-stat-cell:last-child { border-right:none; }
+.ab-stat-num { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,5vw,3.4rem); font-weight:700; color:var(--gold); line-height:1; }
+.ab-stat-label { font-size:0.73rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(245,240,232,0.45); margin-top:8px; }
+
+/* ── CINEMATIC VIDEO ── */
+.ab-cinematic { position:relative; height:520px; overflow:hidden; background:#000; }
+.ab-cinematic-media { width:100%; height:130%; object-fit:cover; object-position:center; transform:translateY(0); will-change:transform; display:block; }
+.ab-cinematic video.ab-cinematic-media { height:100%; transform:none; }
+.ab-cinematic-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.38); transition:opacity 0.4s; }
+.ab-cinematic-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; }
 .ab-play-btn {
-  width: 76px; height: 76px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.75);
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(6px);
-  display: flex; align-items: center; justify-content: center;
-  color: #fff;
-  font-size: 1.25rem;
-  padding-left: 5px;
-  transition: all 0.35s ease;
+  width:82px; height:82px; border-radius:50%;
+  border:2px solid rgba(255,255,255,0.75);
+  background:rgba(255,255,255,0.08); backdrop-filter:blur(6px);
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:1.3rem; padding-left:6px;
+  cursor:pointer; transition:all 0.35s ease;
 }
-.ab-cinematic:hover .ab-play-btn {
-  background: rgba(201,168,76,0.25);
-  border-color: var(--gold);
-  color: var(--gold);
-  transform: scale(1.12);
-}
+.ab-cinematic:hover .ab-play-btn { background:rgba(201,168,76,0.28); border-color:var(--gold); color:var(--gold); transform:scale(1.1); }
+.ab-play-label { font-size:0.75rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.6); }
+.ab-cinematic.is-playing .ab-cinematic-overlay,
+.ab-cinematic.is-playing .ab-cinematic-center { opacity:0; pointer-events:none; }
 
-/* ── SECTION 4: CUSTOM FOOTER ──────────────────────── */
-.ab-footer {
-  background: #080808;
-  border-top: 1px solid rgba(201,168,76,0.15);
-  padding: 64px 0 28px;
-}
-.ab-footer-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 48px;
-}
-.ab-footer-logo {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.7rem;
-  font-weight: 600;
-  color: var(--white);
-  letter-spacing: 0.06em;
-  margin-bottom: 10px;
-}
-.ab-footer-tagline {
-  color: rgba(245,240,232,0.50);
-  font-size: 0.82rem;
-  line-height: 1.7;
-  margin-bottom: 20px;
-  max-width: 200px;
-}
-.ab-footer-info-row {
-  display: flex; align-items: center; gap: 9px;
-  color: rgba(245,240,232,0.52);
-  font-size: 0.79rem;
-  margin-bottom: 8px;
-}
-.ab-footer-info-row i { color: var(--gold); font-size: 0.72rem; flex-shrink: 0; }
-.ab-col-heading {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.38);
-  margin-bottom: 18px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(201,168,76,0.12);
-}
-.ab-footer-link {
-  display: block;
-  color: rgba(245,240,232,0.55);
-  font-size: 0.85rem;
-  text-decoration: none;
-  margin-bottom: 11px;
-  transition: color 0.2s, padding-left 0.2s;
-}
-.ab-footer-link:hover { color: var(--gold); padding-left: 4px; }
-.ab-hours-label {
-  color: rgba(245,240,232,0.36);
-  font-size: 0.72rem;
-  letter-spacing: 0.05em;
-  margin-bottom: 3px;
-  margin-top: 8px;
-}
-.ab-hours-time {
-  color: rgba(245,240,232,0.60);
-  font-size: 0.83rem;
-  margin-bottom: 4px;
-}
-.ig-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 5px;
-}
-.ig-thumb {
-  aspect-ratio: 1;
-  overflow: hidden;
-  border-radius: 3px;
-  cursor: pointer;
-}
-.ig-thumb img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: brightness(0.80) saturate(0.9);
-  transition: filter 0.3s, transform 0.35s;
-  display: block;
-}
-.ig-thumb:hover img {
-  filter: brightness(1) saturate(1.1);
-  transform: scale(1.08);
-}
-.ab-footer-bottom {
-  border-top: 1px solid rgba(245,240,232,0.06);
-  padding-top: 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.ab-footer-copy { color: rgba(245,240,232,0.30); font-size: 0.76rem; }
-.ab-footer-bottom-links { display: flex; gap: 20px; }
-.ab-footer-bottom-links a {
-  color: rgba(245,240,232,0.35); font-size: 0.76rem;
-  text-decoration: none; transition: color .2s;
-}
-.ab-footer-bottom-links a:hover { color: var(--gold); }
+/* ── TIMELINE ── */
+.ab-timeline { background:var(--surface); padding:90px 0; }
+.ab-tl-track { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:56px; position:relative; }
+.ab-tl-track::before { content:''; position:absolute; top:22px; left:12.5%; right:12.5%; height:1px; background:linear-gradient(90deg,transparent,rgba(201,168,76,0.4),transparent); }
+.ab-tl-item { text-align:center; padding:0 16px; }
+.ab-tl-dot { width:44px; height:44px; border-radius:50%; background:var(--surface); border:2px solid var(--gold); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; position:relative; z-index:1; }
+.ab-tl-dot i { color:var(--gold); font-size:0.9rem; }
+.ab-tl-year { font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--gold); font-weight:600; margin-bottom:6px; }
+.ab-tl-event { font-size:0.8rem; color:rgba(245,240,232,0.55); line-height:1.6; }
 
-/* ── SCROLL REVEAL ──────────────────────────────────── */
-.sr-item {
-  opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.72s cubic-bezier(0.25,0.46,0.45,0.94),
-              transform 0.72s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-.sr-item.sr-in { opacity: 1; transform: translateY(0); }
-.sr-item[data-delay="1"] { transition-delay: 0.10s; }
-.sr-item[data-delay="2"] { transition-delay: 0.20s; }
-.sr-item[data-delay="3"] { transition-delay: 0.30s; }
-.sr-item[data-delay="4"] { transition-delay: 0.40s; }
+/* ── TEAM TEASER ── */
+.ab-team { background:var(--black); padding:90px 0; }
+.ab-team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:56px; }
+.ab-chef-card { position:relative; border-radius:12px; overflow:hidden; aspect-ratio:3/4; }
+.ab-chef-img { width:100%; height:100%; object-fit:cover; object-position:top; transition:transform 0.6s ease; display:block; }
+.ab-chef-card:hover .ab-chef-img { transform:scale(1.06); }
+.ab-chef-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.15) 55%,transparent 100%); }
+.ab-chef-info { position:absolute; bottom:0; left:0; right:0; padding:28px 24px; }
+.ab-chef-role { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.ab-chef-name { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; color:var(--white); }
 
-/* ── RESPONSIVE ─────────────────────────────────────── */
-@media (max-width: 900px) {
-  .ab-story-grid { grid-template-columns: 1fr; gap: 36px; }
-  .ab-footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+/* ── CTA BAND ── */
+.ab-cta { background:linear-gradient(135deg,#0d0d0d 0%,#1a1208 50%,#0d0d0d 100%); border-top:1px solid rgba(201,168,76,0.18); border-bottom:1px solid rgba(201,168,76,0.18); padding:88px 0; text-align:center; }
+.ab-cta-eye { font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; display:block; }
+.ab-cta-h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,5vw,3.6rem); font-weight:600; color:var(--white); margin-bottom:14px; }
+.ab-cta-sub { color:rgba(245,240,232,0.55); font-size:0.95rem; max-width:480px; margin:0 auto 38px; line-height:1.75; }
+
+/* ── FOOTER ── */
+.ab-footer { background:#080808; border-top:1px solid rgba(201,168,76,0.15); padding:64px 0 28px; }
+.ab-footer-grid { display:grid; grid-template-columns:1.2fr 0.8fr 1fr 1fr; gap:48px; margin-bottom:48px; }
+.ab-footer-logo { font-family:'Cormorant Garamond',serif; font-size:1.7rem; font-weight:600; color:var(--white); letter-spacing:0.06em; margin-bottom:10px; }
+.ab-footer-tagline { color:rgba(245,240,232,0.50); font-size:0.82rem; line-height:1.7; margin-bottom:20px; max-width:200px; }
+.ab-footer-info-row { display:flex; align-items:center; gap:9px; color:rgba(245,240,232,0.52); font-size:0.79rem; margin-bottom:8px; }
+.ab-footer-info-row i { color:var(--gold); font-size:0.72rem; flex-shrink:0; }
+.ab-col-heading { font-size:0.68rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:rgba(245,240,232,0.38); margin-bottom:18px; padding-bottom:10px; border-bottom:1px solid rgba(201,168,76,0.12); }
+.ab-footer-link { display:block; color:rgba(245,240,232,0.55); font-size:0.85rem; text-decoration:none; margin-bottom:11px; transition:color 0.2s, padding-left 0.2s; }
+.ab-footer-link:hover { color:var(--gold); padding-left:4px; }
+.ab-hours-label { color:rgba(245,240,232,0.36); font-size:0.72rem; letter-spacing:0.05em; margin-bottom:3px; margin-top:8px; }
+.ab-hours-time { color:rgba(245,240,232,0.60); font-size:0.83rem; margin-bottom:4px; }
+.ig-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; }
+.ig-thumb { aspect-ratio:1; overflow:hidden; border-radius:3px; cursor:pointer; }
+.ig-thumb img { width:100%; height:100%; object-fit:cover; filter:brightness(0.80) saturate(0.9); transition:filter 0.3s, transform 0.35s; display:block; }
+.ig-thumb:hover img { filter:brightness(1) saturate(1.1); transform:scale(1.08); }
+.ab-footer-bottom { border-top:1px solid rgba(245,240,232,0.06); padding-top:22px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.ab-footer-copy { color:rgba(245,240,232,0.30); font-size:0.76rem; }
+.ab-footer-bottom-links { display:flex; gap:20px; }
+.ab-footer-bottom-links a { color:rgba(245,240,232,0.35); font-size:0.76rem; text-decoration:none; transition:color .2s; }
+.ab-footer-bottom-links a:hover { color:var(--gold); }
+
+/* ── SECTION HEADER ── */
+.ab-section-header { text-align:center; }
+.ab-section-eye { font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:14px; }
+.ab-section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,2.9rem); font-weight:600; color:var(--white); line-height:1.2; }
+.ab-section-line { width:48px; height:1px; background:var(--gold); margin:18px auto 0; }
+
+/* ── SCROLL REVEAL ── */
+.sr-item { opacity:0; transform:translateY(36px); transition:opacity 0.72s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.72s cubic-bezier(0.25,0.46,0.45,0.94); }
+.sr-item.sr-in { opacity:1; transform:translateY(0); }
+.sr-item[data-delay="1"] { transition-delay:0.10s; }
+.sr-item[data-delay="2"] { transition-delay:0.20s; }
+.sr-item[data-delay="3"] { transition-delay:0.30s; }
+.sr-item[data-delay="4"] { transition-delay:0.40s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width:900px) {
+  .ab-story-grid { grid-template-columns:1fr; gap:48px; }
+  .ab-pillars-grid { grid-template-columns:1fr; }
+  .ab-tl-track { grid-template-columns:1fr 1fr; gap:36px; }
+  .ab-tl-track::before { display:none; }
+  .ab-team-grid { grid-template-columns:1fr 1fr; }
+  .ab-footer-grid { grid-template-columns:1fr 1fr; gap:36px; }
+  .ab-stats-inner { flex-wrap:wrap; }
+  .ab-stat-cell { flex:0 0 50%; border-right:none; border-bottom:1px solid rgba(201,168,76,0.10); }
 }
-@media (max-width: 560px) {
-  .ab-hero { height: 220px; }
-  .ab-cinematic { height: 300px; }
-  .ab-footer-grid { grid-template-columns: 1fr; gap: 32px; }
-  .ab-story { padding: 52px 0; }
+@media (max-width:560px) {
+  .ab-cinematic { height:340px; }
+  .ab-team-grid { grid-template-columns:1fr; }
+  .ab-tl-track { grid-template-columns:1fr; }
+  .ab-stat-cell { flex:0 0 100%; }
+  .ab-footer-grid { grid-template-columns:1fr; gap:32px; }
+  .ab-img-badge { display:none; }
 }
 </style>
 </head>
@@ -332,53 +210,57 @@
   <a href="reservation.html" class="btn btn-gold mt-4">Reserve</a>
 </div>
 
-<!-- ═══════════════════════════════════════════════════
-     SECTION 1 — HERO BANNER
-════════════════════════════════════════════════════ -->
-<section class="ab-hero">
-  <img src="images/photo-1517248135467-4c7edcad34c4-1920.webp"
-       alt="ÉCLAT Fine Dining" class="ab-hero-img" loading="eager">
-  <div class="ab-hero-overlay"></div>
-  <div class="ab-hero-content">
-    <h1 class="ab-hero-title">About</h1>
-    <div class="ab-hero-breadcrumb">
-      <a href="index.html">Home</a>
-      <span>›</span>
-      <span style="color:rgba(245,240,232,0.75)">About</span>
+<!-- ═══════════════ HERO BANNER ═══════════════ -->
+<div class="page-banner">
+  <div class="page-banner-bg" style="position:relative;">
+    <div class="swiper page-banner-swiper" style="position:absolute;inset:0;z-index:0;">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/photo-1517248135467-4c7edcad34c4-1920.webp" alt="ÉCLAT Interior" loading="eager" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="swiper-slide"><img src="images/photo-1414235077428-338989a2e8c0-1920.webp" alt="Fine Dining" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="swiper-slide"><img src="images/photo-1559339352-11d035aa65de-1920.webp" alt="Ambiance" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
+      </div>
     </div>
   </div>
-</section>
+  <div class="page-banner-overlay"></div>
+  <div class="page-banner-content">
+    <div class="page-banner-eyebrow"><i class="fa-solid fa-utensils text-gold"></i>Our Heritage</div>
+    <h1 class="page-banner-title">A Pursuit of<br><span class="text-gradient">Perfection</span></h1>
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span><span>About</span></div>
+  </div>
+</div>
 
-<!-- ═══════════════════════════════════════════════════
-     SECTION 2 — OUR STORY
-════════════════════════════════════════════════════ -->
+<!-- ═══════════════ OUR STORY ═══════════════ -->
 <section class="ab-story">
   <div class="container">
     <div class="ab-story-grid">
 
-      <!-- Left: image -->
-      <div class="ab-story-img-wrap sr-item" data-delay="0">
-        <img src="images/photo-1414235077428-338989a2e8c0-600.webp"
-             alt="ÉCLAT restaurant interior" loading="lazy">
+      <div class="ab-img-stack sr-item" data-delay="0">
+        <img src="images/photo-1414235077428-338989a2e8c0-600.webp" alt="ÉCLAT restaurant interior" class="ab-img-main" loading="lazy">
+        <div class="ab-img-badge">
+          <span class="ab-img-badge-num">★★</span>
+          <span class="ab-img-badge-txt">Michelin<br>Stars</span>
+        </div>
       </div>
 
-      <!-- Right: text -->
       <div class="sr-item" data-delay="2">
-        <span class="ab-eyebrow">Behind the scene</span>
-        <h2 class="ab-story-h2">Our story</h2>
-        <p class="ab-story-p">
+        <span class="ab-eyebrow">Behind the Scene</span>
+        <h2 class="ab-h2">Where Every Meal<br>Tells a Story</h2>
+        <p class="ab-p">
           ÉCLAT was born from a single obsession: that a meal should feel like a moment stolen from ordinary life.
-          Founded in 2018 by Chef Laurent Dubois in the heart of New York, we set out to create a place where
-          French technique meets the precision of Japanese craft — where every ingredient has a reason to be on
-          your plate, and every detail in the room has a reason to be in your memory.
+          Founded in 2018 by Chef Laurent Dubois in the heart of New York, we set out to create a space where
+          French technique meets the precision of Japanese craft — where every ingredient earns its place on
+          your plate, and every detail in the room earns its place in your memory.
         </p>
-        <p class="ab-story-p" style="margin-bottom:32px;">
-          Six years on, two Michelin Stars later, our philosophy hasn't changed. We believe the finest dining
-          is not a performance — it is a quiet conversation between the kitchen and the guest, conducted in
-          the language of flavour, texture, and care.
+        <blockquote class="ab-quote">
+          "Cooking is not a performance. It is a quiet conversation between the kitchen and the soul of the guest."
+          <br><small style="font-size:0.75rem;font-style:normal;letter-spacing:0.1em;color:var(--gold);">— Chef Laurent Dubois</small>
+        </blockquote>
+        <p class="ab-p">
+          Six years on, two Michelin Stars later, our philosophy has never wavered. We believe the finest dining
+          is not spectacle — it is intimacy, built course by course, in the language of flavour, texture, and care.
         </p>
-        <a href="chefs.html" class="ab-btn-view">
-          View More <i class="fa-solid fa-arrow-right-long" style="font-size:0.8rem;"></i>
+        <a href="chefs.html" class="ab-btn">
+          Meet Our Chefs <i class="fa-solid fa-arrow-right-long" style="font-size:0.8rem;"></i>
         </a>
       </div>
 
@@ -386,107 +268,240 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-     SECTION 3 — CINEMATIC IMAGE + PLAY BUTTON
-════════════════════════════════════════════════════ -->
-<section class="ab-cinematic" id="ab-cinematic">
-  <img src="images/photo-1504674900247-0877df9cc836-500.webp"
-       alt="ÉCLAT atmosphere" class="ab-cinematic-img" id="ab-para-img" loading="lazy">
-  <div class="ab-cinematic-overlay"></div>
-  <div class="ab-cinematic-center">
-    <div class="ab-play-btn">
-      <i class="fa-solid fa-play"></i>
+<!-- ═══════════════ STATS ═══════════════ -->
+<div class="ab-stats">
+  <div class="ab-stats-inner">
+    <div class="ab-stat-cell sr-item" data-delay="0">
+      <div class="ab-stat-num">2018</div>
+      <div class="ab-stat-label">Year Founded</div>
+    </div>
+    <div class="ab-stat-cell sr-item" data-delay="1">
+      <div class="ab-stat-num">★★</div>
+      <div class="ab-stat-label">Michelin Stars</div>
+    </div>
+    <div class="ab-stat-cell sr-item" data-delay="2">
+      <div class="ab-stat-num">200+</div>
+      <div class="ab-stat-label">Team Members</div>
+    </div>
+    <div class="ab-stat-cell sr-item" data-delay="3">
+      <div class="ab-stat-num">50k+</div>
+      <div class="ab-stat-label">Guests Welcomed</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ PHILOSOPHY PILLARS ═══════════════ -->
+<section class="ab-pillars">
+  <div class="container">
+    <div class="ab-section-header sr-item">
+      <span class="ab-section-eye">What We Believe</span>
+      <h2 class="ab-section-title">Our Philosophy</h2>
+      <div class="ab-section-line"></div>
+    </div>
+    <div class="ab-pillars-grid">
+      <div class="ab-pillar-card sr-item" data-delay="1">
+        <i class="fa-solid fa-leaf ab-pillar-icon"></i>
+        <h3 class="ab-pillar-title">Provenance First</h3>
+        <p class="ab-pillar-p">Every ingredient is sourced with intention — from micro-season farms in Burgundy to coastal fisheries in Hokkaido. We know the name of the farmer behind every dish.</p>
+      </div>
+      <div class="ab-pillar-card sr-item" data-delay="2">
+        <i class="fa-solid fa-fire-flame-curved ab-pillar-icon"></i>
+        <h3 class="ab-pillar-title">Craft Without Compromise</h3>
+        <p class="ab-pillar-p">Our kitchen operates at the intersection of classical French rigour and Japanese minimalism. Technique serves the ingredient — never the other way around.</p>
+      </div>
+      <div class="ab-pillar-card sr-item" data-delay="3">
+        <i class="fa-solid fa-heart ab-pillar-icon"></i>
+        <h3 class="ab-pillar-title">Hospitality as Art</h3>
+        <p class="ab-pillar-p">We believe that how you are made to feel is as important as what you taste. Every guest is welcomed as if the restaurant were our home and they our dearest friend.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-     SECTION 4 — CUSTOM FOOTER
-════════════════════════════════════════════════════ -->
+<!-- ═══════════════ CINEMATIC / VIDEO ═══════════════ -->
+<section class="ab-cinematic" id="ab-cinematic">
+  <img src="images/photo-1504674900247-0877df9cc836-1920.webp"
+       alt="ÉCLAT atmosphere" class="ab-cinematic-media" id="ab-para-img" loading="lazy">
+  <video id="ab-video" class="ab-cinematic-media"
+         src="videos/food-hero.mp4"
+         style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+         playsinline loop></video>
+  <div class="ab-cinematic-overlay" id="ab-overlay"></div>
+  <div class="ab-cinematic-center" id="ab-play-wrap">
+    <button class="ab-play-btn" id="ab-play-btn" aria-label="Play video">
+      <i class="fa-solid fa-play"></i>
+    </button>
+    <span class="ab-play-label">Watch Our Story</span>
+  </div>
+</section>
+
+<!-- ═══════════════ TIMELINE ═══════════════ -->
+<section class="ab-timeline">
+  <div class="container">
+    <div class="ab-section-header sr-item">
+      <span class="ab-section-eye">Our Journey</span>
+      <h2 class="ab-section-title">Milestones</h2>
+      <div class="ab-section-line"></div>
+    </div>
+    <div class="ab-tl-track">
+      <div class="ab-tl-item sr-item" data-delay="1">
+        <div class="ab-tl-dot"><i class="fa-solid fa-door-open"></i></div>
+        <div class="ab-tl-year">2018</div>
+        <p class="ab-tl-event">ÉCLAT opens its doors on Lumière Blvd, New York — a 48-seat room with an 8-course tasting menu.</p>
+      </div>
+      <div class="ab-tl-item sr-item" data-delay="2">
+        <div class="ab-tl-dot"><i class="fa-solid fa-star"></i></div>
+        <div class="ab-tl-year">2020</div>
+        <p class="ab-tl-event">Awarded our first Michelin Star — recognised for "singular precision and quiet audacity."</p>
+      </div>
+      <div class="ab-tl-item sr-item" data-delay="3">
+        <div class="ab-tl-dot"><i class="fa-solid fa-wine-glass-empty"></i></div>
+        <div class="ab-tl-year">2022</div>
+        <p class="ab-tl-event">The Bar at ÉCLAT opens alongside our guest rooms — turning dinner into a full overnight experience.</p>
+      </div>
+      <div class="ab-tl-item sr-item" data-delay="4">
+        <div class="ab-tl-dot"><i class="fa-solid fa-medal"></i></div>
+        <div class="ab-tl-year">2024</div>
+        <p class="ab-tl-event">Second Michelin Star awarded. Named "Best Fine Dining Experience" by the New York Culinary Guild.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TEAM TEASER ═══════════════ -->
+<section class="ab-team">
+  <div class="container">
+    <div class="ab-section-header sr-item">
+      <span class="ab-section-eye">The People Behind the Magic</span>
+      <h2 class="ab-section-title">Meet Our Team</h2>
+      <div class="ab-section-line"></div>
+    </div>
+    <div class="ab-team-grid">
+      <div class="ab-chef-card sr-item" data-delay="1">
+        <img src="images/photo-1544025162-d76694265947-600.webp" alt="Chef Laurent Dubois" class="ab-chef-img" loading="lazy">
+        <div class="ab-chef-overlay"></div>
+        <div class="ab-chef-info">
+          <p class="ab-chef-role">Executive Chef &amp; Founder</p>
+          <h3 class="ab-chef-name">Laurent Dubois</h3>
+        </div>
+      </div>
+      <div class="ab-chef-card sr-item" data-delay="2">
+        <img src="images/photo-1577219491135-ce391730fb2c-600.webp" alt="Chef de Cuisine" class="ab-chef-img" loading="lazy">
+        <div class="ab-chef-overlay"></div>
+        <div class="ab-chef-info">
+          <p class="ab-chef-role">Chef de Cuisine</p>
+          <h3 class="ab-chef-name">Sora Tanaka</h3>
+        </div>
+      </div>
+      <div class="ab-chef-card sr-item" data-delay="3">
+        <img src="images/photo-1488477304112-4944851de03d-600.webp" alt="Pastry Chef" class="ab-chef-img" loading="lazy">
+        <div class="ab-chef-overlay"></div>
+        <div class="ab-chef-info">
+          <p class="ab-chef-role">Head Pastry Chef</p>
+          <h3 class="ab-chef-name">Élise Moreau</h3>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:44px;" class="sr-item">
+      <a href="chefs.html" class="ab-btn">View Full Team <i class="fa-solid fa-arrow-right-long" style="font-size:0.8rem;"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ AWARDS ═══════════════ -->
+<section style="background:var(--surface);padding:70px 0;border-top:1px solid rgba(201,168,76,0.12);">
+  <div class="container">
+    <div class="ab-section-header sr-item" style="margin-bottom:48px;">
+      <span class="ab-section-eye">Recognition</span>
+      <h2 class="ab-section-title">Awards &amp; Honours</h2>
+      <div class="ab-section-line"></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:24px;">
+      <div class="sr-item" data-delay="1" style="flex:0 0 auto;text-align:center;padding:28px 36px;border:1px solid rgba(201,168,76,0.20);border-radius:10px;background:rgba(255,255,255,0.02);min-width:160px;">
+        <i class="fa-solid fa-star" style="font-size:1.6rem;color:var(--gold);margin-bottom:12px;display:block;"></i>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--white);margin-bottom:4px;">Michelin Guide</div>
+        <div style="font-size:0.72rem;letter-spacing:0.1em;color:rgba(245,240,232,0.40);text-transform:uppercase;">★★ Two Stars · 2024</div>
+      </div>
+      <div class="sr-item" data-delay="2" style="flex:0 0 auto;text-align:center;padding:28px 36px;border:1px solid rgba(201,168,76,0.20);border-radius:10px;background:rgba(255,255,255,0.02);min-width:160px;">
+        <i class="fa-solid fa-trophy" style="font-size:1.6rem;color:var(--gold);margin-bottom:12px;display:block;"></i>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--white);margin-bottom:4px;">NYC Culinary Guild</div>
+        <div style="font-size:0.72rem;letter-spacing:0.1em;color:rgba(245,240,232,0.40);text-transform:uppercase;">Best Fine Dining · 2024</div>
+      </div>
+      <div class="sr-item" data-delay="3" style="flex:0 0 auto;text-align:center;padding:28px 36px;border:1px solid rgba(201,168,76,0.20);border-radius:10px;background:rgba(255,255,255,0.02);min-width:160px;">
+        <i class="fa-solid fa-award" style="font-size:1.6rem;color:var(--gold);margin-bottom:12px;display:block;"></i>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--white);margin-bottom:4px;">Wine Spectator</div>
+        <div style="font-size:0.72rem;letter-spacing:0.1em;color:rgba(245,240,232,0.40);text-transform:uppercase;">Award of Excellence · 2023</div>
+      </div>
+      <div class="sr-item" data-delay="4" style="flex:0 0 auto;text-align:center;padding:28px 36px;border:1px solid rgba(201,168,76,0.20);border-radius:10px;background:rgba(255,255,255,0.02);min-width:160px;">
+        <i class="fa-solid fa-medal" style="font-size:1.6rem;color:var(--gold);margin-bottom:12px;display:block;"></i>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--white);margin-bottom:4px;">Zagat Survey</div>
+        <div style="font-size:0.72rem;letter-spacing:0.1em;color:rgba(245,240,232,0.40);text-transform:uppercase;">Top 10 NY Restaurants · 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA BAND ═══════════════ -->
+<section class="ab-cta">
+  <div class="container">
+    <span class="ab-cta-eye">Your Table Awaits</span>
+    <h2 class="ab-cta-h2">Begin Your ÉCLAT Evening</h2>
+    <p class="ab-cta-sub">Reserve a seat at one of New York's most celebrated tables. Dinner, cocktails, or a full overnight — your story starts here.</p>
+    <a href="reservation.html" class="btn btn-gold btn-lg">
+      <i class="fa-regular fa-calendar"></i> Reserve a Table
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
 <footer class="ab-footer">
   <div class="container">
     <div class="ab-footer-grid">
-
-      <!-- Col 1: Brand -->
       <div class="sr-item" data-delay="0">
         <div class="ab-footer-logo">ÉCLAT</div>
         <p class="ab-footer-tagline">Award-winning French-Asian fine dining in the heart of New York City.</p>
-        <div class="ab-footer-info-row">
-          <i class="fa-regular fa-clock"></i>
-          <span>Mon–Sat: 12PM – 11PM</span>
-        </div>
-        <div class="ab-footer-info-row">
-          <i class="fa-regular fa-clock"></i>
-          <span>Sunday: 11AM – 10:30PM</span>
-        </div>
-        <div class="ab-footer-info-row" style="margin-top:8px;">
-          <i class="fa-solid fa-location-dot"></i>
-          <span>42 Lumière Blvd, New York</span>
-        </div>
+        <div class="ab-footer-info-row"><i class="fa-regular fa-clock"></i><span>Mon–Sat: 12PM – 11PM</span></div>
+        <div class="ab-footer-info-row"><i class="fa-regular fa-clock"></i><span>Sunday: 11AM – 10:30PM</span></div>
+        <div class="ab-footer-info-row" style="margin-top:8px;"><i class="fa-solid fa-location-dot"></i><span>42 Lumière Blvd, New York</span></div>
       </div>
-
-      <!-- Col 2: Pages -->
       <div class="sr-item" data-delay="1">
         <h4 class="ab-col-heading">Pages</h4>
-        <a href="index.html"       class="ab-footer-link">Home</a>
+        <a href="index.html" class="ab-footer-link">Home</a>
         <a href="reservation.html" class="ab-footer-link">Reservations</a>
-        <a href="menu.html"        class="ab-footer-link">Menu</a>
-        <a href="bar.html"         class="ab-footer-link">The Bar</a>
-        <a href="rooms.html"       class="ab-footer-link">Guest Rooms</a>
-        <a href="contact.html"     class="ab-footer-link">Contact</a>
+        <a href="menu.html" class="ab-footer-link">Menu</a>
+        <a href="bar.html" class="ab-footer-link">The Bar</a>
+        <a href="rooms.html" class="ab-footer-link">Guest Rooms</a>
+        <a href="contact.html" class="ab-footer-link">Contact</a>
       </div>
-
-      <!-- Col 3: Opening Hours -->
       <div class="sr-item" data-delay="2">
         <h4 class="ab-col-heading">Opening Hours</h4>
         <p class="ab-hours-label">Monday – Friday</p>
-        <p class="ab-hours-time">10:00am – 05:00am</p>
+        <p class="ab-hours-time">12:00pm – 11:00pm</p>
         <p class="ab-hours-label">Saturday – Sunday</p>
-        <p class="ab-hours-time">10:00am – 05:00am</p>
-        <p class="ab-hours-label" style="margin-top:14px;">Bar & Lounge</p>
+        <p class="ab-hours-time">11:00am – 11:30pm</p>
+        <p class="ab-hours-label" style="margin-top:14px;">Bar &amp; Lounge</p>
         <p class="ab-hours-time">Nightly until Midnight</p>
-        <div style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;
-                    background:rgba(201,168,76,0.10);border:1px solid rgba(201,168,76,0.25);
-                    border-radius:20px;padding:5px 14px;">
+        <div style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:rgba(201,168,76,0.10);border:1px solid rgba(201,168,76,0.25);border-radius:20px;padding:5px 14px;">
           <span style="width:7px;height:7px;border-radius:50%;background:#4CAF50;display:inline-block;"></span>
           <span style="color:rgba(245,240,232,0.65);font-size:0.75rem;">Open Now</span>
         </div>
       </div>
-
-      <!-- Col 4: Instagram -->
       <div class="sr-item" data-delay="3">
         <h4 class="ab-col-heading">Instagram</h4>
         <div class="ig-grid">
-          <div class="ig-thumb">
-            <img src="images/photo-1544025162-d76694265947-80x80.webp" alt="ÉCLAT on Instagram" loading="lazy">
-          </div>
-          <div class="ig-thumb">
-            <img src="images/photo-1555396273-367ea4eb4db5-60x60.webp" alt="ÉCLAT on Instagram" loading="lazy">
-          </div>
-          <div class="ig-thumb">
-            <img src="images/photo-1540189549336-e6e99c3679fe-100x100.webp" alt="ÉCLAT on Instagram" loading="lazy">
-          </div>
-          <div class="ig-thumb">
-            <img src="images/photo-1551538827-9c037cb4f32a-80x80.webp" alt="ÉCLAT on Instagram" loading="lazy">
-          </div>
-          <div class="ig-thumb">
-            <img src="images/photo-1488477304112-4944851de03d-80x80.webp" alt="ÉCLAT on Instagram" loading="lazy">
-          </div>
-          <div class="ig-thumb">
-            <img src="images/photo-1547592180-85f173990554-100x100.webp" alt="ÉCLAT on Instagram" loading="lazy">
-          </div>
+          <div class="ig-thumb"><img src="images/photo-1544025162-d76694265947-80x80.webp" alt="ÉCLAT" loading="lazy"></div>
+          <div class="ig-thumb"><img src="images/photo-1555396273-367ea4eb4db5-60x60.webp" alt="ÉCLAT" loading="lazy"></div>
+          <div class="ig-thumb"><img src="images/photo-1540189549336-e6e99c3679fe-100x100.webp" alt="ÉCLAT" loading="lazy"></div>
+          <div class="ig-thumb"><img src="images/photo-1551538827-9c037cb4f32a-80x80.webp" alt="ÉCLAT" loading="lazy"></div>
+          <div class="ig-thumb"><img src="images/photo-1488477304112-4944851de03d-80x80.webp" alt="ÉCLAT" loading="lazy"></div>
+          <div class="ig-thumb"><img src="images/photo-1547592180-85f173990554-100x100.webp" alt="ÉCLAT" loading="lazy"></div>
         </div>
-        <a href="#" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;
-                           color:rgba(245,240,232,0.45);font-size:0.76rem;text-decoration:none;
-                           transition:color 0.2s;"
+        <a href="#" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;color:rgba(245,240,232,0.45);font-size:0.76rem;text-decoration:none;transition:color 0.2s;"
            onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(245,240,232,0.45)'">
           <i class="fab fa-instagram"></i> @eclatfinedining
         </a>
       </div>
-
     </div>
-
-    <!-- Footer bottom bar -->
     <div class="ab-footer-bottom">
       <p class="ab-footer-copy">© 2024 ÉCLAT Fine Dining. All rights reserved.</p>
       <div class="ab-footer-bottom-links">
@@ -498,46 +513,56 @@
   </div>
 </footer>
 
-<!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/eclat-beyond-hero.js"></script>
 <script>
 (function () {
 
-  /* ── Scroll Reveal (IntersectionObserver) ── */
-  const srItems = document.querySelectorAll('.sr-item');
+  /* ── Scroll Reveal ── */
   const srObs = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('sr-in');
-        srObs.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('sr-in'); srObs.unobserve(e.target); }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  srItems.forEach(function (el) { srObs.observe(el); });
+  }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.sr-item').forEach(function (el) { srObs.observe(el); });
 
   /* ── Parallax on cinematic section ── */
   var section = document.getElementById('ab-cinematic');
-  var img     = document.getElementById('ab-para-img');
+  var paraImg = document.getElementById('ab-para-img');
   var rafId   = null;
-
   function applyParallax() {
     rafId = null;
-    if (!section || !img) return;
+    if (!section || !paraImg || section.classList.contains('is-playing')) return;
     var rect     = section.getBoundingClientRect();
-    var progress = rect.top / window.innerHeight; // -1 to 1
-    var shift    = progress * 55;                 // ±55px
-    img.style.transform = 'translateY(' + shift + 'px)';
+    var progress = rect.top / window.innerHeight;
+    paraImg.style.transform = 'translateY(' + (progress * 55) + 'px)';
   }
-
   window.addEventListener('scroll', function () {
     if (!rafId) rafId = requestAnimationFrame(applyParallax);
   }, { passive: true });
-
   applyParallax();
+
+  /* ── Video play on click ── */
+  var playBtn  = document.getElementById('ab-play-btn');
+  var video    = document.getElementById('ab-video');
+  var overlay  = document.getElementById('ab-overlay');
+  var playWrap = document.getElementById('ab-play-wrap');
+
+  if (playBtn && video) {
+    playBtn.addEventListener('click', function () {
+      paraImg.style.display = 'none';
+      video.style.display   = 'block';
+      section.classList.add('is-playing');
+      video.play();
+    });
+    video.addEventListener('click', function () {
+      if (video.paused) { video.play(); } else { video.pause(); }
+    });
+  }
 
 })();
 </script>
