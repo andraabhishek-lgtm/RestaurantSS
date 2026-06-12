@@ -12,6 +12,189 @@
 <script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#0A0A0A',cream:'#F5F0E8'}}}}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <link rel="stylesheet" href="css/eclat-beyond-hero.css">
+<style>
+/* ── Bar Fullscreen Video Hero ──────────────────── */
+.bar-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 580px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.bar-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+.bar-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.30) 0%,
+    rgba(0,0,0,0.48) 45%,
+    rgba(0,0,0,0.75) 100%
+  );
+  z-index: 1;
+}
+/* Side vignette for depth */
+.bar-hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.55) 0%,
+    transparent 40%,
+    transparent 70%,
+    rgba(0,0,0,0.35) 100%
+  );
+  z-index: 1;
+}
+.bar-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 8%;
+  max-width: 780px;
+}
+/* Eyebrow */
+.bar-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: #C9A84C;
+  margin-bottom: 22px;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: bh-fade-up 0.8s 0.4s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+}
+.bar-hero-eyebrow::before {
+  content: '';
+  width: 38px;
+  height: 1px;
+  background: #C9A84C;
+  flex-shrink: 0;
+}
+/* Heading */
+.bar-hero-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(3rem, 7vw, 6.2rem);
+  font-weight: 600;
+  line-height: 1.06;
+  color: #F5F0E8;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(28px);
+  animation: bh-fade-up 0.85s 0.65s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+}
+.bar-hero-title .gold { color: #C9A84C; }
+/* Divider line */
+.bar-hero-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, #C9A84C, transparent);
+  margin-bottom: 22px;
+  opacity: 0;
+  animation: bh-fade-up 0.7s 0.85s ease forwards;
+}
+/* Breadcrumb */
+.bar-hero-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: rgba(245,240,232,0.42);
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: bh-fade-up 0.7s 1.0s ease forwards;
+}
+.bar-hero-breadcrumb a {
+  color: rgba(245,240,232,0.42);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.bar-hero-breadcrumb a:hover { color: #C9A84C; }
+.bar-hero-breadcrumb .sep { color: rgba(245,240,232,0.22); }
+
+/* Scroll hint */
+.bar-hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: bh-fade-up 0.7s 1.3s ease forwards;
+}
+.bar-hero-scroll span {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.38);
+}
+.bar-hero-scroll-line {
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(to bottom, #C9A84C, transparent);
+  animation: scroll-pulse 1.8s ease-in-out infinite;
+}
+@keyframes scroll-pulse {
+  0%,100% { opacity: 0.4; transform: scaleY(1); }
+  50%      { opacity: 1;   transform: scaleY(1.15); }
+}
+@keyframes bh-fade-up {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Stats strip at bottom of hero */
+.bar-hero-stats {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 8% 28px;
+  gap: 40px;
+}
+.bar-hero-stat {
+  text-align: center;
+  opacity: 0;
+  animation: bh-fade-up 0.7s 1.1s ease forwards;
+}
+.bar-hero-stat-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #C9A84C;
+  line-height: 1;
+}
+.bar-hero-stat-lbl {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.38);
+  margin-top: 4px;
+}
+@media (max-width: 640px) {
+  .bar-hero-content { padding: 0 6%; }
+  .bar-hero-stats { display: none; }
+}
+</style>
 </head>
 <body>
 <div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
@@ -51,25 +234,59 @@
   <a href="reservation.html" class="btn btn-gold mt-4">Reserve</a>
 </div>
 
-<!-- Page Banner -->
-<div class="page-banner">
-  <div class="page-banner-bg" style="position:relative;">
-    <div class="swiper page-banner-swiper" style="position:absolute;inset:0;z-index:0;">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/bar/bar-shelf.webp" alt="The Bar" loading="eager" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div class="swiper-slide"><img src="images/bar/bartender-shake.webp" alt="Craft Cocktails" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div class="swiper-slide"><img src="images/bar/whiskey-glass.webp" alt="Rare Spirits" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div class="swiper-slide"><img src="images/bar/gin-tonic.webp" alt="Signature Drinks" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
-      </div>
+<!-- ═══ BAR FULLSCREEN VIDEO HERO ═══ -->
+<section class="bar-hero">
+
+  <!-- Background video -->
+  <video class="bar-hero-video" autoplay muted loop playsinline poster="images/bar-poster.webp">
+    <source src="videos/bar-hero.mp4" type="video/mp4">
+  </video>
+
+  <!-- Overlays -->
+  <div class="bar-hero-overlay"></div>
+  <div class="bar-hero-vignette"></div>
+
+  <!-- Main content -->
+  <div class="bar-hero-content">
+    <div class="bar-hero-eyebrow">
+      <i class="fa-solid fa-martini-glass"></i>
+      The Bar at ÉCLAT
+    </div>
+    <h1 class="bar-hero-title">
+      Where the Night<br>
+      <span class="gold">Finds Its Rhythm</span>
+    </h1>
+    <div class="bar-hero-line"></div>
+    <div class="bar-hero-breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span>The Bar</span>
     </div>
   </div>
-  <div class="page-banner-overlay"></div>
-  <div class="page-banner-content">
-    <div class="page-banner-eyebrow"><i class="fa-solid fa-martini-glass text-gold"></i>The Bar at ÉCLAT</div>
-    <h1 class="page-banner-title">Where the Night<br><span class="text-gradient">Finds Its Rhythm</span></h1>
-    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span><span>The Bar</span></div>
+
+  <!-- Stats — bottom right -->
+  <div class="bar-hero-stats">
+    <div class="bar-hero-stat">
+      <div class="bar-hero-stat-num">200+</div>
+      <div class="bar-hero-stat-lbl">Rare Spirits</div>
+    </div>
+    <div class="bar-hero-stat" style="animation-delay:1.2s">
+      <div class="bar-hero-stat-num">40+</div>
+      <div class="bar-hero-stat-lbl">Cocktails</div>
+    </div>
+    <div class="bar-hero-stat" style="animation-delay:1.3s">
+      <div class="bar-hero-stat-num">500+</div>
+      <div class="bar-hero-stat-lbl">Wine Labels</div>
+    </div>
   </div>
-</div>
+
+  <!-- Scroll hint -->
+  <div class="bar-hero-scroll">
+    <span>Scroll</span>
+    <div class="bar-hero-scroll-line"></div>
+  </div>
+
+</section>
 
 <!-- Intro -->
 <section class="section">
@@ -391,15 +608,11 @@
         loop: true,
         speed: 1200,
         autoplay: { delay: 1500, disableOnInteraction: false, pauseOnMouseEnter: true },
-        
-        
         breakpoints: {
-          0:   { slidesPerView:1.15, spaceBetween:10 },
-          600: { slidesPerView:2,    spaceBetween:12 },
-          900: { slidesPerView:3,    spaceBetween:14 },
+          0:   { slidesPerView: 1.15, spaceBetween: 10 },
+          600: { slidesPerView: 2,    spaceBetween: 12 },
+          900: { slidesPerView: 3,    spaceBetween: 14 },
         },
-        
-        }
       });
     }
     document.readyState === 'loading'
@@ -466,5 +679,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/eclat-beyond-hero.js"></script>
+<script src="js/eclat-footer.js"></script>
 </body>
 </html>

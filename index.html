@@ -123,27 +123,44 @@
   <div class="hero-overlay"></div>
 
   <!-- Floating Food Cards -->
-  <div class="gsap-float" style="position:absolute;right:8%;top:28%;z-index:3;max-width:200px">
+  <!-- Floating Card 1: Wagyu Steak -->
+  <div class="gsap-float" style="position:absolute;right:18%;top:18%;z-index:3;">
     <div class="float-card">
-      <div class="flex items-center gap-3 mb-2">
-        <img src="images/photo-1544025162-d76694265947-80x80.webp" alt="Wagyu" class="w-12 h-12 rounded-lg object-cover">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <img src="images/photo-1544025162-d76694265947-80x80.webp" alt="Wagyu"
+             style="width:52px;height:52px;border-radius:10px;object-fit:cover;border:1px solid rgba(201,168,76,0.3);">
         <div>
-          <p class="font-semibold text-sm" style="color:#0F172A">Wagyu Steak</p>
-          <p class="text-yellow-500 text-xs">⭐ 4.9 (248)</p>
+          <p style="font-size:0.82rem;font-weight:700;color:#F5F0E8;margin:0 0 3px;">Wagyu Steak</p>
+          <div style="display:flex;align-items:center;gap:4px;">
+            <i class="fa-solid fa-star" style="color:#C9A84C;font-size:0.65rem;"></i>
+            <span style="font-size:0.72rem;color:#C9A84C;font-weight:600;">4.9</span>
+            <span style="font-size:0.7rem;color:rgba(245,240,232,0.4);">(248)</span>
+          </div>
         </div>
       </div>
-      <div class="text-gold text-sm font-bold">$89 <span class="font-normal text-xs line-through" style="color:#94A3B8">$110</span></div>
+      <div style="height:1px;background:rgba(201,168,76,0.18);margin-bottom:10px;"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-size:1rem;font-weight:700;color:#C9A84C;">$89</span>
+        <span style="font-size:0.75rem;color:rgba(245,240,232,0.35);text-decoration:line-through;">$110</span>
+        <span style="font-size:0.65rem;background:rgba(201,168,76,0.15);color:#C9A84C;border:1px solid rgba(201,168,76,0.3);border-radius:999px;padding:2px 8px;font-weight:600;">SAVE 19%</span>
+      </div>
     </div>
   </div>
 
-  <div class="gsap-float" style="position:absolute;right:6%;bottom:28%;z-index:3;max-width:180px">
+  <!-- Floating Card 2: Today's Special -->
+  <div class="gsap-float" style="position:absolute;right:18%;bottom:14%;z-index:3;">
     <div class="float-card">
-      <div class="flex items-center gap-2 mb-1">
-        <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
-        <span class="text-xs font-semibold" style="color:#0F172A">Today's Special</span>
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+        <div style="width:6px;height:6px;border-radius:50%;background:#C9A84C;"></div>
+        <span style="font-size:0.68rem;letter-spacing:0.12em;color:#C9A84C;font-weight:600;text-transform:uppercase;">Today's Special</span>
       </div>
-      <p class="text-xs" style="color:#64748B">Truffle Risotto</p>
-      <p class="text-gold text-sm font-bold mt-1">$62</p>
+      <p style="font-size:0.95rem;font-weight:700;color:#F5F0E8;margin:0 0 4px;">Truffle Risotto</p>
+      <p style="font-size:0.72rem;color:rgba(245,240,232,0.45);margin:0 0 10px;">Black truffle · Aged parmesan</p>
+      <div style="height:1px;background:rgba(201,168,76,0.18);margin-bottom:10px;"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-size:1rem;font-weight:700;color:#C9A84C;">$62</span>
+        <span style="font-size:0.68rem;background:rgba(52,211,153,0.1);color:#34D399;border:1px solid rgba(52,211,153,0.25);border-radius:999px;padding:2px 8px;font-weight:600;">Available</span>
+      </div>
     </div>
   </div>
 
@@ -678,7 +695,7 @@
         <p class="text-secondary mb-10 max-w-md mx-auto">Be the first to know about new menus, exclusive events, and special offers. No spam, only the finest updates.</p>
         <form class="newsletter-form flex gap-3 max-w-md mx-auto flex-wrap" onsubmit="return false">
           <input type="email" placeholder="Your email address" class="form-control form-control-lg flex-1" style="min-width:240px">
-          <button type="submit" class="btn btn-gold btn-lg">Subscribe <i class="fa-solid fa-paper-plane ml-2"></i></button>
+          <button type="button" class="btn btn-gold btn-lg" onclick="window.location.href='404.html'">Subscribe <i class="fa-solid fa-paper-plane ml-2"></i></button>
         </form>
         <p class="text-muted text-xs mt-4">Join 12,000+ subscribers. Unsubscribe anytime.</p>
       </div>
@@ -795,5 +812,6 @@
   });
 </script>
 <script src="js/eclat-beyond-hero.js"></script>
+<script src="js/eclat-footer.js"></script>
 </body>
 </html>

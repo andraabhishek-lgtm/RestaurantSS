@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -10,6 +10,29 @@
 <link rel="stylesheet" href="css/style.css">
 <script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#0A0A0A',cream:'#F5F0E8'}}}}</script>
 <link rel="stylesheet" href="css/eclat-beyond-hero.css">
+<style>
+  /* Auth-page overrides so Tailwind/global styles don't bleed */
+  .auth-left .form-label { color:#C9A84C; }
+  .auth-left .form-control { background:#1a1a1a !important; color:#ffffff !important; border:1px solid rgba(201,168,76,0.3); }
+  .auth-left .form-control:focus { border-color:#C9A84C !important; box-shadow:0 0 0 3px rgba(201,168,76,0.18) !important; background:#1a1a1a !important; }
+  .auth-left .form-control::placeholder { color:rgba(255,255,255,0.4) !important; }
+  .auth-left .form-control.is-invalid { border-color:#DC2626 !important; box-shadow:0 0 0 3px rgba(220,38,38,0.15) !important; }
+  .form-error { display:block; font-size:0.78rem; color:#EF4444; margin-top:5px; min-height:16px; }
+
+  /* Password strength bars */
+  .pwd-strength { display:flex; gap:6px; margin-top:10px; }
+  .pwd-strength-bar { flex:1; height:4px; border-radius:2px; background:rgba(255,255,255,0.1); transition:background 0.3s; }
+  .pwd-strength-bar.weak   { background:#DC2626; }
+  .pwd-strength-bar.medium { background:#D97706; }
+  .pwd-strength-bar.strong { background:#059669; }
+  .pwd-strength-bar.great  { background:#C9A84C; }
+
+  /* Submit disabled state */
+  #signup-submit:disabled { opacity:0.45; cursor:not-allowed; pointer-events:none; }
+
+  /* Input icon colour inside dark fields */
+  .auth-left .input-icon { color:rgba(201,168,76,0.7); }
+</style>
 </head>
 <body>
 <div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
@@ -18,7 +41,12 @@
 <div class="auth-wrap">
   <div class="auth-left" style="overflow-y:auto">
     <div class="auth-card">
-      <a href="index.html" class="nav-logo mb-8 block"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img" style="height:42px"></a>
+      <div class="flex items-center justify-between mb-8">
+        <a href="index.html" class="nav-logo block"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img" style="height:42px"></a>
+        <button onclick="history.back()" type="button" style="display:flex;align-items:center;gap:7px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);border-radius:999px;padding:7px 16px 7px 12px;color:#C9A84C;font-size:0.8rem;font-weight:500;letter-spacing:0.04em;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='rgba(201,168,76,0.18)'" onmouseout="this.style.background='rgba(201,168,76,0.08)'">
+          <i class="fa-solid fa-arrow-left" style="font-size:0.75rem;"></i> Back
+        </button>
+      </div>
       <div class="auth-header">
         <h1 class="auth-title">Create Account</h1>
         <p class="auth-subtitle">Join the ÉCLAT inner circle and unlock exclusive benefits.</p>
@@ -34,69 +62,132 @@
         </div>
       </div>
 
-      <form id="signup-form">
+      <form id="signup-form" novalidate>
+        <!-- First / Last Name -->
         <div class="grid grid-cols-2 gap-4 mb-0">
           <div class="form-group">
-            <label class="form-label">First Name</label>
-            <div class="input-icon-wrap"><i class="input-icon fa-regular fa-user"></i><input type="text" class="form-control" placeholder="First name" required></div>
+            <label class="form-label" for="signup-fname">First Name</label>
+            <div class="input-icon-wrap">
+              <i class="input-icon fa-regular fa-user"></i>
+              <input type="text" id="signup-fname" class="form-control" placeholder="First name">
+            </div>
+            <span class="form-error" id="err-fname"></span>
           </div>
           <div class="form-group">
-            <label class="form-label">Last Name</label>
-            <input type="text" class="form-control" placeholder="Last name" required>
+            <label class="form-label" for="signup-lname">Last Name</label>
+            <input type="text" id="signup-lname" class="form-control" placeholder="Last name">
+            <span class="form-error" id="err-lname"></span>
           </div>
         </div>
+
+        <!-- Username -->
         <div class="form-group">
-          <label class="form-label">Username</label>
-          <div class="input-icon-wrap"><i class="input-icon fa-solid fa-at"></i><input type="text" class="form-control" placeholder="@username" required></div>
+          <label class="form-label" for="signup-username">Username</label>
+          <div class="input-icon-wrap">
+            <i class="input-icon fa-solid fa-at"></i>
+            <input type="text" id="signup-username" class="form-control" placeholder="@username">
+          </div>
+          <span class="form-error" id="err-username"></span>
         </div>
+
+        <!-- Email -->
         <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <div class="input-icon-wrap"><i class="input-icon fa-regular fa-envelope"></i><input type="email" class="form-control" placeholder="your@email.com" required></div>
+          <label class="form-label" for="signup-email">Email Address</label>
+          <div class="input-icon-wrap">
+            <i class="input-icon fa-regular fa-envelope"></i>
+            <input type="email" id="signup-email" class="form-control" placeholder="your@email.com">
+          </div>
+          <span class="form-error" id="err-email"></span>
         </div>
+
+        <!-- Phone -->
         <div class="form-group">
-          <label class="form-label">Phone Number</label>
-          <div class="input-icon-wrap"><i class="input-icon fa-solid fa-phone"></i><input type="tel" class="form-control" placeholder="+1 (000) 000-0000"></div>
+          <label class="form-label" for="signup-phone">Phone Number</label>
+          <div class="input-icon-wrap">
+            <i class="input-icon fa-solid fa-phone"></i>
+            <input type="tel" id="signup-phone" class="form-control" placeholder="+1 (000) 000-0000">
+          </div>
+          <span class="form-error" id="err-phone"></span>
         </div>
+
+        <!-- Password -->
         <div class="form-group">
-          <label class="form-label">Password</label>
+          <label class="form-label" for="signup-password">Password</label>
           <div class="input-icon-wrap" style="position:relative">
             <i class="input-icon fa-solid fa-lock"></i>
-            <input type="password" id="signup-password" class="form-control" placeholder="Min 8 characters" required style="padding-right:50px">
-            <button type="button" class="pwd-toggle" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--text-muted)"><i class="fa-regular fa-eye"></i></button>
+            <input type="password" id="signup-password" class="form-control" placeholder="Min 8 characters" style="padding-right:50px">
+            <button type="button" id="pwd-toggle" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);color:rgba(201,168,76,0.7);background:none;border:none;cursor:pointer;padding:0;">
+              <i id="pwd-toggle-icon" class="fa-regular fa-eye"></i>
+            </button>
           </div>
-          <div class="pwd-strength mt-2">
-            <div class="pwd-strength-bar"></div>
-            <div class="pwd-strength-bar"></div>
-            <div class="pwd-strength-bar"></div>
-            <div class="pwd-strength-bar"></div>
+          <div class="pwd-strength">
+            <div class="pwd-strength-bar" id="sb1"></div>
+            <div class="pwd-strength-bar" id="sb2"></div>
+            <div class="pwd-strength-bar" id="sb3"></div>
+            <div class="pwd-strength-bar" id="sb4"></div>
           </div>
-          <span id="pwd-strength-label" class="text-xs font-medium text-muted mt-1 block"></span>
+          <span id="pwd-strength-label" class="text-xs font-medium mt-1 block" style="color:rgba(255,255,255,0.5);min-height:16px;"></span>
+          <span class="form-error" id="err-password"></span>
         </div>
+
+        <!-- Confirm Password -->
         <div class="form-group">
-          <label class="form-label">Confirm Password</label>
-          <div class="input-icon-wrap"><i class="input-icon fa-solid fa-lock"></i><input type="password" class="form-control" placeholder="Repeat password" required></div>
+          <label class="form-label" for="signup-confirm">Confirm Password</label>
+          <div class="input-icon-wrap">
+            <i class="input-icon fa-solid fa-lock"></i>
+            <input type="password" id="signup-confirm" class="form-control" placeholder="Repeat password">
+          </div>
+          <span class="form-error" id="err-confirm"></span>
         </div>
-        <label class="flex items-start gap-3 cursor-pointer mb-6">
-          <input type="checkbox" class="accent-gold mt-0.5 flex-shrink-0" required>
-          <span class="text-secondary text-sm">I agree to the <a href="terms.html" class="text-gold">Terms of Service</a> and <a href="privacy.html" class="text-gold">Privacy Policy</a>. I consent to receiving communications from ÉCLAT.</span>
-        </label>
-        <button type="submit" class="btn btn-gold w-full justify-center btn-lg mb-4">
+
+        <!-- Terms -->
+        <div class="mb-6">
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" id="signup-terms" class="accent-gold mt-0.5 flex-shrink-0">
+            <span class="text-sm" style="color:rgba(245,240,232,0.7)">I agree to the <a href="terms.html" class="text-gold">Terms of Service</a> and <a href="privacy.html" class="text-gold">Privacy Policy</a>. I consent to receiving communications from ÉCLAT.</span>
+          </label>
+          <span class="form-error" id="err-terms"></span>
+        </div>
+
+        <button id="signup-submit" type="submit" class="btn btn-gold w-full justify-center btn-lg mb-4" disabled>
           <i class="fa-solid fa-user-plus"></i>Create My Account
         </button>
       </form>
+
       <p class="text-center text-secondary text-sm">Already have an account? <a href="login.html" class="text-gold font-semibold hover:underline">Sign in</a></p>
     </div>
   </div>
 
   <div class="auth-right hidden lg:block">
     <img src="images/photo-1555396273-367ea4eb4db5-1000.webp" alt="Fine Dining" loading="lazy">
-    <div class="auth-right-overlay">
-      <img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img" style="height:56px;margin:0 auto 16px;display:block;mix-blend-mode:screen">
-      <h2 class="font-cormorant text-5xl font-semibold mb-4" style="color:#F5F0E8">Join ÉCLAT</h2>
-      <p class="text-lg mb-8 max-w-sm" style="color:rgba(245,240,232,0.78)">Unlock exclusive benefits, earn reward points, and be the first to know about our most extraordinary events.</p>
-      <div class="grid grid-cols-1 gap-3 max-w-xs mx-auto">
-        <div class="glass-card p-4 flex items-center gap-3"><div class="w-10 h-10 rounded-full flex items-center justify-center text-gold" style="background:rgba(201,168,76,0.15)"><i class="fa-solid fa-crown"></i></div><div><p class="text-cream text-sm font-semibold">VIP Status</p><p class="text-cream/60 text-xs">Members earn 10% back in points</p></div></div>
-        <div class="glass-card p-4 flex items-center gap-3"><div class="w-10 h-10 rounded-full flex items-center justify-center text-gold" style="background:rgba(201,168,76,0.15)"><i class="fa-solid fa-calendar-check"></i></div><div><p class="text-cream text-sm font-semibold">Priority Booking</p><p class="text-cream/60 text-xs">Reserve 7 days ahead of public</p></div></div>
+    <div class="auth-right-overlay" style="background:linear-gradient(160deg,rgba(10,6,2,0.72) 0%,rgba(10,6,2,0.88) 100%);">
+      <!-- Brand -->
+      <div style="margin-bottom:32px;text-align:center;">
+        <img src="images/stackly_logo.webp" alt="ÉCLAT" style="height:52px;display:block;margin:0 auto 14px;filter:brightness(1.1);">
+        <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:14px;">
+          <div style="flex:1;height:1px;background:rgba(201,168,76,0.35);max-width:60px;"></div>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:#F5F0E8;letter-spacing:0.18em;">ÉCLAT</span>
+          <div style="flex:1;height:1px;background:rgba(201,168,76,0.35);max-width:60px;"></div>
+        </div>
+        <p style="font-size:0.75rem;letter-spacing:0.25em;color:#C9A84C;text-transform:uppercase;">Fine Dining</p>
+      </div>
+
+      <p style="font-size:1rem;line-height:1.7;max-width:300px;color:rgba(245,240,232,0.75);text-align:center;margin-bottom:36px;">"Where every meal becomes a memory — join the inner circle today."</p>
+
+      <!-- Benefit cards -->
+      <div style="display:flex;flex-direction:column;gap:12px;width:100%;max-width:300px;">
+        <div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.18);border-radius:12px;padding:14px 18px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fa-solid fa-crown" style="color:#C9A84C;font-size:0.85rem;"></i></div>
+          <div><p style="color:#F5F0E8;font-size:0.85rem;font-weight:600;margin:0 0 2px;">VIP Status</p><p style="color:rgba(245,240,232,0.5);font-size:0.75rem;margin:0;">Members earn 10% back in points</p></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.18);border-radius:12px;padding:14px 18px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fa-solid fa-calendar-check" style="color:#C9A84C;font-size:0.85rem;"></i></div>
+          <div><p style="color:#F5F0E8;font-size:0.85rem;font-weight:600;margin:0 0 2px;">Priority Booking</p><p style="color:rgba(245,240,232,0.5);font-size:0.75rem;margin:0;">Reserve 7 days ahead of public</p></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.18);border-radius:12px;padding:14px 18px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fa-solid fa-gift" style="color:#C9A84C;font-size:0.85rem;"></i></div>
+          <div><p style="color:#F5F0E8;font-size:0.85rem;font-weight:600;margin:0 0 2px;">Exclusive Rewards</p><p style="color:rgba(245,240,232,0.5);font-size:0.75rem;margin:0;">Events, tastings & member perks</p></div>
+        </div>
       </div>
     </div>
   </div>
@@ -105,5 +196,148 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/eclat-beyond-hero.js"></script>
+
+<script>
+(function () {
+  var fname    = document.getElementById('signup-fname');
+  var lname    = document.getElementById('signup-lname');
+  var username = document.getElementById('signup-username');
+  var email    = document.getElementById('signup-email');
+  var phone    = document.getElementById('signup-phone');
+  var password = document.getElementById('signup-password');
+  var confirm  = document.getElementById('signup-confirm');
+  var terms    = document.getElementById('signup-terms');
+  var submitBtn= document.getElementById('signup-submit');
+  var pwdToggle= document.getElementById('pwd-toggle');
+  var pwdIcon  = document.getElementById('pwd-toggle-icon');
+  var strengthLabel = document.getElementById('pwd-strength-label');
+  var bars     = [document.getElementById('sb1'),document.getElementById('sb2'),document.getElementById('sb3'),document.getElementById('sb4')];
+
+  // ── helpers ──────────────────────────────────────────────
+  function setError(fieldId, errId, msg) {
+    var f = document.getElementById(fieldId);
+    var e = document.getElementById(errId);
+    if (!f || !e) return;
+    if (msg) { f.classList.add('is-invalid'); e.textContent = msg; }
+    else      { f.classList.remove('is-invalid'); e.textContent = ''; }
+  }
+
+  function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+  function isValidPhone(v) { return /^[\+\d][\d\s\-\(\)]{6,}$/.test(v.trim()); }
+
+  // ── password strength ─────────────────────────────────────
+  function scorePassword(p) {
+    var score = 0;
+    if (p.length >= 8)  score++;
+    if (p.length >= 12) score++;
+    if (/[A-Z]/.test(p) && /[a-z]/.test(p)) score++;
+    if (/\d/.test(p)) score++;
+    if (/[^A-Za-z0-9]/.test(p)) score++;
+    return Math.min(4, score);
+  }
+
+  function updateStrength(p) {
+    var score = p.length === 0 ? 0 : scorePassword(p);
+    var map = ['','weak','medium','strong','great'];
+    var labels = ['','Weak','Fair','Strong','Excellent'];
+    var colors = ['','#EF4444','#D97706','#059669','#C9A84C'];
+    bars.forEach(function(b,i){
+      b.className = 'pwd-strength-bar';
+      if (i < score) b.classList.add(map[score]);
+    });
+    strengthLabel.textContent = p.length ? labels[score] : '';
+    strengthLabel.style.color = p.length ? colors[score] : 'rgba(255,255,255,0.5)';
+    return score;
+  }
+
+  // ── individual validators ─────────────────────────────────
+  function validateFname()    { var v=fname.value.trim(); var msg=v.length<2?'First name must be at least 2 characters':/[^a-zA-Z\s\-']/.test(v)?'First name must contain letters only':''; setError('signup-fname','err-fname',msg); return !msg; }
+  function validateLname()    { var v=lname.value.trim(); var msg=v.length<2?'Last name must be at least 2 characters':/[^a-zA-Z\s\-']/.test(v)?'Last name must contain letters only':''; setError('signup-lname','err-lname',msg); return !msg; }
+  function validateUsername()  {
+    var v=username.value.trim();
+    var msg = v.length<3 ? 'Username must be at least 3 characters' : /[^a-zA-Z0-9_\.]/.test(v) ? 'Only letters, numbers, _ and . allowed' : '';
+    setError('signup-username','err-username',msg);
+    return !msg;
+  }
+  function validateEmail()    { var v=email.value.trim(); setError('signup-email','err-email', v===''?'Email is required':!isValidEmail(v)?'Enter a valid email address':''); return isValidEmail(v); }
+  function validatePhone()    { var v=phone.value.trim(); setError('signup-phone','err-phone', v===''?'Phone number is required':!isValidPhone(v)?'Enter a valid phone number':''); return v!=='' && isValidPhone(v); }
+  function validatePassword() {
+    var v=password.value;
+    var score=updateStrength(v);
+    var msg = v.length===0?'Password is required':v.length<8?'Password must be at least 8 characters':score<2?'Password is too weak — add uppercase, numbers or symbols':'';
+    setError('signup-password','err-password',msg);
+    if (confirm.value) validateConfirm();
+    return !msg;
+  }
+  function validateConfirm()  {
+    var v=confirm.value;
+    var msg = v===''?'Please confirm your password':v!==password.value?'Passwords do not match':'';
+    setError('signup-confirm','err-confirm',msg);
+    return !msg;
+  }
+  function validateTerms()    {
+    var ok=terms.checked;
+    document.getElementById('err-terms').textContent = ok?'':'You must accept the terms to continue';
+    return ok;
+  }
+
+  // ── submit gate ───────────────────────────────────────────
+  function checkAll() {
+    var fv=fname.value.trim(), lv=lname.value.trim();
+    var ok = fv.length>=2 && !/[^a-zA-Z\s\-']/.test(fv)
+          && lv.length>=2 && !/[^a-zA-Z\s\-']/.test(lv)
+          && username.value.trim().length>=3
+          && isValidEmail(email.value.trim())
+          && isValidPhone(phone.value.trim())
+          && password.value.length>=8
+          && scorePassword(password.value)>=2
+          && confirm.value===password.value
+          && terms.checked;
+    submitBtn.disabled = !ok;
+  }
+
+  // ── event listeners ───────────────────────────────────────
+  fname.addEventListener('input',    function(){ validateFname();    checkAll(); });
+  lname.addEventListener('input',    function(){ validateLname();    checkAll(); });
+  username.addEventListener('input', function(){ validateUsername(); checkAll(); });
+  email.addEventListener('input',    function(){ validateEmail();    checkAll(); });
+  phone.addEventListener('input',    function(){ validatePhone();    checkAll(); });
+  password.addEventListener('input', function(){ validatePassword(); checkAll(); });
+  confirm.addEventListener('input',  function(){ validateConfirm();  checkAll(); });
+  terms.addEventListener('change',   function(){ validateTerms();    checkAll(); });
+
+  // blur validation (show errors after user leaves field)
+  [fname,lname,username,email,phone,password,confirm].forEach(function(el){
+    el.addEventListener('blur', function(){
+      switch(el.id){
+        case 'signup-fname':    validateFname();    break;
+        case 'signup-lname':    validateLname();    break;
+        case 'signup-username': validateUsername(); break;
+        case 'signup-email':    validateEmail();    break;
+        case 'signup-phone':    validatePhone();    break;
+        case 'signup-password': validatePassword(); break;
+        case 'signup-confirm':  validateConfirm();  break;
+      }
+    });
+  });
+
+  // ── password show/hide ────────────────────────────────────
+  pwdToggle.addEventListener('click', function(){
+    var isHidden = password.type === 'password';
+    password.type = isHidden ? 'text' : 'password';
+    pwdIcon.className = isHidden ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
+  });
+
+  // ── form submit ───────────────────────────────────────────
+  document.getElementById('signup-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = validateFname() & validateLname() & validateUsername() & validateEmail() & validatePhone() & validatePassword() & validateConfirm() & validateTerms();
+    if (!ok) return;
+    localStorage.setItem('eclat_user_email', email.value.trim());
+    // Proceed — redirect to dashboard or show success
+    window.location.href = 'dashboard.html';
+  });
+})();
+</script>
 </body>
 </html>

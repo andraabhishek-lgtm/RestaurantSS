@@ -550,6 +550,7 @@ loginForm?.addEventListener('submit', e => {
   e.preventDefault();
   const email = qs('#email', loginForm)?.value;
   if (!email) return;
+  localStorage.setItem('eclat_user_email', email);
   showToast('Welcome back! Redirecting to your dashboard...', 'success');
   setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
 });
@@ -557,6 +558,8 @@ loginForm?.addEventListener('submit', e => {
 const signupForm = qs('#signup-form');
 signupForm?.addEventListener('submit', e => {
   e.preventDefault();
+  const signupEmail = qs('#email, #signup-email', signupForm)?.value;
+  if (signupEmail) localStorage.setItem('eclat_user_email', signupEmail);
   showToast('Account created successfully! Welcome to ÉCLAT.', 'success');
   setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
 });

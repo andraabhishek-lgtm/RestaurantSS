@@ -55,6 +55,11 @@
       </div>
       <div class="flex items-center gap-3">
         <button id="sidebar-toggle" class="nav-icon-btn lg:hidden"><i class="fa-solid fa-bars"></i></button>
+        <!-- Logged-in email display -->
+        <div id="dash-user-pill" style="display:none;align-items:center;gap:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);border-radius:999px;padding:5px 14px 5px 8px;">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--grad-gold);display:flex;align-items:center;justify-content:center;color:#0A0A0A;font-size:0.75rem;font-weight:700;" id="dash-user-avatar">?</div>
+          <span id="dash-user-email" style="font-size:0.8rem;color:rgba(245,240,232,0.75);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></span>
+        </div>
         <a href="reservation.html" class="btn btn-gold btn-sm"><i class="fa-regular fa-calendar-plus"></i>New Reservation</a>
         <a href="notifications.html" class="nav-icon-btn relative">
           <i class="fa-regular fa-bell"></i>
@@ -240,5 +245,22 @@
   );
 </script>
 <script src="js/eclat-beyond-hero.js"></script>
+<script>
+(function () {
+  var email = localStorage.getItem('eclat_user_email') || '';
+  if (!email) {
+    // fallback: show demo email so UI is never empty in dev
+    email = 'guest@eclatdining.com';
+  }
+  var pill    = document.getElementById('dash-user-pill');
+  var emailEl = document.getElementById('dash-user-email');
+  var avatar  = document.getElementById('dash-user-avatar');
+  if (pill && emailEl) {
+    emailEl.textContent = email;
+    if (avatar) avatar.textContent = email.charAt(0).toUpperCase();
+    pill.style.display = 'flex';
+  }
+})();
+</script>
 </body>
 </html>

@@ -10,7 +10,149 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
 <script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#0A0A0A',cream:'#F5F0E8'}}}}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <link rel="stylesheet" href="css/eclat-beyond-hero.css">
+<style>
+/* ── Rooms Fullscreen Hero ──────────────────── */
+.rooms-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 580px;
+  overflow: hidden;
+}
+.rooms-hero-swiper { width: 100%; height: 100%; }
+.rooms-hero-swiper .swiper-slide { position: relative; overflow: hidden; }
+
+.rooms-slide-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.08);
+  transition: transform 7s cubic-bezier(0.25,0.46,0.45,0.94);
+  will-change: transform;
+}
+.swiper-slide-active .rooms-slide-bg { transform: scale(1.0); }
+
+.rooms-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.15) 100%),
+    linear-gradient(to top,   rgba(0,0,0,0.70) 0%, transparent 55%);
+  z-index: 1;
+}
+
+/* Animated content per slide */
+.rooms-slide-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8% 90px;
+  max-width: 800px;
+}
+.rh-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.28em;
+  text-transform: uppercase; color: #C9A84C; margin-bottom: 20px;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.7s 0.3s ease, transform 0.7s 0.3s ease;
+}
+.rh-eyebrow::before { content:''; width:36px; height:1px; background:#C9A84C; flex-shrink:0; }
+.swiper-slide-active .rh-eyebrow { opacity:1; transform:translateY(0); }
+
+.rh-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 600; line-height: 1.05; color: #F5F0E8;
+  margin-bottom: 16px;
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.8s 0.50s ease, transform 0.8s 0.50s ease;
+}
+.rh-title span { color: #C9A84C; }
+.swiper-slide-active .rh-title { opacity:1; transform:translateY(0); }
+
+.rh-sub {
+  font-size: 0.85rem; color: rgba(245,240,232,0.52);
+  letter-spacing: 0.06em; margin-bottom: 30px;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.7s 0.70s ease, transform 0.7s 0.70s ease;
+}
+.swiper-slide-active .rh-sub { opacity:1; transform:translateY(0); }
+
+.rh-line {
+  width: 52px; height: 1px;
+  background: linear-gradient(90deg,#C9A84C,transparent);
+  margin-bottom: 20px;
+  opacity: 0; transition: opacity 0.6s 0.85s ease;
+}
+.swiper-slide-active .rh-line { opacity:1; }
+
+.rh-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.78rem; color: rgba(245,240,232,0.40); letter-spacing: 0.05em;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.6s 1.0s ease, transform 0.6s 1.0s ease;
+}
+.rh-breadcrumb a { color:rgba(245,240,232,0.40); text-decoration:none; transition:color .2s; }
+.rh-breadcrumb a:hover { color:#C9A84C; }
+.rh-breadcrumb .sep { color:rgba(245,240,232,0.20); }
+.swiper-slide-active .rh-breadcrumb { opacity:1; transform:translateY(0); }
+
+/* Room type tag — bottom right of each slide */
+.rh-tag {
+  position: absolute; bottom: 36px; right: 6%;
+  z-index: 3;
+  font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(245,240,232,0.55);
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: 999px; padding: 6px 18px;
+  background: rgba(0,0,0,0.35); backdrop-filter: blur(6px);
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 0.6s 0.8s ease, transform 0.6s 0.8s ease;
+}
+.swiper-slide-active .rh-tag { opacity:1; transform:translateY(0); }
+
+/* Gold pagination */
+.rooms-hero .swiper-pagination { bottom: 28px !important; }
+.rooms-hero .swiper-pagination-bullet {
+  width: 8px; height: 8px;
+  background: rgba(201,168,76,0.35); opacity: 1;
+  transition: all 0.35s; border-radius: 999px;
+}
+.rooms-hero .swiper-pagination-bullet-active {
+  background: #C9A84C; width: 28px;
+  box-shadow: 0 0 10px rgba(201,168,76,0.55);
+}
+
+/* Scroll cue */
+.rooms-hero-scroll {
+  position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%);
+  z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.rooms-hero-scroll span {
+  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(245,240,232,0.35);
+}
+.rooms-hero-scroll-line {
+  width: 1px; height: 42px;
+  background: linear-gradient(to bottom,#C9A84C,transparent);
+  animation: rh-pulse 1.9s ease-in-out infinite;
+}
+@keyframes rh-pulse {
+  0%,100% { opacity:0.4; } 50% { opacity:1; }
+}
+@media(max-width:640px){
+  .rooms-slide-content { padding: 0 6% 72px; }
+  .rh-tag { display:none; }
+}
+</style>
 </head>
 <body>
 <div id="loader"><div class="loader-logo"><img src="images/stackly_logo.webp" alt="Logo" class="loader-logo-img"></div><div class="loader-bar"><div class="loader-bar-inner"></div></div></div>
@@ -50,26 +192,67 @@
   <a href="reservation.html" class="btn btn-gold mt-4">Reserve</a>
 </div>
 
-<!-- Page Banner -->
-<div class="page-banner">
-  <div class="page-banner-bg" style="position:relative;">
-    <video class="hero-video" autoplay muted loop playsinline poster="images/room-poster.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;z-index:0;">
-      <source src="videos/room-hero.mp4" type="video/mp4">
-    </video>
-    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.30) 0%,rgba(0,0,0,0.60) 100%);z-index:1;"></div>
-    <div class="swiper page-banner-swiper" style="position:relative;z-index:2;">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/room-deluxe-1920.webp" alt="Guest Rooms" loading="eager"></div>
-        <div class="swiper-slide"><img src="images/room-suite-1920.webp" alt="Suite" loading="lazy"></div>
-        <div class="swiper-slide"><img src="images/room-signature-1920.webp" alt="Luxury Stay" loading="lazy"></div>
+<!-- ═══ ROOMS FULLSCREEN HERO ═══ -->
+<div class="rooms-hero">
+  <div class="swiper rooms-hero-swiper" id="roomsHeroSwiper">
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1 — Deluxe Room -->
+      <div class="swiper-slide">
+        <img src="images/room-deluxe-1920.webp" alt="Deluxe Room" class="rooms-slide-bg" loading="eager">
+        <div class="rooms-slide-overlay"></div>
+        <div class="rooms-slide-content">
+          <span class="rh-eyebrow"><i class="fa-solid fa-moon"></i>Guest Rooms at ÉCLAT</span>
+          <h1 class="rh-title">The Evening<br><span>Doesn't Have to End</span></h1>
+          <p class="rh-sub">Deluxe Room — City Views &amp; Egyptian Cotton</p>
+          <div class="rh-line"></div>
+          <div class="rh-breadcrumb">
+            <a href="index.html">Home</a><span class="sep">/</span><span>Guest Rooms</span>
+          </div>
+        </div>
+        <div class="rh-tag">Deluxe Room</div>
       </div>
+
+      <!-- Slide 2 — Junior Suite -->
+      <div class="swiper-slide">
+        <img src="images/room-suite-1920.webp" alt="Junior Suite" class="rooms-slide-bg" loading="lazy">
+        <div class="rooms-slide-overlay"></div>
+        <div class="rooms-slide-content">
+          <span class="rh-eyebrow"><i class="fa-solid fa-moon"></i>Guest Rooms at ÉCLAT</span>
+          <h1 class="rh-title">The Evening<br><span>Doesn't Have to End</span></h1>
+          <p class="rh-sub">Junior Suite — Separate Living &amp; Private Bar</p>
+          <div class="rh-line"></div>
+          <div class="rh-breadcrumb">
+            <a href="index.html">Home</a><span class="sep">/</span><span>Guest Rooms</span>
+          </div>
+        </div>
+        <div class="rh-tag">Junior Suite</div>
+      </div>
+
+      <!-- Slide 3 — Signature Suite -->
+      <div class="swiper-slide">
+        <img src="images/room-signature-1920.webp" alt="Signature Suite" class="rooms-slide-bg" loading="lazy">
+        <div class="rooms-slide-overlay"></div>
+        <div class="rooms-slide-content">
+          <span class="rh-eyebrow"><i class="fa-solid fa-moon"></i>Guest Rooms at ÉCLAT</span>
+          <h1 class="rh-title">The Evening<br><span>Doesn't Have to End</span></h1>
+          <p class="rh-sub">Signature Suite — Panoramic Views &amp; Butler Service</p>
+          <div class="rh-line"></div>
+          <div class="rh-breadcrumb">
+            <a href="index.html">Home</a><span class="sep">/</span><span>Guest Rooms</span>
+          </div>
+        </div>
+        <div class="rh-tag">Signature Suite</div>
+      </div>
+
     </div>
+    <div class="swiper-pagination"></div>
   </div>
-  <div class="page-banner-overlay"></div>
-  <div class="page-banner-content">
-    <div class="page-banner-eyebrow"><i class="fa-solid fa-moon text-gold"></i>Guest Rooms at ÉCLAT</div>
-    <h1 class="page-banner-title">The Evening<br><span class="text-gradient">Doesn't Have to End</span></h1>
-    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span><span>Guest Rooms</span></div>
+
+  <!-- Scroll cue -->
+  <div class="rooms-hero-scroll">
+    <span>Scroll</span>
+    <div class="rooms-hero-scroll-line"></div>
   </div>
 </div>
 
@@ -267,7 +450,23 @@
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/eclat-beyond-hero.js"></script>
+<script src="js/eclat-footer.js"></script>
+<script>
+new Swiper('#roomsHeroSwiper', {
+  loop: true,
+  effect: 'fade',
+  fadeEffect: { crossFade: true },
+  speed: 1200,
+  autoplay: { delay: 4500, disableOnInteraction: false },
+  allowTouchMove: true,
+  pagination: {
+    el: '.rooms-hero .swiper-pagination',
+    clickable: true,
+  },
+});
+</script>
 </body>
 </html>
