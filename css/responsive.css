@@ -545,3 +545,70 @@ body { overflow-x: hidden; }
     scroll-behavior: smooth;
   }
 }
+
+/* ── 51. Mobile Menu Layout & Header Alignment ───────────── */
+/* Push menu content below the fixed navbar (z-index 1000 sits on top  */
+/* of mobile-menu z-index 999), and tighten spacing for all breakpoints */
+@media (max-width: 768px) {
+  .mobile-menu {
+    padding-top: var(--nav-h);
+    padding-bottom: 2rem;
+    gap: 1.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .mobile-menu .nav-link { font-size: 1.6rem; }
+
+  /* Logo — scale down so it doesn't crowd login + hamburger */
+  .nav-logo-img { height: 36px; }
+
+  /* Tighten gap between login btn and hamburger */
+  .nav-actions { gap: 8px; }
+
+  /* Compact login button — stays touch-friendly */
+  .nav-actions .btn-outline-gold.btn-sm {
+    padding: 7px 13px;
+    font-size: 0.73rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-menu { gap: 1.25rem; }
+  .mobile-menu .nav-link { font-size: 1.4rem; }
+  .nav-logo-img { height: 32px; }
+
+  .nav-actions .btn-outline-gold.btn-sm {
+    padding: 6px 11px;
+    font-size: 0.70rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .mobile-menu { gap: 1.15rem; }
+}
+
+@media (max-width: 390px) {
+  .mobile-menu { gap: 1.1rem; }
+  .mobile-menu .nav-link { font-size: 1.3rem; }
+  #navbar { padding: 0 4%; }
+  .nav-logo-img { height: 30px; }
+  .nav-actions { gap: 6px; }
+
+  .nav-actions .btn-outline-gold.btn-sm {
+    padding: 6px 10px;
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .mobile-menu { gap: 0.9rem; }
+  .mobile-menu .nav-link { font-size: 1.2rem; }
+  .nav-logo-img { height: 28px; }
+}
+
+@media (max-width: 320px) {
+  .mobile-menu { gap: 0.8rem; }
+  .mobile-menu .nav-link { font-size: 1.1rem; }
+}

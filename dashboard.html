@@ -6,6 +6,7 @@
 <title>My Dashboard — ÉCLAT Fine Dining</title>
 <link rel="stylesheet" href="css/tailwind.css">
 <link rel="stylesheet" href="css/fa-all.min.css">
+<link rel="stylesheet" href="css/aos.css">
 <link rel="stylesheet" href="css/style.css">
 <script src="js/chart.umd.min.js"></script>
 <link rel="stylesheet" href="css/eclat-beyond-hero.css">
@@ -19,7 +20,7 @@
   <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <a href="index.html" class="nav-logo"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img" style="height:30px"></a>
+      <a href="index.html" class="nav-logo"><img src="images/stackly_logo.webp" alt="Logo" class="nav-logo-img"></a>
     </div>
     <nav class="sidebar-nav">
       <p class="sidebar-section-title">Overview</p>
@@ -69,7 +70,7 @@
     </div>
 
     <!-- Reward Points Banner -->
-    <div class="glass-card p-6 mb-6" style="background:linear-gradient(135deg,rgba(107,29,58,0.3),rgba(201,168,76,0.1));border-color:rgba(201,168,76,0.25)">
+    <div class="glass-card p-6 mb-6" style="background:linear-gradient(135deg,rgba(107,29,58,0.3),rgba(201,168,76,0.1));border-color:rgba(201,168,76,0.25)" data-aos="fade-up">
       <div class="flex items-center justify-between flex-wrap gap-4">
         <div class="flex items-center gap-5">
           <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl" style="background:var(--grad-gold);color:var(--dark-bg)">
@@ -83,7 +84,7 @@
         </div>
         <div class="flex items-center gap-4">
           <div class="text-center"><p class="text-gold font-bold text-xl font-cormorant">$24.80</p><p class="text-muted text-xs">Redeemable Value</p></div>
-          <a href="#" class="btn btn-gold btn-sm">Redeem</a>
+          <button id="redeemBtn" class="btn btn-gold btn-sm">Redeem</button>
         </div>
       </div>
       <!-- Progress bar -->
@@ -94,27 +95,23 @@
     </div>
 
     <!-- KPI Cards -->
-    <div class="kpi-grid">
-      <div class="kpi-card">
-        <div class="kpi-icon" style="background:rgba(201,168,76,0.1);color:var(--gold)"><i class="fa-solid fa-receipt"></i></div>
+    <div class="kpi-grid" data-aos="fade-up" data-aos-delay="100">
+      <div class="kpi-card" data-aos="fade-up" data-aos-delay="0">
         <div class="kpi-value" data-countup="14">14</div>
         <div class="kpi-label">Total Orders</div>
         <div class="kpi-change up"><i class="fa-solid fa-arrow-up text-xs"></i>+3 this month</div>
       </div>
-      <div class="kpi-card">
-        <div class="kpi-icon" style="background:rgba(52,211,153,0.1);color:#34D399"><i class="fa-regular fa-calendar-check"></i></div>
+      <div class="kpi-card" data-aos="fade-up" data-aos-delay="100">
         <div class="kpi-value" data-countup="8">8</div>
         <div class="kpi-label">Reservations</div>
         <div class="kpi-change up"><i class="fa-solid fa-arrow-up text-xs"></i>+2 this month</div>
       </div>
-      <div class="kpi-card">
-        <div class="kpi-icon" style="background:rgba(139,92,246,0.1);color:#A78BFA"><i class="fa-regular fa-heart"></i></div>
+      <div class="kpi-card" data-aos="fade-up" data-aos-delay="200">
         <div class="kpi-value" data-countup="23">23</div>
         <div class="kpi-label">Wishlist Items</div>
         <div class="kpi-change up"><i class="fa-solid fa-arrow-up text-xs"></i>+5 added</div>
       </div>
-      <div class="kpi-card">
-        <div class="kpi-icon" style="background:rgba(248,113,113,0.1);color:#F87171"><i class="fa-solid fa-dollar-sign"></i></div>
+      <div class="kpi-card" data-aos="fade-up" data-aos-delay="300">
         <div class="kpi-value" data-countup="3240" data-prefix="$">$3,240</div>
         <div class="kpi-label">Total Spent</div>
         <div class="kpi-change down"><i class="fa-solid fa-arrow-up text-xs"></i>Lifetime</div>
@@ -122,8 +119,8 @@
     </div>
 
     <!-- Charts Row -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-      <div class="lg:col-span-2 glass-card p-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6" data-aos="fade-up" data-aos-delay="200">
+      <div class="lg:col-span-2 glass-card p-6" data-aos="fade-right" data-aos-delay="200">
         <div class="flex items-center justify-between mb-6">
           <h3 class="text-cream font-semibold">Dining Activity</h3>
           <select class="form-control text-xs" style="width:auto;padding:6px 12px">
@@ -135,8 +132,7 @@
           <canvas id="diningChart"></canvas>
         </div>
       </div>
-      <div class="glass-card p-6">
-        <h3 class="text-cream font-semibold mb-6">Spending by Category</h3>
+      <div class="glass-card p-6" data-aos="fade-left" data-aos-delay="200">
         <div class="chart-container" style="height:180px">
           <canvas id="categoryChart"></canvas>
         </div>
@@ -144,7 +140,7 @@
     </div>
 
     <!-- Upcoming Reservations -->
-    <div class="glass-card mb-6">
+    <div class="glass-card mb-6" data-aos="fade-up" data-aos-delay="300">
       <div class="flex items-center justify-between p-6 border-b" style="border-color:var(--dark-600)">
         <h3 class="text-cream font-semibold">Upcoming Reservations</h3>
         <a href="reservation-history.html" class="text-gold text-sm">View All</a>
@@ -173,10 +169,8 @@
     </div>
 
     <!-- Recent Orders & Wishlist Preview -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="glass-card">
-        <div class="flex items-center justify-between p-5 border-b" style="border-color:var(--dark-600)">
-          <h3 class="text-cream font-semibold">Recent Orders</h3>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="400">
+      <div class="glass-card" data-aos="fade-up" data-aos-delay="0">
           <a href="order-history.html" class="text-gold text-sm">View All</a>
         </div>
         <div class="p-5 space-y-4">
@@ -206,9 +200,7 @@
           </div>
         </div>
       </div>
-      <div class="glass-card">
-        <div class="flex items-center justify-between p-5 border-b" style="border-color:var(--dark-600)">
-          <h3 class="text-cream font-semibold">Wishlist Picks</h3>
+      <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
           <a href="wishlist.html" class="text-gold text-sm">View All</a>
         </div>
         <div class="p-5 space-y-4">
@@ -226,10 +218,70 @@
         </div>
       </div>
     </div>
+
+    <!-- Redemption Modal -->
+    <div id="redeemModal" class="modal-overlay">
+      <div class="modal-box">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-cream text-xl font-semibold">Redeem Rewards</h2>
+          <button class="modal-close-btn" onclick="closeRedeemModal()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="mb-6">
+          <p class="text-muted text-sm mb-4">Choose how you'd like to redeem your <span class="text-gold font-semibold">$24.80</span> in rewards:</p>
+          <div class="space-y-3">
+            <button class="redeem-option" onclick="redeemReward('credit')">
+              <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:rgba(201,168,76,0.15);color:var(--gold)">
+                    <i class="fa-solid fa-wallet"></i>
+                  </div>
+                  <div class="text-left">
+                    <p class="text-cream font-semibold text-sm">Account Credit</p>
+                    <p class="text-muted text-xs">$24.80 added to your account</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-gold text-xs"></i>
+              </div>
+            </button>
+            <button class="redeem-option" onclick="redeemReward('discount')">
+              <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:rgba(52,211,153,0.15);color:#34D399">
+                    <i class="fa-solid fa-tag"></i>
+                  </div>
+                  <div class="text-left">
+                    <p class="text-cream font-semibold text-sm">Dining Discount</p>
+                    <p class="text-muted text-xs">$25 discount on next visit</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-gold text-xs"></i>
+              </div>
+            </button>
+            <button class="redeem-option" onclick="redeemReward('upgrade')">
+              <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:rgba(139,92,246,0.15);color:#A78BFA">
+                    <i class="fa-solid fa-crown"></i>
+                  </div>
+                  <div class="text-left">
+                    <p class="text-cream font-semibold text-sm">Priority Service</p>
+                    <p class="text-muted text-xs">1 month of VIP treatment</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-gold text-xs"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        <p class="text-muted text-xs mb-4">Redemptions are instant and cannot be reversed.</p>
+        <button class="btn btn-ghost btn-sm w-full" onclick="closeRedeemModal()">Cancel</button>
+      </div>
+    </div>
   </main>
 </div>
 
 <script src="js/gsap.min.js"></script>
+<script src="js/aos.js"></script>
 <script src="js/countUp.umd.js"></script>
 <script src="js/main.js"></script>
 <script>
@@ -261,7 +313,49 @@
     pill.style.display = 'flex';
   }
 })();
-</script>
+
+// Redeem functionality
+document.getElementById('redeemBtn')?.addEventListener('click', function() {
+  document.getElementById('redeemModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+
+function closeRedeemModal() {
+  document.getElementById('redeemModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function redeemReward(rewardType) {
+  var messages = {
+    'credit': 'Success! $24.80 has been added to your account. Check your account settings for details.',
+    'discount': 'Success! Your $25 dining discount code is ready. You can use it on your next reservation.',
+    'upgrade': 'Success! You now have priority VIP service for the next month. Enjoy exclusive perks!'
+  };
+  
+  closeRedeemModal();
+  showToast(messages[rewardType] || 'Reward redeemed successfully!', 'success');
+  
+  // Optionally reset the reward points display
+  setTimeout(function() {
+    // In a real app, this would be updated from the server
+    var pointsDisplay = document.querySelector('[data-countup="2480"]');
+    if (pointsDisplay) {
+      pointsDisplay.textContent = '0 pts';
+      pointsDisplay.setAttribute('data-countup', '0');
+    }
+    var redeemableValue = document.querySelector('.text-gold.font-bold.text-xl.font-cormorant');
+    if (redeemableValue && redeemableValue.textContent.includes('$24.80')) {
+      redeemableValue.textContent = '$0.00';
+    }
+  }, 1500);
+}
+
+// Close modal when clicking outside
+document.getElementById('redeemModal')?.addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeRedeemModal();
+  }
+});</script>
 </body>
 </html>
 
