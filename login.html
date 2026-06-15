@@ -40,7 +40,13 @@
       <div class="ornament mb-6"><div class="ornament-icon">✦</div></div>
 
       <!-- Login Form -->
-      <form id="login-form">
+      <form id="login-form" novalidate>
+        <!-- Error alert -->
+        <div id="login-error" style="display:none;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:11px 14px;margin-bottom:16px;color:#FCA5A5;font-size:0.82rem;display:none;align-items:center;gap:10px;">
+          <i class="fa-solid fa-circle-exclamation" style="color:#EF4444;flex-shrink:0;"></i>
+          <span id="login-error-msg">Invalid email or password.</span>
+        </div>
+
         <div class="form-group">
           <label class="form-label">Email Address</label>
           <div class="input-icon-wrap">
@@ -63,7 +69,7 @@
           <input type="checkbox" class="accent-gold">
           <span class="text-secondary text-sm">Remember me for 30 days</span>
         </label>
-        <button type="submit" class="btn btn-gold w-full justify-center btn-lg mb-4">
+        <button type="submit" id="login-btn" class="btn btn-gold w-full justify-center btn-lg mb-4">
           <i class="fa-solid fa-arrow-right-to-bracket"></i>Sign In
         </button>
       </form>
@@ -72,11 +78,23 @@
         Don't have an account? <a href="signup.html" class="text-gold font-semibold hover:underline">Create one free</a>
       </p>
 
+      <!-- Role Selector -->
       <div class="mt-8 pt-6" style="border-top:1px solid var(--dark-600)">
-        <p class="text-muted text-xs text-center mb-3">Or continue as</p>
-        <a href="admin.html" class="btn btn-dark btn-sm w-full justify-center">
-          <i class="fa-solid fa-gauge-high text-gold"></i>Admin Dashboard
-        </a>
+        <p class="text-muted text-xs text-center mb-3">Sign in as</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <label id="role-user-card" style="cursor:pointer;border:2px solid rgba(201,168,76,0.4);border-radius:12px;padding:14px 12px;text-align:center;transition:all 0.2s;background:rgba(201,168,76,0.08);">
+            <input type="radio" name="eclat-role" value="user" checked style="display:none;">
+            <i class="fa-solid fa-user" style="color:#C9A84C;font-size:1.1rem;display:block;margin-bottom:6px;"></i>
+            <span style="color:#F5F0E8;font-size:0.8rem;font-weight:600;display:block;">User</span>
+            <span style="color:rgba(245,240,232,0.4);font-size:0.7rem;">Guest / Member</span>
+          </label>
+          <label id="role-admin-card" style="cursor:pointer;border:2px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 12px;text-align:center;transition:all 0.2s;">
+            <input type="radio" name="eclat-role" value="admin" style="display:none;">
+            <i class="fa-solid fa-gauge-high" style="color:rgba(245,240,232,0.35);font-size:1.1rem;display:block;margin-bottom:6px;"></i>
+            <span style="color:rgba(245,240,232,0.5);font-size:0.8rem;font-weight:600;display:block;">Admin</span>
+            <span style="color:rgba(245,240,232,0.25);font-size:0.7rem;">Staff only</span>
+          </label>
+        </div>
       </div>
     </div>
   </div>
@@ -103,6 +121,100 @@
 <script src="js/gsap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/eclat-beyond-hero.js"></script>
+<script>
+(function () {
+  var ADMIN_EMAIL = 'admin@eclat.com';
+  var ADMIN_PASS  = 'Admin@1234';
+
+  var form          = document.getElementById('login-form');
+  var emailEl       = document.getElementById('email');
+  var passEl        = document.getElementById('login-password');
+  var errorBox      = document.getElementById('login-error');
+  var errorMsg      = document.getElementById('login-error-msg');
+  var loginBtn      = document.getElementById('login-btn');
+  var userCard      = document.getElementById('role-user-card');
+  var adminCard     = document.getElementById('role-admin-card');
+
+  /* ── Role card visual toggle ── */
+  function setActiveCard(role) {
+    var isAdmin = role === 'admin';
+    userCard.style.border        = isAdmin ? '2px solid rgba(255,255,255,0.08)' : '2px solid rgba(201,168,76,0.4)';
+    userCard.style.background    = isAdmin ? '' : 'rgba(201,168,76,0.08)';
+    userCard.querySelector('i').style.color       = isAdmin ? 'rgba(245,240,232,0.35)' : '#C9A84C';
+    userCard.querySelector('span').style.color    = isAdmin ? 'rgba(245,240,232,0.5)' : '#F5F0E8';
+
+    adminCard.style.border       = isAdmin ? '2px solid rgba(201,168,76,0.4)' : '2px solid rgba(255,255,255,0.08)';
+    adminCard.style.background   = isAdmin ? 'rgba(201,168,76,0.08)' : '';
+    adminCard.querySelector('i').style.color      = isAdmin ? '#C9A84C' : 'rgba(245,240,232,0.35)';
+    adminCard.querySelector('span').style.color   = isAdmin ? '#F5F0E8' : 'rgba(245,240,232,0.5)';
+  }
+
+  document.querySelectorAll('input[name="eclat-role"]').forEach(function(radio) {
+    radio.addEventListener('change', function() { setActiveCard(this.value); });
+  });
+  userCard.addEventListener('click',  function() { setActiveCard('user'); });
+  adminCard.addEventListener('click', function() { setActiveCard('admin'); });
+
+  /* ── Error helpers ── */
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorBox.style.display = 'flex';
+    emailEl.style.borderColor = 'rgba(239,68,68,0.5)';
+    passEl.style.borderColor  = 'rgba(239,68,68,0.5)';
+  }
+
+  function clearError() {
+    errorBox.style.display = 'none';
+    emailEl.style.borderColor = '';
+    passEl.style.borderColor  = '';
+  }
+
+  emailEl.addEventListener('input', clearError);
+  passEl.addEventListener('input',  clearError);
+
+  /* ── Submit ── */
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    clearError();
+
+    var email = emailEl.value.trim().toLowerCase();
+    var pass  = passEl.value;
+    var role  = document.querySelector('input[name="eclat-role"]:checked').value;
+
+    if (!email || !pass) {
+      showError('Please enter your email and password.');
+      return;
+    }
+
+    loginBtn.disabled = true;
+    loginBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>Signing in…';
+
+    setTimeout(function () {
+      if (role === 'admin') {
+        if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
+          sessionStorage.setItem('eclat_role', 'admin');
+          sessionStorage.setItem('eclat_user', 'Laurent Dubois');
+          window.location.href = 'admin.html';
+        } else {
+          loginBtn.disabled = false;
+          loginBtn.innerHTML = '<i class="fa-solid fa-arrow-right-to-bracket"></i>Sign In';
+          showError('Invalid admin credentials. Please try again.');
+        }
+      } else {
+        if (email.indexOf('@') > 0 && pass.length >= 6) {
+          sessionStorage.setItem('eclat_role', 'user');
+          sessionStorage.setItem('eclat_user', email.split('@')[0]);
+          window.location.href = 'dashboard.html';
+        } else {
+          loginBtn.disabled = false;
+          loginBtn.innerHTML = '<i class="fa-solid fa-arrow-right-to-bracket"></i>Sign In';
+          showError('Invalid email or password. Password must be at least 6 characters.');
+        }
+      }
+    }, 600);
+  });
+})();
+</script>
 </body>
 </html>
 
