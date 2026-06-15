@@ -102,11 +102,13 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
             <div class="form-group">
               <label class="form-label">First Name</label>
-              <div class="input-icon-wrap"><i class="input-icon fa-regular fa-user"></i><input type="text" class="form-control" placeholder="Laurent" required></div>
+              <div class="input-icon-wrap"><i class="input-icon fa-regular fa-user"></i><input id="res-first" name="first_name" type="text" class="form-control" placeholder="Laurent" required aria-describedby="err-res-first" aria-invalid="false" maxlength="16"></div>
+              <span id="err-res-first" role="alert" style="display:block;font-size:0.75rem;color:#EF4444;min-height:16px;margin-top:4px;padding-left:2px;" aria-live="polite"></span>
             </div>
             <div class="form-group">
               <label class="form-label">Last Name</label>
-              <div class="input-icon-wrap"><i class="input-icon fa-regular fa-user"></i><input type="text" class="form-control" placeholder="Dubois" required></div>
+              <div class="input-icon-wrap"><i class="input-icon fa-regular fa-user"></i><input id="res-last" name="last_name" type="text" class="form-control" placeholder="Dubois" required aria-describedby="err-res-last" aria-invalid="false" maxlength="16"></div>
+              <span id="err-res-last" role="alert" style="display:block;font-size:0.75rem;color:#EF4444;min-height:16px;margin-top:4px;padding-left:2px;" aria-live="polite"></span>
             </div>
           </div>
 
@@ -309,6 +311,7 @@
     this.value = digits;
     if(digits.length === 0 || digits.length === 10){ clearErr(); }
     else { showErr('Phone number must be exactly 10 digits.'); }
+    updateSubmitState();
   });
 
   /* Blur — final check if user tabs away */
@@ -316,6 +319,7 @@
     var digits = this.value.replace(/\D/g, '');
     if(digits.length > 0 && digits.length !== 10){ showErr('Phone number must be exactly 10 digits.'); }
     else { clearErr(); }
+    updateSubmitState();
   });
 
   /* Block paste of non-numeric content */
@@ -327,14 +331,122 @@
     this.dispatchEvent(new Event('input'));
   });
 
+  /* --- Name validation (First & Last) --- */
+  var firstEl = document.getElementById('res-first');
+  var lastEl  = document.getElementById('res-last');
+  var errFirst = document.getElementById('err-res-first');
+  var errLast  = document.getElementById('err-res-last');
+  var submitBtn = form.querySelector('button[type="submit"]');
+
+  function setFieldError(el, errEl, msg){ errEl.textContent = msg; el.style.borderColor='#DC2626'; el.style.boxShadow='0 0 0 2px rgba(220,38,38,0.18)'; el.setAttribute('aria-invalid','true'); }
+  function clearFieldError(el, errEl){ errEl.textContent=''; el.style.borderColor=''; el.style.boxShadow=''; el.setAttribute('aria-invalid','false'); }
+
+  function sanitizeNameInput(val){
+    // keep only letters and spaces, collapse multiple spaces, trim, single internal space allowed
+    var filtered = val.replace(/[^A-Za-z ]+/g, '');
+    // collapse multiple spaces
+    filtered = filtered.replace(/\s+/g, ' ');
+    // trim
+    filtered = filtered.trim();
+    // allow only one internal space - if more than one, keep first space and remove others
+    var parts = filtered.split(' ');
+    if(parts.length > 2){ filtered = parts[0] + ' ' + parts.slice(1).join(''); }
+    return filtered.slice(0,16);
+  }
+
+  function isNameValid(val){
+    if(!val) return false;
+    if(val.length > 16) return false;
+    // allow either single word of letters or two words separated by single space
+    return /^[A-Za-z]+( [A-Za-z]+)?$/.test(val);
+  }
+
+  function onNameInput(el, errEl, fieldName){
+    // enforce maxlength visually and sanitize
+    var original = el.value;
+    var sanitized = sanitizeNameInput(original);
+    if(sanitized !== original){
+      var pos = el.selectionStart || 0;
+      el.value = sanitized;
+      try{ el.setSelectionRange(pos-1,pos-1); }catch(e){}
+    }
+
+    if(el.value.length > 16){ setFieldError(el, errEl, fieldName + ' cannot exceed 16 characters.'); }
+    else if(!/^[A-Za-z ]*$/.test(el.value)){
+      setFieldError(el, errEl, 'Only letters and spaces are allowed.');
+    } else if(!isNameValid(el.value)){
+      setFieldError(el, errEl, 'Only letters and spaces are allowed.');
+    } else { clearFieldError(el, errEl); }
+    updateSubmitState();
+  }
+
+  /* Prevent invalid keystrokes for names */
+  function nameKeypressHandler(e){
+    var el = e.target;
+    var key = e.key;
+    // allow control keys
+    if(key.length > 1) return;
+    if(!/[A-Za-z ]/.test(key)) return e.preventDefault();
+    if(key === ' ' && el.value.indexOf(' ') !== -1) return e.preventDefault();
+    if(el.value.length >= 16) return e.preventDefault();
+  }
+
+  [firstEl, lastEl].forEach(function(inputEl){
+    if(!inputEl) return;
+    var localErr = inputEl.id === 'res-first' ? errFirst : errLast;
+    inputEl.addEventListener('keypress', nameKeypressHandler);
+    inputEl.addEventListener('input', function(){ onNameInput(inputEl, localErr, inputEl.id === 'res-first' ? 'First Name' : 'Last Name'); });
+    inputEl.addEventListener('blur', function(){
+      // trim on blur
+      inputEl.value = inputEl.value.trim();
+      onNameInput(inputEl, localErr, inputEl.id === 'res-first' ? 'First Name' : 'Last Name');
+    });
+    inputEl.addEventListener('paste', function(e){
+      e.preventDefault();
+      var pasted = (e.clipboardData || window.clipboardData).getData('text');
+      var cleaned = sanitizeNameInput(pasted);
+      inputEl.value = cleaned;
+      inputEl.dispatchEvent(new Event('input'));
+    });
+  });
+
+  function updateSubmitState(){
+    var firstValid = isNameValid(firstEl.value);
+    var lastValid = isNameValid(lastEl.value);
+    // keep submit enabled only when both name fields valid; phone not required for enabling per spec but we keep form submit guarded on submit
+    if(submitBtn){ submitBtn.disabled = !(firstValid && lastValid); }
+  }
+
+  // initial state
+  updateSubmitState();
+
   /* Form submit guard */
   form.addEventListener('submit', function(e){
     var digits = phoneEl.value.replace(/\D/g, '');
+    var firstVal = firstEl.value.trim();
+    var lastVal = lastEl.value.trim();
+    var firstValid = isNameValid(firstVal);
+    var lastValid = isNameValid(lastVal);
     if(digits.length !== 10){
       e.preventDefault();
       e.stopPropagation();
       showErr('Phone number must be exactly 10 digits.');
       phoneEl.focus();
+      return;
+    }
+    if(!firstValid){
+      e.preventDefault();
+      e.stopPropagation();
+      setFieldError(firstEl, errFirst, firstVal.length > 16 ? 'First Name cannot exceed 16 characters.' : 'Only letters and spaces are allowed.');
+      firstEl.focus();
+      return;
+    }
+    if(!lastValid){
+      e.preventDefault();
+      e.stopPropagation();
+      setFieldError(lastEl, errLast, lastVal.length > 16 ? 'Last Name cannot exceed 16 characters.' : 'Only letters and spaces are allowed.');
+      lastEl.focus();
+      return;
     }
   });
 })();
