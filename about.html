@@ -631,19 +631,37 @@
     ctx.restore();
   };
 
-  var COUNT = 90;
+  var COUNT = 60;
   var particles = [];
   for (var i = 0; i < COUNT; i++) particles.push(new Particle());
 
+  var animating = true;
+  var rafId = null;
+
   function loop() {
+    if (!animating) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (var i = 0; i < particles.length; i++) {
+    for (var i = 0; i < COUNT; i++) {
       particles[i].update();
       particles[i].draw();
     }
-    requestAnimationFrame(loop);
+    rafId = requestAnimationFrame(loop);
   }
-  loop();
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        animating = true;
+        if (!rafId) rafId = requestAnimationFrame(loop);
+      } else {
+        animating = false;
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+      }
+    });
+  }, { threshold: 0 });
+  observer.observe(canvas);
+
+  rafId = requestAnimationFrame(loop);
 })();
 </script>
 </body>

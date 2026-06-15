@@ -65,10 +65,10 @@ function initLenis() {
 function initAOS() {
   if (typeof AOS === 'undefined') return;
   AOS.init({
-    duration: 800,
+    duration: 400,
     easing: 'ease-out-cubic',
     once: true,
-    offset: 60,
+    offset: 80,
     delay: 0,
   });
 }
@@ -222,9 +222,16 @@ function initCursor() {
 function initScrollProgress() {
   const bar = qs('.scroll-progress');
   if (!bar) return;
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-    bar.style.transform = `scaleX(${pct})`;
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        bar.style.transform = `scaleX(${pct})`;
+        ticking = false;
+      });
+      ticking = true;
+    }
   }, { passive: true });
 }
 

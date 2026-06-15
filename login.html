@@ -66,9 +66,20 @@
             <button type="button" class="pwd-toggle" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--text-muted)"><i class="fa-regular fa-eye"></i></button>
           </div>
         </div>
-        <label class="flex items-center gap-3 cursor-pointer mb-6">
-          <input type="checkbox" class="accent-gold">
-          <span class="text-secondary text-sm">Remember me for 30 days</span>
+        <input type="checkbox" id="remember-me" style="display:none;" tabindex="-1">
+        <label id="remember-label" class="flex items-center gap-3 cursor-pointer mb-6" style="user-select:none;">
+          <span id="remember-box" style="
+            width:20px; height:20px; min-width:20px;
+            border:2px solid rgba(201,168,76,0.55);
+            border-radius:5px;
+            background:transparent;
+            display:flex; align-items:center; justify-content:center;
+            transition:background 0.2s, border-color 0.2s;
+            pointer-events:none;
+          ">
+            <i id="remember-check" class="fa-solid fa-check" style="color:#0A0A0A;font-size:11px;display:none;"></i>
+          </span>
+          <span class="text-secondary text-sm">Remember me</span>
         </label>
         <button type="submit" id="login-btn" class="btn btn-gold w-full justify-center btn-lg mb-4">
           <i class="fa-solid fa-arrow-right-to-bracket"></i>Sign In
@@ -127,15 +138,42 @@
 (function () {
   var ADMIN_EMAIL = 'admin@eclat.com';
   var ADMIN_PASS  = 'Admin@1234';
+  var THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
+
+  /* ── Auto-redirect if remembered session is still valid ── */
+  try {
+    var saved = JSON.parse(localStorage.getItem('eclat_remember') || 'null');
+    if (saved && Date.now() < saved.expiry) {
+      window.location.href = saved.role === 'admin' ? 'admin.html' : 'dashboard.html';
+    }
+  } catch (e) { localStorage.removeItem('eclat_remember'); }
 
   var form          = document.getElementById('login-form');
   var emailEl       = document.getElementById('email');
   var passEl        = document.getElementById('login-password');
+  var rememberEl    = document.getElementById('remember-me');
+  var rememberLabel = document.getElementById('remember-label');
+  var rememberBox   = document.getElementById('remember-box');
+  var rememberCheck = document.getElementById('remember-check');
   var errorBox      = document.getElementById('login-error');
   var errorMsg      = document.getElementById('login-error-msg');
   var loginBtn      = document.getElementById('login-btn');
   var userCard      = document.getElementById('role-user-card');
   var adminCard     = document.getElementById('role-admin-card');
+
+  /* ── Custom checkbox toggle (single handler on label — no double-toggle) ── */
+  rememberLabel.addEventListener('click', function () {
+    rememberEl.checked = !rememberEl.checked;
+    if (rememberEl.checked) {
+      rememberBox.style.background  = '#C9A84C';
+      rememberBox.style.borderColor = '#C9A84C';
+      rememberCheck.style.display   = 'block';
+    } else {
+      rememberBox.style.background  = 'transparent';
+      rememberBox.style.borderColor = 'rgba(201,168,76,0.55)';
+      rememberCheck.style.display   = 'none';
+    }
+  });
 
   /* ── Role card visual toggle ── */
   function setActiveCard(role) {
@@ -177,6 +215,8 @@
   /* ── Submit ── */
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    e.stopImmediatePropagation();
+    e.stopPropagation();
     clearError();
 
     var email = emailEl.value.trim().toLowerCase();
@@ -188,6 +228,11 @@
       return;
     }
 
+    if (!rememberEl.checked) {
+      showError('Please check "Remember me" to sign in.');
+      return;
+    }
+
     loginBtn.disabled = true;
     loginBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>Signing in…';
 
@@ -196,6 +241,11 @@
         if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
           sessionStorage.setItem('eclat_role', 'admin');
           sessionStorage.setItem('eclat_user', 'Laurent Dubois');
+          if (rememberEl && rememberEl.checked) {
+            localStorage.setItem('eclat_remember', JSON.stringify({
+              role: 'admin', user: 'Laurent Dubois', expiry: Date.now() + THIRTY_DAYS
+            }));
+          }
           window.location.href = 'admin.html';
         } else {
           loginBtn.disabled = false;
@@ -204,8 +254,17 @@
         }
       } else {
         if (email.indexOf('@') > 0 && pass.length >= 6) {
+          var userName = email.split('@')[0];
           sessionStorage.setItem('eclat_role', 'user');
-          sessionStorage.setItem('eclat_user', email.split('@')[0]);
+          sessionStorage.setItem('eclat_user', userName);
+          localStorage.setItem('eclat_user_email', email);
+          if (rememberEl && rememberEl.checked) {
+            localStorage.setItem('eclat_remember', JSON.stringify({
+              role: 'user', user: userName, expiry: Date.now() + THIRTY_DAYS
+            }));
+          } else {
+            localStorage.removeItem('eclat_remember');
+          }
           window.location.href = 'dashboard.html';
         } else {
           loginBtn.disabled = false;
@@ -214,7 +273,7 @@
         }
       }
     }, 600);
-  });
+  }, true);
 })();
 </script>
 </body>

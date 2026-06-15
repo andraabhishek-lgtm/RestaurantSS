@@ -238,7 +238,7 @@
 <section class="bar-hero">
 
   <!-- Background video -->
-  <video class="bar-hero-video" autoplay muted loop playsinline poster="images/bar-poster.webp">
+  <video class="bar-hero-video" autoplay muted loop playsinline preload="none" poster="images/bar-poster.webp">
     <source src="videos/bar-hero.mp4" type="video/mp4">
   </video>
 
@@ -680,6 +680,18 @@
 <script src="js/main.js"></script>
 <script src="js/eclat-beyond-hero.js"></script>
 <script src="js/eclat-footer.js"></script>
+<script>
+(function () {
+  var video = document.querySelector('.bar-hero-video');
+  if (!video) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { video.play(); } else { video.pause(); }
+    });
+  }, { threshold: 0 });
+  obs.observe(video);
+})();
+</script>
 </body>
 </html>
 

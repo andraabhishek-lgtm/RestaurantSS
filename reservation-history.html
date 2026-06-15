@@ -29,7 +29,7 @@
       <p class="sidebar-section-title mt-4">Account</p>
       <a href="profile.html" class="sidebar-link"><i class="fa-regular fa-user"></i>Profile</a>
       <a href="settings.html" class="sidebar-link"><i class="fa-solid fa-gear"></i>Settings</a>
-      <a href="login.html" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i>Sign Out</a>
+      <a href="#" class="sidebar-link" onclick="sessionStorage.clear();localStorage.removeItem('eclat_remember');window.location.replace('login.html');return false;"><i class="fa-solid fa-right-from-bracket"></i>Sign Out</a>
     </nav>
     <div class="p-4 border-t" style="border-color:var(--dark-600)"><div class="flex items-center gap-3"><img src="images/photo-1494790108377-be9c29b29330-60x60.webp" class="w-10 h-10 rounded-full object-cover border-2 border-gold" alt="Avatar"><div><p class="text-cream text-sm font-semibold">Sarah Johnson</p><p class="text-gold text-xs">Gold Member</p></div></div></div>
   </aside>
