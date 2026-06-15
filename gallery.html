@@ -5,11 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="ÉCLAT Gallery — A visual journey through our cuisine, ambience, and culinary artistry.">
 <title>Gallery — ÉCLAT Fine Dining</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/tailwind.css">
+<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="css/fa-all.min.css">
 <link rel="stylesheet" href="css/style.css">
-<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#0A0A0A',cream:'#F5F0E8'}}}}</script>
 <style>
 .gallery-filter-btn { padding:10px 20px; border-radius:999px; font-size:0.82rem; font-weight:600; cursor:pointer; border:1px solid var(--dark-500); color:var(--text-secondary); background:transparent; transition:var(--transition-fast); }
 .gallery-filter-btn.active,.gallery-filter-btn:hover { background:var(--grad-gold); color:var(--dark-bg); border-color:transparent; }
@@ -89,65 +88,118 @@
 
     <!-- Masonry Grid -->
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="gallery-grid">
-      <!-- Row 1 -->
-      <div class="gallery-item lg:col-span-2 lg:row-span-2" style="aspect-ratio:auto;height:420px" data-category="interior" data-lightbox="images/photo-1414235077428-338989a2e8c0-1200.webp" data-aos="fade-up">
+      <!-- Batch 1 — visible by default -->
+      <div class="gallery-item lg:col-span-2 lg:row-span-2" style="height:420px" data-category="interior" data-index="0">
         <img src="images/photo-1414235077428-338989a2e8c0-800.webp" alt="Restaurant Interior" loading="lazy">
         <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-2xl"></i></div>
       </div>
-      <div class="gallery-item" style="height:200px" data-category="food" data-lightbox="images/photo-1544025162-d76694265947-1200.webp" data-aos="fade-up" data-aos-delay="50">
+      <div class="gallery-item" style="height:200px" data-category="food" data-index="1">
         <img src="images/photo-1544025162-d76694265947-500.webp" alt="Wagyu" loading="lazy">
         <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
       </div>
-      <div class="gallery-item" style="height:200px" data-category="food" data-lightbox="images/photo-1579584425555-c3ce17fd4351-1200.webp" data-aos="fade-up" data-aos-delay="100">
+      <div class="gallery-item" style="height:200px" data-category="food" data-index="2">
         <img src="images/photo-1579584425555-c3ce17fd4351-500.webp" alt="Sushi" loading="lazy">
         <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
       </div>
-      <div class="gallery-item" style="height:200px" data-category="food" data-lightbox="images/photo-1625944230945-1b7dd3b949ab-1200.webp" data-aos="fade-up" data-aos-delay="150">
+      <div class="gallery-item" style="height:200px" data-category="food" data-index="3">
         <img src="images/photo-1625944230945-1b7dd3b949ab-500.webp" alt="Lobster" loading="lazy">
         <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
       </div>
-      <div class="gallery-item" style="height:200px" data-category="chefs" data-lightbox="images/photo-1577219491135-ce391730fb2c-1200.webp" data-aos="fade-up" data-aos-delay="200">
+      <div class="gallery-item" style="height:200px" data-category="chefs" data-index="4">
         <img src="images/photo-1577219491135-ce391730fb2c-500.webp" alt="Chef" loading="lazy">
         <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
       </div>
-
-      <!-- Row 2 -->
-      <div class="gallery-item" style="height:250px" data-category="food" data-lightbox="images/photo-1488477304112-4944851de03d-1200.webp" data-aos="fade-up">
+      <div class="gallery-item" style="height:250px" data-category="food" data-index="5">
         <img src="images/photo-1488477304112-4944851de03d-500.webp" alt="Dessert" loading="lazy">
         <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
       </div>
-      <div class="gallery-item" style="height:250px" data-category="interior" data-lightbox="images/photo-1517248135467-4c7edcad34c4-1200.webp" data-aos="fade-up" data-aos-delay="50">
+      <div class="gallery-item" style="height:250px" data-category="interior" data-index="6">
         <img src="images/photo-1517248135467-4c7edcad34c4-500.webp" alt="Dining Room" loading="lazy">
         <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
       </div>
-      <div class="gallery-item" style="height:250px" data-category="events" data-lightbox="images/photo-1555396273-367ea4eb4db5-1920.webp" data-aos="fade-up" data-aos-delay="100">
+      <div class="gallery-item" style="height:250px" data-category="events" data-index="7">
         <img src="images/photo-1555396273-367ea4eb4db5-500.webp" alt="Event" loading="lazy">
         <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
       </div>
-      <div class="gallery-item" style="height:250px" data-category="food" data-lightbox="images/photo-1540189549336-e6e99c3679fe-1200.webp" data-aos="fade-up" data-aos-delay="150">
+      <div class="gallery-item" style="height:250px" data-category="food" data-index="8">
         <img src="images/photo-1540189549336-e6e99c3679fe-500.webp" alt="Salad" loading="lazy">
         <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
       </div>
-
-      <!-- Row 3 -->
-      <div class="gallery-item" style="height:250px" data-category="chefs" data-lightbox="images/photo-1581299894007-aaa50297cf16-1200.webp" data-aos="fade-up">
+      <div class="gallery-item" style="height:250px" data-category="chefs" data-index="9">
         <img src="images/photo-1581299894007-aaa50297cf16-500.webp" alt="Chef Mei" loading="lazy">
         <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
       </div>
-      <div class="gallery-item" style="height:250px" data-category="food" data-lightbox="images/photo-1555396273-367ea4eb4db5-1200.webp" data-aos="fade-up" data-aos-delay="50">
-        <img src="images/photo-1555396273-367ea4eb4db5-500.webp" alt="Pasta" loading="lazy">
+      <div class="gallery-item" style="height:250px" data-category="food" data-index="10">
+        <img src="images/photo-1572441713132-c542fc4fe282-500.webp" alt="Foie Gras" loading="lazy">
         <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
       </div>
-      <div class="gallery-item md:col-span-2" style="height:250px" data-category="interior" data-lightbox="images/photo-1572116469696-31de0f17cc34-1200.webp" data-aos="fade-up" data-aos-delay="100">
+      <div class="gallery-item md:col-span-2" style="height:250px" data-category="interior" data-index="11">
         <img src="images/photo-1572116469696-31de0f17cc34-800.webp" alt="Bar" loading="lazy">
         <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-2xl"></i></div>
+      </div>
+
+      <!-- Batch 2 — revealed by Load More -->
+      <div class="gallery-item" style="height:250px;display:none" data-category="food" data-index="12">
+        <img src="images/chocolate-souffle-500.webp" alt="Valrhona Soufflé" loading="lazy">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
+      </div>
+      <div class="gallery-item" style="height:250px;display:none" data-category="food" data-index="13">
+        <img src="images/gallery-plating-400.webp" alt="Chef's Plating" loading="lazy">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
+      </div>
+      <div class="gallery-item" style="height:250px;display:none" data-category="chefs" data-index="14">
+        <img src="images/chefs-kitchen-600.webp" alt="Behind the Line" loading="lazy">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
+      </div>
+      <div class="gallery-item" style="height:250px;display:none" data-category="food" data-index="15">
+        <img src="images/gallery-finedish-400.webp" alt="Seasonal Creation" loading="lazy">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
+      </div>
+      <div class="gallery-item" style="height:220px;display:none" data-category="food" data-index="16">
+        <img src="images/photo-1484980972926-edee96e0960d-500.webp" alt="Black Truffle Tagliatelle" loading="lazy">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
+      </div>
+      <div class="gallery-item" style="height:220px;display:none" data-category="food" data-index="17">
+        <img src="images/photo-1519708227418-c8fd9a32b7a2-500.webp" alt="Chilean Sea Bass" loading="lazy">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
+      </div>
+      <div class="gallery-item" style="height:220px;display:none" data-category="food" data-index="18">
+        <img src="images/photo-1534422298391-e4f8c172dddb-500.webp" alt="Tiger Prawn Royale" loading="lazy">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
+      </div>
+      <div class="gallery-item" style="height:220px;display:none" data-category="events" data-index="19">
+        <img src="images/photo-1551218808-94e220e084d2-600.webp" alt="Private Dining Evening" loading="lazy">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
+      </div>
+
+      <!-- Batch 3 — revealed by second Load More -->
+      <div class="gallery-item" style="height:240px;display:none" data-category="food" data-index="20">
+        <img src="images/photo-1551024601-bec78aea704b-500.webp" alt="Champagne Profiteroles" loading="lazy">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
+      </div>
+      <div class="gallery-item" style="height:240px;display:none" data-category="food" data-index="21">
+        <img src="images/photo-1512621776951-a57141f2eefd-500.webp" alt="Garden Harvest" loading="lazy">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
+      </div>
+      <div class="gallery-item md:col-span-2" style="height:280px;display:none" data-category="food" data-index="22">
+        <img src="images/photo-1565299624946-b28f40a0ae38-500.webp" alt="Tomahawk Ribeye" loading="lazy">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-2xl"></i></div>
+      </div>
+      <div class="gallery-item" style="height:240px;display:none" data-category="food" data-index="23">
+        <img src="images/photo-1476718406336-bb5a9690ee2a-500.webp" alt="Truffle Mushroom Risotto" loading="lazy">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
+      </div>
+      <div class="gallery-item" style="height:240px;display:none" data-category="interior" data-index="24">
+        <img src="images/photo-1598515214211-89d3c73ae83b-500.webp" alt="Table Setting" loading="lazy">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-expand text-white text-xl"></i></div>
       </div>
     </div>
 
     <!-- Load More -->
-    <div class="text-center mt-12">
-      <button id="load-more-btn" class="btn btn-outline-gold btn-lg" onclick="showToast('All 48 images loaded!','info')">
+    <div class="text-center mt-12" id="load-more-wrap">
+      <button id="load-more-btn" class="btn btn-outline-gold btn-lg">
         <i class="fa-solid fa-plus mr-2"></i>Load More
+        <span id="load-more-count" class="ml-2 text-xs opacity-60"></span>
       </button>
     </div>
   </div>
@@ -164,7 +216,7 @@
 <footer class="footer">
   <div class="container">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-      <div><div class="footer-logo">ÉCLAT</div><p class="footer-desc">Award-winning fine dining in New York City.</p><div class="footer-social"><a href="#" class="social-btn"><i class="fab fa-instagram"></i></a><a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a></div></div>
+      <div><a href="404.html" class="footer-logo" style="cursor:pointer;text-decoration:none;">ÉCLAT</a><p class="footer-desc">Award-winning fine dining in New York City.</p><div class="footer-social"><a href="404.html" class="social-btn"><i class="fab fa-instagram"></i></a><a href="404.html" class="social-btn"><i class="fab fa-facebook-f"></i></a></div></div>
       <div><h4 class="footer-heading">Explore</h4><ul class="footer-links"><li><a href="menu.html" class="footer-link">Our Menu</a></li><li><a href="chefs.html" class="footer-link">Our Chefs</a></li><li><a href="gallery.html" class="footer-link">Gallery</a></li></ul></div>
       <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="reservation.html" class="footer-link">Reservations</a></li><li><a href="events.html" class="footer-link">Private Dining</a></li></ul></div>
       <div><h4 class="footer-heading">Contact</h4><ul class="footer-links"><li class="footer-link"><i class="fa-solid fa-phone text-gold"></i>+1 (212) 555-0174</li></ul></div>
@@ -174,25 +226,84 @@
 </footer>
 <button id="backToTop"><i class="fa-solid fa-chevron-up"></i></button>
 
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/gsap.min.js"></script>
+<script src="js/lenis.min.js"></script>
 <script src="js/main.js"></script>
 <script>
-  // Gallery filter
-  document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.gallery-filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('.gallery-item').forEach(item => {
-        const cat = item.dataset.category;
-        const show = filter === 'all' || cat === filter;
-        item.style.display = show ? '' : 'none';
-        if (show) { item.style.animation = 'fadeIn 0.4s ease'; }
-      });
+(function(){
+  const BATCH = 8;
+  const INITIAL = 12; // indices 0-11 are visible by default
+  const items = Array.from(document.querySelectorAll('.gallery-item'));
+  const total = items.length; // 25
+  const btn = document.getElementById('load-more-btn');
+  const wrap = document.getElementById('load-more-wrap');
+  const countLabel = document.getElementById('load-more-count');
+
+  let visibleUpTo = INITIAL; // how many items are revealed in "all" mode
+  let activeFilter = 'all';
+
+  function updateCountLabel() {
+    const remaining = total - visibleUpTo;
+    if (remaining > 0) {
+      countLabel.textContent = '(' + remaining + ' more)';
+    } else {
+      countLabel.textContent = '';
+    }
+  }
+
+  function applyState() {
+    items.forEach(function(item, i) {
+      const cat = item.dataset.category;
+      let show = false;
+
+      if (activeFilter === 'all') {
+        show = i < visibleUpTo;
+      } else {
+        show = cat === activeFilter;
+      }
+
+      item.style.display = show ? '' : 'none';
+    });
+
+    // Show Load More only in "all" mode and when there are hidden items
+    if (activeFilter === 'all' && visibleUpTo < total) {
+      wrap.style.display = '';
+      updateCountLabel();
+    } else {
+      wrap.style.display = 'none';
+    }
+  }
+
+  // Load More click
+  btn.addEventListener('click', function() {
+    const prevVisible = visibleUpTo;
+    visibleUpTo = Math.min(visibleUpTo + BATCH, total);
+    applyState();
+    // Smooth scroll to the first newly revealed item
+    if (items[prevVisible]) {
+      items[prevVisible].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    if (visibleUpTo >= total) {
+      showToast('All ' + total + ' photos loaded!', 'success');
+    }
+  });
+
+  // Filter buttons
+  document.querySelectorAll('.gallery-filter-btn').forEach(function(filterBtn) {
+    filterBtn.addEventListener('click', function() {
+      document.querySelectorAll('.gallery-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      activeFilter = this.dataset.filter;
+      // Reset paging when switching back to All
+      if (activeFilter === 'all') { visibleUpTo = INITIAL; }
+      applyState();
     });
   });
+
+  // Init
+  applyState();
+})();
 </script>
 <script src="js/eclat-beyond-hero.js"></script>
 <script src="js/eclat-footer.js"></script>

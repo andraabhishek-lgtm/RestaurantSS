@@ -76,7 +76,7 @@ function initAOS() {
 /* ─── GSAP Animations ────────────────────────────────────── */
 function initGSAP() {
   if (typeof gsap === 'undefined') return;
-  gsap.registerPlugin(ScrollTrigger);
+  if (typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
 
   // Hero content stagger
   const heroEls = qsa('.gsap-hero-item');
@@ -92,6 +92,7 @@ function initGSAP() {
   }
 
   // Section reveals
+  if (typeof ScrollTrigger === 'undefined') return;
   qsa('.gsap-reveal').forEach(el => {
     gsap.from(el, {
       scrollTrigger: { trigger: el, start: 'top 85%' },

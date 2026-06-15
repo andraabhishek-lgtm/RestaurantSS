@@ -5,11 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="Contact ÉCLAT Fine Dining — get in touch with our team for inquiries, reservations, and private events.">
 <title>Contact — ÉCLAT Fine Dining</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/tailwind.css">
+<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="css/fa-all.min.css">
 <link rel="stylesheet" href="css/style.css">
-<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#0A0A0A',cream:'#F5F0E8'}}}}</script>
 <link rel="stylesheet" href="css/eclat-beyond-hero.css">
 <link rel="stylesheet" href="css/responsive.css">
 </head>
@@ -101,15 +100,37 @@
         <div class="glass-card p-8 md:p-10">
           <h2 class="font-cormorant text-3xl text-cream font-semibold mb-2">Send Us a Message</h2>
           <p class="text-secondary mb-8">We respond to all inquiries within 4 business hours.</p>
-          <form id="contact-form">
+          <form id="contact-form" novalidate>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
-              <div class="form-group"><label class="form-label">Full Name</label><div class="input-icon-wrap"><i class="input-icon fa-regular fa-user"></i><input type="text" class="form-control" placeholder="Your full name" required></div></div>
-              <div class="form-group"><label class="form-label">Email Address</label><div class="input-icon-wrap"><i class="input-icon fa-regular fa-envelope"></i><input type="email" class="form-control" placeholder="your@email.com" required></div></div>
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <div class="input-icon-wrap">
+                  <i class="input-icon fa-regular fa-user"></i>
+                  <input type="text" id="c-name" class="form-control" placeholder="Your full name" maxlength="16" autocomplete="name">
+                </div>
+                <span class="cf-err" id="err-c-name"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <div class="input-icon-wrap">
+                  <i class="input-icon fa-regular fa-envelope"></i>
+                  <input type="email" id="c-email" class="form-control" placeholder="your@email.com" autocomplete="email">
+                </div>
+                <span class="cf-err" id="err-c-email"></span>
+              </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
-              <div class="form-group"><label class="form-label">Phone Number</label><div class="input-icon-wrap"><i class="input-icon fa-solid fa-phone"></i><input type="tel" class="form-control" placeholder="+1 (000) 000-0000"></div></div>
-              <div class="form-group"><label class="form-label">Subject</label>
-                <select class="form-control form-select">
+              <div class="form-group">
+                <label class="form-label">Phone Number <span style="color:rgba(245,240,232,0.35);font-size:0.75rem;font-weight:400;">(10 digits)</span></label>
+                <div class="input-icon-wrap">
+                  <i class="input-icon fa-solid fa-phone"></i>
+                  <input type="tel" id="c-phone" class="form-control" placeholder="+1 (000) 000-0000" maxlength="15" inputmode="numeric" autocomplete="tel">
+                </div>
+                <span class="cf-err" id="err-c-phone"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Subject</label>
+                <select id="c-subject" class="form-control form-select">
                   <option>General Inquiry</option>
                   <option>Reservation</option>
                   <option>Private Dining</option>
@@ -120,15 +141,116 @@
                 </select>
               </div>
             </div>
-            <div class="form-group mb-5"><label class="form-label">Message</label><textarea class="form-control" rows="5" placeholder="Tell us how we can help you..." required></textarea></div>
+            <div class="form-group mb-5">
+              <label class="form-label">Message</label>
+              <textarea id="c-message" class="form-control" rows="5" placeholder="Tell us how we can help you..."></textarea>
+              <span class="cf-err" id="err-c-message"></span>
+            </div>
             <label class="flex items-center gap-3 cursor-pointer mb-6">
-              <input type="checkbox" class="accent-gold">
+              <input type="checkbox" id="c-privacy" class="accent-gold">
               <span class="text-secondary text-sm">I agree to the <a href="privacy.html" class="text-gold">Privacy Policy</a> and consent to being contacted regarding my inquiry.</span>
             </label>
+            <span class="cf-err" id="err-c-privacy" style="display:block;margin-top:-16px;margin-bottom:16px;"></span>
             <button type="submit" class="btn btn-gold btn-lg w-full justify-center">
-              <i class="fa-solid fa-paper-plane"></i>Send Message
+              <i class="fa-solid fa-paper-plane mr-2"></i>Send Message
             </button>
           </form>
+
+          <style>
+            .cf-err { display:block; font-size:0.75rem; color:#EF4444; min-height:16px; margin-top:4px; padding-left:2px; }
+            .cf-invalid { border-color:#DC2626 !important; box-shadow:0 0 0 2px rgba(220,38,38,0.18) !important; }
+          </style>
+
+          <script>
+          (function(){
+            const nameEl    = document.getElementById('c-name');
+            const emailEl   = document.getElementById('c-email');
+            const phoneEl   = document.getElementById('c-phone');
+            const msgEl     = document.getElementById('c-message');
+            const privacyEl = document.getElementById('c-privacy');
+            const form      = document.getElementById('contact-form');
+
+            const nameRe  = /^[A-Za-zÀ-ÖØ-öø-ÿ\s'\-]+$/;
+            const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            function setErr(el, errId, msg) {
+              el.classList.add('cf-invalid');
+              document.getElementById(errId).textContent = msg;
+            }
+            function clearErr(el, errId) {
+              el.classList.remove('cf-invalid');
+              document.getElementById(errId).textContent = '';
+            }
+
+            /* ── Name: letters + spaces only, max 16 ── */
+            nameEl.addEventListener('keypress', function(e) {
+              if (!/[A-Za-zÀ-ÖØ-öø-ÿ\s'\-]/.test(e.key)) e.preventDefault();
+            });
+            nameEl.addEventListener('input', function() {
+              this.value = this.value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s'\-]/g, '');
+              clearErr(nameEl, 'err-c-name');
+            });
+
+            /* ── Phone: digits only, max 10 digits ── */
+            phoneEl.addEventListener('keypress', function(e) {
+              if (!/[0-9]/.test(e.key)) e.preventDefault();
+            });
+            phoneEl.addEventListener('input', function() {
+              const digits = this.value.replace(/\D/g, '').substring(0, 10);
+              this.value = digits;
+              clearErr(phoneEl, 'err-c-phone');
+            });
+
+            emailEl.addEventListener('input', function() { clearErr(emailEl, 'err-c-email'); });
+            msgEl.addEventListener('input',   function() { clearErr(msgEl,   'err-c-message'); });
+
+            /* ── Submit validation ── */
+            form.addEventListener('submit', function(e) {
+              e.preventDefault();
+              let valid = true;
+
+              const name  = nameEl.value.trim();
+              const email = emailEl.value.trim();
+              const phone = phoneEl.value.trim();
+              const msg   = msgEl.value.trim();
+
+              if (!name) {
+                setErr(nameEl, 'err-c-name', 'Full name is required.'); valid = false;
+              } else if (name.length < 2) {
+                setErr(nameEl, 'err-c-name', 'Name must be at least 2 characters.'); valid = false;
+              } else if (!nameRe.test(name)) {
+                setErr(nameEl, 'err-c-name', 'Name must contain letters only.'); valid = false;
+              }
+
+              if (!email) {
+                setErr(emailEl, 'err-c-email', 'Email address is required.'); valid = false;
+              } else if (!emailRe.test(email)) {
+                setErr(emailEl, 'err-c-email', 'Please enter a valid email address.'); valid = false;
+              }
+
+              if (phone && phone.replace(/\D/g,'').length !== 10) {
+                setErr(phoneEl, 'err-c-phone', 'Phone number must be exactly 10 digits.'); valid = false;
+              }
+
+              if (!msg) {
+                setErr(msgEl, 'err-c-message', 'Please enter your message.'); valid = false;
+              } else if (msg.length < 10) {
+                setErr(msgEl, 'err-c-message', 'Message must be at least 10 characters.'); valid = false;
+              }
+
+              if (!privacyEl.checked) {
+                document.getElementById('err-c-privacy').textContent = 'You must agree to the Privacy Policy.';
+                valid = false;
+              } else {
+                document.getElementById('err-c-privacy').textContent = '';
+              }
+
+              if (!valid) return;
+
+              window.location.href = '404.html';
+            });
+          })();
+          </script>
         </div>
       </div>
 
@@ -136,13 +258,29 @@
       <div class="lg:col-span-2 space-y-6" data-aos="fade-left">
         <!-- Map Embed -->
         <div class="glass-card overflow-hidden" style="border-radius:16px;" data-aos="fade-left">
-          <div style="position:relative;width:100%;aspect-ratio:4/3;">
-            <iframe
+          <div id="map-sidebar-wrap" style="position:relative;width:100%;aspect-ratio:4/3;">
+            <iframe id="map-sidebar"
               src="https://maps.google.com/maps?q=Madison+Square+Park,+New+York,+NY+10010&t=&z=15&ie=UTF8&iwloc=&output=embed"
               style="width:100%;height:100%;border:0;display:block;filter:invert(0.9) hue-rotate(180deg) saturate(0.6) brightness(0.85);"
               allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
               title="ÉCLAT Location">
             </iframe>
+            <!-- Fallback shown when iframe is blocked -->
+            <div id="map-sidebar-fallback" style="display:none;width:100%;height:100%;background:#111;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:24px;text-align:center;">
+              <div style="width:56px;height:56px;border-radius:50%;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#C9A84C;flex-shrink:0;">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </div>
+              <div>
+                <p style="color:#F5F0E8;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;margin-bottom:4px;">ÉCLAT Restaurant</p>
+                <p style="color:rgba(245,240,232,0.6);font-size:0.82rem;">42 Lumière Blvd, New York, NY 10001</p>
+                <p style="color:rgba(245,240,232,0.4);font-size:0.75rem;margin-top:4px;">Near Madison Square Park · Valet parking available</p>
+              </div>
+              <a href="https://maps.google.com/?q=42+Lumiere+Blvd+New+York+NY+10001" target="_blank" rel="noopener"
+                 style="display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:8px;border:1px solid #C9A84C;color:#C9A84C;font-size:0.8rem;font-weight:600;text-decoration:none;letter-spacing:0.05em;transition:background 0.2s;"
+                 onmouseover="this.style.background='rgba(201,168,76,0.1)'" onmouseout="this.style.background='transparent'">
+                <i class="fa-solid fa-diamond-turn-right"></i>Get Directions
+              </a>
+            </div>
           </div>
           <div class="p-5 flex items-center justify-between flex-wrap gap-3">
             <div>
@@ -159,10 +297,10 @@
         <div class="glass-card p-6">
           <h4 class="text-cream font-semibold mb-4">Follow ÉCLAT</h4>
           <div class="grid grid-cols-2 gap-3">
-            <a href="#" class="social-login-btn text-sm"><i class="fab fa-instagram text-gold"></i>Instagram</a>
-            <a href="#" class="social-login-btn text-sm"><i class="fab fa-facebook-f text-gold"></i>Facebook</a>
-            <a href="#" class="social-login-btn text-sm"><i class="fab fa-twitter text-gold"></i>Twitter</a>
-            <a href="#" class="social-login-btn text-sm"><i class="fab fa-tiktok text-gold"></i>TikTok</a>
+            <a href="404.html" class="social-login-btn text-sm"><i class="fab fa-instagram text-gold"></i>Instagram</a>
+            <a href="404.html" class="social-login-btn text-sm"><i class="fab fa-facebook-f text-gold"></i>Facebook</a>
+            <a href="404.html" class="social-login-btn text-sm"><i class="fab fa-twitter text-gold"></i>Twitter</a>
+            <a href="404.html" class="social-login-btn text-sm"><i class="fab fa-tiktok text-gold"></i>TikTok</a>
           </div>
         </div>
 
@@ -185,12 +323,26 @@
 <section style="background:var(--surface);border-top:1px solid rgba(201,168,76,0.14);border-bottom:1px solid rgba(201,168,76,0.14);">
   <div style="position:relative;">
     <!-- Map iframe full width -->
-    <iframe
+    <iframe id="map-fullwidth"
       src="https://maps.google.com/maps?q=Madison+Square+Park,+New+York,+NY+10010&t=&z=15&ie=UTF8&iwloc=&output=embed"
       style="width:100%;height:480px;border:0;display:block;filter:invert(0.9) hue-rotate(180deg) saturate(0.6) brightness(0.82);"
       allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
       title="ÉCLAT Fine Dining Location">
     </iframe>
+    <!-- Full-width fallback -->
+    <div id="map-fullwidth-fallback" style="display:none;width:100%;height:480px;background:linear-gradient(135deg,#0d0d0d 0%,#111 50%,#0d0d0d 100%);align-items:center;justify-content:center;">
+      <div style="text-align:center;">
+        <div style="width:72px;height:72px;border-radius:50%;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#C9A84C;margin:0 auto 16px;">
+          <i class="fa-solid fa-map-location-dot"></i>
+        </div>
+        <p style="color:#F5F0E8;font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;margin-bottom:6px;">42 Lumière Blvd, New York, NY 10001</p>
+        <p style="color:rgba(245,240,232,0.45);font-size:0.82rem;margin-bottom:20px;">Map blocked by browser — click below to open in Google Maps</p>
+        <a href="https://maps.google.com/?q=42+Lumiere+Blvd+New+York+NY+10001" target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:10px;padding:12px 28px;border-radius:10px;background:linear-gradient(135deg,#C9A84C,#E8C97A);color:#0A0A0A;font-weight:700;font-size:0.88rem;text-decoration:none;letter-spacing:0.06em;">
+          <i class="fa-solid fa-diamond-turn-right"></i>Get Directions
+        </a>
+      </div>
+    </div>
 
     <!-- Overlay info card -->
     <div style="position:absolute;top:50%;left:clamp(16px,5vw,80px);transform:translateY(-50%);
@@ -236,7 +388,7 @@
 <footer class="footer">
   <div class="container">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-      <div><div class="footer-logo">ÉCLAT</div><p class="footer-desc">Award-winning fine dining in New York City.</p><div class="footer-social"><a href="#" class="social-btn"><i class="fab fa-instagram"></i></a><a href="#" class="social-btn"><i class="fab fa-twitter"></i></a></div></div>
+      <div><a href="404.html" class="footer-logo" style="cursor:pointer;text-decoration:none;">ÉCLAT</a><p class="footer-desc">Award-winning fine dining in New York City.</p><div class="footer-social"><a href="404.html" class="social-btn"><i class="fab fa-instagram"></i></a><a href="404.html" class="social-btn"><i class="fab fa-twitter"></i></a></div></div>
       <div><h4 class="footer-heading">Explore</h4><ul class="footer-links"><li><a href="menu.html" class="footer-link">Our Menu</a></li><li><a href="chefs.html" class="footer-link">Our Chefs</a></li></ul></div>
       <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="reservation.html" class="footer-link">Reservations</a></li><li><a href="events.html" class="footer-link">Events</a></li></ul></div>
       <div><h4 class="footer-heading">Contact</h4><ul class="footer-links"><li class="footer-link"><i class="fa-solid fa-phone text-gold"></i>+1 (212) 555-0174</li><li><a href="mailto:hello@eclatdining.com" class="footer-link"><i class="fa-solid fa-envelope text-gold"></i>hello@eclatdining.com</a></li></ul></div>
@@ -245,12 +397,37 @@
   </div>
 </footer>
 <button id="backToTop"><i class="fa-solid fa-chevron-up"></i></button>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/gsap.min.js"></script>
+<script src="js/lenis.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/eclat-beyond-hero.js"></script>
 <script src="js/eclat-footer.js"></script>
+<script>
+(function(){
+  function showFallback(iframeId, fallbackId) {
+    var iframe   = document.getElementById(iframeId);
+    var fallback = document.getElementById(fallbackId);
+    if (!iframe || !fallback) return;
+    fallback.style.display = 'flex';
+    iframe.style.display   = 'none';
+  }
+
+  function watchMap(iframeId, fallbackId) {
+    var iframe = document.getElementById(iframeId);
+    if (!iframe) return;
+    var loaded = false;
+    iframe.addEventListener('load', function() { loaded = true; });
+    iframe.addEventListener('error', function() { showFallback(iframeId, fallbackId); });
+    setTimeout(function() {
+      if (!loaded) showFallback(iframeId, fallbackId);
+    }, 3000);
+  }
+
+  watchMap('map-sidebar',   'map-sidebar-fallback');
+  watchMap('map-fullwidth', 'map-fullwidth-fallback');
+})();
+</script>
 </body>
 </html>
 

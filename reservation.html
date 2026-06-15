@@ -5,11 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="Reserve your table at ÉCLAT Fine Dining — available for lunch, dinner, and exclusive private dining.">
 <title>Reservations — ÉCLAT Fine Dining</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/tailwind.css">
+<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="css/fa-all.min.css">
 <link rel="stylesheet" href="css/style.css">
-<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#0A0A0A',cream:'#F5F0E8'}}}}</script>
 <link rel="stylesheet" href="css/eclat-beyond-hero.css">
 <link rel="stylesheet" href="css/responsive.css">
 </head>
@@ -118,7 +117,11 @@
             </div>
             <div class="form-group">
               <label class="form-label">Phone Number</label>
-              <div class="input-icon-wrap"><i class="input-icon fa-solid fa-phone"></i><input type="tel" class="form-control" placeholder="+1 (212) 000-0000" required></div>
+              <div class="input-icon-wrap">
+                <i class="input-icon fa-solid fa-phone"></i>
+                <input type="tel" id="res-phone" class="form-control" placeholder="10-digit number" maxlength="10" inputmode="numeric" autocomplete="tel" required>
+              </div>
+              <span id="err-res-phone" style="display:block;font-size:0.75rem;color:#EF4444;min-height:16px;margin-top:4px;padding-left:2px;"></span>
             </div>
           </div>
 
@@ -271,7 +274,7 @@
 <footer class="footer">
   <div class="container">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-      <div><div class="footer-logo">ÉCLAT</div><p class="footer-desc">Award-winning fine dining in New York City.</p></div>
+      <div><a href="404.html" class="footer-logo" style="cursor:pointer;text-decoration:none;">ÉCLAT</a><p class="footer-desc">Award-winning fine dining in New York City.</p></div>
       <div><h4 class="footer-heading">Explore</h4><ul class="footer-links"><li><a href="menu.html" class="footer-link">Our Menu</a></li><li><a href="chefs.html" class="footer-link">Our Chefs</a></li></ul></div>
       <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="reservation.html" class="footer-link">Reservations</a></li><li><a href="events.html" class="footer-link">Private Dining</a></li></ul></div>
       <div><h4 class="footer-heading">Contact</h4><ul class="footer-links"><li class="footer-link"><i class="fa-solid fa-phone text-gold"></i>+1 (212) 555-0174</li></ul></div>
@@ -280,12 +283,62 @@
   </div>
 </footer>
 <button id="backToTop"><i class="fa-solid fa-chevron-up"></i></button>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/gsap.min.js"></script>
+<script src="js/lenis.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/eclat-beyond-hero.js"></script>
 <script src="js/eclat-footer.js"></script>
+<script>
+(function(){
+  var phoneEl  = document.getElementById('res-phone');
+  var errEl    = document.getElementById('err-res-phone');
+  var form     = document.getElementById('reservation-form');
+
+  function showErr(msg){ errEl.textContent = msg; phoneEl.style.borderColor='#DC2626'; phoneEl.style.boxShadow='0 0 0 2px rgba(220,38,38,0.18)'; }
+  function clearErr(){ errEl.textContent=''; phoneEl.style.borderColor=''; phoneEl.style.boxShadow=''; }
+
+  /* Block every non-digit key at press time */
+  phoneEl.addEventListener('keypress', function(e){
+    if(!/[0-9]/.test(e.key)) e.preventDefault();
+  });
+
+  /* Strip any non-digit that sneaks in (paste, autofill, drag-drop) and cap at 10 */
+  phoneEl.addEventListener('input', function(){
+    var digits = this.value.replace(/\D/g, '').slice(0, 10);
+    this.value = digits;
+    if(digits.length === 0 || digits.length === 10){ clearErr(); }
+    else { showErr('Phone number must be exactly 10 digits.'); }
+  });
+
+  /* Blur — final check if user tabs away */
+  phoneEl.addEventListener('blur', function(){
+    var digits = this.value.replace(/\D/g, '');
+    if(digits.length > 0 && digits.length !== 10){ showErr('Phone number must be exactly 10 digits.'); }
+    else { clearErr(); }
+  });
+
+  /* Block paste of non-numeric content */
+  phoneEl.addEventListener('paste', function(e){
+    e.preventDefault();
+    var pasted = (e.clipboardData || window.clipboardData).getData('text');
+    var digits = pasted.replace(/\D/g, '').slice(0, 10);
+    this.value = digits;
+    this.dispatchEvent(new Event('input'));
+  });
+
+  /* Form submit guard */
+  form.addEventListener('submit', function(e){
+    var digits = phoneEl.value.replace(/\D/g, '');
+    if(digits.length !== 10){
+      e.preventDefault();
+      e.stopPropagation();
+      showErr('Phone number must be exactly 10 digits.');
+      phoneEl.focus();
+    }
+  });
+})();
+</script>
 </body>
 </html>
 

@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Reservation History — ÉCLAT Fine Dining</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/tailwind.css">
+<link rel="stylesheet" href="css/fa-all.min.css">
 <link rel="stylesheet" href="css/style.css">
-<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#0A0A0A',cream:'#F5F0E8'}}}}</script>
 <link rel="stylesheet" href="css/eclat-beyond-hero.css">
 <link rel="stylesheet" href="css/responsive.css">
 </head>
@@ -48,7 +47,7 @@
     <!-- Upcoming -->
     <h3 class="text-cream font-semibold mb-3">Upcoming Reservations</h3>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
-      <div class="glass-card p-6" style="border-color:rgba(201,168,76,0.25)">
+      <div class="glass-card p-6" id="card-RES-2024-028" style="border-color:rgba(201,168,76,0.25)">
         <div class="flex items-start justify-between mb-4">
           <div>
             <span class="status-badge confirmed mb-2 inline-flex"><i class="fa-solid fa-circle text-xs"></i>Confirmed</span>
@@ -64,11 +63,11 @@
           <div><p class="text-muted text-xs mb-1">Ref</p><p class="text-cream font-mono text-xs">#RES-2024-028</p></div>
         </div>
         <div class="flex gap-3">
-          <button class="btn btn-dark btn-sm flex-1 justify-center" onclick="showToast('Modification request received. We will contact you within 2 hours.','info')"><i class="fa-solid fa-pen-to-square mr-1"></i>Modify</button>
-          <button class="btn btn-sm flex-1 justify-center" style="background:rgba(239,68,68,0.1);color:#EF4444;border:1px solid rgba(239,68,68,0.25)" onclick="showToast('Please note: cancellations within 24 hours forfeit the deposit.','warning')"><i class="fa-solid fa-xmark mr-1"></i>Cancel</button>
+          <button class="btn btn-dark btn-sm flex-1 justify-center" onclick="openModify(this)" data-ref="#RES-2024-028" data-date="2024-06-28" data-time="19:30" data-guests="2" data-table="Window Table" data-occasion="Anniversary"><i class="fa-solid fa-pen-to-square mr-1"></i>Modify</button>
+          <button class="btn btn-sm flex-1 justify-center" style="background:rgba(239,68,68,0.1);color:#EF4444;border:1px solid rgba(239,68,68,0.25)" onclick="openCancel(this)" data-ref="#RES-2024-028"><i class="fa-solid fa-xmark mr-1"></i>Cancel</button>
         </div>
       </div>
-      <div class="glass-card p-6" style="border-color:rgba(201,168,76,0.25)">
+      <div class="glass-card p-6" id="card-RES-2024-031" style="border-color:rgba(201,168,76,0.25)">
         <div class="flex items-start justify-between mb-4">
           <div>
             <span class="status-badge confirmed mb-2 inline-flex"><i class="fa-solid fa-circle text-xs"></i>Confirmed</span>
@@ -84,8 +83,8 @@
           <div><p class="text-muted text-xs mb-1">Ref</p><p class="text-cream font-mono text-xs">#RES-2024-031</p></div>
         </div>
         <div class="flex gap-3">
-          <button class="btn btn-dark btn-sm flex-1 justify-center" onclick="showToast('Modification request received. We will contact you within 2 hours.','info')"><i class="fa-solid fa-pen-to-square mr-1"></i>Modify</button>
-          <button class="btn btn-sm flex-1 justify-center" style="background:rgba(239,68,68,0.1);color:#EF4444;border:1px solid rgba(239,68,68,0.25)" onclick="showToast('Please note: cancellations within 24 hours forfeit the deposit.','warning')"><i class="fa-solid fa-xmark mr-1"></i>Cancel</button>
+          <button class="btn btn-dark btn-sm flex-1 justify-center" onclick="openModify(this)" data-ref="#RES-2024-031" data-date="2024-07-05" data-time="20:00" data-guests="4" data-table="Private Dining" data-occasion="Birthday"><i class="fa-solid fa-pen-to-square mr-1"></i>Modify</button>
+          <button class="btn btn-sm flex-1 justify-center" style="background:rgba(239,68,68,0.1);color:#EF4444;border:1px solid rgba(239,68,68,0.25)" onclick="openCancel(this)" data-ref="#RES-2024-031"><i class="fa-solid fa-xmark mr-1"></i>Cancel</button>
         </div>
       </div>
     </div>
@@ -151,9 +150,191 @@
     </div>
   </main>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<!-- ── Modify Modal ─────────────────────────────────── -->
+<div id="modify-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#111;border:1px solid rgba(201,168,76,0.3);border-radius:20px;width:100%;max-width:480px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.6);">
+    <div style="padding:24px 28px 16px;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <h3 style="color:#F5F0E8;font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;">Modify Reservation</h3>
+        <p id="mod-ref-label" style="color:#C9A84C;font-size:0.75rem;margin-top:2px;"></p>
+      </div>
+      <button onclick="closeModify()" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.06);border:none;color:rgba(245,240,232,0.5);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div style="padding:24px 28px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <div>
+          <label style="display:block;color:#C9A84C;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">Date</label>
+          <input type="date" id="mod-date" class="form-control" style="background:#1a1a1a;color:#fff;border:1px solid rgba(201,168,76,0.3);">
+        </div>
+        <div>
+          <label style="display:block;color:#C9A84C;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">Time</label>
+          <select id="mod-time" class="form-control form-select" style="background:#1a1a1a;color:#fff;border:1px solid rgba(201,168,76,0.3);">
+            <option value="12:00">12:00 PM</option><option value="12:30">12:30 PM</option>
+            <option value="13:00">1:00 PM</option><option value="18:00">6:00 PM</option>
+            <option value="18:30">6:30 PM</option><option value="19:00">7:00 PM</option>
+            <option value="19:30">7:30 PM</option><option value="20:00">8:00 PM</option>
+            <option value="20:30">8:30 PM</option><option value="21:00">9:00 PM</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;color:#C9A84C;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">Guests</label>
+          <select id="mod-guests" class="form-control form-select" style="background:#1a1a1a;color:#fff;border:1px solid rgba(201,168,76,0.3);">
+            <option value="1">1 Guest</option><option value="2">2 Guests</option><option value="3">3 Guests</option>
+            <option value="4">4 Guests</option><option value="5">5 Guests</option><option value="6">6 Guests</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;color:#C9A84C;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">Table</label>
+          <select id="mod-table" class="form-control form-select" style="background:#1a1a1a;color:#fff;border:1px solid rgba(201,168,76,0.3);">
+            <option>No Preference</option><option>Window Table</option><option>Booth Seating</option>
+            <option>Bar Seating</option><option>Private Dining</option><option>Chef's Counter</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-bottom:20px;">
+        <label style="display:block;color:#C9A84C;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">Special Requests</label>
+        <textarea id="mod-notes" class="form-control" rows="3" placeholder="Any changes or special requests..." style="background:#1a1a1a;color:#fff;border:1px solid rgba(201,168,76,0.3);resize:none;"></textarea>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <button onclick="closeModify()" style="flex:1;padding:12px;border-radius:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(245,240,232,0.6);cursor:pointer;font-size:0.85rem;">Discard</button>
+        <button onclick="saveModify()" style="flex:2;padding:12px;border-radius:10px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;color:#0A0A0A;font-weight:700;cursor:pointer;font-size:0.85rem;letter-spacing:0.05em;"><i class="fa-solid fa-check mr-2"></i>Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Cancel Confirmation Modal ──────────────────── -->
+<div id="cancel-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#111;border:1px solid rgba(239,68,68,0.3);border-radius:20px;width:100%;max-width:400px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.6);">
+    <div style="padding:28px 28px 0;text-align:center;">
+      <div style="width:56px;height:56px;border-radius:50%;background:rgba(239,68,68,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.4rem;color:#EF4444;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <h3 style="color:#F5F0E8;font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;margin-bottom:8px;">Cancel Reservation?</h3>
+      <p id="cancel-ref-label" style="color:#C9A84C;font-size:0.8rem;margin-bottom:12px;"></p>
+      <p style="color:rgba(245,240,232,0.55);font-size:0.85rem;line-height:1.6;margin-bottom:8px;">This action cannot be undone. Cancellations made within <strong style="color:#F5F0E8;">24 hours</strong> of the booking time may forfeit the deposit.</p>
+    </div>
+    <div style="padding:20px 28px 28px;display:flex;gap:12px;">
+      <button onclick="closeCancel()" style="flex:1;padding:12px;border-radius:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(245,240,232,0.7);cursor:pointer;font-size:0.85rem;font-weight:600;">Keep It</button>
+      <button onclick="confirmCancel()" style="flex:1;padding:12px;border-radius:10px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);color:#EF4444;cursor:pointer;font-size:0.85rem;font-weight:700;"><i class="fa-solid fa-xmark mr-1"></i>Yes, Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/gsap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/eclat-beyond-hero.js"></script>
+<script>
+(function(){
+  var modModal    = document.getElementById('modify-modal');
+  var cancelModal = document.getElementById('cancel-modal');
+  var activeCard  = null;
+  var activeRef   = null;
+
+  /* ── Modify ─────────────────────────── */
+  window.openModify = function(btn) {
+    activeCard = document.getElementById('card-' + btn.dataset.ref.replace('#',''));
+    document.getElementById('mod-ref-label').textContent = btn.dataset.ref;
+    document.getElementById('mod-date').value   = btn.dataset.date   || '';
+    document.getElementById('mod-time').value   = btn.dataset.time   || '19:30';
+    document.getElementById('mod-guests').value = btn.dataset.guests || '2';
+    document.getElementById('mod-table').value  = btn.dataset.table  || 'No Preference';
+    document.getElementById('mod-notes').value  = '';
+    modModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeModify = function() {
+    modModal.style.display = 'none';
+    document.body.style.overflow = '';
+  };
+
+  window.saveModify = function() {
+    var date    = document.getElementById('mod-date').value;
+    var time    = document.getElementById('mod-time').value;
+    var guests  = document.getElementById('mod-guests').value;
+    var table   = document.getElementById('mod-table').value;
+
+    if (!date) { showToast('Please select a date.', 'warning'); return; }
+
+    if (activeCard) {
+      // Format display date
+      var d = new Date(date + 'T12:00:00');
+      var days   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      var dateStr = days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+
+      // Format time display
+      var [h, m] = time.split(':').map(Number);
+      var ampm = h >= 12 ? 'PM' : 'AM';
+      var h12  = h % 12 || 12;
+      var timeStr = h12 + ':' + (m < 10 ? '0'+m : m) + ' ' + ampm;
+
+      // Update card DOM
+      var dateEl = activeCard.querySelector('h4');
+      var timeEl = activeCard.querySelector('.text-gold.text-sm');
+      var guestEl = activeCard.querySelectorAll('.text-cream')[0];
+      var tableEl = activeCard.querySelectorAll('.text-cream')[1];
+      if (dateEl)  dateEl.textContent  = dateStr;
+      if (timeEl)  timeEl.textContent  = timeStr + ' · Dinner';
+      if (guestEl) guestEl.textContent = guests + (guests === '1' ? ' guest' : ' guests');
+      if (tableEl) tableEl.textContent = table;
+
+      // Update button data attributes
+      var modBtn = activeCard.querySelector('[onclick*="openModify"]');
+      if (modBtn) {
+        modBtn.dataset.date   = date;
+        modBtn.dataset.time   = time;
+        modBtn.dataset.guests = guests;
+        modBtn.dataset.table  = table;
+      }
+    }
+
+    closeModify();
+    showToast('Reservation updated successfully!', 'success');
+  };
+
+  /* ── Cancel ─────────────────────────── */
+  window.openCancel = function(btn) {
+    activeRef  = btn.dataset.ref;
+    activeCard = document.getElementById('card-' + btn.dataset.ref.replace('#',''));
+    document.getElementById('cancel-ref-label').textContent = btn.dataset.ref;
+    cancelModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeCancel = function() {
+    cancelModal.style.display = 'none';
+    document.body.style.overflow = '';
+  };
+
+  window.confirmCancel = function() {
+    if (activeCard) {
+      // Replace card with cancelled state instead of removing it
+      activeCard.style.opacity = '0.5';
+      activeCard.style.pointerEvents = 'none';
+      var badge = activeCard.querySelector('.status-badge');
+      if (badge) {
+        badge.className = 'status-badge pending';
+        badge.innerHTML = '<i class="fa-solid fa-circle text-xs"></i>Cancelled';
+      }
+      var btns = activeCard.querySelector('.flex.gap-3');
+      if (btns) {
+        btns.innerHTML = '<p class="text-muted text-xs w-full text-center py-1">This reservation has been cancelled.</p>';
+      }
+    }
+    closeCancel();
+    showToast('Reservation ' + activeRef + ' has been cancelled.', 'success');
+  };
+
+  /* ── Close on backdrop click ─────────── */
+  modModal.addEventListener('click', function(e){ if(e.target===modModal) closeModify(); });
+  cancelModal.addEventListener('click', function(e){ if(e.target===cancelModal) closeCancel(); });
+
+  /* ── Close on Escape ─────────────────── */
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape'){ closeModify(); closeCancel(); }
+  });
+})();
+</script>
 </body>
 </html>
 

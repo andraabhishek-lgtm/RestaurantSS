@@ -5,11 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="The Art of A5 Wagyu — Chef Laurent Dubois shares the story behind ÉCLAT's most celebrated dish.">
 <title>The Art of A5 Wagyu — ÉCLAT Blog</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/tailwind.css">
+<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="css/fa-all.min.css">
 <link rel="stylesheet" href="css/style.css">
-<script>tailwind.config={theme:{extend:{colors:{gold:'#C9A84C','dark-bg':'#0A0A0A',cream:'#F5F0E8'}}}}</script>
 <style>
 .blog-content h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--cream);margin:2rem 0 1rem}
 .blog-content p{color:var(--text-secondary);line-height:1.9;margin-bottom:1.5rem}
@@ -132,8 +131,8 @@
           </div>
           <div class="flex gap-3">
             <button class="btn btn-ghost btn-sm" onclick="showToast('Article link copied!','success')"><i class="fa-solid fa-link mr-1"></i>Copy Link</button>
-            <a href="#" class="btn btn-ghost btn-sm"><i class="fab fa-twitter mr-1"></i>Share</a>
-            <a href="#" class="btn btn-ghost btn-sm"><i class="fab fa-facebook-f mr-1"></i>Share</a>
+            <a href="404.html" class="btn btn-ghost btn-sm"><i class="fab fa-twitter mr-1"></i>Share</a>
+            <a href="404.html" class="btn btn-ghost btn-sm"><i class="fab fa-facebook-f mr-1"></i>Share</a>
           </div>
         </div>
 
@@ -149,16 +148,16 @@
 
         <!-- Comments Section -->
         <div class="mt-12">
-          <h3 class="font-cormorant text-2xl text-cream font-semibold mb-6">Comments (12)</h3>
-          <div class="space-y-6 mb-10">
-            <div class="flex gap-4">
+          <h3 class="font-cormorant text-2xl text-cream font-semibold mb-6">Comments (<span id="comment-count">2</span>)</h3>
+          <div class="space-y-6 mb-10" id="comments-list">
+            <div class="flex gap-4 comment-item">
               <img src="images/photo-1494790108377-be9c29b29330-60x60.webp" class="w-10 h-10 rounded-full object-cover border border-dark-500 flex-shrink-0" alt="Sarah">
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-1"><span class="text-cream font-semibold text-sm">Sarah K.</span><span class="text-muted text-xs">June 16, 2024</span></div>
                 <p class="text-secondary text-sm leading-relaxed">I had the wagyu last Saturday and yes — I completely understand the tears now. It's not hyperbole when people say it's life-changing. Thank you for this beautiful article, Chef.</p>
               </div>
             </div>
-            <div class="flex gap-4">
+            <div class="flex gap-4 comment-item">
               <img src="images/photo-1507003211169-0a1dd7228f2d-60x60.webp" class="w-10 h-10 rounded-full object-cover border border-dark-500 flex-shrink-0" alt="Michael">
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-1"><span class="text-cream font-semibold text-sm">Michael T.</span><span class="text-muted text-xs">June 17, 2024</span></div>
@@ -166,17 +165,152 @@
               </div>
             </div>
           </div>
+
           <!-- Comment Form -->
-          <div class="glass-card p-6">
-            <h4 class="text-cream font-semibold mb-4">Leave a Comment</h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <input type="text" class="form-control" placeholder="Your Name">
-              <input type="email" class="form-control" placeholder="Email Address">
+          <div class="glass-card p-6" id="comment-form-card">
+            <h4 class="text-cream font-semibold mb-5">Leave a Comment</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-1">
+              <div>
+                <input type="text" id="comment-name" class="form-control" placeholder="Your Name *" autocomplete="name">
+                <span class="comment-err" id="err-name"></span>
+              </div>
+              <div>
+                <input type="email" id="comment-email" class="form-control" placeholder="Email Address *" autocomplete="email">
+                <span class="comment-err" id="err-email"></span>
+              </div>
             </div>
-            <textarea class="form-control mb-4" rows="4" placeholder="Share your thoughts..."></textarea>
-            <button class="btn btn-gold" onclick="showToast('Comment submitted for review. Thank you!','success')">Post Comment</button>
+            <div class="mb-1 mt-4">
+              <textarea id="comment-text" class="form-control" rows="4" placeholder="Share your thoughts..."></textarea>
+              <span class="comment-err" id="err-text"></span>
+            </div>
+            <div class="flex items-center justify-between flex-wrap gap-3 mt-5">
+              <button class="btn btn-gold" id="post-comment-btn">
+                <i class="fa-solid fa-paper-plane mr-2"></i>Post Comment
+              </button>
+              <p class="text-muted text-xs">* Required fields. Your email won't be published.</p>
+            </div>
           </div>
         </div>
+
+        <style>
+          .comment-err { display:block; font-size:0.75rem; color:#EF4444; min-height:18px; margin-top:4px; padding-left:2px; }
+          .form-control.comment-invalid { border-color:#DC2626 !important; box-shadow:0 0 0 2px rgba(220,38,38,0.18) !important; }
+          @keyframes commentSlide {
+            from { opacity:0; transform:translateY(16px); }
+            to   { opacity:1; transform:translateY(0); }
+          }
+          .comment-item-new { animation: commentSlide 0.45s ease forwards; }
+          #comment-form-card .form-control {
+            background: #1a1a1a !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(201,168,76,0.25) !important;
+          }
+          #comment-form-card .form-control::placeholder { color: rgba(255,255,255,0.35) !important; }
+          #comment-form-card .form-control:focus {
+            border-color: rgba(201,168,76,0.7) !important;
+            box-shadow: 0 0 0 3px rgba(201,168,76,0.12) !important;
+            outline: none !important;
+            background: #1a1a1a !important;
+          }
+        </style>
+
+        <script>
+        (function(){
+          const nameEl  = document.getElementById('comment-name');
+          const emailEl = document.getElementById('comment-email');
+          const textEl  = document.getElementById('comment-text');
+          const errName  = document.getElementById('err-name');
+          const errEmail = document.getElementById('err-email');
+          const errText  = document.getElementById('err-text');
+          const btn      = document.getElementById('post-comment-btn');
+          const list     = document.getElementById('comments-list');
+          const countEl  = document.getElementById('comment-count');
+
+          const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          function clearErr(el, errEl) {
+            el.classList.remove('comment-invalid');
+            errEl.textContent = '';
+          }
+          function setErr(el, errEl, msg) {
+            el.classList.add('comment-invalid');
+            errEl.textContent = msg;
+          }
+
+          nameEl.addEventListener('input',  function(){ clearErr(nameEl,  errName);  });
+          emailEl.addEventListener('input', function(){ clearErr(emailEl, errEmail); });
+          textEl.addEventListener('input',  function(){ clearErr(textEl,  errText);  });
+
+          function getInitials(name) {
+            return name.trim().split(/\s+/).map(function(w){ return w[0].toUpperCase(); }).join('').substring(0,2);
+          }
+
+          btn.addEventListener('click', function(){
+            let valid = true;
+
+            const name  = nameEl.value.trim();
+            const email = emailEl.value.trim();
+            const text  = textEl.value.trim();
+
+            if (!name) {
+              setErr(nameEl, errName, 'Please enter your name.');
+              valid = false;
+            } else if (name.length < 2) {
+              setErr(nameEl, errName, 'Name must be at least 2 characters.');
+              valid = false;
+            }
+
+            if (!email) {
+              setErr(emailEl, errEmail, 'Please enter your email address.');
+              valid = false;
+            } else if (!emailRe.test(email)) {
+              setErr(emailEl, errEmail, 'Please enter a valid email address.');
+              valid = false;
+            }
+
+            if (!text) {
+              setErr(textEl, errText, 'Please write a comment before posting.');
+              valid = false;
+            } else if (text.length < 10) {
+              setErr(textEl, errText, 'Comment must be at least 10 characters.');
+              valid = false;
+            }
+
+            if (!valid) return;
+
+            // Build comment element
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+            const initials = getInitials(name);
+
+            const item = document.createElement('div');
+            item.className = 'flex gap-4 comment-item comment-item-new';
+            item.innerHTML =
+              '<div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#C9A84C,#8B6914);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem;color:#0A0A0A;flex-shrink:0;border:1px solid rgba(201,168,76,0.4)">' + initials + '</div>' +
+              '<div class="flex-1">' +
+                '<div class="flex items-center gap-3 mb-1">' +
+                  '<span class="text-cream font-semibold text-sm">' + name + '</span>' +
+                  '<span class="text-muted text-xs">' + dateStr + '</span>' +
+                  '<span class="badge badge-gold" style="font-size:0.65rem;padding:2px 8px">New</span>' +
+                '</div>' +
+                '<p class="text-secondary text-sm leading-relaxed">' + text.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</p>' +
+              '</div>';
+
+            list.appendChild(item);
+            countEl.textContent = parseInt(countEl.textContent) + 1;
+
+            // Reset form
+            nameEl.value  = '';
+            emailEl.value = '';
+            textEl.value  = '';
+
+            // Scroll to new comment
+            item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            showToast('Comment posted successfully!', 'success');
+          });
+        })();
+        </script>
       </div>
 
       <!-- Sidebar -->
@@ -201,7 +335,7 @@
 <footer class="footer">
   <div class="container">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-      <div><div class="footer-logo">ÉCLAT</div><p class="footer-desc">Award-winning fine dining in New York City.</p></div>
+      <div><a href="404.html" class="footer-logo" style="cursor:pointer;text-decoration:none;">ÉCLAT</a><p class="footer-desc">Award-winning fine dining in New York City.</p></div>
       <div><h4 class="footer-heading">Explore</h4><ul class="footer-links"><li><a href="menu.html" class="footer-link">Our Menu</a></li><li><a href="blog.html" class="footer-link">Blog</a></li></ul></div>
       <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="reservation.html" class="footer-link">Reservations</a></li></ul></div>
       <div><h4 class="footer-heading">Contact</h4><ul class="footer-links"><li class="footer-link"><i class="fa-solid fa-phone text-gold"></i>+1 (212) 555-0174</li></ul></div>
@@ -210,9 +344,9 @@
   </div>
 </footer>
 <button id="backToTop"><i class="fa-solid fa-chevron-up"></i></button>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/gsap.min.js"></script>
+<script src="js/lenis.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/eclat-beyond-hero.js"></script>
 <script src="js/eclat-footer.js"></script>
